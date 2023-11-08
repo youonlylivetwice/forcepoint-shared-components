@@ -9,7 +9,7 @@
   ],
   "types": "dist/index.d.ts",
   "scripts": {
-    "prepare": "rm -rf dist",
+    "prepare": "rm -rf dist && npm run build",
     "dev": "run-p watch-typescript storybook",
     "build": "rollup -c --bundleConfigAsCjs",
     "storybook": "storybook dev -p 6006",
