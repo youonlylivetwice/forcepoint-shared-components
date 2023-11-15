@@ -25,5 +25,10 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'warn',
     'no-console': 'warn',
   },
-  ignorePatterns: ['dist', '.eslintrc.js', 'vite.config.ts'],
+  ignorePatterns: [
+    'dist',
+    '.eslintrc.js',
+    'vite.config.ts',
+    'postcss.config.js',
+  ],
 };
