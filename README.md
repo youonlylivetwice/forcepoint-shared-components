@@ -1,27 +1,51 @@
-# React + TypeScript + Vite
+# Shared components for Forcepoint Frontend Sites
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Components for React applications using [TailwindCSS](https://tailwindcss.com/)
 
-Currently, two official plugins are available:
+[View the deployed storybook instance](https://main--64d42666175ed1920d3d7701.chromatic.com)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Requirements
 
-## Expanding the ESLint configuration
+- Node 20
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Local development on the shared components library itself
 
-- Configure the top-level `parserOptions` property like this:
+- Clone the repository
+- Run `nvm use` or use a tool such as [AVN](https://github.com/wbyoung/avn) to
+automatically switch to the correct Node version
+- Run `npm install`
+- Run `npm run dev` to start storybook and the Typescript compiler.
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+## Troubleshooting
+
+- If you hit `Importing a module script failed.`
+- Then try `rm -rf node_modules` and all of the steps above again.
+
+## Local development on a Nextjs Frontend site that uses the shared components
+
+- Clone the repository
+- Run `nvm use` or use a tool such as [AVN](https://github.com/wbyoung/avn) to
+automatically switch to the correct Node version
+- Run `npm install`
+- Link the dependencies:
+
+```bash
+npm run link-all [FE-SITE-PATH]
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Example:
+
+```bash
+npm run link-all ../s4-app-partners
+```
+
+- In root directory of the FE site that uses the shared components, link the package:
+
+```bash
+npm link s4-shared-components
+```
+
+- For changes to be picked up you must make sure you include exports for any new
+components in the `index.ts` file in the `src` of the shared components library.
+- After that run `npm run dev` in the shared components library first.
+- Then run `npm run dev` in the FE site that uses the shared components library.
