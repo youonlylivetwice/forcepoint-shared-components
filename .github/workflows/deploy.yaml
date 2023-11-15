@@ -1,9 +1,9 @@
-name: 'Storybook'
+name: 'Build and Publish storybook to GitHub Pages'
 
 on:
   push:
     branches:
-      - 'main' # change to the branch you wish to deploy from
+      - 'main'
 
 permissions:
   contents: read
@@ -17,4 +17,4 @@ jobs:
       - id: build-publish
         uses: bitovi/github-actions-storybook-to-github-pages@v1.0.0
         with:
-          path: 'storybook-static' # change to your build folder
+          path: 'storybook-static'

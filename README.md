@@ -2,7 +2,7 @@
 
 Components for React applications using [TailwindCSS](https://tailwindcss.com/)
 
-[View the deployed storybook instance](https://main--64d42666175ed1920d3d7701.chromatic.com)
+[View the deployed storybook instance](https://fourkitchens.github.io/forcepoint-shared-components)
 
 ## Requirements
 
