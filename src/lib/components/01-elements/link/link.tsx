@@ -6,7 +6,7 @@ export type LinkProps = {
 
 export default function Link({ text, url, ...props }: LinkProps) {
   return (
-    <a {...props} className="text-3xl font-bold underline" href={url}>
+    <a {...props} className="text text-3xl font-bold text-red-100" href={url}>
       {text}
     </a>
   );
