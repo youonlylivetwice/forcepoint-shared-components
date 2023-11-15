@@ -27,4 +27,3 @@ automatically switch to the correct Node version
 ```bash
 npm run link:forcepoint-shared-components
 ```
-
