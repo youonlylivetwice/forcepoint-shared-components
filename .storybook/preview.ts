@@ -1,5 +1,8 @@
 import type { Preview } from '@storybook/react';
-import '../src/tailwind/theme.css';
+import { initializeRTL } from 'storybook-addon-rtl';
+import '../src/lib/theme.css';
+
+initializeRTL();
 
 const preview: Preview = {
   parameters: {

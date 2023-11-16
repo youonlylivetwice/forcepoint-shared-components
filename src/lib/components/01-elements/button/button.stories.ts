@@ -5,9 +5,6 @@ import Button from './button';
 const meta = {
   title: 'Elements/Button',
   component: Button,
-  parameters: {
-    layout: 'centered',
-  },
   tags: ['autodocs'],
   argTypes: {},
 } satisfies Meta<typeof Button>;
@@ -15,28 +12,28 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
+export const Default: Story = {
   args: {
-    text: 'Button',
+    text: 'Button text',
   },
 };
 
-export const Secondary: Story = {
+export const Disabled: Story = {
   args: {
-    text: 'Button',
+    text: 'Button text',
   },
 };
 
 export const Large: Story = {
   args: {
     size: 'large',
-    text: 'Large',
+    text: 'Large button text',
   },
 };
 
 export const Small: Story = {
   args: {
     size: 'small',
-    text: 'Small',
+    text: 'Small button text',
   },
 };

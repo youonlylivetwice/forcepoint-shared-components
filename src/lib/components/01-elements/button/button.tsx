@@ -5,7 +5,10 @@ export type ButtonProps = {
 
 export default function Button({ text, ...props }: ButtonProps) {
   return (
-    <button {...props} className="text-3xl font-bold text-slate-500 underline">
+    <button
+      {...props}
+      className="bg-navy hover:bg-teal rounded-full px-4 py-3 text-white disabled:bg-black"
+    >
       {text}
     </button>
   );
