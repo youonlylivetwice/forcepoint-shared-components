@@ -2,7 +2,7 @@ import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
-import { name } from './package.json';
+import { name, peerDependencies, dependencies } from './package.json';
 
 const formattedName = name.match(/[^/]+$/)?.[0] ?? name;
 
@@ -15,7 +15,6 @@ export default defineConfig({
     }),
   ],
   build: {
-    copyPublicDir: false,
     lib: {
       entry: resolve(__dirname, 'src/lib/index.ts'),
       name: formattedName,
@@ -23,11 +22,10 @@ export default defineConfig({
       fileName: (format) => `${formattedName}.${format}.js`,
     },
     rollupOptions: {
-      external: ['react', 'react/jsx-runtime', 'react-dom'],
+      external: [...Object.keys(peerDependencies), ...Object.keys(dependencies)],
       output: {
         globals: {
           react: 'React',
-          'react/jsx-runtime': 'react/jsx-runtime',
           'react-dom': 'ReactDOM',
         },
       },
