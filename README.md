@@ -6,7 +6,7 @@ Components for React applications using [TailwindCSS](https://tailwindcss.com/)
 
 ## Requirements
 
-- Node 20
+- Node 18
 
 ## Local development on the shared components library itself
 
