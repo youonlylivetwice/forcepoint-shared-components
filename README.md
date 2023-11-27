@@ -20,3 +20,7 @@ automatically switch to the correct Node version
 
 - In the Frontend Site, run `npm run link:forcepoint-shared-components`
 - In this project, run `npm run dev`
+
+## Publish Tailwind Preset
+
+- Copy the content you want to export from `tailwind.config.ts` to `./public/tailwind.config.ts` file.
