@@ -1,14 +1,19 @@
 # Shared components for Forcepoint Frontend Sites
 
-Components for React applications using [TailwindCSS](https://tailwindcss.com/)
+React Shared Components Library System for Forcepoint. Built on Vite.
 
-[View the deployed storybook instance](https://fourkitchens.github.io/forcepoint-shared-components)
+## At a glance
 
-## Requirements
+|   |   |
+|---|---|
+| Library bundler | [Vite](https://vitejs.dev/) |
+| Component visualization | [Storybook](https://storybook.js.org/) |
+| Storybook | 7.6 |
+| Storybook instance | [GitHub Pages](https://fourkitchens.github.io/forcepoint-shared-components) |
+| CSS Framework | [TailwindCSS](https://tailwindcss.com/) |
+| Node | 18 |
 
-- Node 18
-
-## Local development on the shared components library itself
+## Local development setup
 
 - Clone the repository
 - Run `nvm use` or use a tool such as [NVM](https://github.com/nvm-sh/nvm) to

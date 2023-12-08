@@ -7,7 +7,7 @@ export default function Button({ text, ...props }: ButtonProps) {
   return (
     <button
       {...props}
-      className="bg-navy hover:bg-teal rounded-full px-lg py-sm text-white disabled:bg-black"
+      className="rounded-full bg-navy px-lg py-sm text-white hover:bg-teal disabled:bg-black"
     >
       {text}
     </button>
