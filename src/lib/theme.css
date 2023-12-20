@@ -1,3 +1,76 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Typography */
+@font-face {
+  font-family: 'Hoves';
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+  src: url('../../assets/fonts/hoves-optimized//Hoves_DemiBold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Hoves';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('../../assets/fonts/hoves-optimized/Hoves_DemiBold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Hoves';
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url('../../assets/fonts/hoves-optimized/Hoves_DemiBold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Hoves';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url('../../assets/fonts/hoves-optimized/Hoves_Medium.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Hoves';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('../../assets/fonts/hoves-optimized/Hoves_Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Hoves';
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  src: url('../../assets/fonts/hoves-optimized/Hoves_Italic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Hoves';
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+  src: url('../../assets/fonts/hoves-optimized/Hoves_Light.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Hoves';
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+  src: url('../../assets/fonts/hoves-optimized/Hoves_Light_Italic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Hoves';
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+  src: url('../../assets/fonts/hoves-optimized/Hoves_ExtraLight.woff') format('woff');
+}
