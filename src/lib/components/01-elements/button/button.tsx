@@ -1,15 +1,11 @@
-import Icon from "../icon/icon";
-
 export type ButtonProps = {
-  text: string;
-  icon?: string;
   disabled?: boolean;
+  children: React.ReactNode;
   variant?: 'solid' | 'outline';
-  iconPosition?: 'right' | 'left';
   size?: 'small' | 'medium' | 'large';
 };
 
-export default function Button({ text, variant, size, icon, iconPosition = 'right', ...props }: ButtonProps) {
+export default function Button({ variant, size, children, ...props }: ButtonProps) {
   const getFontSizeClasses = () => {
     switch (size) {
       case 'small':
@@ -42,17 +38,9 @@ export default function Button({ text, variant, size, icon, iconPosition = 'righ
   const fontSizeClasses = getFontSizeClasses();
   const conditionalClasses = getConditionalClasses();
 
-  const renderedIcon = () => {
-    if (icon && icon !== 'none') {
-      return <Icon name={icon} className="w-sm h-sm" />;
-    }
-  };
-
   return (
     <button {...props} className={`inline-flex gap-sm items-center rounded-lg ${variantClasses} ${fontSizeClasses} ${conditionalClasses}`}>
-      {iconPosition === 'left' && renderedIcon()}
-      {text}
-      {iconPosition === 'right' && renderedIcon()}
+      {children}
     </button>
   );
 }
