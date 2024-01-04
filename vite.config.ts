@@ -3,7 +3,7 @@ import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import { name, peerDependencies, dependencies } from './package.json';
-import ViteSvgSpriteWrapper from 'vite-svg-sprite-wrapper';
+import svgr from "vite-plugin-svgr";
 
 const formattedName = name.match(/[^/]+$/)?.[0] ?? name;
 
@@ -14,10 +14,7 @@ export default defineConfig({
     dts({
       insertTypesEntry: true,
     }),
-    ViteSvgSpriteWrapper({
-      icons: 'assets/images/icons/*.svg',
-			outputDir: 'public'
-    }),
+    svgr(),
   ],
   build: {
     lib: {
