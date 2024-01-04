@@ -1,28 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import PlayIcon from "../../../../../assets/images/icons/play.svg?react";
 
 import Link from './link';
-
-const svgIcons = import.meta.glob('../../../../../assets/images/icons/*.svg');
-const icons = [];
-
-for (const key in svgIcons) {
-  const icon = key.split('icons/')[1].split('.svg')[0];
-  icons.push(icon);
-}
 
 const meta = {
   title: 'Elements/Link',
   component: Link,
   argTypes: {
-    icon: {
-      options: ['none', ...icons],
-      control: { type: 'select' },
-    },
-    iconPosition: {
-      options: ['right', 'left'],
+    size: {
+      options: ['small', 'default'],
       control: { type: 'select' },
     },
     variant: {
+      table: {
+        disable: true,
+      },
+    },
+    children: {
       table: {
         disable: true,
       },
@@ -35,19 +29,24 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    icon: 'play',
-    iconPosition: 'left',
-    text: 'Watch the Video',
-    url: 'http://localhost:6006/',
+    children: (
+      <>
+        <PlayIcon />
+        <span>Watch the Video</span>
+      </>
+    ),
     disabled: false,
+    size: 'default',
+    url: 'http://localhost:6006/',
   },
 };
 
 export const Underline: Story = {
   args: {
-    text: 'Get It Today',
+    disabled: false,
+    size: 'default',
+    text: 'Underline Link',
     url: 'http://localhost:6006/',
     variant: 'underline',
-    disabled: false,
   },
 };

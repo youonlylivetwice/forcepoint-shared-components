@@ -1,14 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import ArrowRight from "../../../../../assets/images/icons/arrow-right.svg?react";
 
 import Button from './button';
-
-const svgIcons = import.meta.glob('../../../../../assets/images/icons/*.svg');
-const icons = [];
-
-for (const key in svgIcons) {
-  const icon = key.split('icons/')[1].split('.svg')[0];
-  icons.push(icon);
-}
 
 const meta = {
   title: 'Elements/Button',
@@ -23,14 +16,6 @@ const meta = {
         disable: true,
       },
     },
-    icon: {
-      options: ['none', ...icons],
-      control: { type: 'select' },
-    },
-    iconPosition: {
-      options: ['right', 'left'],
-      control: { type: 'select' },
-    },
   },
 } satisfies Meta<typeof Button>;
 
@@ -39,21 +24,27 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    text: 'Button label',
-    icon: 'arrow-right',
-    iconPosition: 'right',
     size: 'medium',
     disabled: false,
+    children: (
+      <>
+        <span>Default Button</span>
+        <ArrowRight />
+      </>
+    ),
   },
 };
 
 export const Outline: Story = {
   args: {
-    text: 'Button label',
-    icon: 'arrow-right',
-    iconPosition: 'right',
-    variant: 'outline',
     size: 'medium',
     disabled: false,
+    variant: 'outline',
+    children: (
+      <>
+        <span>Outline Button</span>
+        <ArrowRight />
+      </>
+    ),
   },
 };

@@ -1,16 +1,22 @@
-import Icon from "../icon/icon";
-
 export type LinkProps = {
   url: string;
-  text: string;
-  icon?: string;
+  text?: string;
   disabled?: boolean;
-  iconPosition?: 'right' | 'left';
+  children?: React.ReactNode;
+  size?: 'small' | 'default';
   variant?: 'underline' | 'default';
-  size?: 'small' | 'medium' | 'large';
 };
 
-export default function Link({ text, url, icon, variant, iconPosition = 'right', disabled, ...props }: LinkProps) {
+export default function Link({ text, size, url, variant, children, disabled, ...props }: LinkProps) {
+  const getFontSizeClasses = () => {
+    switch (size) {
+      case 'small':
+        return 'text-h5';
+      default:
+        return 'text-h4';
+    }
+  };
+  
   const getVariantClasses = () => {
     switch (variant) {
       case 'underline':
@@ -28,20 +34,13 @@ export default function Link({ text, url, icon, variant, iconPosition = 'right',
     }
   };
 
-  const renderedIcon = () => {
-    if (icon && icon !== 'none') {
-      return <Icon name={icon} className="w-md h-md" />;
-    }
-  };
-
   const variantClasses = getVariantClasses();
+  const fontSizeClasses = getFontSizeClasses();
   const conditionalClasses = getConditionalClasses();
 
   return (
-    <a {...props} className={`inline-flex gap-sm items-center font-bold text-h4 ${variantClasses} ${conditionalClasses}`} href={url}>
-      {iconPosition === 'left' && renderedIcon()}
-      {text}
-      {iconPosition === 'right' && renderedIcon()}
+    <a {...props} className={`inline-flex gap-sm items-center font-bold text-h4 ${variantClasses} ${conditionalClasses} ${fontSizeClasses}`} href={url}>
+      {text || children}
     </a>
   );
 }
