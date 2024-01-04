@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import PlayIcon from "../../../../../assets/images/icons/play.svg?react";
+import PlayIcon from "../../../assets/img/icons/play.svg?react";
 
 import Link from './link';
 

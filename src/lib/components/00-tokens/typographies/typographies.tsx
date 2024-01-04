@@ -12,7 +12,7 @@ export default function Typographies({ heading, items }: TypographyProps) {
       : 'Forcepoint Converged';
     return (
       <li key={index} className="flex flex-col">
-        <p className="text-md mt-sm text-teal">{item}</p>
+        <p className="text-md mt-sm text-teal">text-{item}</p>
         <Typography variant={item}>{content}</Typography>
       </li>
     );

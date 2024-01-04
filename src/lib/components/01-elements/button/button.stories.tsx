@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import ArrowRight from "../../../../../assets/images/icons/arrow-right.svg?react";
+import ArrowRight from "../../../assets/img/icons/arrow-right.svg?react";
 
 import Button from './button';
 
