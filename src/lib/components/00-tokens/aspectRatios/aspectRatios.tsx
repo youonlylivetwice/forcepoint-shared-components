@@ -1,16 +1,18 @@
-import { TokensType } from "../types";
+import { TokenType, TokensType } from "../types";
 
 export type AspectRatioProps = {
   aspectRatios: TokensType;
 };
 
 export default function AspectRatio({ aspectRatios }: AspectRatioProps) {
-  const renderItem = ([_key, value]: [string, string], index: number) => {
+  const renderItem = ([_key, value]: [string, TokenType], index: number) => {
+    const aspectRatio = typeof value === 'string' ? value : '';
+
     return (
       <li key={index} className="flex flex-row items-center gap-md">
         {/* Swatch */}
         <div className={`flex items-center justify-center gap-y-sm h-3xl border-3 border-sol bg-white ${value}`}>
-          <p className="text-md text-black">{value}</p>
+          <p className="text-md text-black">{aspectRatio}</p>
         </div>
       </li>
     );

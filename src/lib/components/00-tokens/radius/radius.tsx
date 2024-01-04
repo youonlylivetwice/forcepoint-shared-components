@@ -1,16 +1,18 @@
-import { TokensType } from "../types";
+import { TokenType, TokensType } from "../types";
 
 export type RadiusProps = {
   radius: TokensType;
 };
 
 export default function Radius({ radius }: RadiusProps) {
-  const renderItem = ([key, value]: [string, string], index: number) => {
+  const renderItem = ([key, value]: [string, TokenType], index: number) => {
+    const radius = typeof value === 'string' ? value : '';
+
     return (
       <li key={index} className="flex items-center gap-md md:gap-lg">
         <div className="flex flex-row gap-md w-[8rem]">
           <p className="text-md text-grey">{key}</p>
-          <p className="text-md text-grey">{value}</p>
+          <p className="text-md text-grey">{radius}</p>
         </div>
         {/* Swatch */}
         <div className={`w-[4rem] h-[4rem] bg-violette ${key}`}></div>

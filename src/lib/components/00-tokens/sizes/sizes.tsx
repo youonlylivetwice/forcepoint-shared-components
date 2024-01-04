@@ -1,4 +1,4 @@
-import { TokensType } from "../types";
+import { TokenType, TokensType } from "../types";
 
 export type SpacingProps = {
   widths: TokensType;
@@ -6,11 +6,13 @@ export type SpacingProps = {
 };
 
 export default function Sizes({ widths, heights }: SpacingProps) {
-  const renderItem = ([key, value]: [string, string], index: number) => {
+  const renderItem = ([key, value]: [string, TokenType], index: number) => {
+    const size = typeof value === 'string' ? value : '';
+
     return (
       <li key={index} className="flex flex-row items-center gap-md">
         <div className="flex flex-row gap-md">
-          <p className="w-xxl text-md text-grey">size.{value.replace('w-', '')}</p>
+          <p className="w-xxl text-md text-grey">size.{size.replace('w-', '')}</p>
           <p className="w-xl text-md text-grey">{key}</p>
         </div>
         {/* Swatch */}

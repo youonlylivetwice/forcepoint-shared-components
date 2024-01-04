@@ -1,15 +1,17 @@
-import { TokensType } from "../types";
+import { TokenType, TokensType } from "../types";
 
 export type OpacityProps = {
   opacities: TokensType;
 };
 
 export default function Opacity({ opacities }: OpacityProps) {
-  const renderItem = ([key, value]: [string, string], index: number) => {
+  const renderItem = ([key, value]: [string, TokenType], index: number) => {
+    const opacity = typeof value === 'string' ? value : '';
+
     return (
       <li key={index} className="flex flex-row items-center gap-md">
         <p className="w-3xl text-md text-grey">{key}</p>
-        <p className="w-xl text-md text-grey">{parseFloat(value) * 100}%</p>
+        <p className="w-xl text-md text-grey">{parseFloat(opacity) * 100}%</p>
         {/* Swatch */}
         <div className={`flex gap-y-sm w-xxl h-xxl bg-veridian ${key}`}></div>
       </li>

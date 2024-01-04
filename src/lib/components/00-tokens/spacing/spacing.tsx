@@ -1,16 +1,18 @@
-import { TokensType } from "../types";
+import { TokenType, TokensType } from "../types";
 
 export type SpacingProps = {
   spacings: TokensType;
 };
 
 export default function Spacing({ spacings }: SpacingProps) {
-  const renderItem = ([key, value]: [string, string], index: number) => {
+  const renderItem = ([key, value]: [string, TokenType], index: number) => {
+    const spacing = typeof value === 'string' ? value : '';
+
     return (
       <li key={index} className="flex flex-col md:flex-row md:items-center gap-md">
         <div className="flex flex-row gap-md">
           <p className="w-xxl text-md text-grey">spacing.{key.replace('gap-', '')}</p>
-          <p className="w-xl text-md text-grey">{value}</p>
+          <p className="w-xl text-md text-grey">{spacing}</p>
         </div>
         {/* Swatch */}
         <div className={`flex gap-y-sm w-max bg-sandwisp ${key}`}>

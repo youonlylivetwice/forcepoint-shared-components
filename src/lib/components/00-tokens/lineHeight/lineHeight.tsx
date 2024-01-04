@@ -1,11 +1,13 @@
-import { TokensType } from "../types";
+import { TokenType, TokensType } from "../types";
 
 export type lineHeightProps = {
   leadings: TokensType;
 };
 
 export default function lineHeight({ leadings }: lineHeightProps) {
-  const renderItem = ([key, value]: [string, string], index: number) => {
+  const renderItem = ([key, value]: [string, TokenType], index: number) => {
+    const leading = typeof value === 'string' ? value : '';
+
     return (
       <li
         key={index}
@@ -13,7 +15,7 @@ export default function lineHeight({ leadings }: lineHeightProps) {
       >
         <div className="flex w-[14rem] flex-row gap-md">
           <p className="text-md text-grey">{key}</p>
-          <p className="text-md text-grey">{value}</p>
+          <p className="text-md text-grey">{leading}</p>
         </div>
         {/* Swatch */}
         <span className={`text-body-3 flex-1 ${key}`}>
