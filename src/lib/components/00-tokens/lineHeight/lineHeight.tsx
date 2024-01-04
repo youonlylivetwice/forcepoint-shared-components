@@ -12,9 +12,7 @@ export default function lineHeight({ leadings }: lineHeightProps) {
         className="flex flex-col gap-md md:flex-row"
       >
         <div className="flex w-[14rem] flex-row gap-md">
-          <p className="text-md text-grey">
-            lineHeights.{key.replace('leading-', '')}
-          </p>
+          <p className="text-md text-grey">{key}</p>
           <p className="text-md text-grey">{value}</p>
         </div>
         {/* Swatch */}

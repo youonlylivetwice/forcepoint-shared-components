@@ -1,11 +1,16 @@
 import { useEffect } from "react";
-import { TokensType } from "../types";
+import { TokenType, TokensType } from "../types";
 
-export type ColorProps = {
+export type ColorPalette = {
+  label: string;
   colors: TokensType;
 };
 
-export default function Color({ colors }: ColorProps) {
+export type ColorProps = {
+  palettes: ColorPalette[];
+};
+
+export default function Palette({ palettes }: ColorProps) {
   useEffect(() => {
     const items = document.querySelectorAll('.swatch');
     items?.forEach((item: Element) => {
@@ -39,12 +44,27 @@ export default function Color({ colors }: ColorProps) {
     return `hsl(${Math.round(h)}, ${Math.round(s * 100)}, ${Math.round(l * 100)})`;
   };
 
-  const renderItem = ([key, value]: [string, string], index: number) => {
+  const renderItem = ([key, value]: [string, TokenType], index: number) => {
+    const color = typeof value === 'string' ? value : value.base;
+    const borderStyles = key === 'white' ? 'border-1 border-mercury' : '';
+
     return (
-      <li key={index}>
-        <div className={`${value} w-full h-xxl mb-sm rounded-s swatch`}></div>
-        <p className="text-md font-bold text-black">{key.toUpperCase()}</p>
-        <p className="text-md text-grey value"></p>
+      <li key={`item-${index}`}>
+        {/* Swatch */}
+        <div className={`${color} ${borderStyles} w-full h-xxl mb-sm rounded-s swatch`}></div>
+        <p className="text-body-3 font-bold text-black">{key.charAt(0).toUpperCase() + key.slice(1)}</p>
+        <p className="text-body-3 text-black leading-relaxed value"></p>
+      </li>
+    );
+  }
+
+  const renderGroup = (palette: ColorPalette, index: number) => {
+    return (
+      <li key={`group-${index}`}>
+        <h4 className="text-h4 font-normal text-black mb-md sm:mb-lg">{palette.label}</h4>
+        <ul className="grid gap-x-md gap-y-lg sm:gap-y-xl grid-cols-1 sm:grid-cols-3 md:grid-cols-4">
+          {Object.entries(palette.colors as TokensType).map(renderItem)}
+        </ul>
       </li>
     );
   }
@@ -52,8 +72,8 @@ export default function Color({ colors }: ColorProps) {
   return (
     <div className="p-md">
       <h2 className="text-h3 mb-lg">Brand Colors</h2>
-      <ul className="grid gap-x-md gap-y-md sm:gap-y-xl grid-cols-1 sm:grid-cols-3 md:grid-cols-4">
-        {Object.entries(colors as TokensType).map(renderItem)}
+      <ul className="flex flex-col gap-x-md gap-y-lg sm:gap-y-xl">
+        {palettes.map(renderGroup)}
       </ul>
     </div>
   );
