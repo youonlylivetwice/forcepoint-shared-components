@@ -20,6 +20,7 @@ export default defineConfig({
       targets: [
         { src: 'src/lib/assets/css/*.css', dest: 'dist/assets/css' },
         { src: 'src/lib/assets/fonts/*', dest: 'dist/assets/fonts' },
+        { src: 'tailwind.config.ts', dest: 'dist' },
       ],
       hook: 'writeBundle',
     }),

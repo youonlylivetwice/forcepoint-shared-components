@@ -5,9 +5,10 @@ export type LinkProps = {
   children?: React.ReactNode;
   size?: 'small' | 'default';
   variant?: 'underline' | 'default';
+  color?: 'navy' | 'viola' | 'white' | 'sandwisp';
 };
 
-export default function Link({ text, size, url, variant, children, disabled, ...props }: LinkProps) {
+export default function Link({ variant = 'default', color = 'navy', text, size, url, children, disabled, ...props }: LinkProps) {
   const getFontSizeClasses = () => {
     switch (size) {
       case 'small':
@@ -26,20 +27,34 @@ export default function Link({ text, size, url, variant, children, disabled, ...
     }
   };
 
-  const getConditionalClasses = () => {
-    if (disabled) {
-      return 'text-black opacity-60 pointer-events-none';
-    } else {
-      return 'text-navy hover:text-teal cursor-pointer';
+  const getColorClasses = () => {
+    switch (color) {
+      case 'sandwisp':
+        return 'text-white hover:text-sandwisp';
+      case 'white':
+        return 'text-white hover:text-teal';
+      case 'viola':
+        return 'text-viola hover:text-teal';
+      default:
+        return 'text-navy hover:text-teal';
     }
   };
 
+  const getConditionalClasses = () => {
+    if (disabled) {
+      return 'opacity-60 pointer-events-none';
+    } else {
+      return 'cursor-pointer';
+    }
+  };
+
+  const colorClasses = getColorClasses();
   const variantClasses = getVariantClasses();
   const fontSizeClasses = getFontSizeClasses();
   const conditionalClasses = getConditionalClasses();
 
   return (
-    <a {...props} className={`inline-flex gap-sm items-center font-bold text-h4 ${variantClasses} ${conditionalClasses} ${fontSizeClasses}`} href={url}>
+    <a {...props} className={`inline-flex gap-sm items-center font-bold text-h4 ${colorClasses} ${variantClasses} ${conditionalClasses} ${fontSizeClasses}`} href={url}>
       {text || children}
     </a>
   );

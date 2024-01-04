@@ -16,6 +16,10 @@ const meta = {
         disable: true,
       },
     },
+    color: {
+      options: ['navy', 'viola', 'white', 'sandwisp'],
+      control: { type: 'select' },
+    },
     children: {
       table: {
         disable: true,
@@ -35,18 +39,20 @@ export const Default: Story = {
         <span>Watch the Video</span>
       </>
     ),
-    disabled: false,
-    size: 'default',
     url: 'http://localhost:6006/',
+    color: 'navy',
+    size: 'default',
+    disabled: false,
   },
 };
 
 export const Underline: Story = {
   args: {
-    disabled: false,
-    size: 'default',
     text: 'Underline Link',
     url: 'http://localhost:6006/',
     variant: 'underline',
+    color: 'navy',
+    size: 'default',
+    disabled: false,
   },
 };

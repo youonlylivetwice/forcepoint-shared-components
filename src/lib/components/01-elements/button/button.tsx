@@ -1,11 +1,13 @@
 export type ButtonProps = {
+  title?: string;
   disabled?: boolean;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   variant?: 'solid' | 'outline';
   size?: 'small' | 'medium' | 'large';
+  color?: 'navy' | 'viola' | 'white' | 'sandwisp';
 };
 
-export default function Button({ variant, size, children, ...props }: ButtonProps) {
+export default function Button({ variant = 'solid', color = 'navy', title, size, children, ...props }: ButtonProps) {
   const getFontSizeClasses = () => {
     switch (size) {
       case 'small':
@@ -17,30 +19,34 @@ export default function Button({ variant, size, children, ...props }: ButtonProp
     }
   };
 
-  const getVariantClasses = () => {
-    switch (variant) {
-      case 'outline':
-        return 'border-navy border-2 text-black hover:border-teal disabled:border-black disabled:opacity-60';
+  const getColorClasses = () => {
+    switch (color) {
+      case 'sandwisp':
+        return variant === 'solid' ? 'bg-sandwisp text-black hover:text-white hover:bg-teal' : 'border-sandwisp border-2 text-white hover:border-teal';
+      case 'white':
+        return variant === 'solid' ? 'bg-white text-black hover:text-white hover:bg-teal' : 'border-white border-2 text-white hover:border-teal';
+      case 'viola':
+        return variant === 'solid' ? 'bg-viola text-white hover:bg-teal' : 'border-viola border-2 text-black hover:border-teal';
       default:
-        return 'bg-navy text-white hover:bg-teal disabled:bg-black disabled:opacity-60';
+        return variant === 'solid' ? 'bg-navy text-white hover:bg-teal' : 'border-navy border-2 text-black hover:border-teal';
     }
   };
 
   const getConditionalClasses = () => {
     if (props.disabled) {
-      return 'cursor-not-allowed';
+      return 'pointer-events-none';
     } else {
       return 'cursor-pointer';
     }
   };
 
-  const variantClasses = getVariantClasses();
+  const colorClasses = getColorClasses();
   const fontSizeClasses = getFontSizeClasses();
   const conditionalClasses = getConditionalClasses();
 
   return (
-    <button {...props} className={`inline-flex gap-sm items-center rounded-lg ${variantClasses} ${fontSizeClasses} ${conditionalClasses}`}>
-      {children}
+    <button {...props} className={`inline-flex gap-sm items-center rounded-lg ${colorClasses} ${fontSizeClasses} ${conditionalClasses} disabled:opacity-60`}>
+      {title || children}
     </button>
   );
 }

@@ -16,6 +16,15 @@ const meta = {
         disable: true,
       },
     },
+    color: {
+      options: ['navy', 'viola', 'white', 'sandwisp'],
+      control: { type: 'select' },
+    },
+    children: {
+      table: {
+        disable: true,
+      },
+    },
   },
 } satisfies Meta<typeof Button>;
 
@@ -26,6 +35,7 @@ export const Default: Story = {
   args: {
     size: 'medium',
     disabled: false,
+    color: 'navy',
     children: (
       <>
         <span>Default Button</span>
@@ -40,6 +50,7 @@ export const Outline: Story = {
     size: 'medium',
     disabled: false,
     variant: 'outline',
+    color: 'navy',
     children: (
       <>
         <span>Outline Button</span>

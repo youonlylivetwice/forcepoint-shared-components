@@ -4,7 +4,7 @@ export type lineHeightProps = {
   leadings: TokensType;
 };
 
-export default function lineHeight({ leadings }: lineHeightProps) {
+export default function LineHeight({ leadings }: lineHeightProps) {
   const renderItem = ([key, value]: [string, TokenType], index: number) => {
     const leading = typeof value === 'string' ? value : '';
 
