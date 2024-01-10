@@ -14,7 +14,6 @@ export default function SearchInput({
 }: SearchProps) {
   const [inputValue, setInputValue] = useState('');
   // const router = useRouter();
-  console.log(rtlSupport, 'dede');
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     // router.push(`/search?keys=${encodeURIComponent(inputValue)}`);
