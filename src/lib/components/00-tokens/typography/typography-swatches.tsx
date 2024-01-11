@@ -1,11 +1,14 @@
-import Typography from "../../01-elements/typography/typography";
+import Typography from './typography';
 
-export type TypographyProps = {
+export type TypographySwatchesProps = {
   heading: string;
   items: string[];
 };
 
-export default function Typographies({ heading, items }: TypographyProps) {
+export default function TypographySwatches({
+  heading,
+  items,
+}: TypographySwatchesProps) {
   const renderItem = (item: string, index: number) => {
     const content = item.includes('body')
       ? 'Extensive APIs exchange information with external systems such as identity and access management, physical security, SIEMs, and HR apps to provide behavioral context and send data out to third-party tools and policy enforcement points.'
@@ -21,9 +24,7 @@ export default function Typographies({ heading, items }: TypographyProps) {
   return (
     <div className="p-md">
       <h2 className="text-h3 mb-lg">{heading}</h2>
-      <ul className="flex flex-col gap-md">
-        {items.map(renderItem)}
-      </ul>
+      <ul className="flex flex-col gap-md">{items.map(renderItem)}</ul>
     </div>
   );
 }

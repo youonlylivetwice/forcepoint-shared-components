@@ -7,7 +7,14 @@ export type ButtonProps = {
   color?: 'navy' | 'viola' | 'white' | 'sandwisp';
 };
 
-export default function Button({ variant = 'solid', color = 'navy', title, size, children, ...props }: ButtonProps) {
+export default function Button({
+  variant = 'solid',
+  color = 'navy',
+  title,
+  size,
+  children,
+  ...props
+}: ButtonProps) {
   const getFontSizeClasses = () => {
     switch (size) {
       case 'small':
@@ -22,13 +29,21 @@ export default function Button({ variant = 'solid', color = 'navy', title, size,
   const getColorClasses = () => {
     switch (color) {
       case 'sandwisp':
-        return variant === 'solid' ? 'bg-sandwisp text-black hover:text-white hover:bg-teal' : 'border-sandwisp border-2 text-white hover:border-teal';
+        return variant === 'solid'
+          ? 'bg-sandwisp text-black hover:text-white hover:bg-teal'
+          : 'border-sandwisp border-2 text-white hover:border-teal';
       case 'white':
-        return variant === 'solid' ? 'bg-white text-black hover:text-white hover:bg-teal' : 'border-white border-2 text-white hover:border-teal';
+        return variant === 'solid'
+          ? 'bg-white text-black hover:text-white hover:bg-teal'
+          : 'border-white border-2 text-white hover:border-teal';
       case 'viola':
-        return variant === 'solid' ? 'bg-viola text-white hover:bg-teal' : 'border-viola border-2 text-black hover:border-teal';
+        return variant === 'solid'
+          ? 'bg-viola text-white hover:bg-teal'
+          : 'border-viola border-2 text-black hover:border-teal';
       default:
-        return variant === 'solid' ? 'bg-navy text-white hover:bg-teal' : 'border-navy border-2 text-black hover:border-teal';
+        return variant === 'solid'
+          ? 'bg-navy text-white hover:bg-teal'
+          : 'border-navy border-2 text-black hover:border-teal';
     }
   };
 
@@ -45,7 +60,10 @@ export default function Button({ variant = 'solid', color = 'navy', title, size,
   const conditionalClasses = getConditionalClasses();
 
   return (
-    <button {...props} className={`inline-flex gap-sm items-center rounded-lg ${colorClasses} ${fontSizeClasses} ${conditionalClasses} disabled:opacity-60`}>
+    <button
+      {...props}
+      className={`inline-flex items-center gap-sm rounded-lg ${colorClasses} ${fontSizeClasses} ${conditionalClasses} disabled:opacity-60`}
+    >
       {title || children}
     </button>
   );

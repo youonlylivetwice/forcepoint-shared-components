@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import LineHeightDisplay from './lineHeight';
+import LineHeightDisplay from './line-height';
 
 const leadingsVariants = {
   'leading-none': '1',

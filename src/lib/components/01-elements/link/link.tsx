@@ -8,7 +8,16 @@ export type LinkProps = {
   color?: 'navy' | 'viola' | 'white' | 'sandwisp';
 };
 
-export default function Link({ variant = 'default', color = 'navy', text, size, url, children, disabled, ...props }: LinkProps) {
+export default function Link({
+  variant = 'default',
+  color = 'navy',
+  text,
+  size,
+  url,
+  children,
+  disabled,
+  ...props
+}: LinkProps) {
   const getFontSizeClasses = () => {
     switch (size) {
       case 'small':
@@ -17,7 +26,7 @@ export default function Link({ variant = 'default', color = 'navy', text, size, 
         return 'text-h4';
     }
   };
-  
+
   const getVariantClasses = () => {
     switch (variant) {
       case 'underline':
@@ -54,7 +63,11 @@ export default function Link({ variant = 'default', color = 'navy', text, size, 
   const conditionalClasses = getConditionalClasses();
 
   return (
-    <a {...props} className={`inline-flex gap-sm items-center font-bold text-h4 ${colorClasses} ${variantClasses} ${conditionalClasses} ${fontSizeClasses}`} href={url}>
+    <a
+      className={`text-h4 inline-flex items-center gap-sm font-bold ${colorClasses} ${variantClasses} ${conditionalClasses} ${fontSizeClasses}`}
+      href={url}
+      {...props}
+    >
       {text || children}
     </a>
   );
