@@ -4,13 +4,11 @@ import { useState } from 'react';
 export type SearchProps = {
   isSearchOpen: boolean;
   setIsSearchOpen: (value: boolean) => void;
-  rtlSupport?: boolean;
 };
 
 export default function SearchInput({
   isSearchOpen,
   setIsSearchOpen,
-  rtlSupport,
 }: SearchProps) {
   const [inputValue, setInputValue] = useState('');
   // const router = useRouter();
@@ -24,7 +22,7 @@ export default function SearchInput({
   };
 
   return (
-    <div className="search-input-wrapper flex gap-md">
+    <div className="search-input-wrapper flex gap-md rtl:flex-row-reverse">
       {isSearchOpen && (
         <form onSubmit={handleSubmit} method="get" action="/search">
           <div className="relative flex items-center">
@@ -53,9 +51,7 @@ export default function SearchInput({
               value={inputValue}
               placeholder="Search"
               onChange={(e) => setInputValue(e.target.value)}
-              className={`rounded-m bg-mercury px-lg py-xs text-grey placeholder:text-grey ${
-                rtlSupport ? 'text-right' : 'text-left'
-              }`}
+              className={`rounded-m bg-mercury px-lg py-xs text-grey placeholder:text-grey rtl:text-right`}
             />
             <svg
               className="absolute right-sm"
