@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import AspectRatiosDisplay from './aspectRatios';
+import AspectRatiosDisplay from './aspect-ratios';
 
 const aspectRatiosVariants = {
   '3/1': 'aspect-[3/1]',

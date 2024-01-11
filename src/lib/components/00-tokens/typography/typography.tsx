@@ -7,7 +7,13 @@ export type TypographyProps = {
   tagName?: keyof JSX.IntrinsicElements;
 };
 
-export default function Typography({ tagName, variant, children, className, ...props }: TypographyProps) {
+export default function Typography({
+  tagName,
+  variant,
+  children,
+  className,
+  ...props
+}: TypographyProps) {
   const getVariantClasses = () => {
     switch (variant) {
       case 'colossus':
