@@ -24,9 +24,13 @@
     "watch-typescript": "tsc-watch --onSuccess \"npm run yalc-publish\"",
     "prettier": "prettier --write \"src/**/*.{ts,tsx,js,jsx}\"",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "create-icons": "node scripts/create-icons.mjs",
+    "predev": "npm run create-icons",
+    "prebuild": "npm run create-icons"
   },
   "dependencies": {
+    "camel-case": "^5.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
