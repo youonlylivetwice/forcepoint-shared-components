@@ -25,6 +25,9 @@ export default defineConfig({
       hook: 'writeBundle',
     }),
   ],
+  define: {
+    'process.env': {},
+  },
   build: {
     lib: {
       entry: resolve(__dirname, 'src/lib/index.ts'),
