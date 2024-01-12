@@ -1,3 +1,5 @@
+import NextLink from 'next/link';
+
 export type LinkProps = {
   url: string;
   text?: string;
@@ -63,12 +65,12 @@ export default function Link({
   const conditionalClasses = getConditionalClasses();
 
   return (
-    <a
+    <NextLink
       className={`text-h4 inline-flex items-center gap-sm font-bold ${colorClasses} ${variantClasses} ${conditionalClasses} ${fontSizeClasses}`}
       href={url}
       {...props}
     >
       {text || children}
-    </a>
+    </NextLink>
   );
 }

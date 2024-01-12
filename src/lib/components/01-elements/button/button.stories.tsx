@@ -35,6 +35,8 @@ export const Default: Story = {
     color: 'navy',
     size: 'medium',
     variant: 'solid',
+    type: 'link',
+    url: 'https://www.youtube.com/watch?v=CliS6WzmR9U',
     disabled: false,
     children: (
       <>

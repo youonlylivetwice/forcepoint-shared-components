@@ -1,18 +1,24 @@
+import Link from 'next/link';
+
 export type ButtonProps = {
+  url?: string;
   title?: string;
   disabled?: boolean;
   children?: React.ReactNode;
   variant?: 'solid' | 'outline';
   size?: 'small' | 'medium' | 'large';
   color?: 'navy' | 'viola' | 'white' | 'sandwisp';
+  type?: 'button' | 'link';
 };
 
 export default function Button({
-  variant = 'solid',
-  color = 'navy',
-  title,
-  size,
   children,
+  color = 'navy',
+  size,
+  title,
+  type = 'button',
+  url,
+  variant = 'solid',
   ...props
 }: ButtonProps) {
   const getFontSizeClasses = () => {
@@ -58,13 +64,19 @@ export default function Button({
   const colorClasses = getColorClasses();
   const fontSizeClasses = getFontSizeClasses();
   const conditionalClasses = getConditionalClasses();
+  const commonClasses = `inline-flex items-center gap-sm rounded-lg disabled:opacity-60 ${colorClasses} ${fontSizeClasses} ${conditionalClasses}`;
 
-  return (
-    <button
-      {...props}
-      className={`inline-flex items-center gap-sm rounded-lg ${colorClasses} ${fontSizeClasses} ${conditionalClasses} disabled:opacity-60`}
-    >
-      {title || children}
-    </button>
-  );
+  if (type === 'button') {
+    return (
+      <button className={commonClasses} {...props}>
+        {title || children}
+      </button>
+    );
+  } else {
+    return (
+      <Link className={commonClasses} href={url || ''} {...props}>
+        {title || children}
+      </Link>
+    );
+  }
 }
