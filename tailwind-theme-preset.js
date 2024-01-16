@@ -308,6 +308,7 @@ module.exports = {
       xl: '50px',
       xxl: '80px',
       '3xl': '120px',
+      'auto': 'auto',
     },
     lineHeight: {
       none: '1',
