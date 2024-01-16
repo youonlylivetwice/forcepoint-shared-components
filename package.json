@@ -26,8 +26,9 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "create-icons": "node scripts/create-icons.mjs",
-    "predev": "npm run create-icons",
-    "prebuild": "npm run create-icons"
+    "create-icons-story": "node scripts/create-icons-story.mjs",
+    "predev": "rm -rf src/lib/components/02-components/icons/* && npm run create-icons && npm run create-icons-story",
+    "prebuild": "rm -rf src/lib/components/02-components/icons/* && npm run create-icons && npm run create-icons-story"
   },
   "dependencies": {
     "next": "^14.0.3",
