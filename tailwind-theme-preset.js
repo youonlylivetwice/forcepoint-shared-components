@@ -333,6 +333,7 @@ module.exports = {
       '3xl': '160px',
     },
     width: {
+      max: 'max-content',
       xxs: '5px',
       xs: '10px',
       sm: '15px',
