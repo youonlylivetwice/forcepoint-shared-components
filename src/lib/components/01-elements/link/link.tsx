@@ -1,75 +1,46 @@
-import NextLink from 'next/link';
+import NextLink, { LinkProps as NextLinkProps } from 'next/link';
+import React from 'react';
 
-export type LinkProps = {
-  url: string;
+export type LinkProps = NextLinkProps & {
   text?: string;
   disabled?: boolean;
+  size?: 'small' | 'large';
   children?: React.ReactNode;
-  size?: 'small' | 'default';
   variant?: 'underline' | 'default';
   color?: 'navy' | 'viola' | 'white' | 'sandwisp';
+};
+
+const colorClasses = {
+  navy: 'text-navy hover:text-teal',
+  viola: 'text-viola hover:text-teal',
+  white: 'text-white hover:text-teal',
+  sandwisp: 'text-white hover:text-sandwisp',
+};
+
+const fontSizeClasses = {
+  small: 'text-h5',
+  large: 'text-h4',
 };
 
 export default function Link({
   variant = 'default',
   color = 'navy',
-  text,
-  size,
-  url,
+  size = 'small',
   children,
   disabled,
+  text,
   ...props
 }: LinkProps) {
-  const getFontSizeClasses = () => {
-    switch (size) {
-      case 'small':
-        return 'text-h5';
-      default:
-        return 'text-h4';
-    }
-  };
-
-  const getVariantClasses = () => {
-    switch (variant) {
-      case 'underline':
-        return 'underline underline-offset-8';
-      default:
-        return '';
-    }
-  };
-
-  const getColorClasses = () => {
-    switch (color) {
-      case 'sandwisp':
-        return 'text-white hover:text-sandwisp';
-      case 'white':
-        return 'text-white hover:text-teal';
-      case 'viola':
-        return 'text-viola hover:text-teal';
-      default:
-        return 'text-navy hover:text-teal';
-    }
-  };
-
-  const getConditionalClasses = () => {
-    if (disabled) {
-      return 'opacity-60 pointer-events-none';
-    } else {
-      return 'cursor-pointer';
-    }
-  };
-
-  const colorClasses = getColorClasses();
-  const variantClasses = getVariantClasses();
-  const fontSizeClasses = getFontSizeClasses();
-  const conditionalClasses = getConditionalClasses();
+  const linkClasses = [
+    'inline-flex items-center gap-sm text-h4 font-bold',
+    variant === 'underline' ? 'underline underline-offset-8' : '',
+    disabled ? 'opacity-60 pointer-events-none' : 'cursor-pointer',
+    fontSizeClasses[size],
+    colorClasses[color],
+  ];
 
   return (
-    <NextLink
-      className={`text-h4 inline-flex items-center gap-sm font-bold ${colorClasses} ${variantClasses} ${conditionalClasses} ${fontSizeClasses}`}
-      href={url}
-      {...props}
-    >
+    <NextLink className={linkClasses.join(' ')} {...props}>
       {text || children}
     </NextLink>
   );

@@ -8,13 +8,12 @@ const meta = {
   component: Link,
   argTypes: {
     size: {
-      options: ['small', 'default'],
+      options: ['small', 'large'],
       control: { type: 'select' },
     },
     variant: {
-      table: {
-        disable: true,
-      },
+      options: ['default', 'underline'],
+      control: { type: 'select' },
     },
     color: {
       options: ['navy', 'viola', 'white', 'sandwisp'],
@@ -39,9 +38,9 @@ export const Default: Story = {
         <span>Watch the Video</span>
       </>
     ),
-    url: 'http://localhost:6006/',
+    href: 'http://localhost:6006/',
     color: 'navy',
-    size: 'default',
+    size: 'large',
     variant: 'default',
     disabled: false,
   },
