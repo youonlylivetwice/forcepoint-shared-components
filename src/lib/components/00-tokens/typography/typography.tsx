@@ -20,15 +20,15 @@ const variantClasses: Record<string, string> = {
   h5: 'text-h6 md:text-h5',
   h6: 'text-h6',
   'body-1': 'text-body-1',
+  'body-2': 'text-body-2',
   'body-3': 'text-body-3',
   'body-4': 'text-body-4',
   'body-5': 'text-body-5',
-  default: 'text-body-2',
 };
 
 export default function Typography({
+  variant = 'body-2',
   tagName,
-  variant,
   children,
   className,
   ...props
@@ -36,10 +36,7 @@ export default function Typography({
   const Tag = tagName || 'p';
 
   return (
-    <Tag
-      className={`${variant ? variantClasses[variant] : ''} ${className}`}
-      {...props}
-    >
+    <Tag className={`${variantClasses[variant]} ${className}`} {...props}>
       {children}
     </Tag>
   );
