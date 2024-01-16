@@ -27,4 +27,4 @@ dist-ssr
 storybook-static
 
 # icons created automatically
-src/lib/components/02-components/icons
+src/lib/components/02-components/icons/*.tsx
