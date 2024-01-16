@@ -1,14 +1,13 @@
 import Link from 'next/link';
 
 export type ButtonProps = {
-  url?: string;
+  href?: string;
   title?: string;
   disabled?: boolean;
   children?: React.ReactNode;
   variant?: 'solid' | 'outline';
   size?: 'small' | 'medium' | 'large';
   color?: 'navy' | 'viola' | 'white' | 'sandwisp';
-  as?: 'button' | 'link';
 };
 
 const sizeClasses = {
@@ -41,8 +40,7 @@ export default function Button({
   color = 'navy',
   size = 'medium',
   title,
-  as = 'button',
-  url,
+  href,
   variant = 'solid',
   ...props
 }: ButtonProps) {
@@ -54,17 +52,17 @@ export default function Button({
   ];
   const commonClasses = buttonClasses.join(' ');
 
-  if (as === 'button') {
+  if (href) {
+    return (
+      <Link className={commonClasses} href={href} {...props}>
+        {title || children}
+      </Link>
+    );
+  } else {
     return (
       <button className={commonClasses} {...props}>
         {title || children}
       </button>
-    );
-  } else {
-    return (
-      <Link className={commonClasses} href={url || ''} {...props}>
-        {title || children}
-      </Link>
     );
   }
 }

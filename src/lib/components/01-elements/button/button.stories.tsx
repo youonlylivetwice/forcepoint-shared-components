@@ -19,10 +19,6 @@ const meta = {
       options: ['solid', 'outline'],
       control: { type: 'select' },
     },
-    as: {
-      options: ['button', 'link'],
-      control: { type: 'select' },
-    },
     children: {
       table: {
         disable: true,
@@ -39,8 +35,7 @@ export const Default: Story = {
     color: 'navy',
     size: 'medium',
     variant: 'solid',
-    as: 'link',
-    url: 'https://www.youtube.com/watch?v=CliS6WzmR9U',
+    href: 'https://www.youtube.com/watch?v=CliS6WzmR9U',
     disabled: false,
     children: (
       <>
