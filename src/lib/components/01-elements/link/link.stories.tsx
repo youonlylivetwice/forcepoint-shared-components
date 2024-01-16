@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import PlayIcon from "../../../assets/img/icons/play.svg?react";
+import PlayIcon from '../../../assets/img/icons/play.svg?react';
 
 import Link from './link';
 
@@ -8,13 +8,12 @@ const meta = {
   component: Link,
   argTypes: {
     size: {
-      options: ['small', 'default'],
+      options: ['small', 'large'],
       control: { type: 'select' },
     },
     variant: {
-      table: {
-        disable: true,
-      },
+      options: ['default', 'underline'],
+      control: { type: 'select' },
     },
     color: {
       options: ['navy', 'viola', 'white', 'sandwisp'],
@@ -39,20 +38,10 @@ export const Default: Story = {
         <span>Watch the Video</span>
       </>
     ),
-    url: 'http://localhost:6006/',
+    href: 'http://localhost:6006/',
     color: 'navy',
-    size: 'default',
-    disabled: false,
-  },
-};
-
-export const Underline: Story = {
-  args: {
-    text: 'Underline Link',
-    url: 'http://localhost:6006/',
-    variant: 'underline',
-    color: 'navy',
-    size: 'default',
+    size: 'large',
+    variant: 'default',
     disabled: false,
   },
 };

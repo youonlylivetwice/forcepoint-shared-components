@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Typographies from './typographies';
+import TypographySwatches from './typography-swatches';
 
 const headlines = [
   'colossus',
@@ -15,18 +15,12 @@ const headlines = [
   'h6',
 ];
 
-const paragraphs = [
-  'body-1',
-  'body-2',
-  'body-3',
-  'body-4',
-  'body-5',
-];
+const paragraphs = ['body-1', 'body-2', 'body-3', 'body-4', 'body-5'];
 
 const meta = {
-  title: 'Tokens/Typographies',
-  component: Typographies,
-} satisfies Meta<typeof Typographies>;
+  title: 'Tokens/Typography',
+  component: TypographySwatches,
+} satisfies Meta<typeof TypographySwatches>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

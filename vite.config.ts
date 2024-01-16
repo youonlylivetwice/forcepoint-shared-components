@@ -3,7 +3,7 @@ import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import { name, peerDependencies, dependencies } from './package.json';
-import svgr from "vite-plugin-svgr";
+import svgr from 'vite-plugin-svgr';
 import copy from 'rollup-plugin-copy';
 
 const formattedName = name.match(/[^/]+$/)?.[0] ?? name;
@@ -20,11 +20,14 @@ export default defineConfig({
       targets: [
         { src: 'src/lib/assets/css/*.css', dest: 'dist/assets/css' },
         { src: 'src/lib/assets/fonts/*', dest: 'dist/assets/fonts' },
-        { src: 'tailwind.config.ts', dest: 'dist' },
+        { src: 'tailwind-theme-preset.js', dest: 'dist' },
       ],
       hook: 'writeBundle',
     }),
   ],
+  define: {
+    'process.env': {},
+  },
   build: {
     lib: {
       entry: resolve(__dirname, 'src/lib/index.ts'),
@@ -33,7 +36,10 @@ export default defineConfig({
       fileName: (format) => `${formattedName}.${format}.js`,
     },
     rollupOptions: {
-      external: [...Object.keys(peerDependencies), ...Object.keys(dependencies)],
+      external: [
+        ...Object.keys(peerDependencies),
+        ...Object.keys(dependencies),
+      ],
       output: {
         globals: {
           react: 'React',
