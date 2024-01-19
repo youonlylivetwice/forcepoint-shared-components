@@ -1,6 +1,7 @@
 import type { Preview } from '@storybook/react';
 import { initializeRTL } from 'storybook-addon-rtl';
-import '../src/lib/theme.css';
+import '../src/lib/assets/css/theme.css';
+import '../src/lib/assets/css/fonts.css';
 
 initializeRTL();
 
