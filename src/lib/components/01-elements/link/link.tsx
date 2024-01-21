@@ -2,7 +2,6 @@ import NextLink, { LinkProps as NextLinkProps } from 'next/link';
 import React from 'react';
 
 export type LinkProps = NextLinkProps & {
-  text?: string;
   disabled?: boolean;
   size?: 'small' | 'large';
   children?: React.ReactNode;
@@ -28,7 +27,6 @@ export default function Link({
   size = 'small',
   children,
   disabled,
-  text,
   ...props
 }: LinkProps) {
   const linkClasses = [
@@ -41,7 +39,7 @@ export default function Link({
 
   return (
     <NextLink className={linkClasses.join(' ')} {...props}>
-      {text || children}
+      {children}
     </NextLink>
   );
 }
