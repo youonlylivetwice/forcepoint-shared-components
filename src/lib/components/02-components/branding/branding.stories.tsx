@@ -1,14 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
-
+import Logo from '../../../assets/img/branding/logo.svg';
 import Branding from './branding';
 
 const meta = {
   title: 'Elements/Branding',
   component: Branding,
   argTypes: {
-    image: {
-      options: ['Emblem', 'EmblemOne', 'Logo', 'LogoOne'],
-      control: { type: 'select' },
+    width: {
+      control: { type: 'text' },
+    },
+    height: {
+      control: { type: 'text' },
     },
   },
 } satisfies Meta<typeof Branding>;
@@ -18,6 +20,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    image: 'Logo',
+    src: Logo,
+    alt: 'Go to homepage',
+    width: 'auto',
+    height: 'auto',
   },
 };

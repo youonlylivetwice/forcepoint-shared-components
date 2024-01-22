@@ -1,33 +1,29 @@
 import Link from 'next/link';
-import EmblemOne from '../../../assets/img/branding/emblem-one.svg';
-import Emblem from '../../../assets/img/branding/emblem.svg';
-import LogoOne from '../../../assets/img/branding/logo-one.svg';
-import Logo from '../../../assets/img/branding/logo.svg';
 
 export type BrandingProps = {
   href?: string;
-  image?: 'Emblem' | 'EmblemOne' | 'Logo' | 'LogoOne';
-  alt?: string;
-};
-
-const imageMap = {
-  Emblem,
-  EmblemOne,
-  Logo,
-  LogoOne,
+  src: string;
+  alt: string;
+  width?: string;
+  height?: string;
 };
 
 export default function Branding({
   href = '/',
-  image = 'Logo',
-  alt = 'Home',
+  alt,
+  src,
+  width,
+  height,
   ...props
 }: BrandingProps) {
-  const ImageToRender = imageMap[image];
-
   return (
     <Link href={href} {...props}>
-      <img src={ImageToRender} alt={`${alt}`} />
+      <img
+        src={src}
+        alt={`${alt}`}
+        {...(width && { width })}
+        {...(height && { height })}
+      />
     </Link>
   );
 }
