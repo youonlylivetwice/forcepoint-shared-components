@@ -1,5 +1,4 @@
 import { useState } from 'react';
-
 import SearchInput from './search-input';
 
 const meta = {
@@ -15,6 +14,8 @@ export const Default = () => {
     <SearchInput
       isSearchOpen={isSearchOpen}
       setIsSearchOpen={setIsSearchOpen}
+      url="search"
+      queryKey="keys"
     />
   );
 };
