@@ -1,12 +1,11 @@
-import { ElementType, HtmlHTMLAttributes, ReactNode } from 'react';
+import { AnchorHTMLAttributes, ElementType } from 'react';
+import { cn } from '../../../utils';
 
-export type LinkProps = HtmlHTMLAttributes<HTMLAnchorElement> & {
+export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   disabled?: boolean;
   size?: 'small' | 'large';
-  children?: ReactNode;
   variant?: 'underline' | 'default';
   color?: 'navy' | 'viola' | 'white' | 'sandwisp';
-  href?: string;
   component?: ElementType;
 };
 
@@ -28,19 +27,25 @@ export default function Link({
   size = 'small',
   children,
   disabled,
+  className,
   component: Element = 'a',
   ...props
 }: LinkProps) {
-  const linkClasses = [
-    'inline-flex items-center gap-sm text-h4 font-bold',
-    variant === 'underline' ? 'underline underline-offset-8' : '',
-    disabled ? 'opacity-60 pointer-events-none' : 'cursor-pointer',
-    fontSizeClasses[size],
-    colorClasses[color],
-  ];
-
   return (
-    <Element className={linkClasses.join(' ')} {...props}>
+    <Element
+      className={cn(
+        'inline-flex items-center gap-sm text-h4 font-bold',
+        {
+          'underline underline-offset-8': variant === 'underline',
+          'pointer-events-none opacity-60': disabled,
+          'cursor-pointer': !disabled,
+          [fontSizeClasses[size]]: true,
+          [colorClasses[color]]: true,
+        },
+        className,
+      )}
+      {...props}
+    >
       {children}
     </Element>
   );
