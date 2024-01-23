@@ -1,12 +1,13 @@
-import NextLink, { LinkProps as NextLinkProps } from 'next/link';
-import React from 'react';
+import { ElementType, HtmlHTMLAttributes, ReactNode } from 'react';
 
-export type LinkProps = NextLinkProps & {
+export type LinkProps = HtmlHTMLAttributes<HTMLAnchorElement> & {
   disabled?: boolean;
   size?: 'small' | 'large';
-  children?: React.ReactNode;
+  children?: ReactNode;
   variant?: 'underline' | 'default';
   color?: 'navy' | 'viola' | 'white' | 'sandwisp';
+  href?: string;
+  component?: ElementType;
 };
 
 const colorClasses = {
@@ -27,6 +28,7 @@ export default function Link({
   size = 'small',
   children,
   disabled,
+  component: Element = 'a',
   ...props
 }: LinkProps) {
   const linkClasses = [
@@ -38,8 +40,8 @@ export default function Link({
   ];
 
   return (
-    <NextLink className={linkClasses.join(' ')} {...props}>
+    <Element className={linkClasses.join(' ')} {...props}>
       {children}
-    </NextLink>
+    </Element>
   );
 }
