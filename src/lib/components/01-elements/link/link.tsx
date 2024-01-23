@@ -1,5 +1,5 @@
 import { AnchorHTMLAttributes, ElementType } from 'react';
-import { cn } from '../../../utils';
+import { cn } from '../../../util';
 
 export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   disabled?: boolean;
