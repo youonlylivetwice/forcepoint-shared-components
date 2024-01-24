@@ -1,24 +1,23 @@
 import { useState } from 'react';
+import CloseIcon from '../../icons/close-icon';
+import Link from '../../../01-elements/link/link';
+import ArrowRightIcon from '../../icons/arrow-right-icon';
+import ArrowBottomIcon from '../../icons/arrow-bottom-icon';
+import Typography from '../../../00-tokens/typography/typography';
 
 export type MenuItemProps = {
-  url: string;
+  url?: string;
   title: string;
   below?: MenuItemProps[];
 };
 
 export type MenuProps = {
   menuClass: string;
-  rtlSupport?: boolean;
   items: MenuItemProps[];
   toggleMenu: (value: boolean) => void;
 };
 
-export default function Inline({
-  items,
-  menuClass,
-  rtlSupport,
-  toggleMenu,
-}: MenuProps) {
+export default function Inline({ items, menuClass, toggleMenu }: MenuProps) {
   const [active, setActive] = useState<number | undefined>();
 
   /**
@@ -38,7 +37,10 @@ export default function Inline({
     // Retrieves the related target element that received focus.
     const relatedTarget = e.relatedTarget as HTMLElement | null;
     // Checks if the related target element does not exist or is not an instance of 'submenu-item'.
-    if (!relatedTarget || !relatedTarget.classList.contains('submenu-item')) {
+    if (
+      (!relatedTarget || !relatedTarget.classList.contains('submenu-item')) &&
+      window.innerWidth >= 950
+    ) {
       // Deactivates the active action when losing focus.
       setActive(-1);
     }
@@ -57,98 +59,77 @@ export default function Inline({
     }
   };
 
+  /**
+   * Handles the mouse over event for menu items.
+   * @param {MenuItemProps} item - The menu item being hovered.
+   * @param {number} index - The index of the menu item in the list.
+   */
+  const handleOnMouseOver = (item: MenuItemProps, index: number): void => {
+    // Check if the menu item has sub-items
+    if (item.below && window.innerWidth >= 950) {
+      setActive(index);
+    }
+  };
+
+  /**
+   * Handles the mouse out event for menu items.
+   * @param {MenuItemProps} item - The menu item being hovered.
+   * @param {number} index - The index of the menu item in the list.
+   */
+  const handleOnMouseOut = (item: MenuItemProps): void => {
+    // Check if the menu item has sub-items
+    if (item.below && window.innerWidth >= 950) {
+      setActive(-1);
+    }
+  };
+
+  const renderSubitem = (item: MenuItemProps, index: number) => {
+    if (!item.url) return;
+
+    return (
+      <li key={`${menuClass}-subitem-${index}`}>
+        <Link
+          color="black"
+          href={item.url}
+          className={`submenu-item flex flex-row items-center gap-x-xs`}
+        >
+          <Typography
+            variant="submenu-link"
+            className="text-inherit text-right font-semibold"
+          >
+            {item.title}
+          </Typography>
+          <ArrowRightIcon className="h-[8px] w-[8px] rotate-180 rtl:rotate-0" />
+        </Link>
+      </li>
+    );
+  };
+
   const renderSubmenu = (item: MenuItemProps) => {
     return (
       <div
-        className="top-0 absolute z-10 flex h-screen w-screen flex-col md:top-[100%] md:h-auto md:w-[280px]"
+        className="absolute top-0 z-10 flex h-screen w-screen flex-col md:top-[100%] md:h-auto md:w-[280px]"
         onBlur={handleBlur}
       >
-        <div
-          className={`mx-auto flex w-full items-center justify-center gap-[20px] border-b border-b-mercury bg-white p-[20px] md:border-0 ${
-            rtlSupport ? 'flex-row-reverse' : 'flex-row'
-          }`}
-        >
+        {/* Heading */}
+        <div className="md:p-none md:aria-hidden mx-auto flex w-full flex-row items-center justify-center gap-md border-b border-b-mercury bg-white p-md md:pointer-events-none md:border-0 md:p-0">
           <button onClick={() => handlerOpenSubmenu(-1)}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              className="rotate-[270deg] text-[#53575A] md:rotate-0 md:text-[#CCD2D3]"
-            >
-              <path
-                d="M19 14L10 5L1 14"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
+            <ArrowRightIcon className="rotate-0 text-grey md:rotate-[90deg] md:text-brumosa" />
           </button>
-          <p
-            className={`block flex-1 text-[18px] text-[#53575A] md:hidden ${
-              rtlSupport ? 'text-end' : 'text-start'
-            }`}
-          >
+          <p className="block flex-1 text-start text-body-2 text-grey rtl:text-right md:hidden">
             {item.title}
           </p>
           <button
             className="block text-center md:hidden"
             onClick={() => toggleMenu(false)}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-            >
-              <path
-                d="M3.5 3.5L18 18"
-                stroke="#53575A"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-              <path
-                d="M3 18L10.5 10.5L18 3"
-                stroke="#53575A"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-            </svg>
+            <CloseIcon />
           </button>
         </div>
-        <div className="flex-1 rounded-lg bg-white p-[20px] shadow-lg">
-          <ul className="flex flex-col gap-[20px]">
-            {item.below?.map((item: MenuItemProps, index: number) => (
-              <li key={`${menuClass}-subitem-${index}`}>
-                <a
-                  href={item.url}
-                  className={`submenu-item flex ${
-                    rtlSupport ? 'flex-row-reverse' : 'flex-row'
-                  } items-center gap-x-[5px] text-right text-[13px] font-semibold text-black hover:text-teal`}
-                >
-                  {item.title}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="8"
-                    height="9"
-                    viewBox="0 0 8 9"
-                    fill="none"
-                    className={rtlSupport ? 'rotate-180' : ''}
-                  >
-                    <path
-                      d="M2.5 1.5L5.5 4.5L2.5 7.5"
-                      stroke="currentColor"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </a>
-              </li>
-            ))}
+        {/* Items */}
+        <div className="flex-1 bg-white p-md md:rounded-m md:shadow-md">
+          <ul className="flex flex-col gap-md">
+            {item.below?.map(renderSubitem)}
           </ul>
         </div>
       </div>
@@ -160,40 +141,41 @@ export default function Inline({
     return (
       <li
         key={`${menuClass}-item-${index}`}
-        className={`flex items-center justify-center gap-[20px] md:relative md:gap-[5px] ${
-          isActive ? 'text-teal' : 'text-[#53575A]'
-        } ${rtlSupport ? 'flex-row-reverse' : 'flex-row'}`}
+        className={`flex flex-row items-center justify-center gap-md text-grey hover:text-teal md:relative md:gap-xs ${
+          isActive ? 'text-teal' : ''
+        }`}
+        onMouseOver={() => handleOnMouseOver(item, index)}
+        onMouseOut={() => handleOnMouseOut(item)}
       >
-        <a
-          className={`md:py-0 w-full py-[20px] text-[12px] font-semibold uppercase md:w-full ${
-            rtlSupport ? 'text-end' : 'text-start'
-          }`}
-          href={item.url}
-        >
-          {item.title}
-        </a>
+        {item.url ? (
+          <Link href={item.url} className="w-full py-md md:w-full md:py-0">
+            <Typography
+              variant="menu-link"
+              className="text-inherit font-semibold uppercase rtl:text-right"
+            >
+              {item.title}
+            </Typography>
+          </Link>
+        ) : (
+          <Typography
+            variant="menu-link"
+            className="text-inherit w-full py-md font-semibold uppercase rtl:text-right md:w-full md:py-0"
+          >
+            {item.title}
+          </Typography>
+        )}
         {item.below && (
           <button
             className="h-full outline-offset-4"
             onClick={() => handlerOpenSubmenu(index)}
+            aria-label={`${item.title} menu`}
+            aria-expanded={isActive}
           >
-            <svg
-              className={`h-[16px] w-[16px] md:h-[8px] md:w-[8px] ${
-                isActive ? 'md:rotate-180' : 'md:rotate-0'
-              } ${rtlSupport ? 'rotate-90' : 'rotate-[270deg]'}`}
-              viewBox="0 0 8 8"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                id="chevron"
-                d="M7 2.5L4 5.5L1 2.5"
-                stroke="currentColor"
-                stroke-width="1"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
+            <ArrowBottomIcon
+              className={`h-[16px] w-[16px] rotate-[270deg] rtl:rotate-90 md:h-[8px] md:w-[8px] md:rotate-0 rtl:md:rotate-0 ${
+                isActive ? 'md:rotate-180 rtl:md:rotate-180' : 'md:rotate-0'
+              }`}
+            />
           </button>
         )}
         {isActive && renderSubmenu(item)}
@@ -203,9 +185,7 @@ export default function Inline({
 
   return (
     <ul
-      className={`${menuClass} flex flex-col gap-x-[30px] divide-y divide-brumosa md:divide-y-0 ${
-        rtlSupport ? 'md:flex-row-reverse' : 'md:flex-row'
-      }`}
+      className={`${menuClass} flex flex-col gap-x-[30px] divide-y divide-brumosa md:flex-row md:divide-y-0`}
       onKeyDown={handleKeyDown}
     >
       {items.map(renderItem)}

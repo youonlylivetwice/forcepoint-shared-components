@@ -1,12 +1,21 @@
-import NextLink, { LinkProps as NextLinkProps } from 'next/link';
+import { LinkProps as NextLinkProps } from 'next/link';
 import React from 'react';
 
 export type LinkProps = NextLinkProps & {
+  component?: any;
   disabled?: boolean;
+  className?: string;
   size?: 'small' | 'large';
   children?: React.ReactNode;
   variant?: 'underline' | 'default';
-  color?: 'navy' | 'viola' | 'white' | 'sandwisp';
+  color?:
+    | 'navy'
+    | 'viola'
+    | 'white'
+    | 'sandwisp'
+    | 'grey'
+    | 'black'
+    | 'inherit';
 };
 
 const colorClasses = {
@@ -14,6 +23,9 @@ const colorClasses = {
   viola: 'text-viola hover:text-teal',
   white: 'text-white hover:text-teal',
   sandwisp: 'text-white hover:text-sandwisp',
+  grey: 'text-grey hover:text-teal',
+  black: 'text-black hover:text-teal',
+  inherit: 'text-inherit',
 };
 
 const fontSizeClasses = {
@@ -23,23 +35,26 @@ const fontSizeClasses = {
 
 export default function Link({
   variant = 'default',
-  color = 'navy',
+  color = 'inherit',
   size = 'small',
   children,
   disabled,
+  className,
+  component: Element = 'a',
   ...props
 }: LinkProps) {
   const linkClasses = [
     'inline-flex items-center gap-sm text-h4 font-bold',
     variant === 'underline' ? 'underline underline-offset-8' : '',
     disabled ? 'opacity-60 pointer-events-none' : 'cursor-pointer',
+    colorClasses[color] || color,
     fontSizeClasses[size],
-    colorClasses[color],
+    className,
   ];
 
   return (
-    <NextLink className={linkClasses.join(' ')} {...props}>
+    <Element className={linkClasses.join(' ')} {...props}>
       {children}
-    </NextLink>
+    </Element>
   );
 }

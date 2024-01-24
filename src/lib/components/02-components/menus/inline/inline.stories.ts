@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import AspectRatiosDisplay from './inline';
+import AspectRatiosDisplay, { MenuItemProps } from './inline';
 
-const menuItems = [
+const menuItems: MenuItemProps[] = [
   {
     title: 'Government',
     url: '#',
@@ -89,9 +89,6 @@ const meta = {
   title: 'Components/Menus/Secondary Menu',
   component: AspectRatiosDisplay,
   argTypes: {
-    rtlSupport: {
-      name: 'Right-to-left support',
-    },
     menuClass: {
       name: 'Menu class',
     },
@@ -110,6 +107,5 @@ export const SecondaryMenu: Story = {
   args: {
     items: menuItems,
     menuClass: 'secondary-menu',
-    rtlSupport: true,
   },
 };

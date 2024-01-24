@@ -34,6 +34,7 @@ module.exports = {
     },
     colors: {
       none: 'none',
+      inherit: 'inherit',
       transparent: 'transparent',
       current: 'currentColor',
       navy: {
@@ -298,6 +299,15 @@ module.exports = {
           lineHeight: '160%',
         },
       ],
+      // 12px.
+      'menu-link': [
+        '0.75rem',
+        {
+          lineHeight: '150%',
+          fontWeight: '600',
+          letterSpacing: '0.5px',
+        },
+      ],
     },
     lineHeight: {
       none: '1',
@@ -342,6 +352,9 @@ module.exports = {
         xl: '50px',
         xxl: '80px',
         '3xl': '120px',
+      },
+      boxShadow: {
+        md: '0px 4px 10px 0px rgba(29, 37, 44, 0.20)',
       },
     },
   },
