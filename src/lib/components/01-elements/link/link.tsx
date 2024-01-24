@@ -1,5 +1,5 @@
 import { AnchorHTMLAttributes, ElementType } from 'react';
-import { cn } from '../../../util';
+import clsx from 'clsx';
 
 export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   disabled?: boolean;
@@ -9,14 +9,14 @@ export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   component?: ElementType;
 };
 
-const colorClasses = {
+const colorLinkSchema = {
   navy: 'text-navy hover:text-teal',
   viola: 'text-viola hover:text-teal',
   white: 'text-white hover:text-teal',
   sandwisp: 'text-white hover:text-sandwisp',
 };
 
-const fontSizeClasses = {
+const sizeLinkSchema = {
   small: 'text-h5',
   large: 'text-h4',
 };
@@ -33,15 +33,15 @@ export default function Link({
 }: LinkProps) {
   return (
     <Element
-      className={cn(
+      className={clsx(
         'inline-flex items-center gap-sm text-h4 font-bold',
         {
           'underline underline-offset-8': variant === 'underline',
           'pointer-events-none opacity-60': disabled,
           'cursor-pointer': !disabled,
-          [fontSizeClasses[size]]: true,
-          [colorClasses[color]]: true,
         },
+        colorLinkSchema[color],
+        sizeLinkSchema[size],
         className,
       )}
       {...props}

@@ -34,7 +34,7 @@ export const Default: Story = {
   args: {
     children: (
       <>
-        <PlayIcon />
+        <PlayIcon className="rtl:rotate-180" />
         <span>Watch the Video</span>
       </>
     ),

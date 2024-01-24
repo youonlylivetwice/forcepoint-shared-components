@@ -35,12 +35,11 @@ export const Default: Story = {
     color: 'navy',
     size: 'medium',
     variant: 'solid',
-    href: 'https://www.youtube.com/watch?v=CliS6WzmR9U',
     disabled: false,
     children: (
       <>
         <span>Button Label</span>
-        <ArrowRight />
+        <ArrowRight className="rtl:rotate-180" />
       </>
     ),
   },

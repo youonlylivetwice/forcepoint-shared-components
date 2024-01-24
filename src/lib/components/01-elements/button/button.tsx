@@ -1,22 +1,23 @@
-import Link from 'next/link';
+import { ElementType } from 'react';
+import clsx from 'clsx';
 
 export type ButtonProps = {
-  href?: string;
-  title?: string;
-  disabled?: boolean;
   children?: React.ReactNode;
-  variant?: 'solid' | 'outline';
-  size?: 'small' | 'medium' | 'large';
+  className?: string;
   color?: 'navy' | 'viola' | 'white' | 'sandwisp';
+  component?: ElementType;
+  disabled?: boolean;
+  size?: 'small' | 'medium' | 'large';
+  variant?: 'solid' | 'outline';
 };
 
-const sizeClasses = {
+const sizeButtonSchema = {
   small: 'text-h5 px-md py-[0.5rem]',
   medium: 'text-h5 px-lg py-sm',
   large: 'text-h4 px-lg py-[1rem]',
 };
 
-const colorClassesSchema = {
+const colorButtonSchema = {
   sandwisp: {
     solid: 'bg-sandwisp text-black hover:text-white hover:bg-teal',
     outline: 'border-sandwisp border-2 text-white hover:border-teal',
@@ -37,32 +38,28 @@ const colorClassesSchema = {
 
 export default function Button({
   children,
+  className,
   color = 'navy',
+  component: Element = 'button',
   size = 'medium',
-  title,
-  href,
   variant = 'solid',
   ...props
 }: ButtonProps) {
-  const buttonClasses = [
-    'inline-flex items-center gap-sm rounded-lg disabled:opacity-60',
-    props.disabled ? 'pointer-events-none' : 'cursor-pointer',
-    colorClassesSchema[color]?.[variant],
-    sizeClasses[size],
-  ];
-  const commonClasses = buttonClasses.join(' ');
-
-  if (href) {
-    return (
-      <Link className={commonClasses} href={href} {...props}>
-        {title || children}
-      </Link>
-    );
-  } else {
-    return (
-      <button className={commonClasses} {...props}>
-        {title || children}
-      </button>
-    );
-  }
+  return (
+    <Element
+      className={clsx(
+        'inline-flex items-center gap-sm rounded-lg disabled:opacity-60',
+        {
+          'pointer-events-none': props.disabled,
+          'cursor-pointer': !props.disabled,
+        },
+        colorButtonSchema[color][variant],
+        sizeButtonSchema[size],
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </Element>
+  );
 }
