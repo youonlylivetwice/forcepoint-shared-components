@@ -299,15 +299,6 @@ module.exports = {
           lineHeight: '160%',
         },
       ],
-      // 12px.
-      'menu-link': [
-        '0.75rem',
-        {
-          lineHeight: '150%',
-          fontWeight: '600',
-          letterSpacing: '0.5px',
-        },
-      ],
     },
     lineHeight: {
       none: '1',

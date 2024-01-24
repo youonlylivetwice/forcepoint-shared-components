@@ -9,6 +9,7 @@ export type MenuItemProps = {
   url?: string;
   title: string;
   below?: MenuItemProps[];
+  menuClass?: string;
 };
 
 export type MenuProps = {
@@ -95,7 +96,7 @@ export default function Inline({ items, menuClass, toggleMenu }: MenuProps) {
         >
           <Typography
             variant="submenu-link"
-            className="text-inherit text-right font-semibold"
+            className="text-right font-semibold text-inherit"
           >
             {item.title}
           </Typography>
@@ -111,8 +112,8 @@ export default function Inline({ items, menuClass, toggleMenu }: MenuProps) {
         className="absolute top-0 z-10 flex h-screen w-screen flex-col md:top-[100%] md:h-auto md:w-[280px]"
         onBlur={handleBlur}
       >
-        {/* Heading */}
-        <div className="md:p-none md:aria-hidden mx-auto flex w-full flex-row items-center justify-center gap-md border-b border-b-mercury bg-white p-md md:pointer-events-none md:border-0 md:p-0">
+        {/* Desktop Heading */}
+        <div className="mx-auto flex w-full flex-row items-center justify-center gap-md border-b border-b-mercury bg-white p-md md:hidden">
           <button onClick={() => handlerOpenSubmenu(-1)}>
             <ArrowRightIcon className="rotate-0 text-grey md:rotate-[90deg] md:text-brumosa" />
           </button>
@@ -126,6 +127,10 @@ export default function Inline({ items, menuClass, toggleMenu }: MenuProps) {
             <CloseIcon />
           </button>
         </div>
+        {/* Mobile Heading */}
+        <div className="flex w-full justify-center">
+          <ArrowRightIcon className="hidden rotate-[90deg] text-brumosa md:block" />
+        </div>
         {/* Items */}
         <div className="flex-1 bg-white p-md md:rounded-m md:shadow-md">
           <ul className="flex flex-col gap-md">
@@ -138,6 +143,15 @@ export default function Inline({ items, menuClass, toggleMenu }: MenuProps) {
 
   const renderItem = (item: MenuItemProps, index: number) => {
     const isActive = active === index;
+
+    const itemLabel = (
+      <Typography
+        variant="h6"
+        className="w-full py-md font-semibold uppercase text-inherit rtl:text-right md:py-0"
+      >
+        {item.title}
+      </Typography>
+    );
     return (
       <li
         key={`${menuClass}-item-${index}`}
@@ -148,21 +162,11 @@ export default function Inline({ items, menuClass, toggleMenu }: MenuProps) {
         onMouseOut={() => handleOnMouseOut(item)}
       >
         {item.url ? (
-          <Link href={item.url} className="w-full py-md md:w-full md:py-0">
-            <Typography
-              variant="menu-link"
-              className="text-inherit font-semibold uppercase rtl:text-right"
-            >
-              {item.title}
-            </Typography>
+          <Link href={item.url} className="w-full">
+            {itemLabel}
           </Link>
         ) : (
-          <Typography
-            variant="menu-link"
-            className="text-inherit w-full py-md font-semibold uppercase rtl:text-right md:w-full md:py-0"
-          >
-            {item.title}
-          </Typography>
+          itemLabel
         )}
         {item.below && (
           <button
@@ -185,7 +189,7 @@ export default function Inline({ items, menuClass, toggleMenu }: MenuProps) {
 
   return (
     <ul
-      className={`${menuClass} flex flex-col gap-x-[30px] divide-y divide-brumosa md:flex-row md:divide-y-0`}
+      className={`${menuClass} flex flex-col gap-x-md divide-y divide-brumosa md:flex-row md:divide-y-0`}
       onKeyDown={handleKeyDown}
     >
       {items.map(renderItem)}

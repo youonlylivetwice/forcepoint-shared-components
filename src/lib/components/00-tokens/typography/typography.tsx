@@ -1,13 +1,14 @@
-import React from 'react';
+import clsx from 'clsx';
+import { ElementType, ReactNode } from 'react';
 
 export type TypographyProps = {
-  variant?: string;
+  children: ReactNode;
   className?: string;
-  children: React.ReactNode;
-  tagName?: keyof JSX.IntrinsicElements;
+  component?: ElementType;
+  variant?: string;
 };
 
-const variantClasses: Record<string, string> = {
+const variantTypographySchema: Record<string, string> = {
   colossus: 'text-uber md:text-colossus',
   uber: 'text-hero-1 md:text-uber',
   'hero-1': 'text-hero-2 md:text-hero-1',
@@ -29,17 +30,18 @@ const variantClasses: Record<string, string> = {
 };
 
 export default function Typography({
-  variant = 'body-2',
-  tagName,
   children,
   className,
+  component: Element = 'p',
+  variant = 'body-2',
   ...props
 }: TypographyProps) {
-  const Tag = tagName || 'p';
-
   return (
-    <Tag className={`${variantClasses[variant]} ${className}`} {...props}>
+    <Element
+      className={clsx(variantTypographySchema[variant], className)}
+      {...props}
+    >
       {children}
-    </Tag>
+    </Element>
   );
 }
