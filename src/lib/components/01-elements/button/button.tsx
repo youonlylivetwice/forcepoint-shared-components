@@ -1,19 +1,19 @@
-import { AnchorHTMLAttributes, ElementType } from 'react';
 import clsx from 'clsx';
+import { AnchorHTMLAttributes, ElementType, ReactNode } from 'react';
 
 export type ButtonProps = (
   | AnchorHTMLAttributes<HTMLButtonElement>
   | AnchorHTMLAttributes<HTMLAnchorElement>
 ) & {
   animated?: boolean;
-  children?: React.ReactNode;
+  children?: ReactNode;
   className?: string;
   color?: 'navy' | 'viola' | 'white' | 'sandwisp';
   component?: ElementType;
   disabled?: boolean;
-  endIcon?: React.ReactNode;
+  endIcon?: ReactNode;
   size?: 'small' | 'medium' | 'large';
-  startIcon?: React.ReactNode;
+  startIcon?: ReactNode;
   variant?: 'solid' | 'outline';
 };
 
@@ -54,7 +54,7 @@ export default function Button({
   variant = 'solid',
   ...props
 }: ButtonProps) {
-  const renderIcon = (icon: React.ReactNode) => {
+  const renderIcon = (icon: ReactNode) => {
     return (
       <div
         className={clsx(

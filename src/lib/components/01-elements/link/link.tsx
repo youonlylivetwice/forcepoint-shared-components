@@ -1,14 +1,14 @@
-import { AnchorHTMLAttributes, ElementType } from 'react';
 import clsx from 'clsx';
+import { AnchorHTMLAttributes, ElementType, ReactNode } from 'react';
 
 export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   animated?: boolean;
   color?: 'navy' | 'viola' | 'white' | 'sandwisp';
   component?: ElementType;
   disabled?: boolean;
-  endIcon?: React.ReactNode;
+  endIcon?: ReactNode;
   size?: 'small' | 'large';
-  startIcon?: React.ReactNode;
+  startIcon?: ReactNode;
   underline?: 'none' | 'hover' | 'always';
 };
 
@@ -37,7 +37,7 @@ export default function Link({
   underline,
   ...props
 }: LinkProps) {
-  const renderIcon = (icon: React.ReactNode) => {
+  const renderIcon = (icon: ReactNode) => {
     return (
       <div
         className={clsx(

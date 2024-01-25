@@ -15,9 +15,9 @@ React Shared Components Library System for Forcepoint. Built on Vite.
 
 ## Library reference
 
-### Include the Tailwind preset:
+### Include the Tailwind preset
 
-```
+```js
 import type { Config } from 'tailwindcss';
 import themePreset from './node_modules/forcepoint-shared-components/dist/tailwind-theme-preset.js';
 
@@ -28,7 +28,8 @@ export default {
 
 ```
 
-### Components API:
+### Components API
+
 - [Link](./docs/link.md)
 - [Button](./docs/button.md)
 - [Typography](./docs/typography.md)

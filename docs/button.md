@@ -9,6 +9,7 @@ import { Button } from 'forcepoint-shared-components';
 ```
 
 ## Props
+
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | animated | `bool` | `false` | Adds animation to the button if set to `true`. |
@@ -22,8 +23,8 @@ import { Button } from 'forcepoint-shared-components';
 | startIcon | `node` | `-` | Content to be placed at the start of the button. |
 | variant | `solid` \| `outline` | `solid` | Specifies the visual style of the button. |
 
-
 ## Usage
+
 ```js
 <Button color="viola" size="large" variant="outline" disabled={false}>
   Button label

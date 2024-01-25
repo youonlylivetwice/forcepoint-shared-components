@@ -9,6 +9,7 @@ import { Link } from 'forcepoint-shared-components';
 ```
 
 ## Props
+
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | animated | `bool` | `false` | Adds animation to the link if set to `true`. |
