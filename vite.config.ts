@@ -1,10 +1,10 @@
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
+import copy from 'rollup-plugin-copy';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
-import { name, peerDependencies, dependencies } from './package.json';
 import svgr from 'vite-plugin-svgr';
-import copy from 'rollup-plugin-copy';
+import { dependencies, name, peerDependencies } from './package.json';
 
 const formattedName = name.match(/[^/]+$/)?.[0] ?? name;
 

@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import CloseIcon from '../../icons/close-icon';
 import Link from '../../../01-elements/link/link';
-import ArrowRightIcon from '../../icons/arrow-right-icon';
-import ArrowBottomIcon from '../../icons/arrow-bottom-icon';
-import Typography from '../../../00-tokens/typography/typography';
+import BackIcon from '../../../00-tokens/icons/back-icon';
+import CloseIcon from '../../../00-tokens/icons/close-icon';
+import Typography from '../../../01-elements/typography/typography';
+import ArrowBottomIcon from '../../../00-tokens/icons/arrow-bottom-icon';
 
 export type MenuItemProps = {
   url?: string;
@@ -100,7 +100,7 @@ export default function Inline({ items, menuClass, toggleMenu }: MenuProps) {
           >
             {item.title}
           </Typography>
-          <ArrowRightIcon className="h-[8px] w-[8px] rotate-180 rtl:rotate-0" />
+          <BackIcon className="h-[8px] w-[8px] rotate-180 rtl:rotate-0" />
         </Link>
       </li>
     );
@@ -116,7 +116,7 @@ export default function Inline({ items, menuClass, toggleMenu }: MenuProps) {
         {/* Desktop Heading */}
         <div className="mx-auto flex w-full flex-row items-center justify-center gap-md border-b border-b-mercury bg-white p-md md:hidden">
           <button onClick={() => handlerOpenSubmenu(-1)}>
-            <ArrowRightIcon className="rotate-0 text-grey md:rotate-[90deg] md:text-brumosa" />
+            <BackIcon className="rotate-0 text-grey md:rotate-[90deg] md:text-brumosa" />
           </button>
           <p className="block flex-1 text-start text-body-2 text-grey rtl:text-right md:hidden">
             {item.title}
@@ -125,12 +125,12 @@ export default function Inline({ items, menuClass, toggleMenu }: MenuProps) {
             className="block text-center md:hidden"
             onClick={() => toggleMenu(false)}
           >
-            <CloseIcon />
+            <CloseIcon className="text-grey" />
           </button>
         </div>
         {/* Mobile Heading */}
         <div className="flex w-full justify-center">
-          <ArrowRightIcon className="hidden rotate-[90deg] text-brumosa md:block" />
+          <BackIcon className="hidden rotate-[90deg] text-brumosa md:block" />
         </div>
         {/* Items */}
         <div className="flex-1 bg-white p-md md:rounded-m md:shadow-md">
