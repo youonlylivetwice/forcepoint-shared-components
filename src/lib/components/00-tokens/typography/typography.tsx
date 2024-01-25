@@ -25,8 +25,7 @@ const variantTypographySchema: Record<string, string> = {
   'body-3': 'text-body-3',
   'body-4': 'text-body-4',
   'body-5': 'text-body-5',
-  'menu-link': 'text-menu-link',
-  'submenu-link': 'text-h6 md:text-h5',
+  'submenu-link': 'text-h5 md:text-h6',
 };
 
 export default function Typography({
