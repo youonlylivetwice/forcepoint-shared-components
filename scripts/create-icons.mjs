@@ -44,7 +44,7 @@ async function createTsxFiles(svgFiles, targetDir) {
 
 // Source and target directories
 const iconsDirectory = './src/lib/assets/img/icons';
-const componentsDirectory = './src/lib/components/02-components/icons';
+const componentsDirectory = './src/lib/components/00-tokens/icons';
 
 getSvgFileNames(iconsDirectory).then((svgFiles) => {
   createTsxFiles(svgFiles, componentsDirectory);
