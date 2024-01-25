@@ -2,41 +2,64 @@ import { AnchorHTMLAttributes, ElementType } from 'react';
 import clsx from 'clsx';
 
 export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
-  disabled?: boolean;
-  size?: 'small' | 'large';
-  variant?: 'underline' | 'default';
+  animated?: boolean;
   color?: 'navy' | 'viola' | 'white' | 'sandwisp';
   component?: ElementType;
+  disabled?: boolean;
+  endIcon?: React.ReactNode;
+  size?: 'small' | 'large';
+  startIcon?: React.ReactNode;
+  underline?: 'none' | 'hover' | 'always';
 };
 
 const colorLinkSchema = {
   navy: 'text-navy hover:text-teal',
+  sandwisp: 'text-white hover:text-sandwisp',
   viola: 'text-viola hover:text-teal',
   white: 'text-white hover:text-teal',
-  sandwisp: 'text-white hover:text-sandwisp',
 };
 
 const sizeLinkSchema = {
-  small: 'text-h5',
   large: 'text-h4',
+  small: 'text-h5',
 };
 
 export default function Link({
-  variant = 'default',
-  color = 'navy',
-  size = 'small',
+  animated,
   children,
-  disabled,
   className,
+  color = 'navy',
   component: Element = 'a',
+  disabled,
+  endIcon,
+  size = 'small',
+  startIcon,
+  underline,
   ...props
 }: LinkProps) {
+  const renderIcon = (icon: React.ReactNode) => {
+    return (
+      <div
+        className={clsx(
+          'transform transition-transform duration-200 rtl:rotate-180',
+          {
+            'group-hover:translate-x-[0.25rem] rtl:group-hover:translate-x-[-0.25rem]':
+              animated,
+          },
+        )}
+      >
+        {icon}
+      </div>
+    );
+  };
+
   return (
     <Element
       className={clsx(
-        'inline-flex items-center gap-sm text-h4 font-bold',
+        'group inline-flex items-center gap-sm text-h4 font-bold',
         {
-          'underline underline-offset-8': variant === 'underline',
+          'hover:underline hover:underline-offset-8': underline === 'hover',
+          'underline underline-offset-8': underline === 'always',
           'pointer-events-none opacity-60': disabled,
           'cursor-pointer': !disabled,
         },
@@ -46,7 +69,9 @@ export default function Link({
       )}
       {...props}
     >
+      {startIcon && renderIcon(startIcon)}
       {children}
+      {endIcon && renderIcon(endIcon)}
     </Element>
   );
 }

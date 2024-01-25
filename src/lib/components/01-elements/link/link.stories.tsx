@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import PlayIcon from '../../../assets/img/icons/play.svg?react';
+import ArrowRight from '../../../assets/img/icons/arrow-right.svg?react';
 
 import Link from './link';
 
@@ -11,18 +11,23 @@ const meta = {
       options: ['small', 'large'],
       control: { type: 'select' },
     },
-    variant: {
-      options: ['default', 'underline'],
-      control: { type: 'select' },
-    },
     color: {
-      options: ['navy', 'viola', 'white', 'sandwisp'],
+      options: {
+        navy: 'navy',
+        viola: 'viola',
+        'white (dark background)': 'white',
+        'sandwisp (dark background)': 'sandwisp',
+      },
       control: { type: 'select' },
     },
-    children: {
+    endIcon: {
       table: {
         disable: true,
       },
+    },
+    underline: {
+      options: ['none', 'hover', 'always'],
+      control: { type: 'select' },
     },
   },
 } satisfies Meta<typeof Link>;
@@ -32,16 +37,13 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    children: (
-      <>
-        <PlayIcon className="rtl:rotate-180" />
-        <span>Watch the Video</span>
-      </>
-    ),
-    href: 'http://localhost:6006/',
+    animated: false,
+    children: 'Get It Today',
     color: 'navy',
+    endIcon: <ArrowRight />,
+    href: 'http://localhost:6006/',
     size: 'large',
-    variant: 'default',
+    underline: 'always',
     disabled: false,
   },
 };
