@@ -96,7 +96,7 @@ export default function Inline({ items, menuClass, toggleMenu }: MenuProps) {
         >
           <Typography
             variant="submenu-link"
-            className="text-inherit text-right font-semibold"
+            className="text-right font-semibold text-inherit"
           >
             {item.title}
           </Typography>
@@ -106,9 +106,10 @@ export default function Inline({ items, menuClass, toggleMenu }: MenuProps) {
     );
   };
 
-  const renderSubmenu = (item: MenuItemProps) => {
+  const renderSubmenu = (item: MenuItemProps, index: number) => {
     return (
       <div
+        id={`${menuClass}-submenu-${index}`}
         className="absolute top-0 z-10 flex h-screen w-screen flex-col md:top-[100%] md:h-auto md:w-[280px]"
         onBlur={handleBlur}
       >
@@ -147,7 +148,7 @@ export default function Inline({ items, menuClass, toggleMenu }: MenuProps) {
     const itemLabel = (
       <Typography
         variant="h6"
-        className="text-inherit w-full py-md font-semibold uppercase rtl:text-right md:py-0"
+        className="w-full py-md font-semibold uppercase text-inherit rtl:text-right md:py-0"
       >
         {item.title}
       </Typography>
@@ -172,6 +173,7 @@ export default function Inline({ items, menuClass, toggleMenu }: MenuProps) {
           <button
             className="h-full outline-offset-4"
             onClick={() => handlerOpenSubmenu(index)}
+            aria-controls={`${menuClass}-submenu-${index}`}
             aria-label={`${item.title} menu`}
             aria-expanded={isActive}
           >
@@ -182,7 +184,7 @@ export default function Inline({ items, menuClass, toggleMenu }: MenuProps) {
             />
           </button>
         )}
-        {isActive && renderSubmenu(item)}
+        {isActive && renderSubmenu(item, index)}
       </li>
     );
   };
