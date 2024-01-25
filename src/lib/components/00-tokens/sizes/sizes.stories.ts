@@ -9,7 +9,7 @@ const widthVariants = {
   '30': 'w-lg',
   '50': 'w-xl',
   '80': 'w-xxl',
-  '120': 'w-3xl'
+  '120': 'w-3xl',
 };
 
 const heightVariants = {
@@ -20,7 +20,7 @@ const heightVariants = {
   '30': 'h-lg',
   '50': 'h-xl',
   '80': 'h-xxl',
-  '120': 'h-3xl'
+  '120': 'h-3xl',
 };
 
 const meta = {

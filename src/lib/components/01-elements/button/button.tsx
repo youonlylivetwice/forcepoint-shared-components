@@ -1,22 +1,29 @@
-import Link from 'next/link';
+import clsx from 'clsx';
+import { AnchorHTMLAttributes, ElementType, ReactNode } from 'react';
 
-export type ButtonProps = {
-  href?: string;
-  title?: string;
-  disabled?: boolean;
-  children?: React.ReactNode;
-  variant?: 'solid' | 'outline';
-  size?: 'small' | 'medium' | 'large';
+export type ButtonProps = (
+  | AnchorHTMLAttributes<HTMLButtonElement>
+  | AnchorHTMLAttributes<HTMLAnchorElement>
+) & {
+  animated?: boolean;
+  children?: ReactNode;
+  className?: string;
   color?: 'navy' | 'viola' | 'white' | 'sandwisp';
+  component?: ElementType;
+  disabled?: boolean;
+  endIcon?: ReactNode;
+  size?: 'small' | 'medium' | 'large';
+  startIcon?: ReactNode;
+  variant?: 'solid' | 'outline';
 };
 
-const sizeClasses = {
-  small: 'text-h5 px-md py-[0.5rem]',
-  medium: 'text-h5 px-lg py-sm',
+const sizeButtonSchema = {
   large: 'text-h4 px-lg py-[1rem]',
+  medium: 'text-h5 px-lg py-sm',
+  small: 'text-h5 px-md py-[0.5rem]',
 };
 
-const colorClassesSchema = {
+const colorButtonSchema = {
   sandwisp: {
     solid: 'bg-sandwisp text-black hover:text-white hover:bg-teal',
     outline: 'border-sandwisp border-2 text-white hover:border-teal',
@@ -27,42 +34,59 @@ const colorClassesSchema = {
   },
   viola: {
     solid: 'bg-viola text-white hover:bg-teal',
-    outline: 'border-viola border-2 text-black hover:border-teal',
+    outline: 'border-viola border-2 text-navy hover:border-teal',
   },
   navy: {
     solid: 'bg-navy text-white hover:bg-teal',
-    outline: 'border-navy border-2 text-black hover:border-teal',
+    outline: 'border-navy border-2 text-navy hover:border-teal',
   },
 };
 
 export default function Button({
+  animated,
   children,
+  className,
   color = 'navy',
+  component: Element = 'button',
+  endIcon,
   size = 'medium',
-  title,
-  href,
+  startIcon,
   variant = 'solid',
   ...props
 }: ButtonProps) {
-  const buttonClasses = [
-    'inline-flex items-center gap-sm rounded-lg disabled:opacity-60',
-    props.disabled ? 'pointer-events-none' : 'cursor-pointer',
-    colorClassesSchema[color]?.[variant],
-    sizeClasses[size],
-  ];
-  const commonClasses = buttonClasses.join(' ');
+  const renderIcon = (icon: ReactNode) => {
+    return (
+      <div
+        className={clsx(
+          'transform transition-transform duration-200 rtl:rotate-180',
+          {
+            'group-hover:translate-x-[0.25rem] rtl:group-hover:translate-x-[-0.25rem]':
+              animated,
+          },
+        )}
+      >
+        {icon}
+      </div>
+    );
+  };
 
-  if (href) {
-    return (
-      <Link className={commonClasses} href={href} {...props}>
-        {title || children}
-      </Link>
-    );
-  } else {
-    return (
-      <button className={commonClasses} {...props}>
-        {title || children}
-      </button>
-    );
-  }
+  return (
+    <Element
+      className={clsx(
+        'group inline-flex items-center gap-sm rounded-lg font-semibold',
+        {
+          'pointer-events-none': props.disabled,
+          'cursor-pointer': !props.disabled,
+        },
+        colorButtonSchema[color][variant],
+        sizeButtonSchema[size],
+        className,
+      )}
+      {...props}
+    >
+      {startIcon && renderIcon(startIcon)}
+      {children}
+      {endIcon && renderIcon(endIcon)}
+    </Element>
+  );
 }
