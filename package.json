@@ -27,8 +27,8 @@
     "build-storybook": "storybook build",
     "create-icons": "node scripts/create-icons.mjs",
     "create-icons-story": "node scripts/create-icons-story.mjs",
-    "predev": "rm -rf src/lib/components/02-components/icons/* && npm run create-icons && npm run create-icons-story",
-    "prebuild": "rm -rf src/lib/components/02-components/icons/* && npm run create-icons && npm run create-icons-story"
+    "predev": "rm -rf src/lib/components/00-tokens/icons/* && npm run create-icons && npm run create-icons-story",
+    "prebuild": "rm -rf src/lib/components/00-tokens/icons/* && npm run create-icons && npm run create-icons-story"
   },
   "dependencies": {
     "clsx": "^2.1.0",
