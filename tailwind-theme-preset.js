@@ -312,18 +312,17 @@ module.exports = {
       lg: '1240px',
       xl: '1600px',
     },
-    spacing: {
-      0: '0',
-      xs: '5px',
-      sm: '10px',
-      md: '20px',
-      lg: '40px',
-      xl: '60px',
-      xxl: '120px',
-      '3xl': '160px',
-    },
     extend: {
-      width: {
+      spacing: {
+        xs: '5px',
+        sm: '10px',
+        md: '20px',
+        lg: '40px',
+        xl: '60px',
+        xxl: '120px',
+        '3xl': '160px',
+      },
+      height: {
         xxs: '5px',
         xs: '10px',
         sm: '15px',
@@ -333,7 +332,7 @@ module.exports = {
         xxl: '80px',
         '3xl': '120px',
       },
-      height: {
+      width: {
         xxs: '5px',
         xs: '10px',
         sm: '15px',
