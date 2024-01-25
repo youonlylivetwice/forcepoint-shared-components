@@ -323,7 +323,7 @@ module.exports = {
         xxl: '120px',
         '3xl': '160px',
       },
-      height: {
+      width: {
         xxs: '5px',
         xs: '10px',
         sm: '15px',
@@ -333,7 +333,7 @@ module.exports = {
         xxl: '80px',
         '3xl': '120px',
       },
-      width: {
+      height: {
         xxs: '5px',
         xs: '10px',
         sm: '15px',
