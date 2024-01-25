@@ -18,7 +18,11 @@ export type MenuProps = {
   toggleMenu: (value: boolean) => void;
 };
 
-export default function Inline({ items, menuClass, toggleMenu }: MenuProps) {
+export default function SecondaryMenu({
+  items,
+  menuClass,
+  toggleMenu,
+}: MenuProps) {
   const [active, setActive] = useState<number | undefined>();
 
   /**
