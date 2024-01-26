@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { AnchorHTMLAttributes, ElementType, ReactNode } from 'react';
+import { cn } from '../../../util';
 
 export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   animated?: boolean;
@@ -25,19 +26,19 @@ const sizeLinkSchema = {
 };
 
 export default function Link({
-  animated,
-  children,
-  className,
+  animated = false,
   color = 'navy',
   component: Element = 'a',
-  disabled,
+  disabled = false,
   endIcon,
   size = 'small',
   startIcon,
-  underline,
+  underline = 'none',
+  className,
+  children,
   ...props
 }: LinkProps) {
-  const renderIcon = (icon: ReactNode) => {
+  function renderIcon(icon: ReactNode) {
     return (
       <div
         className={clsx(
@@ -51,12 +52,12 @@ export default function Link({
         {icon}
       </div>
     );
-  };
+  }
 
   return (
     <Element
-      className={clsx(
-        'group inline-flex items-center gap-sm text-h4 font-bold',
+      className={cn(
+        'group inline-flex items-center gap-sm font-bold',
         {
           'hover:underline hover:underline-offset-8': underline === 'hover',
           'underline underline-offset-8': underline === 'always',

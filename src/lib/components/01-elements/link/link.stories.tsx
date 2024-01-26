@@ -45,5 +45,6 @@ export const Default: Story = {
     size: 'large',
     underline: 'always',
     disabled: false,
+    className: '',
   },
 };
