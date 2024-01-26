@@ -33,6 +33,8 @@ export default {
 - [Link](./docs/link.md)
 - [Button](./docs/button.md)
 - [Typography](./docs/typography.md)
+- [Typography](./docs/typography.md)
+- [Language Switcher](./docs/languageSwitcher.md)
 
 ## Local development setup
 
