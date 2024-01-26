@@ -1,26 +1,30 @@
+import clsx from 'clsx';
 import { useState } from 'react';
-import Link from '../../../01-elements/link/link';
+import ArrowBottomIcon from '../../../00-tokens/icons/arrow-bottom-icon';
 import BackIcon from '../../../00-tokens/icons/back-icon';
 import CloseIcon from '../../../00-tokens/icons/close-icon';
+import GlobeIcon from '../../../00-tokens/icons/globe-icon';
+import Link from '../../../01-elements/link/link';
 import Typography from '../../../01-elements/typography/typography';
-import ArrowBottomIcon from '../../../00-tokens/icons/arrow-bottom-icon';
 
 export type MenuItemProps = {
+  active?: boolean;
   url?: string;
   title: string;
   below?: MenuItemProps[];
-  menuClass?: string;
 };
 
 export type MenuProps = {
   menuClass: string;
   items: MenuItemProps[];
+  isLanguageSwitcher?: boolean;
   toggleMenu: (value: boolean) => void;
 };
 
 export default function SecondaryMenu({
   items,
   menuClass,
+  isLanguageSwitcher,
   toggleMenu,
 }: MenuProps) {
   const [active, setActive] = useState<number | undefined>();
@@ -71,7 +75,7 @@ export default function SecondaryMenu({
    */
   const handleOnMouseOver = (item: MenuItemProps, index: number): void => {
     // Check if the menu item has sub-items
-    if (item.below && window.innerWidth >= 950) {
+    if (item.below && window.innerWidth >= 950 && !isLanguageSwitcher) {
       setActive(index);
     }
   };
@@ -83,7 +87,7 @@ export default function SecondaryMenu({
    */
   const handleOnMouseOut = (item: MenuItemProps): void => {
     // Check if the menu item has sub-items
-    if (item.below && window.innerWidth >= 950) {
+    if (item.below && window.innerWidth >= 950 && !isLanguageSwitcher) {
       setActive(-1);
     }
   };
@@ -96,7 +100,9 @@ export default function SecondaryMenu({
         <Link
           color="black"
           href={item.url}
-          className={`submenu-item flex flex-row items-center gap-x-xs`}
+          className={clsx('submenu-item flex flex-row items-center gap-x-xs', {
+            'text-brumosa hover:text-brumosa': item.active,
+          })}
         >
           <Typography
             variant="submenu-link"
@@ -104,7 +110,9 @@ export default function SecondaryMenu({
           >
             {item.title}
           </Typography>
-          <BackIcon className="h-[8px] w-[8px] rotate-180 rtl:rotate-0" />
+          {!isLanguageSwitcher && (
+            <BackIcon className="h-[8px] w-[8px] rotate-180 rtl:rotate-0" />
+          )}
         </Link>
       </li>
     );
@@ -117,7 +125,7 @@ export default function SecondaryMenu({
         className="absolute top-0 z-10 flex h-screen w-screen flex-col md:top-[100%] md:h-auto md:w-[280px]"
         onBlur={handleBlur}
       >
-        {/* Desktop Heading */}
+        {/* Mobile Heading */}
         <div className="mx-auto flex w-full flex-row items-center justify-center gap-md border-b border-b-mercury bg-white p-md md:hidden">
           <button onClick={() => handlerOpenSubmenu(-1)}>
             <BackIcon className="rotate-0 text-grey md:rotate-[90deg] md:text-brumosa" />
@@ -132,7 +140,7 @@ export default function SecondaryMenu({
             <CloseIcon className="text-grey" />
           </button>
         </div>
-        {/* Mobile Heading */}
+        {/* Desktop Heading */}
         <div className="flex w-full justify-center">
           <BackIcon className="hidden rotate-[90deg] text-brumosa md:block" />
         </div>
@@ -166,21 +174,24 @@ export default function SecondaryMenu({
         onMouseOver={() => handleOnMouseOver(item, index)}
         onMouseOut={() => handleOnMouseOut(item)}
       >
-        {item.url ? (
+        {item.url && (
           <Link href={item.url} className="w-full">
             {itemLabel}
           </Link>
-        ) : (
-          itemLabel
         )}
         {item.below && (
           <button
-            className="h-full outline-offset-4"
+            className={clsx(
+              'flex h-full items-center gap-xs outline-offset-4',
+              { 'w-full text-left': !item.url },
+            )}
             onClick={() => handlerOpenSubmenu(index)}
             aria-controls={`${menuClass}-submenu-${index}`}
-            aria-label={`${item.title} menu`}
+            aria-label={`${item.title} submenu`}
             aria-expanded={isActive}
           >
+            {isLanguageSwitcher && <GlobeIcon className="h-[16px] w-[16px]" />}
+            {!item.url && itemLabel}
             <ArrowBottomIcon
               className={`h-[16px] w-[16px] rotate-[270deg] rtl:rotate-90 md:h-[8px] md:w-[8px] md:rotate-0 rtl:md:rotate-0 ${
                 isActive ? 'md:rotate-180 rtl:md:rotate-180' : 'md:rotate-0'
