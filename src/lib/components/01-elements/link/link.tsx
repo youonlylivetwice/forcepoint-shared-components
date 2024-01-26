@@ -1,5 +1,5 @@
 import { AnchorHTMLAttributes, ElementType, ReactNode } from 'react';
-import { cn } from '../../../util';
+import { cn } from '../../../utils/tailwind-merge';
 
 export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   animated?: boolean;

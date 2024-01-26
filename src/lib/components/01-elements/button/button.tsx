@@ -5,7 +5,7 @@ import {
   ElementType,
   ReactNode,
 } from 'react';
-import { cn } from '../../../util';
+import { cn } from '../../../utils/tailwind-merge';
 
 type DefaultProps = {
   animated?: boolean;
