@@ -1,5 +1,5 @@
-import clsx from 'clsx';
 import { ElementType, ReactNode } from 'react';
+import { cn } from '../../../util';
 
 export type TypographyVariant =
   | 'colossus'
@@ -18,7 +18,7 @@ export type TypographyVariant =
   | 'body-3'
   | 'body-4'
   | 'body-5';
-  
+
 export type TypographyProps = {
   children: ReactNode;
   className?: string;
@@ -61,7 +61,7 @@ export default function Typography({
 }: TypographyProps) {
   return (
     <Element
-      className={clsx(variantTypographySchema[variant], className)}
+      className={cn(variantTypographySchema[variant], className)}
       {...props}
     >
       {children}

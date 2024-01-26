@@ -24,8 +24,8 @@ const meta = {
       options: ['solid', 'outline'],
       control: { type: 'select' },
     },
-    component: {
-      options: ['button', 'a'],
+    as: {
+      options: ['button', 'link'],
       control: { type: 'select' },
     },
     endIcon: {
@@ -62,5 +62,5 @@ Default.args = {
   endIcon: <ArrowRight />,
   size: 'medium',
   variant: 'solid',
-  component: 'button',
+  as: 'button',
 };

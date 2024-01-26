@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import { AnchorHTMLAttributes, ElementType, ReactNode } from 'react';
 import { cn } from '../../../util';
 
@@ -38,21 +37,19 @@ export default function Link({
   children,
   ...props
 }: LinkProps) {
-  function renderIcon(icon: ReactNode) {
-    return (
-      <div
-        className={clsx(
-          'transform transition-transform duration-200 rtl:rotate-180',
-          {
-            'group-hover:translate-x-[0.25rem] rtl:group-hover:translate-x-[-0.25rem]':
-              animated,
-          },
-        )}
-      >
-        {icon}
-      </div>
-    );
-  }
+  const renderIcon = (icon: ReactNode) => (
+    <div
+      className={cn(
+        'transform transition-transform duration-200 rtl:rotate-180',
+        {
+          'group-hover:translate-x-[0.25rem] rtl:group-hover:translate-x-[-0.25rem]':
+            animated,
+        },
+      )}
+    >
+      {icon}
+    </div>
+  );
 
   return (
     <Element

@@ -1,10 +1,17 @@
-// Based on medium.com/@boucekdev/polymorphic-react-button-or-link-component-in-typescript-9230a8bf0cdf
-import clsx from 'clsx';
-import { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'react';
+// Based on https://medium.com/@boucekdev/polymorphic-react-button-or-link-component-in-typescript-9230a8bf0cdf
+import {
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes,
+  ElementType,
+  ReactNode,
+} from 'react';
+import { cn } from '../../../util';
 
 type DefaultProps = {
   animated?: boolean;
   color?: 'navy' | 'viola' | 'white' | 'sandwisp';
+  component?: ElementType;
+  disabled?: boolean;
   endIcon?: ReactNode;
   size?: 'small' | 'medium' | 'large';
   startIcon?: ReactNode;
@@ -14,10 +21,10 @@ type DefaultProps = {
 export type ButtonProps = DefaultProps &
   (
     | (ButtonHTMLAttributes<HTMLButtonElement> & {
-        component: 'button';
+        as: 'button';
       })
     | (AnchorHTMLAttributes<HTMLAnchorElement> & {
-        component: 'a';
+        as: 'link';
       })
   );
 
@@ -49,6 +56,8 @@ const colorButtonSchema = {
 export default function Button({
   animated = false,
   color = 'navy',
+  component: Element = 'a',
+  disabled = false,
   endIcon,
   size = 'medium',
   startIcon,
@@ -57,36 +66,38 @@ export default function Button({
   className,
   ...props
 }: ButtonProps) {
-  function renderIcon(icon: ReactNode) {
-    return (
-      <div
-        className={clsx(
-          'transform transition-transform duration-200 rtl:rotate-180',
-          {
-            'group-hover:translate-x-[0.25rem] rtl:group-hover:translate-x-[-0.25rem]':
-              animated,
-          },
-        )}
-      >
-        {icon}
-      </div>
-    );
-  }
+  const renderIcon = (icon: ReactNode) => (
+    <div
+      className={cn(
+        'transform transition-transform duration-200 rtl:rotate-180',
+        {
+          'group-hover:translate-x-[0.25rem] rtl:group-hover:translate-x-[-0.25rem]':
+            animated,
+        },
+      )}
+    >
+      {icon}
+    </div>
+  );
 
-  const defaultClasses = clsx(
+  const defaultClasses = cn(
     'group inline-flex items-center gap-sm rounded-lg font-semibold',
+    {
+      'pointer-events-none': disabled,
+      'cursor-pointer': !disabled,
+    },
     colorButtonSchema[color][variant],
     sizeButtonSchema[size],
     className,
   );
 
-  if (props.component === 'a') {
+  if (props.as === 'link') {
     return (
-      <a className={defaultClasses} {...props}>
+      <Element className={defaultClasses} {...props}>
         {startIcon && renderIcon(startIcon)}
         {children}
         {endIcon && renderIcon(endIcon)}
-      </a>
+      </Element>
     );
   }
 
