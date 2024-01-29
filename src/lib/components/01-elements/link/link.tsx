@@ -1,5 +1,5 @@
-import clsx from 'clsx';
 import { AnchorHTMLAttributes, ElementType, ReactNode } from 'react';
+import { cn } from '../../../utils/tailwind-merge';
 
 export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   animated?: boolean;
@@ -25,38 +25,36 @@ const sizeLinkSchema = {
 };
 
 export default function Link({
-  animated,
-  children,
-  className,
+  animated = false,
   color = 'navy',
   component: Element = 'a',
-  disabled,
+  disabled = false,
   endIcon,
   size = 'small',
   startIcon,
-  underline,
+  underline = 'none',
+  className,
+  children,
   ...props
 }: LinkProps) {
-  const renderIcon = (icon: ReactNode) => {
-    return (
-      <div
-        className={clsx(
-          'transform transition-transform duration-200 rtl:rotate-180',
-          {
-            'group-hover:translate-x-[0.25rem] rtl:group-hover:translate-x-[-0.25rem]':
-              animated,
-          },
-        )}
-      >
-        {icon}
-      </div>
-    );
-  };
+  const renderIcon = (icon: ReactNode) => (
+    <div
+      className={cn(
+        'transform transition-transform duration-200 rtl:rotate-180',
+        {
+          'group-hover:translate-x-[0.25rem] rtl:group-hover:translate-x-[-0.25rem]':
+            animated,
+        },
+      )}
+    >
+      {icon}
+    </div>
+  );
 
   return (
     <Element
-      className={clsx(
-        'group inline-flex items-center gap-sm text-h4 font-bold',
+      className={cn(
+        'group inline-flex items-center gap-sm font-bold',
         {
           'hover:underline hover:underline-offset-8': underline === 'hover',
           'underline underline-offset-8': underline === 'always',
