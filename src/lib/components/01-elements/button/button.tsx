@@ -91,21 +91,15 @@ export default function Button({
     className,
   );
 
-  if (props.as === 'link') {
-    return (
-      <Element className={defaultClasses} {...props}>
-        {startIcon && renderIcon(startIcon)}
-        {children}
-        {endIcon && renderIcon(endIcon)}
-      </Element>
-    );
+  if (props.as === 'button') {
+    Element = 'button';
   }
 
   return (
-    <button className={defaultClasses} {...props}>
+    <Element className={defaultClasses} {...props}>
       {startIcon && renderIcon(startIcon)}
       {children}
       {endIcon && renderIcon(endIcon)}
-    </button>
+    </Element>
   );
 }
