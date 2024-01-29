@@ -21,7 +21,7 @@ type DefaultProps = {
 export type ButtonProps = DefaultProps &
   (
     | (ButtonHTMLAttributes<HTMLButtonElement> & {
-        as: 'button';
+        as?: 'button';
       })
     | (AnchorHTMLAttributes<HTMLAnchorElement> & {
         as: 'link';
