@@ -20,7 +20,7 @@ export default function Branding({
     <Link href={href} {...props}>
       <img
         src={src}
-        alt={`${alt}`}
+        alt={alt}
         {...(width && { width })}
         {...(height && { height })}
       />
