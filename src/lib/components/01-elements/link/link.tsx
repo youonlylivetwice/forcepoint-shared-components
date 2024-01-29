@@ -1,45 +1,75 @@
-import NextLink, { LinkProps as NextLinkProps } from 'next/link';
-import React from 'react';
+import { AnchorHTMLAttributes, ElementType, ReactNode } from 'react';
+import { cn } from '../../../utils/tailwind-merge';
 
-export type LinkProps = NextLinkProps & {
-  disabled?: boolean;
-  size?: 'small' | 'large';
-  children?: React.ReactNode;
-  variant?: 'underline' | 'default';
+export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
+  animated?: boolean;
   color?: 'navy' | 'viola' | 'white' | 'sandwisp';
+  component?: ElementType;
+  disabled?: boolean;
+  endIcon?: ReactNode;
+  size?: 'small' | 'large';
+  startIcon?: ReactNode;
+  underline?: 'none' | 'hover' | 'always';
 };
 
-const colorClasses = {
+const colorLinkSchema = {
   navy: 'text-navy hover:text-teal',
+  sandwisp: 'text-white hover:text-sandwisp',
   viola: 'text-viola hover:text-teal',
   white: 'text-white hover:text-teal',
-  sandwisp: 'text-white hover:text-sandwisp',
 };
 
-const fontSizeClasses = {
-  small: 'text-h5',
+const sizeLinkSchema = {
   large: 'text-h4',
+  small: 'text-h5',
 };
 
 export default function Link({
-  variant = 'default',
+  animated = false,
   color = 'navy',
+  component: Element = 'a',
+  disabled = false,
+  endIcon,
   size = 'small',
+  startIcon,
+  underline = 'none',
+  className,
   children,
-  disabled,
   ...props
 }: LinkProps) {
-  const linkClasses = [
-    'inline-flex items-center gap-sm text-h4 font-bold',
-    variant === 'underline' ? 'underline underline-offset-8' : '',
-    disabled ? 'opacity-60 pointer-events-none' : 'cursor-pointer',
-    fontSizeClasses[size],
-    colorClasses[color],
-  ];
+  const renderIcon = (icon: ReactNode) => (
+    <div
+      className={cn(
+        'transform transition-transform duration-200 rtl:rotate-180',
+        {
+          'group-hover:translate-x-[0.25rem] rtl:group-hover:translate-x-[-0.25rem]':
+            animated,
+        },
+      )}
+    >
+      {icon}
+    </div>
+  );
 
   return (
-    <NextLink className={linkClasses.join(' ')} {...props}>
+    <Element
+      className={cn(
+        'group inline-flex items-center gap-sm font-bold',
+        {
+          'hover:underline hover:underline-offset-8': underline === 'hover',
+          'underline underline-offset-8': underline === 'always',
+          'pointer-events-none opacity-60': disabled,
+          'cursor-pointer': !disabled,
+        },
+        colorLinkSchema[color],
+        sizeLinkSchema[size],
+        className,
+      )}
+      {...props}
+    >
+      {startIcon && renderIcon(startIcon)}
       {children}
-    </NextLink>
+      {endIcon && renderIcon(endIcon)}
+    </Element>
   );
 }
