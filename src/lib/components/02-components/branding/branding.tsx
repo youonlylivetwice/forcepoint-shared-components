@@ -22,7 +22,7 @@ export default function Branding({
     <Element href={href} {...props}>
       <img
         src={src}
-        alt={`${alt}`}
+        alt={alt}
         {...(width && { width })}
         {...(height && { height })}
       />
