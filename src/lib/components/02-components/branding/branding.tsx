@@ -1,29 +1,31 @@
-import Link from 'next/link';
+import { AnchorHTMLAttributes, ElementType } from 'react';
 
-export type BrandingProps = {
+export type BrandingProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
+  alt: string;
+  component?: ElementType;
+  height?: string;
   href?: string;
   src: string;
-  alt: string;
   width?: string;
-  height?: string;
 };
 
 export default function Branding({
-  href = '/',
   alt,
+  component: Element = 'a',
+  height,
+  href = '/',
   src,
   width,
-  height,
   ...props
 }: BrandingProps) {
   return (
-    <Link href={href} {...props}>
+    <Element href={href} {...props}>
       <img
         src={src}
         alt={`${alt}`}
         {...(width && { width })}
         {...(height && { height })}
       />
-    </Link>
+    </Element>
   );
 }
