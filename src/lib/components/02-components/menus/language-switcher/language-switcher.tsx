@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import SecondaryMenu, { MenuItemProps } from '../secondary-menu/secondary-menu';
 
 interface LanguageSwitcherProps {
@@ -41,34 +40,26 @@ export default function LanguageSwitcher({
   locales,
   url,
 }: LanguageSwitcherProps) {
-  const [items, setItems] = useState<MenuItemProps[]>([]);
-  useEffect(() => {
-    let activeLocaleText = matchLanguage[activeLocale];
-    if (activeLocaleText.length > 10) {
-      activeLocaleText = `${activeLocaleText.slice(0, 10)}...`;
+    const activeIndex = locales.findIndex(locale => locale === activeLocale);
+    if (activeIndex > 0) {
+      const [activeItem] = locales.splice(activeIndex, 1);
+      locales.unshift(activeItem);
     }
 
-    const belowItems: MenuItemProps = { title: activeLocaleText, below: [] };
+    const belowItems: MenuItemProps[] = locales.map(locale => ({
+      title: matchLanguage[locale],
+      url: `/${locale}/${url}`,
+      active: activeLocale === locale,
+    }));
 
-    locales.sort((a, b) => {
-      if (a === activeLocale) return -1;
-      if (b === activeLocale) return 1;
-      return 0;
-    });
-
-    locales.forEach((locale) => {
-      belowItems.below?.push({
-        title: matchLanguage[locale],
-        url: `#${locale}/${url}`,
-        active: activeLocale === locale,
-      });
-    });
-    setItems([belowItems]);
-  }, [activeLocale]);
+    const menuItems: MenuItemProps = {
+      title: matchLanguage[activeLocale],
+      below: belowItems
+    };
 
   return (
     <SecondaryMenu
-      items={items}
+      items={[menuItems]}
       menuClass="language-switcher"
       toggleMenu={() => {}}
       isLanguageSwitcher={true}
