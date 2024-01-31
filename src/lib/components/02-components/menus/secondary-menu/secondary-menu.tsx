@@ -1,16 +1,17 @@
 import { ElementType, useState } from 'react';
 import { cn } from '../../../../utils/tailwind-merge';
+import ArrowBottomIcon from '../../../00-tokens/icons/arrow-bottom-icon';
+import ArrowExitIcon from '../../../00-tokens/icons/arrow-exit-icon';
 import BackIcon from '../../../00-tokens/icons/back-icon';
 import CloseIcon from '../../../00-tokens/icons/close-icon';
 import GlobeIcon from '../../../00-tokens/icons/globe-icon';
 import Link, { LinkProps } from '../../../01-elements/link/link';
 import Typography from '../../../01-elements/typography/typography';
-import ArrowExitIcon from '../../../00-tokens/icons/arrow-exit-icon';
-import ArrowBottomIcon from '../../../00-tokens/icons/arrow-bottom-icon';
 
 export type MenuItemProps = {
   active?: boolean;
   below?: MenuItemProps[];
+  linkProps?: LinkProps;
   title: string;
   url?: string;
 };
@@ -20,7 +21,6 @@ export type MenuProps = {
   isLanguageSwitcher?: boolean;
   items: MenuItemProps[];
   linkComponent?: ElementType;
-  linkProps?: LinkProps;
   menuClass: string;
 };
 
@@ -29,7 +29,6 @@ export default function SecondaryMenu({
   isLanguageSwitcher,
   items,
   linkComponent: LinkComponent = 'a',
-  linkProps,
   menuClass,
 }: MenuProps) {
   const [active, setActive] = useState<number | undefined>();
@@ -112,7 +111,7 @@ export default function SecondaryMenu({
               'text-brumosa hover:text-brumosa': item.active,
             },
           )}
-          {...linkProps}
+          {...item.linkProps}
         >
           <span className="text-right text-h5 font-semibold text-inherit md:text-h6">
             {item.title}
@@ -199,11 +198,11 @@ export default function SecondaryMenu({
       >
         {item.url && (
           <Link
-            href={item.url}
-            component={LinkComponent}
             className="w-full"
             color="inherit"
-            {...linkProps}
+            component={LinkComponent}
+            href={item.url}
+            {...item.linkProps}
           >
             {itemLabel}
           </Link>
