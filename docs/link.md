@@ -16,7 +16,7 @@ import { Link } from 'forcepoint-shared-components';
 | children | `node` | `-` | The content of the component. |
 | className | `string` | `-` | Additional CSS classes to apply to the link. |
 | color | `navy` \| `viola` \| `white` \| `sandwisp` | `navy` | Sets the color theme of the link. |
-| component | `elementType` | `a` | The component used for the root node. Either a string to use an HTML element or a component. |
+| component | `elementType` | `a` | Specifies the root node's element type. It accepts a string for a standard HTML `a` element or a custom component. For example, in a Next.js application, you can use `next/link` as the `Component` to integrate with Next.js's routing. |
 | disabled | `bool` | `false` | Disables the link if set to `true`. |
 | endIcon | `node` | `-` | Content to be placed at the end of the link. |
 | size | `small` \| `large` | `small` | Sets the size of the link. |

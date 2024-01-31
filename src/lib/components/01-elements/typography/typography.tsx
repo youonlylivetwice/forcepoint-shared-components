@@ -1,5 +1,5 @@
-import clsx from 'clsx';
 import { ElementType, ReactNode } from 'react';
+import { cn } from '../../../utils/tailwind-merge';
 
 export type TypographyVariant =
   | 'colossus'
@@ -61,7 +61,7 @@ export default function Typography({
 }: TypographyProps) {
   return (
     <Element
-      className={clsx(variantTypographySchema[variant], className)}
+      className={cn(variantTypographySchema[variant], className)}
       {...props}
     >
       {children}

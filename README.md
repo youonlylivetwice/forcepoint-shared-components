@@ -30,8 +30,9 @@ export default {
 
 ### Components API
 
-- [Link](./docs/link.md)
+- [Branding](./docs/branding.md)
 - [Button](./docs/button.md)
+- [Link](./docs/link.md)
 - [Typography](./docs/typography.md)
 
 ## Local development setup
