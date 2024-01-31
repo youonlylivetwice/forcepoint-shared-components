@@ -30,10 +30,12 @@ export default {
 
 ### Components API
 
-- [Link](./docs/link.md)
+- [Branding](./docs/branding.md)
 - [Button](./docs/button.md)
-- [Typography](./docs/typography.md)
 - [Language Switcher](./docs/languageSwitcher.md)
+- [Link](./docs/link.md)
+- [Secondary Menu](./docs/secondaryMenu.md)
+- [Typography](./docs/typography.md)
 
 ## Local development setup
 

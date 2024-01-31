@@ -1,13 +1,14 @@
-import clsx from 'clsx';
-import { AnchorHTMLAttributes, ElementType, ReactNode } from 'react';
+// Based on https://medium.com/@boucekdev/polymorphic-react-button-or-link-component-in-typescript-9230a8bf0cdf
+import {
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes,
+  ElementType,
+  ReactNode,
+} from 'react';
+import { cn } from '../../../utils/tailwind-merge';
 
-export type ButtonProps = (
-  | AnchorHTMLAttributes<HTMLButtonElement>
-  | AnchorHTMLAttributes<HTMLAnchorElement>
-) & {
+type DefaultProps = {
   animated?: boolean;
-  children?: ReactNode;
-  className?: string;
   color?: 'navy' | 'viola' | 'white' | 'sandwisp';
   component?: ElementType;
   disabled?: boolean;
@@ -16,6 +17,16 @@ export type ButtonProps = (
   startIcon?: ReactNode;
   variant?: 'solid' | 'outline';
 };
+
+export type ButtonProps = DefaultProps &
+  (
+    | (ButtonHTMLAttributes<HTMLButtonElement> & {
+        as?: 'button';
+      })
+    | (AnchorHTMLAttributes<HTMLAnchorElement> & {
+        as: 'link';
+      })
+  );
 
 const sizeButtonSchema = {
   large: 'text-h4 px-lg py-[1rem]',
@@ -43,47 +54,49 @@ const colorButtonSchema = {
 };
 
 export default function Button({
-  animated,
-  children,
-  className,
+  animated = false,
   color = 'navy',
-  component: Element = 'button',
+  component: Element = 'a',
+  disabled = false,
   endIcon,
   size = 'medium',
   startIcon,
   variant = 'solid',
+  children,
+  className,
   ...props
 }: ButtonProps) {
-  const renderIcon = (icon: ReactNode) => {
-    return (
-      <div
-        className={clsx(
-          'transform transition-transform duration-200 rtl:rotate-180',
-          {
-            'group-hover:translate-x-[0.25rem] rtl:group-hover:translate-x-[-0.25rem]':
-              animated,
-          },
-        )}
-      >
-        {icon}
-      </div>
-    );
-  };
+  const renderIcon = (icon: ReactNode) => (
+    <div
+      className={cn(
+        'transform transition-transform duration-200 rtl:rotate-180',
+        {
+          'group-hover:translate-x-[0.25rem] rtl:group-hover:translate-x-[-0.25rem]':
+            animated,
+        },
+      )}
+    >
+      {icon}
+    </div>
+  );
+
+  const defaultClasses = cn(
+    'group inline-flex items-center gap-sm rounded-lg font-semibold',
+    {
+      'pointer-events-none': disabled,
+      'cursor-pointer': !disabled,
+    },
+    colorButtonSchema[color][variant],
+    sizeButtonSchema[size],
+    className,
+  );
+
+  if (props.as === 'button') {
+    Element = 'button';
+  }
 
   return (
-    <Element
-      className={clsx(
-        'group inline-flex items-center gap-sm rounded-lg font-semibold',
-        {
-          'pointer-events-none': props.disabled,
-          'cursor-pointer': !props.disabled,
-        },
-        colorButtonSchema[color][variant],
-        sizeButtonSchema[size],
-        className,
-      )}
-      {...props}
-    >
+    <Element className={defaultClasses} {...props}>
       {startIcon && renderIcon(startIcon)}
       {children}
       {endIcon && renderIcon(endIcon)}
