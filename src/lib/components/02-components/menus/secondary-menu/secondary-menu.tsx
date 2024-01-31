@@ -1,6 +1,6 @@
-import clsx from 'clsx';
 import { useState } from 'react';
 import Link from '../../../01-elements/link/link';
+import { cn } from '../../../../utils/tailwind-merge';
 import BackIcon from '../../../00-tokens/icons/back-icon';
 import CloseIcon from '../../../00-tokens/icons/close-icon';
 import GlobeIcon from '../../../00-tokens/icons/globe-icon';
@@ -100,7 +100,7 @@ export default function SecondaryMenu({
         <Link
           color="black"
           href={item.url}
-          className={clsx(
+          className={cn(
             'submenu-item flex w-full flex-row items-center gap-x-xs py-sm md:py-0',
             {
               'text-brumosa hover:text-brumosa': item.active,
@@ -122,7 +122,7 @@ export default function SecondaryMenu({
     return (
       <div
         id={`${menuClass}-submenu-${index}`}
-        className={clsx(
+        className={cn(
           'absolute top-0 z-10 flex h-screen w-full flex-col md:top-[100%] md:h-auto md:w-[280px]',
           { hidden: active !== index },
         )}
@@ -166,7 +166,7 @@ export default function SecondaryMenu({
     const itemLabel = (
       <Typography
         variant="h6"
-        className={clsx(
+        className={cn(
           'w-full py-md font-semibold uppercase text-inherit rtl:text-right md:py-0',
           {
             'w-[86px] overflow-hidden text-ellipsis whitespace-nowrap':
@@ -180,7 +180,7 @@ export default function SecondaryMenu({
     return (
       <li
         key={`${menuClass}-item-${index}`}
-        className={clsx(
+        className={cn(
           'group flex flex-row items-center justify-center text-grey hover:text-teal md:relative md:gap-xs',
           { 'text-teal': isActive },
         )}
@@ -195,7 +195,7 @@ export default function SecondaryMenu({
         {item.below && (
           <>
             <button
-              className={clsx(
+              className={cn(
                 'flex h-full items-center gap-xs outline-offset-4',
                 { 'w-full text-left': !item.url },
                 {

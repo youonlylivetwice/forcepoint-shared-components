@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import MenuIcon from '../../../00-tokens/icons/menu-icon';
 import CloseIcon from '../../../00-tokens/icons/close-icon';
@@ -108,7 +108,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = ({ items, menuClass }: MenuProps) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
 
   const secondaryMenuRendered = () => (
     <SecondaryMenu
@@ -121,7 +121,7 @@ export const Default: Story = ({ items, menuClass }: MenuProps) => {
   return (
     <div className="relative">
       <div className="hidden md:block">{secondaryMenuRendered()}</div>
-      {/* Mobile Heading */}
+      {/* Mobile Header */}
       <div className="flex w-full flex-row items-center justify-center bg-white md:hidden">
         <div className="flex-1">
           <Typography variant="h3" className="text-grey">
