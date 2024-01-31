@@ -34,6 +34,7 @@ export default {
 - [Button](./docs/button.md)
 - [Link](./docs/link.md)
 - [Typography](./docs/typography.md)
+- [Secondary Menu](./docs/secondaryMenu.md)
 
 ## Local development setup
 
