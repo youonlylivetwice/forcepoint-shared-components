@@ -23,5 +23,6 @@ import { SecondaryMenu } from 'forcepoint-shared-components';
 | --- | --- | --- | --- |
 | active | `boolean` | `false` | Indicates if the menu item is currently active. |
 | below | `MenuItemProps[]` | `-` | Sub-menu items for a nested menu. |
+| linkComponent | `elementType` | `a` | Specifies the link node's element type. It accepts a string for a standard HTML `a` element or a custom component. For example, in a Next.js application, you can use `next/link` as the `Component` to integrate with Next.js's routing. |
 | title | `string` | `-` | The display text for the menu item. |
 | url | `string` | `-` | The URL associated with the menu item. |

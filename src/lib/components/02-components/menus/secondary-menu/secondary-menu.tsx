@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ElementType, useState } from 'react';
 import Link from '../../../01-elements/link/link';
 import { cn } from '../../../../utils/tailwind-merge';
 import BackIcon from '../../../00-tokens/icons/back-icon';
@@ -18,6 +18,7 @@ export type MenuProps = {
   handlerCloseMenu: () => void;
   isLanguageSwitcher?: boolean;
   items: MenuItemProps[];
+  linkComponent?: ElementType;
   menuClass: string;
 };
 
@@ -25,6 +26,7 @@ export default function SecondaryMenu({
   handlerCloseMenu,
   isLanguageSwitcher,
   items,
+  linkComponent: LinkComponent = 'a',
   menuClass,
 }: MenuProps) {
   const [active, setActive] = useState<number | undefined>();
@@ -100,6 +102,7 @@ export default function SecondaryMenu({
         <Link
           color="black"
           href={item.url}
+          component={LinkComponent}
           className={cn(
             'submenu-item flex w-full flex-row items-center gap-x-xs py-sm md:py-0',
             {
@@ -188,7 +191,7 @@ export default function SecondaryMenu({
         onMouseOut={() => handleOnMouseOut(item)}
       >
         {item.url && (
-          <Link href={item.url} className="w-full" color="inherit">
+          <Link href={item.url} component={LinkComponent} className="w-full" color="inherit">
             {itemLabel}
           </Link>
         )}
