@@ -17,8 +17,7 @@ export type TypographyVariant =
   | 'body-2'
   | 'body-3'
   | 'body-4'
-  | 'body-5'
-  | 'submenu-link';
+  | 'body-5';
 
 export type TypographyProps = {
   children: ReactNode;
@@ -51,8 +50,6 @@ const variantTypographySchema: { [key in TypographyVariant]: string } = {
   'body-3': 'text-body-3',
   'body-4': 'text-body-4',
   'body-5': 'text-body-5',
-  // Menus.
-  'submenu-link': 'text-h5 md:text-h6',
 };
 
 export default function Typography({

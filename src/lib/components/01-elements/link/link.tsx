@@ -3,7 +3,14 @@ import { AnchorHTMLAttributes, ElementType, ReactNode } from 'react';
 
 export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   animated?: boolean;
-  color?: 'navy' | 'viola' | 'white' | 'sandwisp' | 'grey' | 'black' | 'inline';
+  color?:
+    | 'navy'
+    | 'viola'
+    | 'white'
+    | 'sandwisp'
+    | 'grey'
+    | 'black'
+    | 'inherit';
   component?: ElementType;
   disabled?: boolean;
   endIcon?: ReactNode;
@@ -19,7 +26,7 @@ const colorLinkSchema = {
   white: 'text-white hover:text-teal',
   grey: 'text-grey hover:text-teal',
   black: 'text-black hover:text-teal',
-  inline: 'text-inline',
+  inherit: 'text-inherit',
 };
 
 const sizeLinkSchema = {
@@ -31,7 +38,7 @@ export default function Link({
   animated,
   children,
   className,
-  color = 'inline',
+  color = 'navy',
   component: Element = 'a',
   disabled,
   endIcon,
