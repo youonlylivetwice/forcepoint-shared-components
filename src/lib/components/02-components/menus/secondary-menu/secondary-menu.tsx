@@ -6,6 +6,7 @@ import CloseIcon from '../../../00-tokens/icons/close-icon';
 import GlobeIcon from '../../../00-tokens/icons/globe-icon';
 import Typography from '../../../01-elements/typography/typography';
 import ArrowBottomIcon from '../../../00-tokens/icons/arrow-bottom-icon';
+import ArrowExitIcon from '../../../00-tokens/icons/arrow-exit-icon';
 
 export type MenuItemProps = {
   active?: boolean;
@@ -113,9 +114,12 @@ export default function SecondaryMenu({
           <span className="text-right text-h5 font-semibold text-inherit md:text-h6">
             {item.title}
           </span>
-          {!isLanguageSwitcher && (
-            <BackIcon className="h-[8px] w-[8px] rotate-180 rtl:rotate-0" />
-          )}
+          {!isLanguageSwitcher &&
+            (item.url.startsWith('https') ? (
+              <ArrowExitIcon className="h-[16px] w-[16px] rtl:rotate-180" />
+            ) : (
+              <BackIcon className="h-[8px] w-[8px] rotate-180 rtl:rotate-0" />
+            ))}
         </Link>
       </li>
     );
@@ -191,7 +195,12 @@ export default function SecondaryMenu({
         onMouseOut={() => handleOnMouseOut(item)}
       >
         {item.url && (
-          <Link href={item.url} component={LinkComponent} className="w-full" color="inherit">
+          <Link
+            href={item.url}
+            component={LinkComponent}
+            className="w-full"
+            color="inherit"
+          >
             {itemLabel}
           </Link>
         )}

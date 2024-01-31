@@ -16,7 +16,7 @@ const menuItems: MenuItemProps[] = [
     below: [
       {
         title: 'Partner Login',
-        url: '#',
+        url: 'https://partners.forcepoint.com/s/login/',
       },
       {
         title: 'Find a Partner',
@@ -45,7 +45,7 @@ const menuItems: MenuItemProps[] = [
     below: [
       {
         title: 'Support Login',
-        url: '#',
+        url: 'https://support.forcepoint.com/s/',
       },
       {
         title: 'Professional Services',
