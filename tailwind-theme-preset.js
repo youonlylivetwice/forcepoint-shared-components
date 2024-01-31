@@ -37,6 +37,7 @@ module.exports = {
     },
     colors: {
       none: 'none',
+      inherit: 'inherit',
       transparent: 'transparent',
       current: 'currentColor',
       navy: {
@@ -325,6 +326,16 @@ module.exports = {
         xxl: '120px',
         '3xl': '160px',
       },
+      width: {
+        xxs: '5px',
+        xs: '10px',
+        sm: '15px',
+        md: '20px',
+        lg: '30px',
+        xl: '50px',
+        xxl: '80px',
+        '3xl': '120px',
+      },
       height: {
         xxs: '5px',
         xs: '10px',
@@ -335,15 +346,8 @@ module.exports = {
         xxl: '80px',
         '3xl': '120px',
       },
-      width: {
-        xxs: '5px',
-        xs: '10px',
-        sm: '15px',
-        md: '20px',
-        lg: '30px',
-        xl: '50px',
-        xxl: '80px',
-        '3xl': '120px',
+      boxShadow: {
+        md: '0px 4px 10px 0px rgba(29, 37, 44, 0.20)',
       },
     },
   },

@@ -3,7 +3,14 @@ import { cn } from '../../../utils/tailwind-merge';
 
 export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   animated?: boolean;
-  color?: 'navy' | 'viola' | 'white' | 'sandwisp';
+  color?:
+    | 'navy'
+    | 'viola'
+    | 'white'
+    | 'sandwisp'
+    | 'grey'
+    | 'black'
+    | 'inherit';
   component?: ElementType;
   disabled?: boolean;
   endIcon?: ReactNode;
@@ -17,6 +24,9 @@ const colorLinkSchema = {
   sandwisp: 'text-white hover:text-sandwisp',
   viola: 'text-viola hover:text-teal',
   white: 'text-white hover:text-teal',
+  grey: 'text-grey hover:text-teal',
+  black: 'text-black hover:text-teal',
+  inherit: 'text-inherit',
 };
 
 const sizeLinkSchema = {
