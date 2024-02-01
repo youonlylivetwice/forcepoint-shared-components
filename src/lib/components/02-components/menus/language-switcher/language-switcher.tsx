@@ -8,7 +8,7 @@ interface Locale {
   localeName: string;
 }
 
-interface LanguageSwitcherProps {
+export interface LanguageSwitcherProps {
   linkComponent?: ElementType;
   locales: Locale[];
   url: string;
