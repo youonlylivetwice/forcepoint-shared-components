@@ -11,7 +11,9 @@ import Typography from '../../../01-elements/typography/typography';
 export type MenuItemProps = {
   active?: boolean;
   below?: MenuItemProps[];
-  linkProps?: {};
+  linkProps?: {
+    [key: string]: string;
+  };
   title: string;
   url?: string;
 };

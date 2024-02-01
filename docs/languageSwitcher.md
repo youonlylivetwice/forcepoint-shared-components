@@ -10,17 +10,15 @@ import { SecondaryMenu } from 'forcepoint-shared-components';
 
 ## Props
 
-```
 | Name          | Type          | Default | Description                                           |
 |---------------|---------------|---------|-------------------------------------------------------|
 | locales       | `Locale[]`    | –       | Required. The available locales with additional properties. See below for more specifics     |
 | url           | `string`      | –       | Required. The URL to use for the links. If the `URL` includes the locale code it needs to be removed.`/`                         |
 | linkComponent | `ElementType` | 'a'     | Optional. Specifies the root node's element type. It accepts a string for a standard HTML `a` element or a custom component. For example, in a Next.js application, you can use `next/link` as the `Component` to integrate with Next.js's routing.           |
-```
 
-## `Locale` Interface
+## `Locale` Type
 
-The `Locale` interface defines the structure for localization options within the LanguageSwitcher component.
+The `Locale` type defines the structure for localization options within the LanguageSwitcher component.
 
 | Property    | Type      | Description                                                     |
 |-------------|-----------|-----------------------------------------------------------------|
@@ -29,22 +27,23 @@ The `Locale` interface defines the structure for localization options within the
 | active      | `boolean` | Required.Indicates whether the locale is currently selected.             |
 | linkProps   | `object`  | Optional. Additional properties to pass to the link component.  |
 
-
 ## Additional notes
 
 Each entry within the `locales` array corresponds to a unique link in the language switcher. Exactly one of these should be designated as the active locale to indicate the current language selection. The `linkProps` parameter within each locale allows for the inclusion of supplementary properties that may be necessary for individual links. This feature is particularly useful when a specific attribute, such as `locale`, must be passed to the link for enhanced functionality or tracking purposes. Below is an illustrative example demonstrating the structure of a `Locale` object with additional properties:
 
-## Interfaces
+## Type
 
 ```typescript
-interface Locale {
+type Locale =  {
   localeCode: string;
   localeName: string;
   active: boolean;
-  linkProps?: object;
+  linkProps?: {
+    [key: string]: string;
+  }
 }
 
-interface LanguageSwitcherProps {
+type LanguageSwitcherProps =  {
   locales: Locale[];
   url: string;
   linkComponent?: ElementType;

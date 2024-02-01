@@ -1,18 +1,20 @@
 import { ElementType } from 'react';
 import SecondaryMenu, { MenuItemProps } from '../secondary-menu/secondary-menu';
 
-export interface Locale {
+export type Locale = {
   active: boolean;
-  linkProps?: {};
+  linkProps?: {
+    [key: string]: string;
+  };
   localeCode: string;
   localeName: string;
-}
+};
 
-export interface LanguageSwitcherProps {
+export type LanguageSwitcherProps = {
   linkComponent?: ElementType;
   locales: Locale[];
   url: string;
-}
+};
 
 export default function LanguageSwitcher({
   linkComponent: LinkComponent = 'a',
