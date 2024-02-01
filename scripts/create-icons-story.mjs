@@ -38,7 +38,7 @@ async function createIconsStoryFile(directory) {
 
     const storyFileContent = `${storyImports}
 const meta = {
-  title: 'Elements/Icons',
+  title: 'Tokens/Icons',
 };
 
 export default meta;
@@ -65,6 +65,6 @@ ${iconComponents}
   }
 }
 
-const iconsComponentsDirectory = './src/lib/components/02-components/icons';
+const iconsComponentsDirectory = './src/lib/components/00-tokens/icons';
 
 createIconsStoryFile(iconsComponentsDirectory);

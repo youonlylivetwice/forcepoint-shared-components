@@ -13,6 +13,29 @@ React Shared Components Library System for Forcepoint. Built on Vite.
 | CSS Framework | [TailwindCSS](https://tailwindcss.com/) |
 | Node | 18 |
 
+## Library reference
+
+### Include the Tailwind preset
+
+```js
+import type { Config } from 'tailwindcss';
+import themePreset from './node_modules/forcepoint-shared-components/dist/tailwind-theme-preset.js';
+
+export default {
+  presets: [themePreset],
+  content: ['./src/lib/**/*.{ts,tsx}'],
+} satisfies Config;
+
+```
+
+### Components API
+
+- [Branding](./docs/branding.md)
+- [Button](./docs/button.md)
+- [Link](./docs/link.md)
+- [Typography](./docs/typography.md)
+- [Secondary Menu](./docs/secondaryMenu.md)
+
 ## Local development setup
 
 - Clone the repository
@@ -25,7 +48,3 @@ automatically switch to the correct Node version
 
 - In the Frontend Site, run `npm run link:forcepoint-shared-components`
 - In this project, run `npm run dev`
-
-## Publish Tailwind Preset
-
-- Copy the content you want to export from `tailwind.config.ts` to `./public/tailwind.config.ts` file.

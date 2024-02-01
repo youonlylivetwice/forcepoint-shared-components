@@ -1,3 +1,6 @@
+/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-var-requires */
+// eslint-disable-next-line no-undef
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   theme: {
@@ -34,6 +37,7 @@ module.exports = {
     },
     colors: {
       none: 'none',
+      inherit: 'inherit',
       transparent: 'transparent',
       current: 'currentColor',
       navy: {
@@ -312,17 +316,16 @@ module.exports = {
       lg: '1240px',
       xl: '1600px',
     },
-    spacing: {
-      0: '0',
-      xs: '5px',
-      sm: '10px',
-      md: '20px',
-      lg: '40px',
-      xl: '60px',
-      xxl: '120px',
-      '3xl': '160px',
-    },
     extend: {
+      spacing: {
+        xs: '5px',
+        sm: '10px',
+        md: '20px',
+        lg: '40px',
+        xl: '60px',
+        xxl: '120px',
+        '3xl': '160px',
+      },
       width: {
         xxs: '5px',
         xs: '10px',
@@ -342,6 +345,9 @@ module.exports = {
         xl: '50px',
         xxl: '80px',
         '3xl': '120px',
+      },
+      boxShadow: {
+        md: '0px 4px 10px 0px rgba(29, 37, 44, 0.20)',
       },
     },
   },
