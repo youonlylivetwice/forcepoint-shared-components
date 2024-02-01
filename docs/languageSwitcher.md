@@ -1,18 +1,77 @@
-# Language Switcher Component API
+# LanguageSwitcher Component Documentation
 
-The Language Switcher component API provides a flexible and comprehensive set of options for managing language switching within the user interface.
-This component takes advantage of the [Secondary Menu component](./docs/SecondaryMenu.md)
+This component takes advantage of the `SecondaryMenu` component and allows switching between different languages.
 
 ## Import
 
-```jsx
-import { LanguageSwitcher } from 'forcepoint-shared-components';
+```typescript
+import { SecondaryMenu } from 'forcepoint-shared-components';
 ```
 
 ## Props
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| activeLocale | `string` | `en` | The currently active locale. |
-| locales | `string[]` | `-` | The available locales. The supported locales are: `en`, `es`, `fr`, `de`, `it`, `ja`, `ko`, `pt-br`, `tr`, `zh-hans`, `zh-hant`, `ar`. |
-| url | `string` | `-` | The URL to use for the links. |
+```
+| Name          | Type          | Default | Description                                           |
+|---------------|---------------|---------|-------------------------------------------------------|
+| locales       | `Locale[]`    | –       | Required. The available locales with additional properties. See below for more specifics     |
+| url           | `string`      | –       | Required. The URL to use for the links. If the `URL` includes the locale code it needs to be removed.`/`                         |
+| linkComponent | `ElementType` | 'a'     | Optional. Specifies the root node's element type. It accepts a string for a standard HTML `a` element or a custom component. For example, in a Next.js application, you can use `next/link` as the `Component` to integrate with Next.js's routing.           |
+```
+
+## `Locale` Interface
+
+The `Locale` interface defines the structure for localization options within the LanguageSwitcher component.
+
+| Property    | Type      | Description                                                     |
+|-------------|-----------|-----------------------------------------------------------------|
+| localeCode  | `string`  | Required.A unique code representing the locale, e.g., 'en' for English.  |
+| localeName  | `string`  | Required.The name of the locale as it should be displayed to the user.   |
+| active      | `boolean` | Required.Indicates whether the locale is currently selected.             |
+| linkProps   | `object`  | Optional. Additional properties to pass to the link component.  |
+
+
+## Additional notes
+
+Each entry within the `locales` array corresponds to a unique link in the language switcher. Exactly one of these should be designated as the active locale to indicate the current language selection. The `linkProps` parameter within each locale allows for the inclusion of supplementary properties that may be necessary for individual links. This feature is particularly useful when a specific attribute, such as `locale`, must be passed to the link for enhanced functionality or tracking purposes. Below is an illustrative example demonstrating the structure of a `Locale` object with additional properties:
+
+## Interfaces
+
+```typescript
+interface Locale {
+  localeCode: string;
+  localeName: string;
+  active: boolean;
+  linkProps?: object;
+}
+
+interface LanguageSwitcherProps {
+  locales: Locale[];
+  url: string;
+  linkComponent?: ElementType;
+}
+```
+
+## Example of Locales
+
+```typescript
+const locales: Locale[] = [
+  {
+    localeCode: 'en',
+    localeName: 'English',
+    active: true, // Active locale
+    linkProps: { locale: 'en' }, // Additional link properties
+  },
+  // ... additional locales
+];
+
+```
+
+## Usage
+
+```typescript
+<LanguageSwitcher
+  locales={locales}
+  url="/path-to-use-for-links"
+  linkComponent={CustomLinkComponent} // Optional
+/>
+```

@@ -1,68 +1,53 @@
+import { ElementType } from 'react';
 import SecondaryMenu, { MenuItemProps } from '../secondary-menu/secondary-menu';
 
+interface Locale {
+  active: boolean;
+  linkProps?: {};
+  localeCode: string;
+  localeName: string;
+}
+
 interface LanguageSwitcherProps {
-  activeLocale: AvailableLocales;
-  locales: AvailableLocales[];
+  linkComponent?: ElementType;
+  locales: Locale[];
   url: string;
 }
 
-export type AvailableLocales =
-  | 'en'
-  | 'es'
-  | 'fr'
-  | 'de'
-  | 'it'
-  | 'ja'
-  | 'ko'
-  | 'pt-br'
-  | 'tr'
-  | 'zh-hans'
-  | 'zh-hant'
-  | 'ar';
-
-const matchLanguage: { [key in AvailableLocales]: string } = {
-  en: 'English',
-  es: 'Español (América Latina)',
-  fr: 'Français',
-  de: 'Deutsch',
-  it: 'Italiano',
-  ja: '日本語',
-  ko: '한국어',
-  'pt-br': 'Português',
-  tr: 'Türkçe',
-  'zh-hans': '简体中文',
-  'zh-hant': '繁體中文',
-  ar: 'العربية',
-};
-
 export default function LanguageSwitcher({
-  activeLocale,
+  linkComponent: LinkComponent = 'a',
   locales,
   url,
 }: LanguageSwitcherProps) {
-    const activeIndex = locales.findIndex(locale => locale === activeLocale);
-    if (activeIndex > 0) {
-      const [activeItem] = locales.splice(activeIndex, 1);
-      locales.unshift(activeItem);
-    }
+  // Move active locale to the beginning of the array
+  const activeIndex = locales.findIndex((locale) => locale.active);
+  if (activeIndex > -1) {
+    const [activeLocale] = locales.splice(activeIndex, 1);
+    locales.unshift(activeLocale);
+  }
 
-    const belowItems: MenuItemProps[] = locales.map(locale => ({
-      title: matchLanguage[locale],
-      url: `/${locale}/${url}`,
-      active: activeLocale === locale,
-    }));
+  const belowItems: MenuItemProps[] = locales.map((item) => ({
+    title: item.localeName,
+    url: `/${item.localeCode}${url}`,
+    active: item.active,
+    linkProps: item.linkProps,
+  }));
 
-    const menuItems: MenuItemProps = {
-      title: matchLanguage[activeLocale],
-      below: belowItems
-    };
+  const activeLocaleName =
+    locales.find((locale) => locale.active)?.localeName || '';
+
+  const menuItems: MenuItemProps = {
+    title: activeLocaleName,
+    below: belowItems,
+  };
 
   return (
     <SecondaryMenu
       items={[menuItems]}
       menuClass="language-switcher"
-      toggleMenu={() => {}}
+      handlerCloseMenu={() => {}}
       isLanguageSwitcher={true}
+      linkComponent={LinkComponent}
     />
   );
 }
