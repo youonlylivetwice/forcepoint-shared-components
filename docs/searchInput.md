@@ -17,6 +17,7 @@ import { SearchInput } from 'forcepoint-shared-components';
 | setIsSearchOpen  | `(value: boolean) => void`     | Function to set the visibility state of the search input.            |
 | queryKey         | `string`                       | The query parameter key used in constructing the search URL.         |
 | url              | `string`                       | URL where the search query is sent. Useful for form action attribute.|
+| props   | `object`  | Optional. Additional properties to pass to Search Input component.  |
 
 ## Basic Usage
 
