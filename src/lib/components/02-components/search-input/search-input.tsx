@@ -1,10 +1,10 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, FormHTMLAttributes, useState } from 'react';
 import { cn } from '../../../utils/tailwind-merge';
 import ArrowRightIcon from '../../00-tokens/icons/arrow-right-icon.tsx';
 import CloseThickIcon from '../../00-tokens/icons/close-thick-icon.tsx';
 import SearchThickIcon from '../../00-tokens/icons/search-thick-icon.tsx';
 
-export type SearchProps = {
+export type SearchProps = FormHTMLAttributes<HTMLFormElement> & {
   onSearch?: (value: string) => void;
   isSearchOpen: boolean;
   queryKey: string;
@@ -18,6 +18,7 @@ export default function SearchInput({
   queryKey,
   setIsSearchOpen,
   url,
+  ...props
 }: SearchProps) {
   const [inputValue, setInputValue] = useState('');
 
@@ -42,6 +43,7 @@ export default function SearchInput({
           'sr-only': isSearchOpen,
         })}
         id="search-form"
+        {...props}
       >
         <div className="relative flex items-center">
           <SearchThickIcon className="absolute left-sm text-teal" />
@@ -51,6 +53,7 @@ export default function SearchInput({
           <input
             type="text"
             id="search-input"
+            name="search-input"
             value={inputValue}
             placeholder="Search"
             onChange={(e) => setInputValue(e.target.value)}
