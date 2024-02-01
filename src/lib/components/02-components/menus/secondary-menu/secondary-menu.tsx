@@ -5,13 +5,13 @@ import ArrowExitIcon from '../../../00-tokens/icons/arrow-exit-icon';
 import BackIcon from '../../../00-tokens/icons/back-icon';
 import CloseIcon from '../../../00-tokens/icons/close-icon';
 import GlobeIcon from '../../../00-tokens/icons/globe-icon';
-import Link, { LinkProps } from '../../../01-elements/link/link';
+import Link from '../../../01-elements/link/link';
 import Typography from '../../../01-elements/typography/typography';
 
 export type MenuItemProps = {
   active?: boolean;
   below?: MenuItemProps[];
-  linkProps?: LinkProps;
+  linkProps?: {};
   title: string;
   url?: string;
 };
