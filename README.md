@@ -32,9 +32,10 @@ export default {
 
 - [Branding](./docs/branding.md)
 - [Button](./docs/button.md)
+- [Language Switcher](./docs/languageSwitcher.md)
 - [Link](./docs/link.md)
-- [Typography](./docs/typography.md)
 - [Secondary Menu](./docs/secondaryMenu.md)
+- [Typography](./docs/typography.md)
 
 ## Local development setup
 
