@@ -1,7 +1,7 @@
 import { ElementType } from 'react';
 import SecondaryMenu, { MenuItemProps } from '../secondary-menu/secondary-menu';
 
-interface Locale {
+export interface Locale {
   active: boolean;
   linkProps?: {};
   localeCode: string;
