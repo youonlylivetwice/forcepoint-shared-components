@@ -1,40 +1,46 @@
-// import { useRouter } from 'next/router';
-import { useState } from 'react';
-import ArrowRightIcon from '../icons/arrow-right-icon.tsx';
-import CloseThickIcon from '../icons/close-thick-icon.tsx';
-import SearchThickIcon from '../icons/search-thick-icon.tsx';
+import { FormEvent, useState } from 'react';
+import { cn } from '../../../utils/tailwind-merge';
+import ArrowRightIcon from '../../00-tokens/icons/arrow-right-icon.tsx';
+import CloseThickIcon from '../../00-tokens/icons/close-thick-icon.tsx';
+import SearchThickIcon from '../../00-tokens/icons/search-thick-icon.tsx';
 
 export type SearchProps = {
+  onSearch?: (value: string) => void;
   isSearchOpen: boolean;
+  queryKey: string;
   setIsSearchOpen: (value: boolean) => void;
   url: string;
-  queryKey: string;
 };
 
 export default function SearchInput({
+  onSearch,
   isSearchOpen,
+  queryKey,
   setIsSearchOpen,
   url,
-  queryKey,
 }: SearchProps) {
   const [inputValue, setInputValue] = useState('');
-  // const router = useRouter();
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    // router.push(`/${url}?${queryKey}=${encodeURIComponent(inputValue)}`);
-  };
 
   const toggleInput = () => {
     setIsSearchOpen(!isSearchOpen);
   };
 
+  const handlerSearch = (event: FormEvent) => {
+    if (onSearch) {
+      event.preventDefault();
+      onSearch(inputValue);
+    }
+  };
+
   return (
     <div className="search-input-wrapper flex gap-md rtl:flex-row-reverse">
       <form
-        onSubmit={handleSubmit}
+        onSubmit={handlerSearch}
         method="get"
-        action="/search"
-        className={`${isSearchOpen ? '' : 'sr-only'}`}
+        action={`${url}?${queryKey}=${encodeURIComponent(inputValue)}`}
+        className={cn({
+          'sr-only': isSearchOpen,
+        })}
         id="search-form"
       >
         <div className="relative flex items-center">
@@ -63,12 +69,15 @@ export default function SearchInput({
         onClick={toggleInput}
         aria-expanded={isSearchOpen}
         aria-controls="search-form"
-        aria-label={isSearchOpen ? 'Close search form' : 'Open search form'}
+        aria-label={cn({
+          'Close search form': !isSearchOpen,
+          'Open search form': isSearchOpen,
+        })}
       >
         {isSearchOpen ? (
-          <CloseThickIcon className="text-teal" />
-        ) : (
           <SearchThickIcon className="text-grey" />
+        ) : (
+          <CloseThickIcon className="text-teal" />
         )}
       </button>
     </div>
