@@ -21,6 +21,6 @@ Once you run `npm run yalc-publish`, a `dist` folder is created with all compone
 - Each Visual *Component* should have an Storybook representation associated.
 - Each *Component* should have RTL support using [TailwindCSS](https://tailwindcss.com/).
 - *Components* can be imported in any React Framework and work properly.
-- Some *Componets* might need to be flexible and accept specifics React Framework component that can override functionalities like [`next/link`](https://nextjs.org/docs/pages/api-reference/components/link) or [`next/image`](https://nextjs.org/docs/pages/api-reference/components/image)
+- Some *Components* might need to be flexible and accept specifics React Framework component that can override functionalities like [`next/link`](https://nextjs.org/docs/pages/api-reference/components/link) or [`next/image`](https://nextjs.org/docs/pages/api-reference/components/image)
 - Use Typescript to define all custom properties required by your *Component*
 - Use the `cn` function (located in `src/lib/utils/tailwind-merge.ts`) for conditional merging [TailwindCSS](https://tailwindcss.com/) classes.
