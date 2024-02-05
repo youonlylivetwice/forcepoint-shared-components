@@ -15,6 +15,8 @@ React Shared Components Library System for Forcepoint. Built on Vite.
 
 ## Library reference
 
+This section provides a concise overview of the key classes and functions available in our library, aiding developers in understanding and utilizing the provided functionalities effectively.
+
 ### Include the Tailwind preset
 
 ```js
@@ -30,14 +32,18 @@ export default {
 
 ### Components API
 
-- [Branding](./docs/branding.md)
-- [Button](./docs/button.md)
-- [Language Switcher](./docs/languageSwitcher.md)
-- [Link](./docs/link.md)
-- [Secondary Menu](./docs/secondaryMenu.md)
-- [Typography](./docs/typography.md)
+- [Branding](./docs/api/branding.md)
+- [Button](./docs/api/button.md)
+- [Language Switcher](./docs/api/languageSwitcher.md)
+- [Link](./docs/api/link.md)
+- [Secondary Menu](./docs/api/secondaryMenu.md)
+- [Typography](./docs/api/typography.md)
 
-## Local development setup
+## Development
+
+This section is intended for developers who want to contribute to the project or explore its internals. If you're interested in enhancing our codebase, fixing bugs, or adding new features, follow the guidelines below to get started.
+
+### Setting Up the Development Environment
 
 - Clone the repository
 - Run `nvm use` or use a tool such as [NVM](https://github.com/nvm-sh/nvm) to
@@ -45,7 +51,18 @@ automatically switch to the correct Node version
 - Run `npm install`
 - Run `npm run dev` to start storybook and the Typescript compiler.
 
-## Local development on a Nextjs Frontend site that uses the shared components
+### Publishing local development changes to your Application
 
-- In the Frontend Site, run `npm run link:forcepoint-shared-components`
-- In this project, run `npm run dev`
+This project uses [Yalc](https://www.npmjs.com/package/yalc) for local package publishing and sharing.
+
+- Publish local changes: `yalc-publish`
+
+### Coding Guidelines
+
+Follow the coding style and guidelines specified in [CONTRIBUTING.md](./docs/CONTRIBUTING.md) to maintain a consistent codebase.
+
+### Feedback
+
+We welcome your feedback! If you encounter any issues, have suggestions, or want to discuss improvements, open an issue or reach out to us.
+
+Happy coding! 🚀
