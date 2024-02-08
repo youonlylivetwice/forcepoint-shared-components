@@ -38,7 +38,7 @@ module.exports = {
       buildPath: "./",
       files: [
         {
-          destination: "tailwind-theme-preset-2.js",
+          destination: "tailwind-theme-preset.js",
           format: "javascript/module"
         }
       ]
