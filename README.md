@@ -34,6 +34,7 @@ export default {
 
 - [Branding](./docs/api/branding.md)
 - [Button](./docs/api/button.md)
+- [Footer Menu](./docs/api/footerMenu.md)
 - [Language Switcher](./docs/api/languageSwitcher.md)
 - [Link](./docs/api/link.md)
 - [Secondary Menu](./docs/api/secondaryMenu.md)
