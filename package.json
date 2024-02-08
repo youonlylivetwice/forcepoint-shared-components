@@ -28,9 +28,11 @@
     "create-icons": "node scripts/create-icons.mjs",
     "create-icons-story": "node scripts/create-icons-story.mjs",
     "predev": "rm -rf src/lib/components/00-tokens/icons/* && npm run create-icons && npm run create-icons-story",
-    "prebuild": "rm -rf src/lib/components/00-tokens/icons/* && npm run create-icons && npm run create-icons-story"
+    "prebuild": "npm run style-dictionary:build && rm -rf src/lib/components/00-tokens/icons/* && npm run create-icons && npm run create-icons-story",
+    "style-dictionary:build": "style-dictionary build --config ./sd.config.js"
   },
   "dependencies": {
+    "@forcepoint/tokens": "github:fourkitchens/fp-design-tokens",
     "clsx": "^2.1.0",
     "next": "^14.0.3",
     "react": "18.2.0",
@@ -69,6 +71,7 @@
     "rollup-plugin-copy": "^3.5.0",
     "storybook": "^7.6.1",
     "storybook-addon-rtl": "^0.5.0",
+    "style-dictionary": "^3.9.2",
     "tailwindcss": "^3.3.5",
     "tsc-watch": "^6.0.4",
     "typescript": "^5.0.2",

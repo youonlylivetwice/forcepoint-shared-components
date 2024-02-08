@@ -26,5 +26,8 @@ dist-ssr
 # Storybook
 storybook-static
 
+# tranformed theme preset tokens for tailwind
+tailwind-theme-preset.js
+
 # icons created automatically
 src/lib/components/00-tokens/icons/*.tsx
