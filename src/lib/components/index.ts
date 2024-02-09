@@ -20,6 +20,9 @@ export {
   type MenuProps
 } from './02-components/menus/secondary-menu/secondary-menu';
 export {
+  default as SocialMenu, type SocialMenuItem, type SocialMenuProps
+} from './02-components/menus/social-menu/social-menu';
+export {
   default as SearchInput,
   type SearchProps
 } from './02-components/search-input/search-input';

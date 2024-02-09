@@ -37,6 +37,7 @@ export default {
 - [Language Switcher](./docs/api/languageSwitcher.md)
 - [Link](./docs/api/link.md)
 - [Secondary Menu](./docs/api/secondaryMenu.md)
+- [Social Menu](./docs/api/socialMenu.md)
 - [Typography](./docs/api/typography.md)
 
 ## Development
