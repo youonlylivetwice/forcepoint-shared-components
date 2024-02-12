@@ -12,6 +12,10 @@ export {
   type BrandingProps
 } from './02-components/branding/branding';
 export {
+  default as FooterMenu,
+  type FooterMenuProps
+} from './02-components/menus/footer/footer-menu';
+export {
   default as LanguageSwitcher,
   type LanguageSwitcherProps
 } from './02-components/menus/language-switcher/language-switcher';
