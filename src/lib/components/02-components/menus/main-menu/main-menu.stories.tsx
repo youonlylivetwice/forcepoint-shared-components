@@ -787,7 +787,7 @@ export const Default: Story = ({ items }: MenuProps) => {
           </div>
         </div>
         <button
-          className="block p-md text-center"
+          className="block p-md text-center pr-0 rtl:pr-md rtl:pl-md"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label={isMenuOpen ? 'Toggle main menu' : 'Open main menu'}
         >

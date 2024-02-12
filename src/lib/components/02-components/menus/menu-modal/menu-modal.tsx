@@ -34,7 +34,7 @@ export default function MenuModal({
       onBlur={onBlur}
     >
       {/* Mobile Heading */}
-      <div className="menu:hidden menu:pr-0 mx-auto flex w-full flex-row items-center justify-center border-b border-b-mercury bg-white pr-md">
+      <div className="menu:hidden mx-auto flex w-full flex-row items-center justify-center border-b border-b-mercury bg-white">
         <button
           onClick={handlerCloseSubMenu}
           className="back-button p-md"
