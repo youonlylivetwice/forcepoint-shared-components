@@ -12,20 +12,25 @@ export type SocialMenuItem = {
 
 export type SocialMenuProps = {
   items: SocialMenuItem[];
+  menuLabel?: string;
 };
 
-export default function SocialMenu({ items }: SocialMenuProps) {
+export default function SocialMenu({ items, menuLabel }: SocialMenuProps) {
   const renderItem = (item: SocialMenuItem, index: number) => {
     if (!item.url) return;
 
     return (
       <li key={`footer-subitem-${index}`}>
         <Link href={item.url} {...item.linkProps} aria-label={item.title}>
-          <span className='sr-only'>{item.title}</span>
-          <SocialMenuIcon icon={item.icon}/>
+          <span className="sr-only">{item.title}</span>
+          <SocialMenuIcon icon={item.icon} />
         </Link>
       </li>
     );
   };
-  return <nav><ul className='flex items-center gap-md'>{items.map(renderItem)}</ul></nav>;
+  return (
+    <nav aria-label={menuLabel}>
+      <ul className="flex items-center gap-md">{items.map(renderItem)}</ul>
+    </nav>
+  );
 }

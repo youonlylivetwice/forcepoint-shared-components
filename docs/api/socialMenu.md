@@ -15,6 +15,7 @@ The component accepts the following props for configuration:
 | Name    | Type                | Description                                                     |
 |---------|---------------------|-----------------------------------------------------------------|
 | `items` | `SocialMenuItem[]`  | An array of objects describing each social media link.          |
+| `menuLabel`        | `string` | The aria-label attribute for accessibility purposes             |
 
 ## SocialMenuItem Props
 

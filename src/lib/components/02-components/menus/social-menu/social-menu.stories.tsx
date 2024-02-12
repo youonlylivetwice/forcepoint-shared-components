@@ -40,6 +40,6 @@ export const Default = () => {
   ];
 
   return (
-    <SocialMenu items={items} />
+    <SocialMenu items={items} menuLabel='My social menu'/>
   );
 };
