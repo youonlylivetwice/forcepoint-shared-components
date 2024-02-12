@@ -86,7 +86,7 @@
 }
 
 .menu-item__button {
-  @apply menu:order-none order-[-1] border-0;
+  @apply menu:order-none order-[-1] !border-0;
 }
 
 .menu-item--wrapper-button_with_arrow {
