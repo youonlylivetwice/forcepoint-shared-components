@@ -9,18 +9,27 @@ export type SocialMenuIconProps = {
 };
 
 export default function SocialMenuIcon({ icon }: SocialMenuIconProps) {
-
   switch (icon) {
     case 'facebook':
-      return <FacebookIcon className='text-chateau hover:text-teal h-[20px] w-auto'/>;
+      return (
+        <FacebookIcon className="h-[20px] w-auto text-chateau hover:text-teal" />
+      );
     case 'linkedin':
-      return <LinkedinIcon className='text-chateau hover:text-teal h-[20px] w-auto'/>;
+      return (
+        <LinkedinIcon className="h-[20px] w-auto text-chateau hover:text-teal" />
+      );
     case 'twitter':
-      return <TwitterIcon className='text-chateau hover:text-teal h-[20px] w-auto'/>;
+      return (
+        <TwitterIcon className="h-[20px] w-auto text-chateau hover:text-teal" />
+      );
     case 'rss':
-      return <RssIcon className='text-chateau hover:text-teal h-[20px] w-auto'/>;
+      return (
+        <RssIcon className="h-[20px] w-auto text-chateau hover:text-teal" />
+      );
     case 'youtube':
-      return <YoutubeIcon className='text-chateau hover:text-teal h-[20px] w-auto'/>;
+      return (
+        <YoutubeIcon className="h-[20px] w-auto text-chateau hover:text-teal" />
+      );
     default:
       return null;
   }

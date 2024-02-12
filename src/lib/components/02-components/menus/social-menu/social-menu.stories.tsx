@@ -39,7 +39,5 @@ export const Default = () => {
     },
   ];
 
-  return (
-    <SocialMenu items={items} menuLabel='My social menu'/>
-  );
+  return <SocialMenu items={items} menuLabel="My social menu" />;
 };
