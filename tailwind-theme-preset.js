@@ -315,6 +315,7 @@ module.exports = {
       md: '950px',
       lg: '1240px',
       xl: '1600px',
+      menu: '1156px',
     },
     extend: {
       spacing: {
