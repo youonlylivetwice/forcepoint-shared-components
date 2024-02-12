@@ -1,3 +1,4 @@
+/* tslint:disable:no-unused-variable */
 import { cn } from '../../../../utils/tailwind-merge';
 import { ElementType, MouseEvent, useState } from 'react';
 import ArrowRightIcon from '../../../00-tokens/icons/arrow-right-icon';
@@ -42,22 +43,6 @@ type MenuItemWidth =
   | 'three_quarter_width'
   | 'inline_width';
 
-/*
- * Do not delete this code.
- * Utilized by Tailwind to load dynamic classes later.
- */
-const possible = [
-  'bg-[#ffffff]',
-  'bg-[#f5f6f6]',
-  'bg-[#006e96]',
-  'bg-[#007465]',
-  'bg-[#923a7f]',
-  'bg-[#00af9a]',
-  'bg-[#3d1152]',
-  'bg-[#ff671d]',
-  'bg-[#f6dfa4]',
-];
-
 export type MenuItemProps = {
   active?: boolean;
   alignment?: MenuItemAlignment;
@@ -90,6 +75,7 @@ export type TokensType = Record<
     type: string;
   }
 >;
+
 const itemAlignmentSchema: {
   [key in MenuItemAlignment]: string;
 } = {
@@ -128,6 +114,22 @@ const itemWidthSchema: { [key in MenuItemWidth]: Record<string, string> } = {
   },
   inline_width: { child: 'menu:w-max', parent: '' },
 };
+
+/*
+ * Do not delete this code.
+ * Utilized by Tailwind to load dynamic classes later.
+ */
+const possible = [
+  'bg-[#ffffff]',
+  'bg-[#f5f6f6]',
+  'bg-[#006e96]',
+  'bg-[#007465]',
+  'bg-[#923a7f]',
+  'bg-[#00af9a]',
+  'bg-[#3d1152]',
+  'bg-[#ff671d]',
+  'bg-[#f6dfa4]',
+];
 
 export default function MainMenu({
   handlerCloseMenu,
@@ -187,11 +189,12 @@ export default function MainMenu({
       const navHighlight = document.querySelector(
         '.nav-highlight',
       ) as HTMLElement;
+      console.log('selectedRect', selectedRect)
 
       // Animation for highlighting navigation.
       if (navHighlight && selectedRect) {
         navHighlight.style.width = `${selectedRect.width}px`;
-        navHighlight.style.left = `${selectedRect.x - 20}px`;
+        navHighlight.style.left = `${selectedRect.x}px`;
         navHighlight.style.height = '4px';
       }
     }
@@ -423,7 +426,7 @@ export default function MainMenu({
         )}
       </ul>
       <span
-        className="nav-highlight transition-left transition-height height-0 pointer-events-none absolute bottom-[-2px] z-10 bg-teal duration-300"
+        className="nav-highlight transition-left transition-height height-0 pointer-events-none fixed translate-y-[-2px] z-10 bg-teal duration-300"
         aria-hidden
       ></span>
     </div>
