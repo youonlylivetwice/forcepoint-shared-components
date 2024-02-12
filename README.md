@@ -32,9 +32,12 @@ export default {
 
 - [Branding](./docs/branding.md)
 - [Button](./docs/button.md)
+- [Card 380](./docs/card380.md)
+- [Card Nav Highlight](./docs/navHighlight.md)
 - [Link](./docs/link.md)
-- [Typography](./docs/typography.md)
+- [Main Menu](./docs/mainMenu.md)
 - [Secondary Menu](./docs/secondaryMenu.md)
+- [Typography](./docs/typography.md)
 
 ## Local development setup
 
