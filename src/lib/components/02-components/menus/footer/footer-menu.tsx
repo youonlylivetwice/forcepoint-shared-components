@@ -7,11 +7,13 @@ import { MenuItemProps } from '../secondary-menu/secondary-menu';
 export type FooterMenuProps = {
   items: MenuItemProps[];
   linkComponent?: ElementType;
+  menuLabel?: string;
 };
 
 export default function FooterMenu({
   items,
   linkComponent: LinkComponent = 'a',
+  menuLabel = 'footer-menu',
 }: FooterMenuProps) {
   const [activeItems, setActiveItems] = useState<{ [key: number]: boolean }>(
     {},
@@ -46,7 +48,7 @@ export default function FooterMenu({
           component={LinkComponent}
           {...item.linkProps}
           className={cn(
-            'pointer-events-auto text-h5 font-semibold text-grey hover:text-blue focus:text-blue max-md:leading-none md:text-h6',
+            'pointer-events-auto text-left text-h5 font-semibold text-grey hover:text-blue focus:text-blue max-md:leading-none md:text-h6 md:font-medium',
             { 'text-chateau': item.active },
           )}
         >
@@ -62,7 +64,6 @@ export default function FooterMenu({
       <ul
         onKeyDown={(e) => closeSubmenuOnKey(e, index)}
         id={`footer-submenu-${index}`}
-        aria-expanded={isActive}
         className={cn(
           'hidden max-h-0 w-full shrink grow-0 overflow-hidden transition-all duration-200 md:mt-md md:block md:max-h-[1000px]',
           {
@@ -89,7 +90,7 @@ export default function FooterMenu({
             href={item.url}
             component={LinkComponent}
             {...item.linkProps}
-            className="py-md text-body-2 font-semibold text-navy hover:text-blue focus:text-blue max-md:leading-none md:py-0 md:text-h4"
+            className="w-[calc(100%-20px)] py-md text-left text-body-2 font-semibold text-navy hover:text-blue focus:text-blue max-md:leading-none md:py-0 md:text-h4"
           >
             {item.title}
           </Link>
@@ -98,7 +99,7 @@ export default function FooterMenu({
           <>
             <button
               className={cn(
-                'flex h-full grow items-center justify-between gap-xs py-md text-body-2 font-semibold text-navy hover:text-blue focus:text-blue max-md:leading-none md:h-auto md:gap-0 md:py-0 md:text-h4',
+                'flex h-full min-w-[16px] grow items-center justify-between gap-xs py-md text-left text-body-2 font-semibold text-navy hover:text-blue focus:text-blue max-md:leading-none md:hidden md:h-auto md:gap-0 md:py-0 md:text-h4',
                 {
                   'w-full md:cursor-auto md:hover:text-navy md:focus:text-navy':
                     !item.url,
@@ -106,20 +107,29 @@ export default function FooterMenu({
               )}
               onClick={() => toggleSubMenu(index)}
               aria-controls={`footer-submenu-${index}`}
+              aria-expanded={isActive}
+              aria-haspopup="true"
               aria-label={
                 isActive
                   ? `Close ${item.title} submenu`
                   : `Open ${item.title} submenu`
               }
+              type="button"
             >
               {!item.url && item.title}
               <ArrowBottomIcon
                 className={cn(
-                  'ml-auto h-[16px] w-[16px] transition-transform duration-200 md:hidden',
+                  'ml-auto h-[16px] w-[16px] min-w-[16px] transition-transform duration-200 md:hidden',
                   { 'rotate-180 rtl:rotate-180': isActive },
                 )}
               />
             </button>
+            {!item.url && (
+              <span className="hidden text-left text-body-2 font-semibold text-navy hover:text-blue focus:text-blue max-md:leading-none md:block md:h-auto md:gap-0 md:py-0 md:text-h4">
+                {item.title}
+              </span>
+            )}
+
             {item.below && renderSubmenu(item, index)}
           </>
         )}
@@ -128,7 +138,7 @@ export default function FooterMenu({
   };
 
   return (
-    <nav>
+    <nav aria-label={menuLabel}>
       <ul className="flex flex-col divide-y divide-brumosa md:flex-row md:gap-x-lg md:divide-y-0">
         {items.map(renderMenuItem)}
       </ul>

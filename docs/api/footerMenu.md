@@ -16,6 +16,7 @@ The component accepts the following props for configuration:
 |----------------|-------------------|---------|-----------------------------------------------------------------------------------------------|
 | `items`        | `MenuItemProps[]` | `-`     | An array of objects describing each menu item, including any sub-menu items.                  |
 | `linkComponent`| `ElementType`     | `'a'`   | Specifies the link node's element type. It accepts a string for a standard HTML `a` element or a custom component. For example, in a Next.js application, you can use `next/link` as the `Component` to integrate with Next.js's routing.|
+| `menuLabel`        | `string` | `footer-menu`     | The aria-label attribute for accessibility purposes                  |
 
 ## Menu Item Props
 

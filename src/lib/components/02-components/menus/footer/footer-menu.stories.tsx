@@ -38,7 +38,6 @@ const menuItems = [
   },
   {
     title: 'Solutions',
-    url: '#',
     below: [
       {
         title: 'Securing Data Everywhere',
@@ -72,7 +71,6 @@ const menuItems = [
   },
   {
     title: 'Learn About',
-    url: '#',
     below: [
       {
         title: 'Ultimate Guide to SASE',
@@ -98,7 +96,6 @@ const menuItems = [
   },
   {
     title: 'Resources',
-    url: '#',
     below: [
       {
         title: 'Customer Stories',
@@ -131,7 +128,7 @@ const menuItems = [
     ],
   },
   {
-    title: 'Company',
+    title: 'Company Info & Support',
     url: '#',
     below: [
       {
@@ -177,5 +174,6 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     items: menuItems,
+    menuLabel: 'my-menu',
   },
 };
