@@ -3,7 +3,7 @@ import Logo from '../../../assets/img/branding/logo.svg';
 import Branding from './branding';
 
 const meta = {
-  title: 'Elements/Branding',
+  title: 'Components/Branding',
   component: Branding,
   argTypes: {
     width: {
