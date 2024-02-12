@@ -9,7 +9,7 @@ import { cn } from '../../../utils/tailwind-merge';
 
 type DefaultProps = {
   animated?: boolean;
-  color?: 'navy' | 'viola' | 'white' | 'sandwisp';
+  color?: 'navy' | 'viola' | 'white' | 'sandwisp' | 'blue';
   component?: ElementType;
   disabled?: boolean;
   endIcon?: ReactNode;
@@ -50,6 +50,10 @@ const colorButtonSchema = {
   navy: {
     solid: 'bg-navy text-white hover:bg-teal',
     outline: 'border-navy border-2 text-navy hover:border-teal',
+  },
+  blue: {
+    solid: 'bg-blue text-white hover:bg-black',
+    outline: 'border-blue border-2 text-blue hover:border-black',
   },
 };
 
