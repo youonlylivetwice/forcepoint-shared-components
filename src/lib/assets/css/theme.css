@@ -1,3 +1,107 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Storybook */
+.sb-main-padded.sb-show-main:has(.main-menu) {
+  @apply px-md py-0;
+}
+
+/* Main Navigation - Beginning */
+.menu-item__group--with-title.w-full + .menu-item__group--with-title.w-full {
+  @apply mt-md border-t border-brumosa pt-md;
+}
+
+/* Main Navigation - Grouping */
+.menu-item__group--with-title.menu\:col-span-3,
+.menu-item__group--with-title.menu\:col-span-3
+  + .menu-item__group.menu\:col-span-1 {
+  @apply menu:border-t menu:border-brumosa;
+}
+
+.menu-item__group--with-title.menu\:col-span-3
+  + .menu-item__group.menu\:col-span-1
+  .menu-item__heading {
+  @apply menu:hidden;
+}
+
+.menu-item__heading + .menu-item__group {
+  @apply menu:mt-[56px];
+}
+
+.menu-item__group.w-full + .menu-item__group.md\:float-right {
+  @apply menu:mr-0 menu:mt-md;
+}
+
+.menu-item__label_large_arrow + .menu-item__group.w-full {
+  @apply menu:mt-md;
+}
+
+.w-full.menu-item__group:not(.menu-item__group--with-title)
+  + .w-full.menu-item__group:not(.menu-item__group--with-title) {
+  @apply menu:mt-md menu:py-md border-t border-brumosa pb-0;
+}
+
+/* Main Navigation - Card */
+.menu-item--wrapper-card {
+  @apply mb-md gap-md;
+}
+
+.menu-item--wrapper-card .menu-item__card {
+  @apply w-full;
+}
+
+/* Main Navigation - Label with small arrow */
+.menu-item--wrapper-label_small_arrow {
+  @apply menu:gap-x-md grid gap-md;
+}
+
+.menu-item__label_large_arrow
+  + .menu-item__group:has(.menu-item--wrapper-label_small_arrow) {
+  @apply mt-md;
+}
+
+.menu-item--wrapper-label_small_arrow:not(
+    :has(.menu-item__label_small_arrow.menu-item__with-icon)
+  ) {
+  @apply menu:gap-md gap-sm;
+}
+
+.menu-item__label_small_arrow {
+  @apply leading-none;
+}
+
+/* Main Navigation - Label with large arrow */
+.menu-item__heading + .menu-item__label_large_arrow {
+  @apply menu:order-none order-[-1];
+}
+
+.menu-item__heading + .menu-item__label_large_arrow a {
+  @apply menu:mt-0;
+}
+
+/* Main Navigation - Button */
+.menu-item--wrapper-button {
+  @apply menu:p-0 menu:block grid;
+}
+
+.menu-item__button {
+  @apply menu:order-none order-[-1] border-0;
+}
+
+.menu-item--wrapper-button_with_arrow {
+  @apply menu:pt-0;
+}
+
+.menu-item__button_with_arrow + .menu-item__button {
+  @apply menu:mr-md;
+}
+
+.menu-item--subitems-1:has(.menu-item--wrapper-button_with_arrow) {
+  @apply max-[1156px]:bg-white;
+}
+
+.menu-item--subitems-1 .menu-item--wrapper-button_with_arrow {
+  @apply max-[1156px]:pt-0;
+}
+/* Main Navigation - End */
