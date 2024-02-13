@@ -54,7 +54,7 @@ export default function Link({
   const renderIcon = (icon: ReactNode) => (
     <span
       className={cn(
-        'inline-block transform p-[3px] align-middle transition-transform duration-200 rtl:rotate-180',
+        'inline-block absolute transform mt-xs ml-xs transition-transform duration-200 rtl:rotate-180',
         {
           'group-hover:translate-x-[0.25rem] rtl:group-hover:translate-x-[-0.25rem]':
             animated,
@@ -68,7 +68,7 @@ export default function Link({
   return (
     <Element
       className={cn(
-        'group inline-block items-center font-bold',
+        'group inline-block align-middle items-center font-bold',
         {
           'hover:underline hover:underline-offset-8': underline === 'hover',
           'underline underline-offset-8': underline === 'always',

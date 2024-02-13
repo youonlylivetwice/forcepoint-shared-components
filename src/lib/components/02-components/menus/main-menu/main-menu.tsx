@@ -1,6 +1,6 @@
 /* tslint:disable:no-unused-variable */
 import { cn } from '../../../../utils/tailwind-merge';
-import { ElementType, MouseEvent, useState } from 'react';
+import { CSSProperties, ElementType, MouseEvent, useState } from 'react';
 import ArrowRightIcon from '../../../00-tokens/icons/arrow-right-icon';
 import Button from '../../../01-elements/button/button';
 import Card380 from '../../cards/card-380/card-380';
@@ -59,7 +59,6 @@ export type MenuItemProps = {
   title: string;
   url?: string;
   width?: MenuItemWidth;
-  size?: any;
 };
 
 export type MenuProps = {
@@ -114,22 +113,6 @@ const itemWidthSchema: { [key in MenuItemWidth]: Record<string, string> } = {
   },
   inline_width: { child: 'menu:w-max', parent: '' },
 };
-
-/*
- * Do not delete this code.
- * Utilized by Tailwind to load dynamic classes later.
- */
-const possible = [
-  'bg-[#ffffff]',
-  'bg-[#f5f6f6]',
-  'bg-[#006e96]',
-  'bg-[#007465]',
-  'bg-[#923a7f]',
-  'bg-[#00af9a]',
-  'bg-[#3d1152]',
-  'bg-[#ff671d]',
-  'bg-[#f6dfa4]',
-];
 
 export default function MainMenu({
   handlerCloseMenu,
@@ -189,7 +172,6 @@ export default function MainMenu({
       const navHighlight = document.querySelector(
         '.nav-highlight',
       ) as HTMLElement;
-      console.log('selectedRect', selectedRect)
 
       // Animation for highlighting navigation.
       if (navHighlight && selectedRect) {
@@ -383,7 +365,12 @@ export default function MainMenu({
   ) => {
     const firstEl = item.below?.[0];
     const isGroup = grouping(item.display);
+    const menuItemStyles: CSSProperties = {};
     const hasTitle = firstEl?.display === 'label_large_arrow';
+
+    if (isGroup && item.bgColor) {
+      menuItemStyles.backgroundColor = item.bgColor;
+    }
 
     return (
       <li
@@ -398,7 +385,6 @@ export default function MainMenu({
             'menu-item__group': isGroup,
             'menu:px-0 px-md': depth === 1,
             'menu-item__with-icon': item.icon,
-            [`bg-[${item.bgColor}]`]: isGroup && item.bgColor,
             'menu-item__group--with-title': isGroup && hasTitle,
           },
         )}
@@ -408,6 +394,7 @@ export default function MainMenu({
         onMouseOut={() => {
           if (depth === 0) handleOnMouseOut(item);
         }}
+        style={menuItemStyles}
       >
         {renderMenuItemComponent(item, index)}
         {item.below && renderSubMenuContainer(item, index, depth)}

@@ -98,7 +98,7 @@
 }
 
 .menu-item--subitems-1:has(.menu-item--wrapper-button_with_arrow) {
-  @apply max-[1156px]:bg-white;
+  @apply max-[1156px]:!bg-white;
 }
 
 .menu-item--subitems-1 .menu-item--wrapper-button_with_arrow {
