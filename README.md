@@ -34,12 +34,14 @@ export default {
 
 - [Branding](./docs/branding.md)
 - [Button](./docs/button.md)
+- [Footer Menu](./docs/api/footerMenu.md)
 - [Card 380](./docs/card380.md)
 - [Card Nav Highlight](./docs/navHighlight.md)
 - [Language Switcher](./docs/api/languageSwitcher.md)
 - [Link](./docs/link.md)
 - [Main Menu](./docs/mainMenu.md)
 - [Secondary Menu](./docs/secondaryMenu.md)
+- [Social Menu](./docs/api/socialMenu.md)
 - [Typography](./docs/typography.md)
 
 ## Development
