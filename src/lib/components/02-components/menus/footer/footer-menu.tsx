@@ -13,7 +13,7 @@ export type FooterMenuProps = {
 export default function FooterMenu({
   items,
   linkComponent: LinkComponent = 'a',
-  menuLabel = 'footer-menu',
+  menuLabel = 'Footer Menu',
 }: FooterMenuProps) {
   const [activeItems, setActiveItems] = useState<{ [key: number]: boolean }>(
     {},
