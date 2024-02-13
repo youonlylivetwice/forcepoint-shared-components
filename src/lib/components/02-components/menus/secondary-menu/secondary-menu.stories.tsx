@@ -1,7 +1,7 @@
-import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import MenuIcon from '../../../00-tokens/icons/menu-icon';
+import { useState } from 'react';
 import CloseIcon from '../../../00-tokens/icons/close-icon';
+import MenuIcon from '../../../00-tokens/icons/menu-icon';
 import Typography from '../../../01-elements/typography/typography';
 import SecondaryMenu, { MenuItemProps, MenuProps } from './secondary-menu';
 
