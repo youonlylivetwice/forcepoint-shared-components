@@ -15,6 +15,7 @@ import { MainMenu } from 'forcepoint-shared-components';
 | handlerCloseMenu | `() => void` | `-` | Function to handle the closing of the menu. |
 | items | `MenuItemProps[]` | `-` | Array of menu items. |
 | linkComponent | `elementType` | `a` | Specifies the link node's element type. It accepts a string for a standard HTML `a` element or a custom component. For example, in a Next.js application, you can use `next/link` as the `Component` to integrate with Next.js's routing. |
+| menuLabel | `string` | `Main menu` | The aria-label attribute for accessibility purposes |
 
 ## Menu item props
 

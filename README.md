@@ -32,17 +32,17 @@ export default {
 
 ### Components API
 
-- [Branding](./docs/branding.md)
-- [Button](./docs/button.md)
+- [Branding](./docs/api/branding.md)
+- [Button](./docs/api/button.md)
 - [Footer Menu](./docs/api/footerMenu.md)
-- [Card 380](./docs/card380.md)
-- [Card Nav Highlight](./docs/navHighlight.md)
+- [Card 380](./docs/api/card380.md)
+- [Card Nav Highlight](./docs/api/navHighlight.md)
 - [Language Switcher](./docs/api/languageSwitcher.md)
-- [Link](./docs/link.md)
-- [Main Menu](./docs/mainMenu.md)
-- [Secondary Menu](./docs/secondaryMenu.md)
+- [Link](./docs/api/link.md)
+- [Main Menu](./docs/api/mainMenu.md)
+- [Secondary Menu](./docs/api/secondaryMenu.md)
 - [Social Menu](./docs/api/socialMenu.md)
-- [Typography](./docs/typography.md)
+- [Typography](./docs/api/typography.md)
 
 ## Development
 

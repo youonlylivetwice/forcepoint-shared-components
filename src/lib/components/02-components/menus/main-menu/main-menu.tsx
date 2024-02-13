@@ -65,6 +65,7 @@ export type MenuProps = {
   handlerCloseMenu: () => void;
   items: MenuItemProps[];
   linkComponent?: ElementType;
+  menuLabel?: string;
 };
 
 export type TokensType = Record<
@@ -118,6 +119,7 @@ export default function MainMenu({
   handlerCloseMenu,
   items,
   linkComponent: LinkComponent = 'a',
+  menuLabel,
 }: MenuProps) {
   const [active, setActive] = useState<number>(-1);
 
@@ -403,7 +405,7 @@ export default function MainMenu({
   };
 
   return (
-    <div className="relative">
+    <nav className="relative" aria-label={menuLabel}>
       <ul
         className="main-menu menu:flex-row menu:items-center menu:divide-y-0 flex flex-col gap-x-md divide-y divide-brumosa"
         onKeyDown={handleKeyDown}
@@ -416,6 +418,6 @@ export default function MainMenu({
         className="nav-highlight transition-left transition-height height-0 pointer-events-none fixed translate-y-[-2px] z-10 bg-teal duration-300"
         aria-hidden
       ></span>
-    </div>
+    </nav>
   );
 }
