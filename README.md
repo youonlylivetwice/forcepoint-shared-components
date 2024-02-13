@@ -36,6 +36,7 @@ export default {
 - [Button](./docs/api/button.md)
 - [Footer Menu](./docs/api/footerMenu.md)
 - [Language Switcher](./docs/api/languageSwitcher.md)
+- [Legal Menu](./docs/api/legalMenu.md)
 - [Link](./docs/api/link.md)
 - [Secondary Menu](./docs/api/secondaryMenu.md)
 - [Social Menu](./docs/api/socialMenu.md)
