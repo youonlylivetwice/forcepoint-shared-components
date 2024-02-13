@@ -16,7 +16,7 @@ The component accepts the following props for configuration:
 |---------|---------------------|-----------------------------------------------------------------|
 | `items` | `SocialMenuItem[]`  | An array of objects describing each social media link.          |
 | `menuLabel`        | `string` | The aria-label attribute for accessibility purposes             |
-
+| `linkComponent` | `elementType` | Specifies the link node's element type. It accepts a string for a standard HTML `a` element or a custom component. For example, in a Next.js application, you can use `next/link` as the `Component` to integrate with Next.js's routing. |
 ## SocialMenuItem Props
 
 The `SocialMenuItem` object accepts the following props for configuration:
