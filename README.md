@@ -38,6 +38,7 @@ export default {
 - [Card 380](./docs/api/card380.md)
 - [Card Nav Highlight](./docs/api/navHighlight.md)
 - [Language Switcher](./docs/api/languageSwitcher.md)
+- [Legal Menu](./docs/api/legalMenu.md)
 - [Link](./docs/api/link.md)
 - [Main Menu](./docs/api/mainMenu.md)
 - [Secondary Menu](./docs/api/secondaryMenu.md)

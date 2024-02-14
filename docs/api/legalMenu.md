@@ -1,11 +1,11 @@
-# SocialMenu Component API
+# Legal Menu Component API
 
-The `SocialMenu` component is designed for displaying a list of social media icons, allowing users to navigate to various social media platforms. It leverages the `SocialMenuIcon` for rendering individual icons.
+The `Legal Menu` component is designed for displaying a list of links. It is used to display legal links such as Privacy Policy, Terms of Use, etc.
 
 ## Import
 
 ```jsx
-import { SocialMenu } from 'forcepoint-shared-components';
+import { LegalMenu } from 'forcepoint-shared-components';
 ```
 
 ## Props
@@ -14,39 +14,45 @@ The component accepts the following props for configuration:
 
 | Name    | Type                | Description                                                     |
 |---------|---------------------|-----------------------------------------------------------------|
-| `items` | `SocialMenuItem[]`  | An array of objects describing each social media link.          |
+| `items` | `LegalMenuItem[]`  | An array of objects width the data of each link.          |
 | `menuLabel`        | `string` | The aria-label attribute for accessibility purposes             |
 | `linkComponent` | `elementType` | Specifies the link node's element type. It accepts a string for a standard HTML `a` element or a custom component. For example, in a Next.js application, you can use `next/link` as the `Component` to integrate with Next.js's routing. |
-## SocialMenuItem Props
 
-The `SocialMenuItem` object accepts the following props for configuration:
+## LegalMenuItem Props
+
+The `LegalMenuItem` object accepts the following props for configuration:
 
 | Name        | Type                              | Description                                                          |
 |-------------|-----------------------------------|----------------------------------------------------------------------|
 | `linkProps` | `{ [key: string]: string; }`      | Optional. Additional props to pass to the link component.           |
 | `title`     | `string`                          | The name of the social media platform.                               |
 | `url`       | `string`                          | The URL to the social media profile.                                 |
-| `icon`      | `'facebook' \| 'linkedin' \| 'twitter' \| 'rss' \| 'youtube'` | Icon to display for the link. |
 
 ## Examples
 
 ```jsx
-import { SocialMenu } from 'forcepoint-shared-components';
+import { LegalMenu } from 'forcepoint-shared-components';
 
-const socialItems = [
+const menuItems = [
   {
-    title: 'Facebook',
-    url: 'https://www.facebook.com',
-    icon: 'facebook',
+    title: 'Terms & Conditions',
+    url: '#',
   },
   {
-    title: 'LinkedIn',
-    url: 'https://www.linkedin.com',
-    icon: 'linkedin',
+    title: 'Legal and Privacy',
+    url: '#',
+  },
+  {
+    title: 'Manage Cookies',
+    url: '#',
+  },
+  {
+    title: '© 2024 Forcepoint',
+    url: '#',
   },
 ];
 
-<SocialMenu items={socialItems} />;
+<LegalMenu items={menuItems} />;
 ```
 
 
