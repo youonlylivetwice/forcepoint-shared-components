@@ -12,6 +12,7 @@ export type MenuModalProps = {
   isOpen?: boolean;
   onBlur?: React.FocusEventHandler<Element>;
   title: string;
+  id: string;
 };
 
 export default function MenuModal({
@@ -23,9 +24,11 @@ export default function MenuModal({
   isOpen,
   onBlur,
   title,
+  id,
 }: MenuModalProps) {
   return (
     <div
+      id={id}
       className={cn(
         'menu:top-[100%] menu:h-auto menu:absolute menu:bg-transparent menu:overflow-visible fixed top-0 z-10 flex h-screen w-fit flex-col overflow-scroll bg-white',
         { hidden: !isOpen },

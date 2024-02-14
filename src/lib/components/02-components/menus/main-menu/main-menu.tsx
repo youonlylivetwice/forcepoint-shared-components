@@ -1,16 +1,16 @@
 /* tslint:disable:no-unused-variable */
-import { cn } from '../../../../utils/tailwind-merge';
 import { CSSProperties, ElementType, MouseEvent, useState } from 'react';
+import { cn } from '../../../../utils/tailwind-merge';
 import ArrowRightIcon from '../../../00-tokens/icons/arrow-right-icon';
+import ChevronRightIcon from '../../../00-tokens/icons/chevron-right-icon';
 import Button from '../../../01-elements/button/button';
+import Link, { LinkProps } from '../../../01-elements/link/link';
+import Typography from '../../../01-elements/typography/typography';
 import Card380 from '../../cards/card-380/card-380';
 import CardNavHighlight from '../../cards/nav-highlight/nav-highlight';
-import ChevronRightIcon from '../../../00-tokens/icons/chevron-right-icon';
-import Link, { LinkProps } from '../../../01-elements/link/link';
 import MainNavLink from '../../ctas/main-nav-link/main-nav-link';
-import MenuModal from '../menu-modal/menu-modal';
 import NavLink from '../../ctas/nav-link/nav-link';
-import Typography from '../../../01-elements/typography/typography';
+import MenuModal from '../menu-modal/menu-modal';
 
 export type MenuItemImageProps = {
   src: string;
@@ -119,7 +119,7 @@ export default function MainMenu({
   handlerCloseMenu,
   items,
   linkComponent: LinkComponent = 'a',
-  menuLabel,
+  menuLabel = 'Main Menu',
 }: MenuProps) {
   const [active, setActive] = useState<number>(-1);
 
@@ -209,6 +209,7 @@ export default function MainMenu({
             isActive={index === active}
             linkComponent={LinkComponent}
             onClick={() => setActive(index)}
+            index={index}
           />
         );
       }
@@ -350,6 +351,7 @@ export default function MainMenu({
           hideHeaderOnDesktop={true}
           handlerCloseMenu={handlerCloseMenu}
           className="menu:w-auto left-0 w-full"
+          id={`main-submenu-${index}`}
           handlerCloseSubMenu={() => handlerOpenSubmenu(-1)}
         >
           <div className="menu:rounded-b-m menu:shadow-md h-full bg-white">
@@ -415,7 +417,7 @@ export default function MainMenu({
         )}
       </ul>
       <span
-        className="nav-highlight transition-left transition-height height-0 pointer-events-none fixed translate-y-[-2px] z-10 bg-teal duration-300"
+        className="nav-highlight transition-left transition-height height-0 pointer-events-none fixed z-10 translate-y-[-2px] bg-teal duration-300"
         aria-hidden
       ></span>
     </nav>

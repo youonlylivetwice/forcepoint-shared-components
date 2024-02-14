@@ -1,7 +1,7 @@
 import { ElementType } from 'react';
-import Link from '../../../01-elements/link/link';
-import ArrowBottomIcon from '../../../00-tokens/icons/arrow-bottom-icon';
 import { cn } from '../../../../utils/tailwind-merge';
+import ArrowBottomIcon from '../../../00-tokens/icons/arrow-bottom-icon';
+import Link from '../../../01-elements/link/link';
 
 export type MainNavLinkProps = {
   onClick?: () => void;
@@ -9,6 +9,7 @@ export type MainNavLinkProps = {
   isActive?: boolean;
   linkComponent?: ElementType;
   title: string;
+  index: number;
 };
 
 export default function MainNavLink({
@@ -17,6 +18,7 @@ export default function MainNavLink({
   linkComponent: LinkComponent = 'a',
   title,
   onClick,
+  index,
 }: MainNavLinkProps) {
   const itemLabel = (
     <span className="menu:text-body-3 menu:font-normal w-full py-md text-h4 font-semibold text-inherit rtl:text-right">
@@ -47,6 +49,9 @@ export default function MainNavLink({
         aria-label={`${title} submenu`}
         aria-expanded={isActive}
         onClick={onClick}
+        aria-haspopup="true"
+        type="button"
+        aria-controls={`main-submenu-${index}`}
       >
         {!href && itemLabel}
         <ArrowBottomIcon
