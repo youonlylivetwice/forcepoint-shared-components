@@ -24,6 +24,7 @@ export type MenuProps = {
   items: MenuItemProps[];
   linkComponent?: ElementType;
   menuClass: string;
+  menuLabel?: string;
 };
 
 export default function SecondaryMenu({
@@ -32,6 +33,7 @@ export default function SecondaryMenu({
   items,
   linkComponent: LinkComponent = 'a',
   menuClass,
+  menuLabel = 'Secondary Menu',
 }: MenuProps) {
   const [active, setActive] = useState<number | undefined>();
 
@@ -223,6 +225,8 @@ export default function SecondaryMenu({
               aria-controls={`${menuClass}-submenu-${index}`}
               aria-label={`${item.title} submenu`}
               aria-expanded={isActive}
+              aria-haspopup="true"
+              type="button"
             >
               {isLanguageSwitcher && (
                 <GlobeIcon className="pointer-events-none h-[16px] w-[16px]" />
@@ -242,11 +246,13 @@ export default function SecondaryMenu({
   };
 
   return (
-    <ul
-      className={`${menuClass} flex flex-col gap-x-md divide-y divide-brumosa md:flex-row md:divide-y-0`}
-      onKeyDown={handleKeyDown}
-    >
-      {items.map(renderItem)}
-    </ul>
+    <nav aria-label={menuLabel}>
+      <ul
+        className={`${menuClass} flex flex-col gap-x-md divide-y divide-brumosa md:flex-row md:divide-y-0`}
+        onKeyDown={handleKeyDown}
+      >
+        {items.map(renderItem)}
+      </ul>
+    </nav>
   );
 }
