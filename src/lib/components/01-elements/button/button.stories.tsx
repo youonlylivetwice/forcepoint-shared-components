@@ -15,6 +15,7 @@ const meta = {
       options: {
         navy: 'navy',
         viola: 'viola',
+        blue: 'blue',
         'white (dark background)': 'white',
         'sandwisp (dark background)': 'sandwisp',
       },
