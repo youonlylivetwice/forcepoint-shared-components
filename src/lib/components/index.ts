@@ -24,7 +24,12 @@ export {
   type LegalMenuItem, type LegalMenuProps
 } from './02-components/menus/legal-menu/legal-menu';
 export {
-  default as SecondaryMenu, type MenuItemProps, type MenuProps
+  default as MainMenu,
+  type MainMenuProps
+} from './02-components/menus/main-menu/main-menu';
+export {
+  default as SecondaryMenu,
+  type SecondaryMenuProps
 } from './02-components/menus/secondary-menu/secondary-menu';
 export {
   default as SocialMenu, type SocialMenuItem, type SocialMenuProps

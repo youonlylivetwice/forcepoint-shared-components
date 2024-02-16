@@ -2,7 +2,7 @@ import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import MenuIcon from '../../../00-tokens/icons/menu-icon';
 import CloseIcon from '../../../00-tokens/icons/close-icon';
-import MainMenu, { MenuItemProps, MenuProps } from './main-menu';
+import MainMenu, { MenuItemProps, MainMenuProps } from './main-menu';
 import Logo from '../../../../assets/img/branding/logo.svg';
 import Branding from '../../branding/branding';
 
@@ -769,7 +769,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = ({ items }: MenuProps) => {
+export const Default: Story = ({ items }: MainMenuProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
 
   const mainMenuRendered = () => (

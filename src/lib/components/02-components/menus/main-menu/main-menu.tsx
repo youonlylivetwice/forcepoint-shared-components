@@ -61,7 +61,7 @@ export type MenuItemProps = {
   width?: MenuItemWidth;
 };
 
-export type MenuProps = {
+export type MainMenuProps = {
   handlerCloseMenu: () => void;
   items: MenuItemProps[];
   linkComponent?: ElementType;
@@ -119,8 +119,8 @@ export default function MainMenu({
   handlerCloseMenu,
   items,
   linkComponent: LinkComponent = 'a',
-  menuLabel = 'Main Menu',
-}: MenuProps) {
+  menuLabel = 'Main menu',
+}: MainMenuProps) {
   const [active, setActive] = useState<number>(-1);
 
   /**

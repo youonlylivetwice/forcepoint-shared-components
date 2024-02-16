@@ -18,7 +18,7 @@ export type MenuItemProps = {
   url?: string;
 };
 
-export type MenuProps = {
+export type SecondaryMenuProps = {
   handlerCloseMenu: () => void;
   isLanguageSwitcher?: boolean;
   items: MenuItemProps[];
@@ -36,7 +36,7 @@ export default function SecondaryMenu({
   menuClass,
   menuLabel = 'Secondary Menu',
   onFooter = false,
-}: MenuProps) {
+}: SecondaryMenuProps) {
   const [active, setActive] = useState<number | undefined>();
 
   /**
