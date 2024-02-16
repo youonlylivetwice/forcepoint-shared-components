@@ -22,14 +22,14 @@ export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
 };
 
 const colorLinkSchema = {
-  navy: 'text-navy hover:text-teal group-hover:text-teal',
-  sandwisp: 'text-white hover:text-sandwisp group-hover:text-sandwisp',
-  viola: 'text-viola hover:text-teal group-hover:text-teal',
-  white: 'text-white hover:text-teal group-hover:text-teal',
-  grey: 'text-grey hover:text-teal group-hover:text-teal',
-  black: 'text-black hover:text-teal group-hover:text-teal',
-  blue: 'text-black hover:text-teal group-hover:text-teal',
-  veridian: 'text-veridian hover:text-teal group-hover:text-teal',
+  navy: 'text-navy hover:text-teal',
+  sandwisp: 'text-white hover:text-sandwisp',
+  viola: 'text-viola hover:text-teal',
+  white: 'text-white hover:text-teal',
+  grey: 'text-grey hover:text-teal',
+  black: 'text-black hover:text-teal',
+  blue: 'text-black hover:text-teal',
+  veridian: 'text-veridian hover:text-teal',
   inherit: 'text-inherit',
 };
 

@@ -38,3 +38,9 @@ export {
   default as SearchInput,
   type SearchProps
 } from './02-components/search-input/search-input';
+export {
+  default as CloseIcon,
+} from './00-tokens/icons/close-icon';
+export {
+  default as MenuIcon,
+} from './00-tokens/icons/menu-icon';
