@@ -323,7 +323,7 @@ module.exports = {
         sm: '10px',
         md: '20px',
         lg: '40px',
-        xl: '60px',
+        xl: '80px',
         xxl: '120px',
         '3xl': '160px',
       },

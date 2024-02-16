@@ -17,11 +17,14 @@ export {
 } from './02-components/menus/footer/footer-menu';
 export {
   default as LanguageSwitcher,
-  type LanguageSwitcherProps
+  type LanguageSwitcherProps, type LocaleMenuItem
 } from './02-components/menus/language-switcher/language-switcher';
 export {
-  default as SecondaryMenu,
-  type MenuProps
+  default as LegalMenu,
+  type LegalMenuItem, type LegalMenuProps
+} from './02-components/menus/legal-menu/legal-menu';
+export {
+  default as SecondaryMenu, type MenuItemProps, type MenuProps
 } from './02-components/menus/secondary-menu/secondary-menu';
 export {
   default as SocialMenu, type SocialMenuItem, type SocialMenuProps

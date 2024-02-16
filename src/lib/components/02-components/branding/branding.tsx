@@ -21,6 +21,7 @@ export default function Branding({
   return (
     <Element href={href} {...props}>
       <img
+        className="w-full h-auto"
         src={src}
         alt={alt}
         {...(width && { width })}

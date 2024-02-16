@@ -12,23 +12,23 @@ export default function SocialMenuIcon({ icon }: SocialMenuIconProps) {
   switch (icon) {
     case 'facebook':
       return (
-        <FacebookIcon className="h-[20px] w-auto text-chateau hover:text-teal" />
+        <FacebookIcon className="h-[16px] w-auto text-chateau hover:text-teal" />
       );
     case 'linkedin':
       return (
-        <LinkedinIcon className="h-[20px] w-auto text-chateau hover:text-teal" />
+        <LinkedinIcon className="h-[16px] w-auto text-chateau hover:text-teal" />
       );
     case 'twitter':
       return (
-        <TwitterIcon className="h-[20px] w-auto text-chateau hover:text-teal" />
+        <TwitterIcon className="h-[16px] w-auto text-chateau hover:text-teal" />
       );
     case 'rss':
       return (
-        <RssIcon className="h-[20px] w-auto text-chateau hover:text-teal" />
+        <RssIcon className="h-[16px] w-auto text-chateau hover:text-teal" />
       );
     case 'youtube':
       return (
-        <YoutubeIcon className="h-[20px] w-auto text-chateau hover:text-teal" />
+        <YoutubeIcon className="h-[16px] w-auto text-chateau hover:text-teal" />
       );
     default:
       return null;

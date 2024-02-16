@@ -25,6 +25,7 @@ export type MenuProps = {
   linkComponent?: ElementType;
   menuClass: string;
   menuLabel?: string;
+  onFooter?: boolean;
 };
 
 export default function SecondaryMenu({
@@ -34,6 +35,7 @@ export default function SecondaryMenu({
   linkComponent: LinkComponent = 'a',
   menuClass,
   menuLabel = 'Secondary Menu',
+  onFooter = false,
 }: MenuProps) {
   const [active, setActive] = useState<number | undefined>();
 
@@ -137,7 +139,10 @@ export default function SecondaryMenu({
         id={`${menuClass}-submenu-${index}`}
         className={cn(
           'absolute top-0 z-10 flex h-screen w-full flex-col md:top-[100%] md:h-auto md:w-[280px]',
-          { hidden: active !== index },
+          {
+            hidden: active !== index,
+            'md:bottom-[100%] md:top-auto': onFooter,
+          },
         )}
         onBlur={handleBlur}
       >
@@ -162,8 +167,14 @@ export default function SecondaryMenu({
           </button>
         </div>
         {/* Desktop Heading */}
-        <div className="flex w-full justify-center">
-          <BackIcon className="hidden rotate-[90deg] text-brumosa md:block" />
+        <div
+          className={cn('flex w-full justify-center', { 'order-2': onFooter })}
+        >
+          <BackIcon
+            className={cn('hidden rotate-[90deg] text-brumosa md:block', {
+              'rotate-[270deg]': onFooter,
+            })}
+          />
         </div>
         {/* Items */}
         <ul className="flex flex-1 flex-col bg-white py-sm md:gap-md md:rounded-m md:p-md md:shadow-md">
@@ -180,10 +191,11 @@ export default function SecondaryMenu({
       <Typography
         variant="h6"
         className={cn(
-          'w-full py-md font-semibold uppercase text-inherit rtl:text-right md:py-0',
+          'w-full py-md text-[12px] font-semibold uppercase text-inherit rtl:text-right md:py-0',
           {
-            'w-[86px] overflow-hidden text-ellipsis whitespace-nowrap':
+            'max-w-[86px] overflow-hidden text-ellipsis whitespace-nowrap':
               isLanguageSwitcher,
+            'md:text-[13px]': onFooter,
           },
         )}
       >
@@ -229,13 +241,18 @@ export default function SecondaryMenu({
               type="button"
             >
               {isLanguageSwitcher && (
-                <GlobeIcon className="pointer-events-none h-[16px] w-[16px]" />
+                <GlobeIcon className="pointer-events-none h-[16px] w-[16px] min-w-[16px]" />
               )}
               {!item.url && itemLabel}
               <ArrowBottomIcon
-                className={`pointer-events-none h-[16px] w-[16px] rotate-[270deg] rtl:rotate-90 md:h-[8px] md:w-[8px] md:rotate-0 rtl:md:rotate-0 ${
-                  isActive ? 'md:rotate-180 rtl:md:rotate-180' : 'md:rotate-0'
-                }`}
+                className={cn(
+                  'pointer-events-none ml-auto h-[16px] w-[16px] min-w-[16px] rotate-[270deg] rtl:rotate-90 md:h-[8px] md:w-[8px] md:rotate-0 rtl:md:rotate-0',
+                  {
+                    'md:rotate-180 rtl:md:rotate-180': isActive,
+                    'md:rotate-0': !isActive,
+                    'rotate-[0deg]': onFooter,
+                  },
+                )}
               />
             </button>
             {renderSubmenu(item, index)}
