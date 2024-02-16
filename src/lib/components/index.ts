@@ -20,8 +20,12 @@ export {
   type LanguageSwitcherProps
 } from './02-components/menus/language-switcher/language-switcher';
 export {
+  default as MainMenu,
+  type MainMenuProps
+} from './02-components/menus/main-menu/main-menu';
+export {
   default as SecondaryMenu,
-  type MenuProps
+  type SecondaryMenuProps
 } from './02-components/menus/secondary-menu/secondary-menu';
 export {
   default as SocialMenu, type SocialMenuItem, type SocialMenuProps

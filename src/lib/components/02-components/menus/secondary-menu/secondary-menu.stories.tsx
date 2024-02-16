@@ -3,7 +3,7 @@ import { useState } from 'react';
 import CloseIcon from '../../../00-tokens/icons/close-icon';
 import MenuIcon from '../../../00-tokens/icons/menu-icon';
 import Typography from '../../../01-elements/typography/typography';
-import SecondaryMenu, { MenuItemProps, MenuProps } from './secondary-menu';
+import SecondaryMenu, { MenuItemProps, SecondaryMenuProps } from './secondary-menu';
 
 const menuItems: MenuItemProps[] = [
   {
@@ -107,7 +107,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = ({ items, menuClass }: MenuProps) => {
+export const Default: Story = ({ items, menuClass }: SecondaryMenuProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
 
   const secondaryMenuRendered = () => (
