@@ -114,7 +114,11 @@ export default function SecondaryMenu({
           className={cn(
             'submenu-item flex w-full flex-row items-center gap-x-xs py-sm md:py-0',
             {
+              'max-md:text-h5 max-md:font-semibold max-md:leading-none max-md:text-grey max-md:hover:text-blue max-md:focus:text-blue':
+                onFooter && isLanguageSwitcher,
               'text-brumosa hover:text-brumosa': item.active,
+              'max-md:text-brumosa max-md:hover:text-brumosa':
+                item.active && onFooter && isLanguageSwitcher,
             },
           )}
           {...item.linkProps}
@@ -141,13 +145,19 @@ export default function SecondaryMenu({
           'absolute top-0 z-10 flex h-screen w-full flex-col md:top-[100%] md:h-auto md:w-[280px]',
           {
             hidden: active !== index,
-            'md:bottom-[100%] md:top-auto': onFooter,
+            'h-auto max-md:static md:bottom-[100%] md:top-auto':
+              onFooter && isLanguageSwitcher,
           },
         )}
         onBlur={handleBlur}
       >
         {/* Mobile Heading */}
-        <div className="mx-auto flex w-full flex-row items-center justify-center border-b border-b-mercury bg-white md:hidden">
+        <div
+          className={cn(
+            'mx-auto flex w-full flex-row items-center justify-center border-b border-b-mercury bg-white md:hidden',
+            { hidden: onFooter && isLanguageSwitcher },
+          )}
+        >
           <button
             className="back-button py-md pr-md rtl:pl-md rtl:pr-0"
             onClick={() => handlerOpenSubmenu(-1)}
@@ -168,16 +178,23 @@ export default function SecondaryMenu({
         </div>
         {/* Desktop Heading */}
         <div
-          className={cn('flex w-full justify-center', { 'order-2': onFooter })}
+          className={cn('flex w-full justify-center', {
+            'order-2': onFooter && isLanguageSwitcher,
+          })}
         >
           <BackIcon
             className={cn('hidden rotate-[90deg] text-brumosa md:block', {
-              'rotate-[270deg]': onFooter,
+              'rotate-[270deg]': onFooter && isLanguageSwitcher,
             })}
           />
         </div>
         {/* Items */}
-        <ul className="flex flex-1 flex-col bg-white py-sm md:gap-md md:rounded-m md:p-md md:shadow-md">
+        <ul
+          className={cn(
+            'flex flex-1 flex-col bg-white py-sm md:gap-md md:rounded-m md:p-md md:shadow-md',
+            { 'max-md:bg-transparent': onFooter && isLanguageSwitcher },
+          )}
+        >
           {item.below?.map(renderSubitem)}
         </ul>
       </div>
@@ -195,7 +212,7 @@ export default function SecondaryMenu({
           {
             'max-w-[86px] overflow-hidden text-ellipsis whitespace-nowrap':
               isLanguageSwitcher,
-            'md:text-[13px]': onFooter,
+            'md:text-[13px]': onFooter && isLanguageSwitcher,
           },
         )}
       >
@@ -207,7 +224,12 @@ export default function SecondaryMenu({
         key={`${menuClass}-item-${index}`}
         className={cn(
           'group flex flex-row items-center justify-center text-grey hover:text-teal md:relative md:gap-xs',
-          { 'text-teal': isActive },
+          {
+            'text-teal': isActive,
+            'flex-col': onFooter && isLanguageSwitcher,
+            'max-md:text-grey max-md:hover:text-grey':
+              isActive && onFooter && isLanguageSwitcher,
+          },
         )}
         onMouseOver={() => handleOnMouseOver(item, index)}
         onMouseOut={() => handleOnMouseOut(item)}
@@ -228,8 +250,8 @@ export default function SecondaryMenu({
             <button
               className={cn(
                 'flex h-full items-center gap-xs outline-offset-4',
-                { 'w-full text-left': !item.url },
                 {
+                  'w-full text-left': !item.url,
                   'py-md pl-lg rtl:pl-0 rtl:pr-lg md:p-0 rtl:md:p-0': item.url,
                 },
               )}
@@ -250,7 +272,9 @@ export default function SecondaryMenu({
                   {
                     'md:rotate-180 rtl:md:rotate-180': isActive,
                     'md:rotate-0': !isActive,
-                    'rotate-[0deg]': onFooter,
+                    'rotate-[0deg]': onFooter && isLanguageSwitcher,
+                    'max-md:rotate-[180deg]':
+                      isActive && onFooter && isLanguageSwitcher,
                   },
                 )}
               />
