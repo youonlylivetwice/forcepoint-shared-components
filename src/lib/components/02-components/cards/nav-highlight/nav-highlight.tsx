@@ -19,15 +19,15 @@ export type CardNavHighlightProps = {
 
 const cardStyles = {
   large: {
-    content: 'p-md gap-md menu:p-lg',
+    content: 'p-md gap-md lg:p-lg',
     icon: 'right-0 absolute bottom-0 right-[-20%]',
-    title: 'text-h1 xl:text-display',
-    wrap: 'max-w-none menu:max-w-[380px]',
+    title: 'text-h1 3xl:text-display',
+    wrap: 'max-w-none lg:max-w-[380px]',
   },
   small: {
-    content: 'p-md gap-sm menu:gap-md',
-    icon: 'w-[50px] h-[50px] menu:w-fit menu:h-fit my-auto ml-md right-0 menu:absolute menu:bottom-0 menu:right-[-20%]',
-    title: 'text-h4 menu:text-h2',
+    content: 'p-md gap-sm lg:gap-md',
+    icon: 'w-[50px] h-[50px] lg:w-fit lg:h-fit my-auto ml-md right-0 lg:absolute lg:bottom-0 lg:right-[-20%]',
+    title: 'text-h4 lg:text-h2',
     wrap: '',
   },
 };
@@ -75,7 +75,7 @@ export default function CardNavHighlight({
         {/* Link content */}
         <div
           className={cn(
-            'menu:justify-normal flex flex-1 flex-col justify-center',
+            'flex flex-1 flex-col justify-center lg:justify-normal',
             cardStyles[size].content,
           )}
         >

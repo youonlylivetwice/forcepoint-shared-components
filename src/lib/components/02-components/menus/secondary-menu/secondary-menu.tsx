@@ -112,18 +112,18 @@ export default function SecondaryMenu({
           href={item.url}
           component={LinkComponent}
           className={cn(
-            'submenu-item flex w-full flex-row items-center gap-x-xs py-sm md:py-0',
+            'submenu-item flex w-full flex-row items-center gap-x-xs px-md py-sm lg:p-0',
             {
-              'max-md:text-h5 max-md:font-semibold max-md:leading-none max-md:text-grey max-md:hover:text-blue max-md:focus:text-blue':
+              'max-lg:text-h5 max-lg:font-semibold max-lg:leading-none max-lg:text-grey max-lg:hover:text-blue max-lg:focus:text-blue':
                 onFooter && isLanguageSwitcher,
               'text-brumosa hover:text-brumosa': item.active,
-              'max-md:text-brumosa max-md:hover:text-brumosa':
+              'max-lg:text-brumosa max-lg:hover:text-brumosa':
                 item.active && onFooter && isLanguageSwitcher,
             },
           )}
           {...item.linkProps}
         >
-          <span className="text-right text-h5 font-semibold text-inherit md:text-h6">
+          <span className="text-right text-h5 font-semibold text-inherit lg:text-h6">
             {item.title}
           </span>
           {!isLanguageSwitcher &&
@@ -142,10 +142,10 @@ export default function SecondaryMenu({
       <div
         id={`${menuClass}-submenu-${index}`}
         className={cn(
-          'absolute top-0 z-10 flex h-screen w-full flex-col md:top-[100%] md:h-auto md:w-[280px]',
+          'absolute top-0 z-10 flex h-screen w-full flex-col lg:top-[100%] lg:h-auto lg:w-[280px]',
           {
             hidden: active !== index,
-            'h-auto max-md:static md:bottom-[100%] md:top-auto':
+            'h-auto max-lg:static lg:bottom-[100%] lg:top-auto':
               onFooter && isLanguageSwitcher,
           },
         )}
@@ -154,16 +154,16 @@ export default function SecondaryMenu({
         {/* Mobile Heading */}
         <div
           className={cn(
-            'mx-auto flex w-full flex-row items-center justify-center border-b border-b-mercury bg-white md:hidden',
+            'mx-auto flex w-full flex-row items-center justify-center border-b border-b-mercury bg-white lg:hidden',
             { hidden: onFooter && isLanguageSwitcher },
           )}
         >
           <button
-            className="back-button py-md pr-md rtl:pl-md rtl:pr-0"
-            onClick={() => handlerOpenSubmenu(-1)}
             aria-label="Go back"
+            className="back-button p-md"
+            onClick={() => handlerOpenSubmenu(-1)}
           >
-            <BackIcon className="rotate-0 text-grey md:rotate-[90deg]" />
+            <BackIcon className="rotate-0 text-grey lg:rotate-[90deg]" />
           </button>
           <span className="block flex-1 text-start text-body-2 text-grey rtl:text-right">
             {item.title}
@@ -183,7 +183,7 @@ export default function SecondaryMenu({
           })}
         >
           <BackIcon
-            className={cn('hidden rotate-[90deg] text-brumosa md:block', {
+            className={cn('hidden rotate-[90deg] text-brumosa lg:block', {
               'rotate-[270deg]': onFooter && isLanguageSwitcher,
             })}
           />
@@ -191,8 +191,8 @@ export default function SecondaryMenu({
         {/* Items */}
         <ul
           className={cn(
-            'flex flex-1 flex-col bg-white py-sm md:gap-md md:rounded-m md:p-md md:shadow-md',
-            { 'max-md:bg-transparent': onFooter && isLanguageSwitcher },
+            'flex flex-1 flex-col bg-white py-sm lg:gap-md lg:rounded-m lg:p-md lg:shadow-md',
+            { 'max-lg:bg-transparent': onFooter && isLanguageSwitcher },
           )}
         >
           {item.below?.map(renderSubitem)}
@@ -208,11 +208,11 @@ export default function SecondaryMenu({
       <Typography
         variant="h6"
         className={cn(
-          'w-full py-md text-[12px] font-semibold uppercase text-inherit rtl:text-right md:py-0',
+          'w-full py-md text-[12px] font-semibold uppercase text-inherit rtl:text-right lg:py-0',
           {
             'max-w-[86px] overflow-hidden text-ellipsis whitespace-nowrap':
               isLanguageSwitcher,
-            'md:text-[13px]': onFooter && isLanguageSwitcher,
+            'lg:text-[13px]': onFooter && isLanguageSwitcher,
           },
         )}
       >
@@ -223,11 +223,11 @@ export default function SecondaryMenu({
       <li
         key={`${menuClass}-item-${index}`}
         className={cn(
-          'group flex flex-row items-center justify-center text-grey hover:text-teal md:relative md:gap-xs',
+          'group flex flex-row items-center justify-center text-grey hover:text-teal lg:relative lg:gap-xs',
           {
             'text-teal': isActive,
             'flex-col': onFooter && isLanguageSwitcher,
-            'max-md:text-grey max-md:hover:text-grey':
+            'max-lg:text-grey max-lg:hover:text-grey':
               isActive && onFooter && isLanguageSwitcher,
           },
         )}
@@ -252,7 +252,7 @@ export default function SecondaryMenu({
                 'flex h-full items-center gap-xs outline-offset-4',
                 {
                   'w-full text-left': !item.url,
-                  'py-md pl-lg rtl:pl-0 rtl:pr-lg md:p-0 rtl:md:p-0': item.url,
+                  'py-md pl-lg rtl:pl-0 rtl:pr-lg lg:p-0 rtl:lg:p-0': item.url,
                 },
               )}
               onClick={() => handlerOpenSubmenu(index)}
@@ -268,12 +268,12 @@ export default function SecondaryMenu({
               {!item.url && itemLabel}
               <ArrowBottomIcon
                 className={cn(
-                  'pointer-events-none ml-auto h-[16px] w-[16px] min-w-[16px] rotate-[270deg] rtl:rotate-90 md:h-[8px] md:w-[8px] md:rotate-0 rtl:md:rotate-0',
+                  'pointer-events-none ml-auto h-[16px] w-[16px] min-w-[16px] rotate-[270deg] rtl:rotate-90 lg:h-[8px] lg:w-[8px] lg:rotate-0 rtl:lg:rotate-0',
                   {
-                    'md:rotate-180 rtl:md:rotate-180': isActive,
-                    'md:rotate-0': !isActive,
+                    'lg:rotate-180 rtl:lg:rotate-180': isActive,
+                    'lg:rotate-0': !isActive,
                     'rotate-[0deg]': onFooter && isLanguageSwitcher,
-                    'max-md:rotate-[180deg]':
+                    'max-lg:rotate-[180deg]':
                       isActive && onFooter && isLanguageSwitcher,
                   },
                 )}
@@ -289,7 +289,7 @@ export default function SecondaryMenu({
   return (
     <nav aria-label={menuLabel}>
       <ul
-        className={`${menuClass} flex flex-col gap-x-md divide-y divide-brumosa md:flex-row md:divide-y-0`}
+        className={`${menuClass} flex flex-col gap-x-md divide-y divide-brumosa lg:flex-row lg:divide-y-0`}
         onKeyDown={handleKeyDown}
       >
         {items.map(renderItem)}

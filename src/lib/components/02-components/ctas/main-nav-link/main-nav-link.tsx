@@ -21,7 +21,7 @@ export default function MainNavLink({
   index,
 }: MainNavLinkProps) {
   const itemLabel = (
-    <span className="menu:text-body-3 menu:font-normal w-full py-md text-h4 font-semibold text-inherit rtl:text-right">
+    <span className="w-full py-md text-h4 font-semibold text-inherit rtl:text-right lg:text-body-3 lg:font-normal">
       {title}
     </span>
   );
@@ -29,7 +29,7 @@ export default function MainNavLink({
   return (
     <div
       className={cn(
-        'menu:relative menu:w-fit menu:gap-xs group flex w-full flex-row items-center justify-center text-black hover:text-teal',
+        'group flex w-full flex-row items-center justify-center text-black hover:text-teal lg:relative lg:w-fit lg:gap-xs',
         { 'text-teal': isActive },
       )}
     >
@@ -43,7 +43,7 @@ export default function MainNavLink({
           'flex h-full items-center gap-xs outline-offset-4',
           { 'w-full text-left': !href },
           {
-            'menu:p-0 rtl:menu:p-0 py-md pl-lg rtl:pl-0 rtl:pr-lg': href,
+            'py-md pl-lg rtl:pl-0 rtl:pr-lg lg:p-0 rtl:lg:p-0': href,
           },
         )}
         aria-label={`${title} submenu`}
@@ -55,8 +55,8 @@ export default function MainNavLink({
       >
         {!href && itemLabel}
         <ArrowBottomIcon
-          className={`menu:h-[8px] menu:w-[8px] menu:rotate-0 rtl:menu:rotate-0 pointer-events-none h-[16px] w-[16px] rotate-[270deg] rtl:rotate-90 ${
-            isActive ? 'menu:rotate-180 rtl:menu:rotate-180' : 'menu:rotate-0'
+          className={`pointer-events-none h-[16px] w-[16px] rotate-[270deg] rtl:rotate-90 lg:h-[8px] lg:w-[8px] lg:rotate-0 rtl:lg:rotate-0 ${
+            isActive ? 'lg:rotate-180 rtl:lg:rotate-180' : 'lg:rotate-0'
           }`}
         />
       </button>

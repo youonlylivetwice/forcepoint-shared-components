@@ -30,20 +30,20 @@ export default function MenuModal({
     <div
       id={id}
       className={cn(
-        'menu:top-[100%] menu:h-auto menu:absolute menu:bg-transparent menu:overflow-visible fixed top-0 z-10 flex h-screen w-fit flex-col overflow-scroll bg-white',
+        'fixed top-0 z-10 flex h-screen w-fit flex-col overflow-scroll bg-white lg:absolute lg:top-[100%] lg:h-auto lg:overflow-visible lg:bg-transparent',
         { hidden: !isOpen },
         className,
       )}
       onBlur={onBlur}
     >
       {/* Mobile Heading */}
-      <div className="menu:hidden mx-auto flex w-full flex-row items-center justify-center border-b border-b-mercury bg-white">
+      <div className="mx-auto flex w-full flex-row items-center justify-center border-b border-b-mercury bg-white lg:hidden">
         <button
           onClick={handlerCloseSubMenu}
           className="back-button p-md"
           aria-label="Go back"
         >
-          <BackIcon className="menu:rotate-[90deg] rotate-0 text-grey" />
+          <BackIcon className="rotate-0 text-grey lg:rotate-[90deg]" />
         </button>
         <span className="block flex-1 text-start text-body-2 text-grey rtl:text-right">
           {title}
@@ -59,7 +59,7 @@ export default function MenuModal({
       {/* Desktop Heading */}
       {!hideHeaderOnDesktop && (
         <div className="flex w-full justify-center">
-          <BackIcon className="menu:block hidden rotate-[90deg] text-brumosa" />
+          <BackIcon className="hidden rotate-[90deg] text-brumosa lg:block" />
         </div>
       )}
       {children}

@@ -313,9 +313,9 @@ module.exports = {
     screens: {
       sm: '750px',
       md: '950px',
-      lg: '1240px',
-      xl: '1600px',
-      menu: '1156px',
+      lg: '1156px',
+      xl: '1240px',
+      xxl: '1600px',
     },
     extend: {
       spacing: {

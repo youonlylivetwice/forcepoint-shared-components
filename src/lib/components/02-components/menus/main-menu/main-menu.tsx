@@ -79,40 +79,40 @@ export type TokensType = Record<
 const itemAlignmentSchema: {
   [key in MenuItemAlignment]: string;
 } = {
-  left_align: 'menu:float-left',
-  right_align: 'menu:float-right menu:ml-auto rtl:menu:mr-auto',
+  left_align: 'lg:float-left',
+  right_align: 'lg:float-right lg:ml-auto rtl:lg:mr-auto',
 };
 
 const itemWidthSchema: { [key in MenuItemWidth]: Record<string, string> } = {
   full_width: {
-    child: 'menu:col-span-full w-full',
-    parent: 'grid menu:grid-cols-1',
+    child: 'lg:col-span-full w-full',
+    parent: 'grid lg:grid-cols-1',
   },
   fifth_width: {
-    child: 'menu:col-span-1',
-    parent: 'grid menu:grid-cols-5',
+    child: 'lg:col-span-1',
+    parent: 'grid lg:grid-cols-5',
   },
   quarter_width: {
-    child: 'menu:col-span-1',
-    parent: 'grid menu:grid-cols-4',
+    child: 'lg:col-span-1',
+    parent: 'grid lg:grid-cols-4',
   },
   third_width: {
-    child: 'menu:col-span-1',
-    parent: 'grid menu:grid-cols-3',
+    child: 'lg:col-span-1',
+    parent: 'grid lg:grid-cols-3',
   },
   half_width: {
-    child: 'menu:col-span-1',
-    parent: 'grid menu:grid-cols-2',
+    child: 'lg:col-span-1',
+    parent: 'grid lg:grid-cols-2',
   },
   two_third_width: {
-    child: 'menu:col-span-2',
-    parent: 'grid menu:grid-cols-3',
+    child: 'lg:col-span-2',
+    parent: 'grid lg:grid-cols-3',
   },
   three_quarter_width: {
-    child: 'menu:col-span-3',
-    parent: 'grid menu:grid-cols-4',
+    child: 'lg:col-span-3',
+    parent: 'grid lg:grid-cols-4',
   },
-  inline_width: { child: 'menu:w-max', parent: '' },
+  inline_width: { child: 'lg:w-max', parent: '' },
 };
 
 export default function MainMenu({
@@ -240,7 +240,7 @@ export default function MainMenu({
             href={item.url}
             component={LinkComponent}
             endIcon={<ChevronRightIcon />}
-            className="my-0 font-medium menu:mb-0"
+            className="my-0 font-medium lg:mb-0"
           >
             {item.title}
           </Link>
@@ -267,7 +267,7 @@ export default function MainMenu({
             color="blue"
             href={item.url}
             component={LinkComponent}
-            className="block w-full text-center menu:w-fit"
+            className="block w-full text-center lg:w-fit"
           >
             {item.title}
           </Button>
@@ -282,7 +282,7 @@ export default function MainMenu({
             href={item.url}
             component={LinkComponent}
             endIcon={<ArrowRightIcon />}
-            className="flex justify-center menu:block menu:pt-sm"
+            className="flex justify-center lg:block lg:pt-sm"
           >
             {item.title}
           </Link>
@@ -298,7 +298,7 @@ export default function MainMenu({
             linkText={item.ctaButton}
             eyebrow={item.description}
             linkComponent={LinkComponent}
-            className="h-full menu:max-w-none"
+            className="h-full lg:max-w-none"
           />
         );
       }
@@ -330,7 +330,7 @@ export default function MainMenu({
 
     const subClasses = cn(
       {
-        'py-lg gap-y-md menu:gap-y-sm menu:px-lg menu:gap-x-lg menu:h-full menu:content-start':
+        'py-lg gap-y-md lg:gap-y-sm lg:px-lg lg:gap-x-lg lg:h-full lg:content-start':
           depth === 1 && isGroup,
       },
       isGroup && lastItem?.width && [itemWidthSchema[lastItem?.width].parent],
@@ -357,11 +357,11 @@ export default function MainMenu({
           isOpen={index === active}
           hideHeaderOnDesktop={true}
           handlerCloseMenu={handlerCloseMenu}
-          className="left-0 w-full menu:w-auto"
+          className="left-0 w-full lg:w-auto"
           id={`main-submenu-${index}`}
           handlerCloseSubMenu={() => handlerOpenSubmenu(-1)}
         >
-          <div className="h-full bg-white menu:rounded-b-m menu:shadow-md">
+          <div className="h-full bg-white lg:rounded-b-m lg:shadow-md">
             {renderedItems}
           </div>
         </MenuModal>
@@ -394,7 +394,7 @@ export default function MainMenu({
           depth && item.width && itemWidthSchema[item.width].child,
           {
             'menu-item__group': isGroup,
-            'px-md menu:px-0': depth === 1,
+            'px-md lg:px-0': depth === 1,
             'menu-item__with-icon': item.icon,
             'menu-item__group--with-title': isGroup && hasTitle,
           },
@@ -416,7 +416,7 @@ export default function MainMenu({
   return (
     <nav className="main-menu relative" aria-label={menuLabel}>
       <ul
-        className="flex flex-col gap-x-md divide-y divide-brumosa menu:flex-row menu:items-center menu:divide-y-0"
+        className="flex flex-col gap-x-md divide-y divide-brumosa lg:flex-row lg:items-center lg:divide-y-0"
         onKeyDown={handleKeyDown}
       >
         {items.map((item: MenuItemProps, index: number) =>

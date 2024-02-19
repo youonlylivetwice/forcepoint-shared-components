@@ -785,7 +785,7 @@ export const Default: Story = ({ items }: MainMenuProps) => {
   );
 
   const secondaryMenuRendered = () => (
-    <div className="flex flex-1 bg-azure p-md menu:ml-lg menu:justify-end">
+    <div className="flex flex-1 bg-azure py-md lg:ml-lg lg:justify-end">
       <span className="text-h6 font-semibold uppercase text-grey">
         Secondary menu content
       </span>
@@ -795,7 +795,7 @@ export const Default: Story = ({ items }: MainMenuProps) => {
   return (
     <header className="sticky top-0 z-20 bg-white">
       {/* Desktop */}
-      <div className="relative mt-md hidden flex-col gap-xs px-md menu:mx-auto menu:flex menu:max-w-screen-lg">
+      <div className="relative mt-md hidden flex-col gap-xs px-md lg:mx-auto lg:flex lg:max-w-screen-lg">
         <div className="flex flex-1">
           <Branding
             className="inline-flex w-[180px]"
@@ -810,7 +810,7 @@ export const Default: Story = ({ items }: MainMenuProps) => {
       </div>
       {/* Mobile */}
       <div
-        className={cn(' flex w-screen flex-col menu:hidden', {
+        className={cn(' flex w-screen flex-col lg:hidden', {
           'h-screen': isMenuOpen,
         })}
       >

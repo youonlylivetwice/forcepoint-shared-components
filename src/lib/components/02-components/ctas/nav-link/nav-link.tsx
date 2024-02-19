@@ -25,7 +25,7 @@ export default function NavLink({
     <Link
       href={href}
       component={LinkComponent}
-      className={cn('group/nav-link w-full menu:max-w-[380px]', className)}
+      className={cn('group/nav-link w-full lg:max-w-[380px]', className)}
     >
       <div className="flex w-full gap-md">
         {/* Link icon */}
@@ -48,7 +48,7 @@ export default function NavLink({
             endIcon={<ChevronRightIcon />}
             className={cn('group-hover/nav-link:text-teal', {
               'text-body-3 font-semibold': icon,
-              'text-body-3 font-medium leading-none menu:text-h6': !icon,
+              'text-body-3 font-medium leading-none lg:text-h6': !icon,
             })}
           >
             {title}
