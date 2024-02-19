@@ -4,7 +4,7 @@
 
 /* Storybook */
 .sb-main-padded.sb-show-main:has(.main-menu) {
-  @apply px-md py-0;
+  @apply p-0;
 }
 
 /* Main Navigation - Beginning */
@@ -39,7 +39,12 @@
 
 .w-full.menu-item__group:not(.menu-item__group--with-title)
   + .w-full.menu-item__group:not(.menu-item__group--with-title) {
-  @apply menu:mt-md menu:py-md border-t border-brumosa pb-0;
+  @apply border-t border-brumosa pb-0 menu:mt-md menu:py-md;
+}
+
+/* Main Navigation - Label */
+.menu-item__label:first-child {
+  @apply mt-md menu:mt-0;
 }
 
 /* Main Navigation - Card */
@@ -53,7 +58,7 @@
 
 /* Main Navigation - Label with small arrow */
 .menu-item--wrapper-label_small_arrow {
-  @apply menu:gap-x-md grid gap-md;
+  @apply grid gap-md menu:gap-x-md;
 }
 
 .menu-item__label_large_arrow
@@ -64,7 +69,7 @@
 .menu-item--wrapper-label_small_arrow:not(
     :has(.menu-item__label_small_arrow.menu-item__with-icon)
   ) {
-  @apply menu:gap-md gap-sm;
+  @apply gap-sm menu:gap-md;
 }
 
 .menu-item__label_small_arrow {
@@ -73,7 +78,7 @@
 
 /* Main Navigation - Label with large arrow */
 .menu-item__heading + .menu-item__label_large_arrow {
-  @apply menu:order-none order-[-1];
+  @apply order-[-1] menu:order-none;
 }
 
 .menu-item__heading + .menu-item__label_large_arrow a {
@@ -82,11 +87,11 @@
 
 /* Main Navigation - Button */
 .menu-item--wrapper-button {
-  @apply menu:p-0 menu:block grid;
+  @apply grid menu:block menu:p-0;
 }
 
 .menu-item__button {
-  @apply menu:order-none order-[-1] !border-0;
+  @apply order-[-1] !border-0 menu:order-none;
 }
 
 .menu-item--wrapper-button_with_arrow {
