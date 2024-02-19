@@ -1,4 +1,10 @@
 export {
+  default as CloseIcon
+} from './00-tokens/icons/close-icon';
+export {
+  default as MenuIcon
+} from './00-tokens/icons/menu-icon';
+export {
   default as Button,
   type ButtonProps
 } from './01-elements/button/button';
@@ -28,8 +34,7 @@ export {
   type MainMenuProps
 } from './02-components/menus/main-menu/main-menu';
 export {
-  default as SecondaryMenu,
-  type SecondaryMenuProps
+  default as SecondaryMenu, type MenuItemProps, type SecondaryMenuProps
 } from './02-components/menus/secondary-menu/secondary-menu';
 export {
   default as SocialMenu, type SocialMenuItem, type SocialMenuProps
@@ -38,9 +43,3 @@ export {
   default as SearchInput,
   type SearchProps
 } from './02-components/search-input/search-input';
-export {
-  default as CloseIcon,
-} from './00-tokens/icons/close-icon';
-export {
-  default as MenuIcon,
-} from './00-tokens/icons/menu-icon';
