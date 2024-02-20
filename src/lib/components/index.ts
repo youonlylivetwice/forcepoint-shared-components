@@ -1,45 +1,48 @@
-export {
-  default as CloseIcon
-} from './00-tokens/icons/close-icon';
-export {
-  default as MenuIcon
-} from './00-tokens/icons/menu-icon';
+export { default as CloseIcon } from './00-tokens/icons/close-icon';
+export { default as MenuIcon } from './00-tokens/icons/menu-icon';
 export {
   default as Button,
-  type ButtonProps
+  type ButtonProps,
 } from './01-elements/button/button';
 export { default as Link, type LinkProps } from './01-elements/link/link';
 export {
   default as Typography,
-  type TypographyProps
+  type TypographyProps,
 } from './01-elements/typography/typography';
 export {
   default as Branding,
-  type BrandingProps
+  type BrandingProps,
 } from './02-components/branding/branding';
 export {
   default as FooterMenu,
-  type FooterMenuProps
+  type FooterMenuProps,
 } from './02-components/menus/footer/footer-menu';
 export {
   default as LanguageSwitcher,
-  type LanguageSwitcherProps, type LocaleMenuItem
+  type LanguageSwitcherProps,
+  type LocaleMenuItem,
 } from './02-components/menus/language-switcher/language-switcher';
 export {
   default as LegalMenu,
-  type LegalMenuItem, type LegalMenuProps
+  type LegalMenuItem,
+  type LegalMenuProps,
 } from './02-components/menus/legal-menu/legal-menu';
 export {
   default as MainMenu,
-  type MainMenuProps
+  type MainMenuProps,
+  type MainMenuItemProps,
 } from './02-components/menus/main-menu/main-menu';
 export {
-  default as SecondaryMenu, type MenuItemProps, type SecondaryMenuProps
+  default as SecondaryMenu,
+  type SecondaryMenuItemProps,
+  type SecondaryMenuProps,
 } from './02-components/menus/secondary-menu/secondary-menu';
 export {
-  default as SocialMenu, type SocialMenuItem, type SocialMenuProps
+  default as SocialMenu,
+  type SocialMenuItem,
+  type SocialMenuProps,
 } from './02-components/menus/social-menu/social-menu';
 export {
   default as SearchInput,
-  type SearchProps
+  type SearchProps,
 } from './02-components/search-input/search-input';

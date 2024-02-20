@@ -14,20 +14,20 @@
 }
 
 /* Main Navigation - Grouping */
-.menu-item__group--with-title.menu\:col-span-3,
-.menu-item__group--with-title.menu\:col-span-3
-  + .menu-item__group.menu\:col-span-1 {
+.menu-item__group--with-title.lg\:col-span-3,
+.menu-item__group--with-title.lg\:col-span-3
+  + .menu-item__group.lg\:col-span-1 {
   @apply lg:border-t lg:border-brumosa;
 }
 
-.menu-item__group--with-title.menu\:col-span-3
-  + .menu-item__group.menu\:col-span-1
+.menu-item__group--with-title.lg\:col-span-3
+  + .menu-item__group.lg\:col-span-1
   .menu-item__heading {
   @apply lg:hidden;
 }
 
 .menu-item__heading + .menu-item__group {
-  @apply lg:mt-[56px];
+  @apply lg:mt-[38px];
 }
 
 .menu-item__group.w-full + .menu-item__group.md\:float-right {
