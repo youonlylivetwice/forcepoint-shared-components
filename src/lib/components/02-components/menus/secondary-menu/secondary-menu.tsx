@@ -23,7 +23,6 @@ export type SecondaryMenuProps = {
   isLanguageSwitcher?: boolean;
   items: SecondaryMenuItemProps[];
   linkComponent?: ElementType;
-  menuClass: string;
   menuLabel?: string;
   onFooter?: boolean;
 };
@@ -33,11 +32,11 @@ export default function SecondaryMenu({
   isLanguageSwitcher,
   items,
   linkComponent: LinkComponent = 'a',
-  menuClass,
   menuLabel = 'Secondary Menu',
   onFooter = false,
 }: SecondaryMenuProps) {
   const [active, setActive] = useState<number | undefined>();
+  const menuClass = menuLabel.toLowerCase().replace(/\s/g, '-');
 
   /**
    * Handles opening/closing a submenu based on the provided index.

@@ -50,7 +50,7 @@ export default function LanguageSwitcher({
   return (
     <SecondaryMenu
       items={[menuItems]}
-      menuClass="language-switcher"
+      menuLabel="Language switcher"
       handlerCloseMenu={() => {}}
       isLanguageSwitcher={true}
       linkComponent={LinkComponent}

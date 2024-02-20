@@ -105,9 +105,6 @@ const meta = {
   title: 'Components/Menus/Secondary Menu',
   component: SecondaryMenu,
   argTypes: {
-    menuClass: {
-      name: 'Menu class',
-    },
     items: {
       table: {
         disable: true,
@@ -119,7 +116,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = ({ items, menuClass }: SecondaryMenuProps) => {
+export const Default: Story = ({ items }: SecondaryMenuProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
 
   const mainMenuRendered = () => (
@@ -141,7 +138,6 @@ export const Default: Story = ({ items, menuClass }: SecondaryMenuProps) => {
   const secondaryMenuRendered = () => (
     <SecondaryMenu
       items={items}
-      menuClass={menuClass}
       handlerCloseMenu={() => setIsMenuOpen(false)}
     />
   );
@@ -209,5 +205,4 @@ export const Default: Story = ({ items, menuClass }: SecondaryMenuProps) => {
 
 Default.args = {
   items: menuItems,
-  menuClass: 'secondary-menu',
 };
