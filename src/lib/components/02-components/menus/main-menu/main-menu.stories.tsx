@@ -2,11 +2,11 @@ import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import MenuIcon from '../../../00-tokens/icons/menu-icon';
 import CloseIcon from '../../../00-tokens/icons/close-icon';
-import MainMenu, { MenuItemProps, MainMenuProps } from './main-menu';
+import MainMenu, { MainMenuItemProps, MainMenuProps } from './main-menu';
 import Branding from '../../branding/branding';
 import { cn } from '../../../../utils/tailwind-merge';
 
-const menuItems: MenuItemProps[] = [
+const menuItems: MainMenuItemProps[] = [
   {
     title: 'Why Forcepoint',
     display: 'label',
@@ -24,8 +24,9 @@ const menuItems: MenuItemProps[] = [
             display: 'label_small_arrow',
             description: 'Our vision and mission',
             icon: {
-              src: 'https://forcepoint.com/sites/default/files/about_us_0.svg',
-              alt: 'This is the alt text',
+              media: {
+                src: 'https://forcepoint.com/sites/default/files/about_us_0.svg',
+              },
             },
           },
           {
@@ -34,8 +35,9 @@ const menuItems: MenuItemProps[] = [
             display: 'label_small_arrow',
             description: 'Our data-first approach to cybersecurity',
             icon: {
-              src: 'https://forcepoint.com/sites/default/files/our_approach_0.svg?itok=ItqSFUmj',
-              alt: 'This is the alt text',
+              media: {
+                src: 'https://forcepoint.com/sites/default/files/our_approach_0.svg?itok=ItqSFUmj',
+              },
             },
           },
           {
@@ -45,8 +47,9 @@ const menuItems: MenuItemProps[] = [
             description:
               'We help people work freely, securely and with confidence',
             icon: {
-              src: 'https://forcepoint.com/sites/default/files/our_customers_0.svg?itok=3fZmNUq6',
-              alt: 'This is the alt text',
+              media: {
+                src: 'https://forcepoint.com/sites/default/files/our_customers_0.svg?itok=3fZmNUq6',
+              },
             },
           },
         ],
@@ -81,12 +84,14 @@ const menuItems: MenuItemProps[] = [
                 description:
                   'Data-first SASE starts with Forcepoint ONE. Protect data everywhere, secure access anywhere, and simplify security on one platform.',
                 icon: {
-                  src: 'https://www.forcepoint.com/sites/default/files/fp_one_icon_0.svg?itok=eKi29PlI',
-                  alt: 'This is the alt text',
+                  media: {
+                    src: 'https://www.forcepoint.com/sites/default/files/fp_one_icon_0.svg?itok=eKi29PlI',
+                  },
                 },
                 iconOnHover: {
-                  src: 'https://www.forcepoint.com/sites/default/files/fp_one_icon-hover_0.svg?itok=ecRnPBsZ',
-                  alt: 'This is the alt text',
+                  media: {
+                    src: 'https://www.forcepoint.com/sites/default/files/fp_one_icon-hover_0.svg?itok=ecRnPBsZ',
+                  },
                 },
                 ctaButton: 'Learn More',
               },
@@ -125,8 +130,9 @@ const menuItems: MenuItemProps[] = [
                         description:
                           'Secure data on any public cloud application.',
                         icon: {
-                          src: 'https://forcepoint.com/sites/default/files/casb_0.svg?itok=0AYipcGQ',
-                          alt: 'This is the alt text',
+                          media: {
+                            src: 'https://forcepoint.com/sites/default/files/casb_0.svg?itok=0AYipcGQ',
+                          },
                         },
                       },
                       {
@@ -138,8 +144,9 @@ const menuItems: MenuItemProps[] = [
                         description:
                           'Remotely access every private web app on any device.',
                         icon: {
-                          src: 'https://forcepoint.com/sites/default/files/ztna_0.svg?itok=d3lJw0Cf',
-                          alt: 'This is the alt text',
+                          media: {
+                            src: 'https://forcepoint.com/sites/default/files/ztna_0.svg?itok=d3lJw0Cf',
+                          },
                         },
                       },
                       {
@@ -151,8 +158,9 @@ const menuItems: MenuItemProps[] = [
                         description:
                           'Safely browse the web and download files.',
                         icon: {
-                          src: 'https://forcepoint.com/sites/default/files/swg_0.svg?itok=IAmhFOl2',
-                          alt: 'This is the alt text',
+                          media: {
+                            src: 'https://forcepoint.com/sites/default/files/swg_0.svg?itok=IAmhFOl2',
+                          },
                         },
                       },
                       {
@@ -164,8 +172,9 @@ const menuItems: MenuItemProps[] = [
                         description:
                           'Prevent data exfiltration from the cloud with DLP SaaS.',
                         icon: {
-                          src: 'https://forcepoint.com/sites/default/files/dlp_0.svg?itok=QSiYdR5u',
-                          alt: 'This is the alt text',
+                          media: {
+                            src: 'https://forcepoint.com/sites/default/files/dlp_0.svg?itok=QSiYdR5u',
+                          },
                         },
                       },
                     ],
@@ -200,8 +209,9 @@ const menuItems: MenuItemProps[] = [
                         description:
                           'Connect and protect branches, offices and more.',
                         icon: {
-                          src: 'https://forcepoint.com/sites/default/files/sd_wan_1.svg?itok=ok525WDi',
-                          alt: 'This is the alt text',
+                          media: {
+                            src: 'https://forcepoint.com/sites/default/files/sd_wan_1.svg?itok=ok525WDi',
+                          },
                         },
                       },
                     ],
@@ -275,12 +285,14 @@ const menuItems: MenuItemProps[] = [
                 description:
                   'Industry-leading data security for web, cloud, email, network and endpoint.',
                 icon: {
-                  src: 'https://forcepoint.com/sites/default/files/enterprise_dlp_icon.svg?itok=jX54PA8x',
-                  alt: 'This is the alt text',
+                  media: {
+                    src: 'https://forcepoint.com/sites/default/files/enterprise_dlp_icon.svg?itok=jX54PA8x',
+                  },
                 },
                 iconOnHover: {
-                  src: 'https://forcepoint.com/sites/default/files/enterprise_dlp_icon-hover_0.svg?itok=DImj8Sdd',
-                  alt: 'This is the alt text',
+                  media: {
+                    src: 'https://forcepoint.com/sites/default/files/enterprise_dlp_icon-hover_0.svg?itok=DImj8Sdd',
+                  },
                 },
               },
             ],
@@ -300,8 +312,9 @@ const menuItems: MenuItemProps[] = [
                 description:
                   'Get a panoramic view of data at rest with AI and LLMs.',
                 icon: {
-                  src: 'https://forcepoint.com/sites/default/files/data_visibility.svg?itok=Bz8Cvtip',
-                  alt: 'This is the alt text',
+                  media: {
+                    src: 'https://forcepoint.com/sites/default/files/data_visibility.svg?itok=Bz8Cvtip',
+                  },
                 },
               },
               {
@@ -313,8 +326,9 @@ const menuItems: MenuItemProps[] = [
                 description:
                   'Monitor, analyze and gain insight on user behavior.',
                 icon: {
-                  src: 'https://forcepoint.com/sites/default/files/insider_threat.svg?itok=Nk7wLh80',
-                  alt: 'This is the alt text',
+                  media: {
+                    src: 'https://forcepoint.com/sites/default/files/insider_threat.svg?itok=Nk7wLh80',
+                  },
                 },
               },
               {
@@ -326,8 +340,9 @@ const menuItems: MenuItemProps[] = [
                 description:
                   'Increase the accuracy and efficiency of classification.',
                 icon: {
-                  src: 'https://forcepoint.com/sites/default/files/data_classification.svg?itok=V4Jn8zog',
-                  alt: 'This is the alt text',
+                  media: {
+                    src: 'https://forcepoint.com/sites/default/files/data_classification.svg?itok=V4Jn8zog',
+                  },
                 },
               },
               {
@@ -339,8 +354,9 @@ const menuItems: MenuItemProps[] = [
                 description:
                   'Respond to risk in real-time with policy automation.',
                 icon: {
-                  src: 'https://forcepoint.com/sites/default/files/risk_adaptive.svg?itok=_q5-lQni',
-                  alt: 'This is the alt text',
+                  media: {
+                    src: 'https://forcepoint.com/sites/default/files/risk_adaptive.svg?itok=_q5-lQni',
+                  },
                 },
               },
             ],
@@ -426,12 +442,14 @@ const menuItems: MenuItemProps[] = [
                 description:
                   'Secure the network. Connect and protect offices, branches and remote sites.',
                 icon: {
-                  src: 'https://forcepoint.com/sites/default/files/ngfw_icon.svg?itok=TUIY1tFd',
-                  alt: 'This is the alt text',
+                  media: {
+                    src: 'https://forcepoint.com/sites/default/files/ngfw_icon.svg?itok=TUIY1tFd',
+                  },
                 },
                 iconOnHover: {
-                  src: 'https://forcepoint.com/sites/default/files/ngfw_icon-hover.svg?itok=_4GP7qqq',
-                  alt: 'This is the alt text',
+                  media: {
+                    src: 'https://forcepoint.com/sites/default/files/ngfw_icon-hover.svg?itok=_4GP7qqq',
+                  },
                 },
               },
             ],
@@ -451,8 +469,9 @@ const menuItems: MenuItemProps[] = [
                 description:
                   'Improve security and access for segmented networks.',
                 icon: {
-                  src: 'https://forcepoint.com/sites/default/files/cross_domain_solution.svg?itok=spYAkSuR',
-                  alt: 'This is the alt text',
+                  media: {
+                    src: 'https://forcepoint.com/sites/default/files/cross_domain_solution.svg?itok=spYAkSuR',
+                  },
                 },
               },
               {
@@ -464,8 +483,9 @@ const menuItems: MenuItemProps[] = [
                 description:
                   'Modernize connectivity with next-generation security.',
                 icon: {
-                  src: 'https://forcepoint.com/sites/default/files/sd_wan.svg?itok=BjbAi8Ws',
-                  alt: 'This is the alt text',
+                  media: {
+                    src: 'https://forcepoint.com/sites/default/files/sd_wan.svg?itok=BjbAi8Ws',
+                  },
                 },
               },
               {
@@ -477,8 +497,9 @@ const menuItems: MenuItemProps[] = [
                 description:
                   'Prevent files from launching known or zero-day attacks.',
                 icon: {
-                  src: 'https://forcepoint.com/sites/default/files/zero_trust_cdr.svg?itok=SeJtwVWa',
-                  alt: 'This is the alt text',
+                  media: {
+                    src: 'https://forcepoint.com/sites/default/files/zero_trust_cdr.svg?itok=SeJtwVWa',
+                  },
                 },
               },
               {
@@ -490,8 +511,9 @@ const menuItems: MenuItemProps[] = [
                 description:
                   'Render risky websites in a container to browse safely.',
                 icon: {
-                  src: 'https://forcepoint.com/sites/default/files/rbi.svg?itok=Zk589SmA',
-                  alt: 'This is the alt text',
+                  media: {
+                    src: 'https://forcepoint.com/sites/default/files/rbi.svg?itok=Zk589SmA',
+                  },
                 },
               },
             ],
@@ -658,12 +680,14 @@ const menuItems: MenuItemProps[] = [
                 url: '#',
                 display: 'image_with_content',
                 icon: {
-                  src: 'https://forcepoint.com/sites/default/files/cyber_edu_icon.svg?itok=PJRQDZq5',
-                  alt: 'This is the alt text',
+                  media: {
+                    src: 'https://forcepoint.com/sites/default/files/cyber_edu_icon.svg?itok=PJRQDZq5',
+                  },
                 },
                 iconOnHover: {
-                  src: 'https://forcepoint.com/sites/default/files/cyber_edu_icon-hover.svg?itok=1K3wTAcl',
-                  alt: 'This is the alt text',
+                  media: {
+                    src: 'https://forcepoint.com/sites/default/files/cyber_edu_icon-hover.svg?itok=1K3wTAcl',
+                  },
                 },
                 ctaButton: 'Learn More',
               },
@@ -796,7 +820,7 @@ export const Default: Story = ({ items }: MainMenuProps) => {
     <header className="sticky top-0 z-20 bg-white">
       {/* Desktop */}
       <div className="relative mt-md hidden flex-col gap-xs px-md lg:mx-auto lg:flex lg:max-w-screen-lg">
-        <div className="flex flex-1">
+        <div className="mx-lg flex flex-1">
           <Branding
             className="inline-flex w-[180px]"
             src={branding.data.info.logo}

@@ -13,8 +13,10 @@ import NavLink from '../../ctas/nav-link/nav-link';
 import MenuModal from '../menu-modal/menu-modal';
 
 export type MenuItemImageProps = {
-  src: string;
-  alt?: string;
+  media: {
+    src: string;
+    alt?: string;
+  };
 };
 
 type MenuItemAlignment = 'left_align' | 'right_align';
@@ -43,10 +45,10 @@ type MenuItemWidth =
   | 'three_quarter_width'
   | 'inline_width';
 
-export type MenuItemProps = {
+export type MainMenuItemProps = {
   active?: boolean;
   alignment?: MenuItemAlignment;
-  below?: MenuItemProps[];
+  below?: MainMenuItemProps[];
   bgColor?: string;
   bottomLink?: string;
   className?: string;
@@ -63,7 +65,7 @@ export type MenuItemProps = {
 
 export type MainMenuProps = {
   handlerCloseMenu: () => void;
-  items: MenuItemProps[];
+  items: MainMenuItemProps[];
   linkComponent?: ElementType;
   menuLabel?: string;
 };
@@ -165,7 +167,7 @@ export default function MainMenu({
    */
   const handleOnMouseOver = (
     event: MouseEvent<HTMLLIElement>,
-    item: MenuItemProps,
+    item: MainMenuItemProps,
     index: number,
   ): void => {
     if (item.below && window.innerWidth >= 1156) {
@@ -193,9 +195,9 @@ export default function MainMenu({
 
   /**
    * Handles the mouse out event for menu items.
-   * @param {MenuItemProps} item - The menu item being leaved.
+   * @param {MainMenuItemProps} item - The menu item being leaved.
    */
-  const handleOnMouseOut = (item: MenuItemProps): void => {
+  const handleOnMouseOut = (item: MainMenuItemProps): void => {
     if (item.below && window.innerWidth >= 1156) {
       setActive(-1);
       const navHighlight = document.querySelector(
@@ -206,7 +208,7 @@ export default function MainMenu({
     }
   };
 
-  const renderMenuItemComponent = (item: MenuItemProps, index: number) => {
+  const renderMenuItemComponent = (item: MainMenuItemProps, index: number) => {
     switch (item.display) {
       case 'label': {
         return (
@@ -282,7 +284,7 @@ export default function MainMenu({
             href={item.url}
             component={LinkComponent}
             endIcon={<ArrowRightIcon />}
-            className="flex justify-center lg:block lg:pt-sm"
+            className="max-lg:w-full max-lg:text-center lg:block lg:pt-sm"
           >
             {item.title}
           </Link>
@@ -294,10 +296,10 @@ export default function MainMenu({
             isNav
             url={item.url}
             title={item.title}
-            bgColor={item.bgColor}
             linkText={item.ctaButton}
             eyebrow={item.description}
             linkComponent={LinkComponent}
+            bgColor={item.bgColor}
             className="h-full lg:max-w-none"
           />
         );
@@ -321,7 +323,7 @@ export default function MainMenu({
   };
 
   const renderSubMenuContainer = (
-    item: MenuItemProps,
+    item: MainMenuItemProps,
     index: number,
     depth: number,
   ) => {
@@ -341,7 +343,7 @@ export default function MainMenu({
 
     const renderedItems = (
       <ul className={subClasses}>
-        {item.below?.map((child: MenuItemProps, index: number) =>
+        {item.below?.map((child: MainMenuItemProps, index: number) =>
           renderItem(child, index, depth + 1),
         )}
       </ul>
@@ -356,12 +358,12 @@ export default function MainMenu({
           onBlur={handleBlur}
           isOpen={index === active}
           hideHeaderOnDesktop={true}
+          id={`main-submenu-${index}`}
           handlerCloseMenu={handlerCloseMenu}
           className="left-0 w-full lg:w-auto"
-          id={`main-submenu-${index}`}
           handlerCloseSubMenu={() => handlerOpenSubmenu(-1)}
         >
-          <div className="h-full bg-white lg:rounded-b-m lg:shadow-md">
+          <div className="h-full bg-white lg:overflow-hidden lg:rounded-b-m lg:shadow-md">
             {renderedItems}
           </div>
         </MenuModal>
@@ -370,7 +372,7 @@ export default function MainMenu({
   };
 
   const renderItem = (
-    item: MenuItemProps,
+    item: MainMenuItemProps,
     index: number,
     depth: number = 0,
   ) => {
@@ -389,9 +391,9 @@ export default function MainMenu({
         className={cn(
           `menu-item__${item.display}`,
           depth > 1 ? 'submenu-item' : 'menu-item',
-          item.alignment && itemAlignmentSchema[item.alignment],
           item.below && `menu-item--subitems-${item.below.length}`,
           depth && item.width && itemWidthSchema[item.width].child,
+          item.alignment && itemAlignmentSchema[item.alignment],
           {
             'menu-item__group': isGroup,
             'px-md lg:px-0': depth === 1,
@@ -414,12 +416,12 @@ export default function MainMenu({
   };
 
   return (
-    <nav className="main-menu relative" aria-label={menuLabel}>
+    <nav className="main-menu relative lg:px-lg" aria-label={menuLabel}>
       <ul
         className="flex flex-col gap-x-md divide-y divide-brumosa lg:flex-row lg:items-center lg:divide-y-0"
         onKeyDown={handleKeyDown}
       >
-        {items.map((item: MenuItemProps, index: number) =>
+        {items.map((item: MainMenuItemProps, index: number) =>
           renderItem(item, index),
         )}
       </ul>
