@@ -2,10 +2,10 @@ import { ElementType, useState } from 'react';
 import { cn } from '../../../../utils/tailwind-merge';
 import ArrowBottomIcon from '../../../00-tokens/icons/arrow-bottom-icon';
 import Link from '../../../01-elements/link/link';
-import { MenuItemProps } from '../secondary-menu/secondary-menu';
+import { SecondaryMenuItemProps } from '../secondary-menu/secondary-menu';
 
 export type FooterMenuProps = {
-  items: MenuItemProps[];
+  items: SecondaryMenuItemProps[];
   linkComponent?: ElementType;
   menuLabel?: string;
 };
@@ -38,7 +38,7 @@ export default function FooterMenu({
     }));
   };
 
-  const renderSubitem = (item: MenuItemProps, index: number) => {
+  const renderSubitem = (item: SecondaryMenuItemProps, index: number) => {
     if (!item.url) return;
 
     return (
@@ -58,7 +58,7 @@ export default function FooterMenu({
     );
   };
 
-  const renderSubmenu = (item: MenuItemProps, index: number) => {
+  const renderSubmenu = (item: SecondaryMenuItemProps, index: number) => {
     const isActive = activeItems[index] || false;
     return (
       <ul
@@ -77,7 +77,7 @@ export default function FooterMenu({
     );
   };
 
-  const renderMenuItem = (item: MenuItemProps, index: number) => {
+  const renderMenuItem = (item: SecondaryMenuItemProps, index: number) => {
     const isActive = activeItems[index] || false;
 
     return (

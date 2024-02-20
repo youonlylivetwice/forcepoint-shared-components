@@ -3,13 +3,13 @@ import { useState } from 'react';
 import CloseIcon from '../../../00-tokens/icons/close-icon';
 import MenuIcon from '../../../00-tokens/icons/menu-icon';
 import SecondaryMenu, {
-  MenuItemProps,
+  SecondaryMenuItemProps,
   SecondaryMenuProps,
 } from './secondary-menu';
 import Branding from '../../branding/branding';
 import { cn } from '../../../../utils/tailwind-merge';
 
-const menuItems: MenuItemProps[] = [
+const menuItems: SecondaryMenuItemProps[] = [
   {
     title: 'Government',
     url: '#',

@@ -8,9 +8,9 @@ import GlobeIcon from '../../../00-tokens/icons/globe-icon';
 import Link from '../../../01-elements/link/link';
 import Typography from '../../../01-elements/typography/typography';
 
-export type MenuItemProps = {
+export type SecondaryMenuItemProps = {
   active?: boolean;
-  below?: MenuItemProps[];
+  below?: SecondaryMenuItemProps[];
   linkProps?: {
     [key: string]: string;
   };
@@ -21,7 +21,7 @@ export type MenuItemProps = {
 export type SecondaryMenuProps = {
   handlerCloseMenu: () => void;
   isLanguageSwitcher?: boolean;
-  items: MenuItemProps[];
+  items: SecondaryMenuItemProps[];
   linkComponent?: ElementType;
   menuClass: string;
   menuLabel?: string;
@@ -58,7 +58,7 @@ export default function SecondaryMenu({
     // Checks if the related target element does not exist or is not an instance of 'submenu-item'.
     if (
       (!relatedTarget || !relatedTarget.classList.contains('submenu-item')) &&
-      window.innerWidth >= 950
+      window.innerWidth >= 1156
     ) {
       // Deactivates the active action when losing focus.
       setActive(-1);
@@ -80,29 +80,40 @@ export default function SecondaryMenu({
 
   /**
    * Handles the mouse over event for menu items.
-   * @param {MenuItemProps} item - The menu item being hovered.
+   * @param {SecondaryMenuItemProps} item - The menu item being hovered.
    * @param {number} index - The index of the menu item in the list.
    */
-  const handleOnMouseOver = (item: MenuItemProps, index: number): void => {
+  const handleOnMouseOver = (
+    item: SecondaryMenuItemProps,
+    index: number,
+  ): void => {
     // Check if the menu item has sub-items
-    if (item.below && window.innerWidth >= 950 && !isLanguageSwitcher) {
+    if (
+      item.below?.length &&
+      window.innerWidth >= 1156 &&
+      !isLanguageSwitcher
+    ) {
       setActive(index);
     }
   };
 
   /**
    * Handles the mouse out event for menu items.
-   * @param {MenuItemProps} item - The menu item being hovered.
+   * @param {SecondaryMenuItemProps} item - The menu item being hovered.
    * @param {number} index - The index of the menu item in the list.
    */
-  const handleOnMouseOut = (item: MenuItemProps): void => {
+  const handleOnMouseOut = (item: SecondaryMenuItemProps): void => {
     // Check if the menu item has sub-items
-    if (item.below && window.innerWidth >= 950 && !isLanguageSwitcher) {
+    if (
+      item.below?.length &&
+      window.innerWidth >= 1156 &&
+      !isLanguageSwitcher
+    ) {
       setActive(-1);
     }
   };
 
-  const renderSubitem = (item: MenuItemProps, index: number) => {
+  const renderSubitem = (item: SecondaryMenuItemProps, index: number) => {
     if (!item.url) return;
 
     return (
@@ -137,7 +148,7 @@ export default function SecondaryMenu({
     );
   };
 
-  const renderSubmenu = (item: MenuItemProps, index: number) => {
+  const renderSubmenu = (item: SecondaryMenuItemProps, index: number) => {
     return (
       <div
         id={`${menuClass}-submenu-${index}`}
@@ -201,7 +212,7 @@ export default function SecondaryMenu({
     );
   };
 
-  const renderItem = (item: MenuItemProps, index: number) => {
+  const renderItem = (item: SecondaryMenuItemProps, index: number) => {
     const isActive = active === index;
 
     const itemLabel = (
@@ -245,7 +256,7 @@ export default function SecondaryMenu({
             {itemLabel}
           </Link>
         )}
-        {item.below && (
+        {!!item.below?.length && (
           <>
             <button
               className={cn(

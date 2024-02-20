@@ -1,5 +1,7 @@
 import { ElementType } from 'react';
-import SecondaryMenu, { MenuItemProps } from '../secondary-menu/secondary-menu';
+import SecondaryMenu, {
+  SecondaryMenuItemProps,
+} from '../secondary-menu/secondary-menu';
 
 export type LocaleMenuItem = {
   active: boolean;
@@ -30,7 +32,7 @@ export default function LanguageSwitcher({
     locales.unshift(activeLocale);
   }
 
-  const belowItems: MenuItemProps[] = locales.map((item) => ({
+  const belowItems: SecondaryMenuItemProps[] = locales.map((item) => ({
     title: item.localeName,
     url: `/${item.localeCode}${url}`,
     active: item.active,
@@ -40,7 +42,7 @@ export default function LanguageSwitcher({
   const activeLocaleName =
     locales.find((locale) => locale.active)?.localeName || '';
 
-  const menuItems: MenuItemProps = {
+  const menuItems: SecondaryMenuItemProps = {
     title: activeLocaleName,
     below: belowItems,
   };
