@@ -33,8 +33,8 @@ export default function NavLink({
           <div className="h-xl w-xl rounded-s bg-gradient-to-t from-white to-azure p-sm">
             <img
               className="block h-full w-full"
+              src={icon.media?.src}
               role="presentation"
-              src={icon.src}
               alt=""
             />
           </div>

@@ -54,21 +54,21 @@ export default function Link({
   const renderIcon = (icon: ReactNode) => (
     <span
       className={cn(
-        'inline-block absolute transform mt-xs ml-xs transition-transform duration-200 rtl:rotate-180',
+        'absolute ml-xs inline-block transform leading-[100%] transition-transform duration-200 rtl:rotate-180',
         {
-          'group-hover:translate-x-[0.25rem] rtl:group-hover:translate-x-[-0.25rem]':
+          'group-hover/link:translate-x-[0.25rem] rtl:group-hover/link:translate-x-[-0.25rem]':
             animated,
         },
       )}
     >
-      {icon}
+      <i className="inline-block">{icon}</i>
     </span>
   );
 
   return (
     <Element
       className={cn(
-        'group inline-block align-middle items-center font-bold',
+        'group/link link-icon relative inline-block items-center align-middle font-bold',
         {
           'hover:underline hover:underline-offset-8': underline === 'hover',
           'underline underline-offset-8': underline === 'always',

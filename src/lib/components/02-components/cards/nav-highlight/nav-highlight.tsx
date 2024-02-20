@@ -19,9 +19,9 @@ export type CardNavHighlightProps = {
 
 const cardStyles = {
   large: {
-    content: 'p-md gap-md lg:p-lg',
+    content: 'p-md gap-md',
     icon: 'right-0 absolute bottom-0 right-[-20%]',
-    title: 'text-h1 3xl:text-display',
+    title: 'text-h1',
     wrap: 'max-w-none lg:max-w-[380px]',
   },
   small: {
@@ -57,16 +57,17 @@ export default function CardNavHighlight({
           <div className={cardStyles[size].icon}>
             <img
               alt=""
-              src={icon.src}
               role="presentation"
+              src={icon.media?.src}
               className={cn('block text-white', {
                 'group-hover:hidden': iconOnHover,
               })}
             />
             {iconOnHover && (
               <img
-                src={iconOnHover.src}
-                alt={iconOnHover.alt}
+                alt=""
+                role="presentation"
+                src={iconOnHover.media?.src}
                 className="hidden text-white group-hover:block"
               />
             )}
@@ -102,7 +103,7 @@ export default function CardNavHighlight({
               animated
               component="span"
               endIcon={<ArrowRightIcon />}
-              className="hidden self-end font-normal !text-white sm:flex"
+              className="ml-auto mr-[25px] hidden font-normal !text-white sm:block"
             >
               {ctaButton}
             </Link>
