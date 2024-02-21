@@ -1,4 +1,4 @@
-import { ElementType } from 'react';
+import { ElementType, useEffect } from 'react';
 import SecondaryMenu, {
   SecondaryMenuItemProps,
 } from '../secondary-menu/secondary-menu';
@@ -13,17 +13,19 @@ export type LocaleMenuItem = {
 };
 
 export type LanguageSwitcherProps = {
+  handlerCloseMenu?: () => void;
   linkComponent?: ElementType;
   locales: LocaleMenuItem[];
-  url: string;
   onFooter?: boolean;
+  url: string;
 };
 
 export default function LanguageSwitcher({
+  handlerCloseMenu,
   linkComponent: LinkComponent = 'a',
   locales,
-  url,
   onFooter = false,
+  url,
 }: LanguageSwitcherProps) {
   // Move active locale to the beginning of the array
   const activeIndex = locales.findIndex((locale) => locale.active);
@@ -50,11 +52,11 @@ export default function LanguageSwitcher({
   return (
     <SecondaryMenu
       items={[menuItems]}
-      menuLabel="Language switcher"
-      handlerCloseMenu={() => {}}
+      onFooter={onFooter}
       isLanguageSwitcher={true}
       linkComponent={LinkComponent}
-      onFooter={onFooter}
+      menuLabel="Language switcher"
+      handlerCloseMenu={handlerCloseMenu}
     />
   );
 }

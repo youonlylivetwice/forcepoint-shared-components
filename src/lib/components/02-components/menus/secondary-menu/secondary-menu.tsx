@@ -1,4 +1,4 @@
-import { ElementType, useState } from 'react';
+import { ElementType, useEffect, useState } from 'react';
 import { cn } from '../../../../utils/tailwind-merge';
 import ArrowBottomIcon from '../../../00-tokens/icons/arrow-bottom-icon';
 import ArrowExitIcon from '../../../00-tokens/icons/arrow-exit-icon';
@@ -19,7 +19,7 @@ export type SecondaryMenuItemProps = {
 };
 
 export type SecondaryMenuProps = {
-  handlerCloseMenu: () => void;
+  handlerCloseMenu?: () => void;
   isLanguageSwitcher?: boolean;
   items: SecondaryMenuItemProps[];
   linkComponent?: ElementType;
@@ -37,6 +37,21 @@ export default function SecondaryMenu({
 }: SecondaryMenuProps) {
   const [active, setActive] = useState<number | undefined>();
   const menuClass = menuLabel.toLowerCase().replace(/\s/g, '-');
+
+  useEffect(() => {
+    const handleClick = (event: MouseEvent) => {
+      if (!event.target) return;
+      const selected = event.target as Element;
+      const parent = selected?.closest('.language-switcher');
+      if (!parent) {
+        setActive(-1);
+      }
+    };
+    document.addEventListener('click', handleClick);
+    return () => {
+      document.removeEventListener('click', handleClick);
+    };
+  }, []);
 
   /**
    * Handles opening/closing a submenu based on the provided index.
@@ -178,13 +193,15 @@ export default function SecondaryMenu({
           <span className="block flex-1 text-start text-body-2 text-grey rtl:text-right">
             {item.title}
           </span>
-          <button
-            className="block p-md text-center"
-            onClick={handlerCloseMenu}
-            aria-label="Close menu"
-          >
-            <CloseIcon className="text-grey" />
-          </button>
+          {handlerCloseMenu && (
+            <button
+              className="block p-md text-center"
+              onClick={handlerCloseMenu}
+              aria-label="Close menu"
+            >
+              <CloseIcon className="text-grey" />
+            </button>
+          )}
         </div>
         {/* Desktop Heading */}
         <div
