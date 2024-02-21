@@ -1,4 +1,4 @@
-import { ElementType, useEffect } from 'react';
+import { ElementType } from 'react';
 import SecondaryMenu, {
   SecondaryMenuItemProps,
 } from '../secondary-menu/secondary-menu';
