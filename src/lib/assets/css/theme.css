@@ -100,7 +100,7 @@
 }
 
 .menu-item__button_with_arrow + .menu-item__button {
-  @apply lg:mr-md;
+  @apply lg:!mr-md;
 }
 
 .menu-item--subitems-1:has(.menu-item--wrapper-button_with_arrow) {

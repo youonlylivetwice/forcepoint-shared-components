@@ -52,16 +52,17 @@ export default function Link({
   ...props
 }: LinkProps) {
   const renderIcon = (icon: ReactNode) => (
-    <span
-      className={cn(
-        'absolute ml-xs inline-block transform leading-[100%] transition-transform duration-200 rtl:rotate-180',
-        {
-          'group-hover/link:translate-x-[0.25rem] rtl:group-hover/link:translate-x-[-0.25rem]':
-            animated,
-        },
-      )}
-    >
-      <i className="inline-block">{icon}</i>
+    <span className="absolute inline-block transform leading-[100%] rtl:[transform:rotateY(180deg)]">
+      <i
+        className={cn(
+          'inline-block translate-x-[0.25rem] transition-transform duration-200',
+          {
+            'group-hover/link:translate-x-[0.5rem]': animated,
+          },
+        )}
+      >
+        {icon}
+      </i>
     </span>
   );
 
@@ -73,6 +74,8 @@ export default function Link({
           'hover:underline hover:underline-offset-8': underline === 'hover',
           'underline underline-offset-8': underline === 'always',
           'pointer-events-none opacity-60': disabled,
+          'pl-md rtl:pl-0 rtl:pr-md': startIcon,
+          'pr-md rtl:pl-md rtl:pr-0': endIcon,
           'cursor-pointer': !disabled,
         },
         colorLinkSchema[color],

@@ -103,7 +103,7 @@ export default function CardNavHighlight({
               animated
               component="span"
               endIcon={<ArrowRightIcon />}
-              className="ml-auto mr-[25px] hidden font-normal !text-white sm:block"
+              className="ml-auto hidden font-normal !text-white rtl:ml-0 rtl:mr-auto sm:block"
             >
               {ctaButton}
             </Link>

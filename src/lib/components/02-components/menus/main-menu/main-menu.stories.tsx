@@ -804,12 +804,19 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = ({ items }: MainMenuProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
 
+  const toggleMenu = () => {
+    const isOpen = !isMenuOpen;
+    setIsMenuOpen(isOpen);
+    // Toggle a class on the body element to prevent scrolling
+    document.body.classList.toggle('max-lg:overflow-hidden', isOpen);
+  };
+
   const mainMenuRendered = () => (
     <MainMenu items={items} handlerCloseMenu={() => setIsMenuOpen(false)} />
   );
 
   const secondaryMenuRendered = () => (
-    <div className="flex flex-1 bg-azure py-md lg:ml-lg lg:justify-end">
+    <div className="flex flex-1 bg-azure py-md lg:justify-end">
       <span className="text-h6 font-semibold uppercase text-grey">
         Secondary menu content
       </span>
@@ -817,24 +824,26 @@ export const Default: Story = ({ items }: MainMenuProps) => {
   );
 
   return (
-    <header className="sticky top-0 z-20 bg-white">
+    <header className="site-header sticky top-0 z-20 bg-white lg:top-[-60px]">
       {/* Desktop */}
-      <div className="relative mt-md hidden flex-col gap-xs px-md lg:mx-auto lg:flex lg:max-w-screen-lg">
-        <div className="mx-lg flex flex-1">
+      <div className="hidden lg:relative lg:mx-auto lg:flex lg:max-w-screen-xl lg:flex-col lg:gap-xs lg:pt-md">
+        <div className="lg:mx-lg lg:flex lg:flex-1 lg:gap-lg">
           <Branding
-            className="inline-flex w-[180px]"
+            className="lg:inline-flex lg:w-[180px]"
             src={branding.data.info.logo}
             alt="Site Logo"
           />
-          <div className="flex flex-1 justify-end gap-md">
+          <div className="lg:flex lg:flex-1 lg:justify-end lg:gap-md">
             {secondaryMenuRendered()}
           </div>
         </div>
-        <div className="w-full">{mainMenuRendered()}</div>
+        <div className="flex lg:w-full">
+          <div className="flex-1">{mainMenuRendered()}</div>
+        </div>
       </div>
       {/* Mobile */}
       <div
-        className={cn(' flex w-screen flex-col lg:hidden', {
+        className={cn('flex w-screen flex-col lg:hidden', {
           'h-screen': isMenuOpen,
         })}
       >
@@ -848,10 +857,10 @@ export const Default: Story = ({ items }: MainMenuProps) => {
             />
           </div>
           <button
-            aria-label={'Main menu'}
-            aria-expanded={isMenuOpen}
             className="block p-md text-center"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-expanded={isMenuOpen}
+            aria-label={'Main menu'}
+            onClick={toggleMenu}
           >
             {isMenuOpen ? (
               <CloseIcon className="text-grey" />
@@ -866,7 +875,7 @@ export const Default: Story = ({ items }: MainMenuProps) => {
             <div className="border-b border-chateau bg-white p-md">
               {mainMenuRendered()}
             </div>
-            <div className="flex-1 bg-azure px-md ">
+            <div className="flex-1 divide-y divide-brumosa bg-azure px-md">
               {secondaryMenuRendered()}
             </div>
           </>

@@ -82,7 +82,7 @@ const itemAlignmentSchema: {
   [key in MenuItemAlignment]: string;
 } = {
   left_align: 'lg:float-left',
-  right_align: 'lg:float-right lg:ml-auto rtl:lg:mr-auto',
+  right_align: 'lg:float-right lg:ml-auto rtl:lg:mr-auto lg:rtl:ml-0',
 };
 
 const itemWidthSchema: { [key in MenuItemWidth]: Record<string, string> } = {
@@ -360,8 +360,8 @@ export default function MainMenu({
           hideHeaderOnDesktop={true}
           id={`main-submenu-${index}`}
           handlerCloseMenu={handlerCloseMenu}
-          className="left-0 w-full lg:w-auto"
           handlerCloseSubMenu={() => handlerOpenSubmenu(-1)}
+          className="left-0 w-full lg:w-auto lg:rtl:left-auto lg:rtl:right-0"
         >
           <div className="h-full bg-white lg:overflow-hidden lg:rounded-b-m lg:shadow-md">
             {renderedItems}
