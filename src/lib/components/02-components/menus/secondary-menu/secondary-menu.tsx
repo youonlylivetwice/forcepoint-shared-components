@@ -47,9 +47,11 @@ export default function SecondaryMenu({
         setActive(-1);
       }
     };
-    document.addEventListener('click', handleClick);
+    if (isLanguageSwitcher) document.addEventListener('click', handleClick);
     return () => {
-      document.removeEventListener('click', handleClick);
+      if (isLanguageSwitcher) {
+        document.removeEventListener('click', handleClick);
+      }
     };
   }, []);
 
@@ -146,6 +148,7 @@ export default function SecondaryMenu({
                 item.active && onFooter && isLanguageSwitcher,
             },
           )}
+          onClick={() => handlerCloseMenu && handlerCloseMenu()}
           {...item.linkProps}
         >
           <span className="text-right text-h5 font-semibold text-inherit lg:text-h6">
@@ -237,7 +240,7 @@ export default function SecondaryMenu({
         className={cn(
           'w-full py-md text-[12px] font-semibold uppercase text-inherit rtl:text-right lg:py-0',
           {
-            'max-w-[86px] overflow-hidden text-ellipsis whitespace-nowrap':
+            'overflow-hidden text-ellipsis whitespace-nowrap lg:max-w-[86px]':
               isLanguageSwitcher,
             'lg:text-[13px]': onFooter && isLanguageSwitcher,
           },

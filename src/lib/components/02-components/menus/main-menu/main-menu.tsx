@@ -175,7 +175,7 @@ export default function MainMenu({
       const itemHighlighting = event.currentTarget;
       const mainMenu = document.querySelector('.main-menu');
 
-      if (mainMenu && itemHighlighting) {
+      if (mainMenu && itemHighlighting && item.display === 'label') {
         const menuRect = mainMenu.getBoundingClientRect();
         const itemRect = itemHighlighting.getBoundingClientRect();
 

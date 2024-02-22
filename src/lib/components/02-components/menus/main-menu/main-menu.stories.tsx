@@ -849,7 +849,7 @@ export const Default: Story = ({ items }: MainMenuProps) => {
       >
         {/* Menu heading */}
         <div className="flex w-full flex-row items-center justify-center border-b border-b-mercury bg-white">
-          <div className="flex-1 pl-md">
+          <div className="flex-1 pl-md rtl:pl-0 rtl:pr-md">
             <Branding
               className="inline-flex w-[84px]"
               src={branding.data.info.logo}
