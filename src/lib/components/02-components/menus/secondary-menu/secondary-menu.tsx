@@ -302,8 +302,9 @@ export default function SecondaryMenu({
                   {
                     'lg:rotate-180 rtl:lg:rotate-180': isActive,
                     'lg:rotate-0': !isActive,
-                    'rotate-[0deg]': onFooter && isLanguageSwitcher,
-                    'max-lg:rotate-[180deg]':
+                    'rotate-[0deg] rtl:rotate-[0deg]':
+                      onFooter && isLanguageSwitcher,
+                    'max-lg:rotate-[180deg] rtl:max-lg:rotate-[180deg]':
                       isActive && onFooter && isLanguageSwitcher,
                   },
                 )}

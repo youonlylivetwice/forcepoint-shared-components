@@ -90,7 +90,7 @@ export default function FooterMenu({
             href={item.url}
             component={LinkComponent}
             {...item.linkProps}
-            className="w-[calc(100%-20px)] py-md text-left text-body-2 font-semibold text-navy hover:text-blue focus:text-blue max-md:leading-none md:py-0 md:text-h4"
+            className="w-[calc(100%-20px)] py-md text-left text-body-2 font-semibold text-navy hover:text-blue focus:text-blue rtl:text-right max-md:leading-none md:py-0 md:text-h4"
           >
             {item.title}
           </Link>
@@ -119,13 +119,13 @@ export default function FooterMenu({
               {!item.url && item.title}
               <ArrowBottomIcon
                 className={cn(
-                  'ml-auto h-[16px] w-[16px] min-w-[16px] transition-transform duration-200 md:hidden',
+                  'ml-auto h-[16px] w-[16px] min-w-[16px] transition-transform duration-200 rtl:ml-0 rtl:mr-auto md:hidden',
                   { 'rotate-180 rtl:rotate-180': isActive },
                 )}
               />
             </button>
             {!item.url && (
-              <span className="hidden text-left text-body-2 font-semibold text-navy hover:text-blue focus:text-blue max-md:leading-none md:block md:h-auto md:gap-0 md:py-0 md:text-h4">
+              <span className="hidden text-left text-body-2 font-semibold text-navy hover:text-blue focus:text-blue rtl:text-right max-md:leading-none md:block md:h-auto md:gap-0 md:py-0 md:text-h4">
                 {item.title}
               </span>
             )}
