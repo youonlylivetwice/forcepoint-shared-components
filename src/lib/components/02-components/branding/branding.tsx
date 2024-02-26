@@ -2,16 +2,17 @@ import { AnchorHTMLAttributes, ElementType } from 'react';
 
 export type BrandingProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   alt: string;
-  component?: ElementType;
   height?: string;
   href?: string;
+  linkComponent?: ElementType;
+  locale?: string;
   src: string;
   width?: string;
 };
 
 export default function Branding({
   alt,
-  component: Element = 'a',
+  linkComponent: Element = 'a',
   height,
   href = '/',
   src,
