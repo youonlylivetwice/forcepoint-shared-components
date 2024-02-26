@@ -36,7 +36,7 @@ export default function LanguageSwitcher({
 
   const belowItems: SecondaryMenuItemProps[] = locales.map((item) => ({
     title: item.localeName,
-    url: `/${item.localeCode}${url}`,
+    url: url,
     active: item.active,
     linkProps: item.linkProps,
   }));
