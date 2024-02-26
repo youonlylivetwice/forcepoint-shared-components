@@ -5,16 +5,16 @@ import CloseThickIcon from '../../00-tokens/icons/close-thick-icon.tsx';
 import SearchThickIcon from '../../00-tokens/icons/search-thick-icon.tsx';
 
 export type SearchProps = FormHTMLAttributes<HTMLFormElement> & {
-  onSearch?: (value: string) => void;
   isSearchOpen: boolean;
+  onSearch?: (value: string) => void;
   queryKey: string;
   setIsSearchOpen: (value: boolean) => void;
   url: string;
 };
 
 export default function SearchInput({
-  onSearch,
   isSearchOpen,
+  onSearch,
   queryKey,
   setIsSearchOpen,
   url,
@@ -36,12 +36,15 @@ export default function SearchInput({
   return (
     <div className="search-input-wrapper flex gap-md rtl:flex-row-reverse">
       <form
-        onSubmit={handlerSearch}
         method="get"
+        onSubmit={handlerSearch}
         action={`${url}?${queryKey}=${encodeURIComponent(inputValue)}`}
-        className={cn({
-          'sr-only': isSearchOpen,
-        })}
+        className={cn(
+          'w-[380px] opacity-100 transition-all duration-500 ease-in-out',
+          {
+            'sr-only w-0 opacity-0': !isSearchOpen,
+          },
+        )}
         id="search-form"
         {...props}
       >
@@ -57,7 +60,7 @@ export default function SearchInput({
             value={inputValue}
             placeholder="Search"
             onChange={(e) => setInputValue(e.target.value)}
-            className="rounded-m bg-mercury px-lg py-xs text-grey placeholder:text-grey rtl:text-right"
+            className="max-h-[30px] w-full rounded-m bg-mercury px-[45px] py-xs leading-none text-grey placeholder:text-grey rtl:text-right"
           />
           <ArrowRightIcon className="absolute right-sm text-teal" />
         </div>
@@ -73,14 +76,14 @@ export default function SearchInput({
         aria-expanded={isSearchOpen}
         aria-controls="search-form"
         aria-label={cn({
-          'Close search form': !isSearchOpen,
-          'Open search form': isSearchOpen,
+          'Close search form': isSearchOpen,
+          'Open search form': !isSearchOpen,
         })}
       >
         {isSearchOpen ? (
-          <SearchThickIcon className="text-grey" />
-        ) : (
           <CloseThickIcon className="text-teal" />
+        ) : (
+          <SearchThickIcon className="text-grey hover:text-teal" />
         )}
       </button>
     </div>
