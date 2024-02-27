@@ -16,6 +16,7 @@ import { SecondaryMenu } from 'forcepoint-shared-components';
 | isLanguageSwitcher | `boolean` | `false` | Indicates if the menu is used as a language switcher. |
 | items | `MenuItemProps[]` | `-` | Array of menu items. |
 | menuClass | `string` | `-` | CSS class to style the menu component. |
+| onFooter   | `boolean`  | Optional. If true then the submenu would expand above the button which opens it  |
 
 ## Menu item props
 

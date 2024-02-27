@@ -15,19 +15,20 @@ export type CardNavHighlightProps = {
   size?: 'small' | 'large';
   title: string;
   url?: string;
+  onClick?: () => void;
 };
 
 const cardStyles = {
   large: {
-    content: 'p-md gap-md menu:p-lg',
+    content: 'p-md gap-md',
     icon: 'right-0 absolute bottom-0 right-[-20%]',
-    title: 'text-h1 xl:text-display',
-    wrap: 'max-w-none menu:max-w-[380px]',
+    title: 'text-h1',
+    wrap: 'max-w-none lg:max-w-[380px]',
   },
   small: {
-    content: 'p-md gap-sm menu:gap-md',
-    icon: 'w-[50px] h-[50px] menu:w-fit menu:h-fit my-auto ml-md right-0 menu:absolute menu:bottom-0 menu:right-[-20%]',
-    title: 'text-h4 menu:text-h2',
+    content: 'p-md gap-sm lg:gap-md',
+    icon: 'w-[50px] h-[50px] lg:w-fit lg:h-fit my-auto ml-md right-0 lg:absolute lg:bottom-0 lg:right-[-20%]',
+    title: 'text-h4 lg:text-h2',
     wrap: '',
   },
 };
@@ -42,9 +43,10 @@ export default function CardNavHighlight({
   size = 'large',
   title,
   url,
+  ...props
 }: CardNavHighlightProps) {
   return (
-    <Link href={url} component={LinkComponent} className={'w-full'}>
+    <Link href={url} component={LinkComponent} className={'w-full'} {...props}>
       <div
         className={cn(
           'group relative flex w-full overflow-hidden rounded-m bg-gradient-to-tr from-violette-darker to-violette',
@@ -57,16 +59,17 @@ export default function CardNavHighlight({
           <div className={cardStyles[size].icon}>
             <img
               alt=""
-              src={icon.src}
               role="presentation"
+              src={icon.media?.src}
               className={cn('block text-white', {
                 'group-hover:hidden': iconOnHover,
               })}
             />
             {iconOnHover && (
               <img
-                src={iconOnHover.src}
-                alt={iconOnHover.alt}
+                alt=""
+                role="presentation"
+                src={iconOnHover.media?.src}
                 className="hidden text-white group-hover:block"
               />
             )}
@@ -75,7 +78,7 @@ export default function CardNavHighlight({
         {/* Link content */}
         <div
           className={cn(
-            'menu:justify-normal flex flex-1 flex-col justify-center',
+            'flex flex-1 flex-col justify-center lg:justify-normal',
             cardStyles[size].content,
           )}
         >
@@ -102,7 +105,7 @@ export default function CardNavHighlight({
               animated
               component="span"
               endIcon={<ArrowRightIcon />}
-              className="hidden self-end font-normal !text-white sm:flex"
+              className="ml-auto hidden font-normal !text-white rtl:ml-0 rtl:mr-auto sm:block"
             >
               {ctaButton}
             </Link>

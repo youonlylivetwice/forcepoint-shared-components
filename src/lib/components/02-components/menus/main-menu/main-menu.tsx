@@ -13,8 +13,10 @@ import NavLink from '../../ctas/nav-link/nav-link';
 import MenuModal from '../menu-modal/menu-modal';
 
 export type MenuItemImageProps = {
-  src: string;
-  alt?: string;
+  media: {
+    src: string;
+    alt?: string;
+  };
 };
 
 type MenuItemAlignment = 'left_align' | 'right_align';
@@ -43,10 +45,10 @@ type MenuItemWidth =
   | 'three_quarter_width'
   | 'inline_width';
 
-export type MenuItemProps = {
+export type MainMenuItemProps = {
   active?: boolean;
   alignment?: MenuItemAlignment;
-  below?: MenuItemProps[];
+  below?: MainMenuItemProps[];
   bgColor?: string;
   bottomLink?: string;
   className?: string;
@@ -61,9 +63,9 @@ export type MenuItemProps = {
   width?: MenuItemWidth;
 };
 
-export type MenuProps = {
+export type MainMenuProps = {
   handlerCloseMenu: () => void;
-  items: MenuItemProps[];
+  items: MainMenuItemProps[];
   linkComponent?: ElementType;
   menuLabel?: string;
 };
@@ -79,48 +81,48 @@ export type TokensType = Record<
 const itemAlignmentSchema: {
   [key in MenuItemAlignment]: string;
 } = {
-  left_align: 'menu:float-left',
-  right_align: 'menu:float-right menu:ml-auto rtl:menu:mr-auto',
+  left_align: 'lg:float-left',
+  right_align: 'lg:float-right lg:ml-auto rtl:lg:mr-auto lg:rtl:ml-0',
 };
 
 const itemWidthSchema: { [key in MenuItemWidth]: Record<string, string> } = {
   full_width: {
-    child: 'menu:col-span-full w-full',
-    parent: 'grid menu:grid-cols-1',
+    child: 'lg:col-span-full w-full',
+    parent: 'grid lg:grid-cols-1',
   },
   fifth_width: {
-    child: 'menu:col-span-1',
-    parent: 'grid menu:grid-cols-5',
+    child: 'lg:col-span-1',
+    parent: 'grid lg:grid-cols-5',
   },
   quarter_width: {
-    child: 'menu:col-span-1',
-    parent: 'grid menu:grid-cols-4',
+    child: 'lg:col-span-1',
+    parent: 'grid lg:grid-cols-4',
   },
   third_width: {
-    child: 'menu:col-span-1',
-    parent: 'grid menu:grid-cols-3',
+    child: 'lg:col-span-1',
+    parent: 'grid lg:grid-cols-3',
   },
   half_width: {
-    child: 'menu:col-span-1',
-    parent: 'grid menu:grid-cols-2',
+    child: 'lg:col-span-1',
+    parent: 'grid lg:grid-cols-2',
   },
   two_third_width: {
-    child: 'menu:col-span-2',
-    parent: 'grid menu:grid-cols-3',
+    child: 'lg:col-span-2',
+    parent: 'grid lg:grid-cols-3',
   },
   three_quarter_width: {
-    child: 'menu:col-span-3',
-    parent: 'grid menu:grid-cols-4',
+    child: 'lg:col-span-3',
+    parent: 'grid lg:grid-cols-4',
   },
-  inline_width: { child: 'menu:w-max', parent: '' },
+  inline_width: { child: 'lg:w-max', parent: '' },
 };
 
 export default function MainMenu({
   handlerCloseMenu,
   items,
   linkComponent: LinkComponent = 'a',
-  menuLabel = 'Main Menu',
-}: MenuProps) {
+  menuLabel = 'Main menu',
+}: MainMenuProps) {
   const [active, setActive] = useState<number>(-1);
 
   /**
@@ -165,30 +167,37 @@ export default function MainMenu({
    */
   const handleOnMouseOver = (
     event: MouseEvent<HTMLLIElement>,
-    item: MenuItemProps,
+    item: MainMenuItemProps,
     index: number,
   ): void => {
     if (item.below && window.innerWidth >= 1156) {
       setActive(index);
-      const selectedRect = event.currentTarget?.getBoundingClientRect();
-      const navHighlight = document.querySelector(
-        '.nav-highlight',
-      ) as HTMLElement;
+      const itemHighlighting = event.currentTarget;
+      const mainMenu = document.querySelector('.main-menu');
 
-      // Animation for highlighting navigation.
-      if (navHighlight && selectedRect) {
-        navHighlight.style.width = `${selectedRect.width}px`;
-        navHighlight.style.left = `${selectedRect.x}px`;
-        navHighlight.style.height = '4px';
+      if (mainMenu && itemHighlighting && item.display === 'label') {
+        const menuRect = mainMenu.getBoundingClientRect();
+        const itemRect = itemHighlighting.getBoundingClientRect();
+
+        const navHighlight = document.querySelector(
+          '.nav-highlight',
+        ) as HTMLElement;
+
+        // Animation for highlighting navigation.
+        if (navHighlight) {
+          navHighlight.style.left = `${itemRect.x - menuRect.x}px`;
+          navHighlight.style.width = `${itemRect.width}px`;
+          navHighlight.style.height = '4px';
+        }
       }
     }
   };
 
   /**
    * Handles the mouse out event for menu items.
-   * @param {MenuItemProps} item - The menu item being leaved.
+   * @param {MainMenuItemProps} item - The menu item being leaved.
    */
-  const handleOnMouseOut = (item: MenuItemProps): void => {
+  const handleOnMouseOut = (item: MainMenuItemProps): void => {
     if (item.below && window.innerWidth >= 1156) {
       setActive(-1);
       const navHighlight = document.querySelector(
@@ -199,7 +208,7 @@ export default function MainMenu({
     }
   };
 
-  const renderMenuItemComponent = (item: MenuItemProps, index: number) => {
+  const renderMenuItemComponent = (item: MainMenuItemProps, index: number) => {
     switch (item.display) {
       case 'label': {
         return (
@@ -209,6 +218,7 @@ export default function MainMenu({
             isActive={index === active}
             linkComponent={LinkComponent}
             onClick={() => setActive(index)}
+            handlerCloseMenu={handlerCloseMenu}
             index={index}
           />
         );
@@ -221,6 +231,7 @@ export default function MainMenu({
             title={item.title}
             linkComponent={LinkComponent}
             description={item.description}
+            onClick={onCloseMainMenu}
           />
         );
       }
@@ -233,7 +244,8 @@ export default function MainMenu({
             href={item.url}
             component={LinkComponent}
             endIcon={<ChevronRightIcon />}
-            className="menu:mb-0 my-0 font-medium"
+            className="my-0 font-medium lg:mb-0"
+            onClick={onCloseMainMenu}
           >
             {item.title}
           </Link>
@@ -250,6 +262,7 @@ export default function MainMenu({
             description={item.description}
             iconOnHover={item.iconOnHover}
             size={item.width === 'full_width' ? 'large' : 'small'}
+            onClick={onCloseMainMenu}
           />
         );
       }
@@ -260,7 +273,8 @@ export default function MainMenu({
             color="blue"
             href={item.url}
             component={LinkComponent}
-            className="menu:w-fit block w-full text-center"
+            className="block w-full text-center lg:w-fit"
+            onClick={onCloseMainMenu}
           >
             {item.title}
           </Button>
@@ -275,7 +289,8 @@ export default function MainMenu({
             href={item.url}
             component={LinkComponent}
             endIcon={<ArrowRightIcon />}
-            className="menu:pt-sm menu:block flex justify-center"
+            className="max-lg:w-full max-lg:text-center lg:block lg:pt-sm"
+            onClick={onCloseMainMenu}
           >
             {item.title}
           </Link>
@@ -291,7 +306,8 @@ export default function MainMenu({
             linkText={item.ctaButton}
             eyebrow={item.description}
             linkComponent={LinkComponent}
-            className="menu:max-w-none h-full"
+            className="h-full lg:max-w-none"
+            onClick={onCloseMainMenu}
           />
         );
       }
@@ -313,8 +329,12 @@ export default function MainMenu({
     return ['label', 'no_label'].includes(display);
   };
 
+  const onCloseMainMenu = () => {
+    if (handlerCloseMenu) handlerCloseMenu();
+  };
+
   const renderSubMenuContainer = (
-    item: MenuItemProps,
+    item: MainMenuItemProps,
     index: number,
     depth: number,
   ) => {
@@ -323,7 +343,7 @@ export default function MainMenu({
 
     const subClasses = cn(
       {
-        'py-lg gap-y-md menu:gap-y-sm menu:px-lg menu:gap-x-lg menu:h-full menu:content-start':
+        'py-lg gap-y-md lg:gap-y-sm lg:px-lg lg:gap-x-lg lg:h-full lg:content-start':
           depth === 1 && isGroup,
       },
       isGroup && lastItem?.width && [itemWidthSchema[lastItem?.width].parent],
@@ -334,7 +354,7 @@ export default function MainMenu({
 
     const renderedItems = (
       <ul className={subClasses}>
-        {item.below?.map((child: MenuItemProps, index: number) =>
+        {item.below?.map((child: MainMenuItemProps, index: number) =>
           renderItem(child, index, depth + 1),
         )}
       </ul>
@@ -349,12 +369,12 @@ export default function MainMenu({
           onBlur={handleBlur}
           isOpen={index === active}
           hideHeaderOnDesktop={true}
-          handlerCloseMenu={handlerCloseMenu}
-          className="menu:w-auto left-0 w-full"
           id={`main-submenu-${index}`}
+          handlerCloseMenu={handlerCloseMenu}
           handlerCloseSubMenu={() => handlerOpenSubmenu(-1)}
+          className="left-0 w-full lg:w-auto lg:rtl:left-auto lg:rtl:right-0"
         >
-          <div className="menu:rounded-b-m menu:shadow-md h-full bg-white">
+          <div className="h-full bg-white lg:overflow-hidden lg:rounded-b-m lg:shadow-md">
             {renderedItems}
           </div>
         </MenuModal>
@@ -363,7 +383,7 @@ export default function MainMenu({
   };
 
   const renderItem = (
-    item: MenuItemProps,
+    item: MainMenuItemProps,
     index: number,
     depth: number = 0,
   ) => {
@@ -382,12 +402,12 @@ export default function MainMenu({
         className={cn(
           `menu-item__${item.display}`,
           depth > 1 ? 'submenu-item' : 'menu-item',
-          item.alignment && itemAlignmentSchema[item.alignment],
           item.below && `menu-item--subitems-${item.below.length}`,
           depth && item.width && itemWidthSchema[item.width].child,
+          item.alignment && itemAlignmentSchema[item.alignment],
           {
             'menu-item__group': isGroup,
-            'menu:px-0 px-md': depth === 1,
+            'px-md lg:px-0': depth === 1,
             'menu-item__with-icon': item.icon,
             'menu-item__group--with-title': isGroup && hasTitle,
           },
@@ -407,17 +427,17 @@ export default function MainMenu({
   };
 
   return (
-    <nav className="relative" aria-label={menuLabel}>
+    <nav className="main-menu relative lg:px-lg" aria-label={menuLabel}>
       <ul
-        className="main-menu menu:flex-row menu:items-center menu:divide-y-0 flex flex-col gap-x-md divide-y divide-brumosa"
+        className="flex flex-col gap-x-md divide-y divide-brumosa lg:flex-row lg:items-center lg:divide-y-0"
         onKeyDown={handleKeyDown}
       >
-        {items.map((item: MenuItemProps, index: number) =>
+        {items.map((item: MainMenuItemProps, index: number) =>
           renderItem(item, index),
         )}
       </ul>
       <span
-        className="nav-highlight transition-left transition-height height-0 pointer-events-none fixed z-10 translate-y-[-2px] bg-teal duration-300"
+        className="nav-highlight transition-left transition-height height-0 pointer-events-none absolute bottom-[-2px] z-10 bg-teal duration-300"
         aria-hidden
       ></span>
     </nav>

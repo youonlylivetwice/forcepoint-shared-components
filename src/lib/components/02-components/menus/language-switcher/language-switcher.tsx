@@ -1,7 +1,9 @@
 import { ElementType } from 'react';
-import SecondaryMenu, { MenuItemProps } from '../secondary-menu/secondary-menu';
+import SecondaryMenu, {
+  SecondaryMenuItemProps,
+} from '../secondary-menu/secondary-menu';
 
-export type Locale = {
+export type LocaleMenuItem = {
   active: boolean;
   linkProps?: {
     [key: string]: string;
@@ -11,14 +13,20 @@ export type Locale = {
 };
 
 export type LanguageSwitcherProps = {
+  handlerCloseMenu?: () => void;
   linkComponent?: ElementType;
-  locales: Locale[];
+  locales: LocaleMenuItem[];
+  menuLabel?: string;
+  onFooter?: boolean;
   url: string;
 };
 
 export default function LanguageSwitcher({
+  handlerCloseMenu,
   linkComponent: LinkComponent = 'a',
   locales,
+  menuLabel = 'Language switcher',
+  onFooter = false,
   url,
 }: LanguageSwitcherProps) {
   // Move active locale to the beginning of the array
@@ -28,9 +36,9 @@ export default function LanguageSwitcher({
     locales.unshift(activeLocale);
   }
 
-  const belowItems: MenuItemProps[] = locales.map((item) => ({
+  const belowItems: SecondaryMenuItemProps[] = locales.map((item) => ({
     title: item.localeName,
-    url: `/${item.localeCode}${url}`,
+    url: url,
     active: item.active,
     linkProps: item.linkProps,
   }));
@@ -38,7 +46,7 @@ export default function LanguageSwitcher({
   const activeLocaleName =
     locales.find((locale) => locale.active)?.localeName || '';
 
-  const menuItems: MenuItemProps = {
+  const menuItems: SecondaryMenuItemProps = {
     title: activeLocaleName,
     below: belowItems,
   };
@@ -46,10 +54,12 @@ export default function LanguageSwitcher({
   return (
     <SecondaryMenu
       items={[menuItems]}
-      menuClass="language-switcher"
-      handlerCloseMenu={() => {}}
+      onFooter={onFooter}
+      menuLabel={menuLabel}
       isLanguageSwitcher={true}
+      menuClass="language-switcher"
       linkComponent={LinkComponent}
+      handlerCloseMenu={handlerCloseMenu}
     />
   );
 }

@@ -22,14 +22,14 @@ export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
 };
 
 const colorLinkSchema = {
-  navy: 'text-navy hover:text-teal group-hover:text-teal',
-  sandwisp: 'text-white hover:text-sandwisp group-hover:text-sandwisp',
-  viola: 'text-viola hover:text-teal group-hover:text-teal',
-  white: 'text-white hover:text-teal group-hover:text-teal',
-  grey: 'text-grey hover:text-teal group-hover:text-teal',
-  black: 'text-black hover:text-teal group-hover:text-teal',
-  blue: 'text-black hover:text-teal group-hover:text-teal',
-  veridian: 'text-veridian hover:text-teal group-hover:text-teal',
+  navy: 'text-navy hover:text-teal',
+  sandwisp: 'text-white hover:text-sandwisp',
+  viola: 'text-viola hover:text-teal',
+  white: 'text-white hover:text-teal',
+  grey: 'text-grey hover:text-teal',
+  black: 'text-black hover:text-teal',
+  blue: 'text-black hover:text-teal',
+  veridian: 'text-veridian hover:text-teal',
   inherit: 'text-inherit',
 };
 
@@ -52,27 +52,30 @@ export default function Link({
   ...props
 }: LinkProps) {
   const renderIcon = (icon: ReactNode) => (
-    <span
-      className={cn(
-        'inline-block absolute transform mt-xs ml-xs transition-transform duration-200 rtl:rotate-180',
-        {
-          'group-hover:translate-x-[0.25rem] rtl:group-hover:translate-x-[-0.25rem]':
-            animated,
-        },
-      )}
-    >
-      {icon}
+    <span className="absolute inline-block transform leading-[100%] rtl:[transform:rotateY(180deg)]">
+      <i
+        className={cn(
+          'inline-block translate-x-[0.25rem] transition-transform duration-200',
+          {
+            'group-hover/link:translate-x-[0.5rem]': animated,
+          },
+        )}
+      >
+        {icon}
+      </i>
     </span>
   );
 
   return (
     <Element
       className={cn(
-        'group inline-block align-middle items-center font-bold',
+        'group/link link-icon relative inline-block items-center align-middle font-bold',
         {
           'hover:underline hover:underline-offset-8': underline === 'hover',
           'underline underline-offset-8': underline === 'always',
           'pointer-events-none opacity-60': disabled,
+          'pl-md rtl:pl-0 rtl:pr-md': startIcon,
+          'pr-md rtl:pl-md rtl:pr-0': endIcon,
           'cursor-pointer': !disabled,
         },
         colorLinkSchema[color],

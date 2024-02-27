@@ -11,6 +11,7 @@ export type NavLinkProps = {
   icon?: MenuItemImageProps;
   linkComponent?: ElementType;
   title: string;
+  onClick?: () => void;
 };
 
 export default function NavLink({
@@ -20,12 +21,14 @@ export default function NavLink({
   icon,
   linkComponent: LinkComponent = 'a',
   title,
+  ...props
 }: NavLinkProps) {
   return (
     <Link
       href={href}
       component={LinkComponent}
-      className={cn('menu:max-w-[380px] w-full', className)}
+      className={cn('group/nav-link w-full lg:max-w-[380px]', className)}
+      {...props}
     >
       <div className="flex w-full gap-md">
         {/* Link icon */}
@@ -33,8 +36,8 @@ export default function NavLink({
           <div className="h-xl w-xl rounded-s bg-gradient-to-t from-white to-azure p-sm">
             <img
               className="block h-full w-full"
+              src={icon.media?.src}
               role="presentation"
-              src={icon.src}
               alt=""
             />
           </div>
@@ -46,9 +49,9 @@ export default function NavLink({
             color="black"
             component="span"
             endIcon={<ChevronRightIcon />}
-            className={cn({
+            className={cn('group-hover/nav-link:text-teal', {
               'text-body-3 font-semibold': icon,
-              'menu:text-h6 text-body-3 font-medium leading-none': !icon,
+              'text-body-3 font-medium leading-none lg:text-h6': !icon,
             })}
           >
             {title}

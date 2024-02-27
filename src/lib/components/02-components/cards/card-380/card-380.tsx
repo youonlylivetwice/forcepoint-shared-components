@@ -14,6 +14,7 @@ export type Card380Props = {
   linkText?: string;
   title?: string;
   url?: string;
+  onClick?: () => void;
 };
 
 export default function Card380({
@@ -26,6 +27,7 @@ export default function Card380({
   linkText,
   title,
   url,
+  ...props
 }: Card380Props) {
   const cardStyles: CSSProperties = {};
 
@@ -58,6 +60,7 @@ export default function Card380({
         'group flex w-full flex-col items-start gap-md rounded-m p-md md:max-w-[380px]',
         className,
       )}
+      {...props}
     >
       {eyebrow && (
         <Typography

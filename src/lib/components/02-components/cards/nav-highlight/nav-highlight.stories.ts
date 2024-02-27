@@ -17,12 +17,14 @@ export const Default: Story = {
     title: 'Forcepoint ONE SSE',
     url: '#',
     icon: {
-      src: 'https://www.forcepoint.com/sites/default/files/fp_one_icon_0.svg?itok=eKi29PlI',
-      alt: 'Forcepoint ONE SSE',
+      media: {
+        src: 'https://www.forcepoint.com/sites/default/files/fp_one_icon_0.svg?itok=eKi29PlI',
+      },
     },
     iconOnHover: {
-      src: 'https://www.forcepoint.com/sites/default/files/fp_one_icon-hover_0.svg?itok=ecRnPBsZ',
-      alt: 'Forcepoint ONE SSE',
+      media: {
+        src: 'https://www.forcepoint.com/sites/default/files/fp_one_icon-hover_0.svg?itok=ecRnPBsZ',
+      },
     },
   },
 };

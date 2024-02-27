@@ -13,7 +13,7 @@ import { Branding } from 'forcepoint-shared-components';
 | Name        | Type            | Default | Description                                                                                          |
 | ----------- | --------------- | ------- | ---------------------------------------------------------------------------------------------------- |
 | `alt`       | `string`        |         | Required. The alternative text for the image.                                                        |
-| component | `elementType` | `a` | Specifies the root node's element type. It accepts a string for a standard HTML `a` element or a custom component by default it uses an `a`. For example, in a Next.js application, you can use `next/link` as the `Component` to integrate with Next.js's routing. |
+| linkComponent | `elementType` | `a` | Specifies the root node's element type. It accepts a string for a standard HTML `a` element or a custom component by default it uses an `a`. For example, in a Next.js application, you can use `next/link` as the `Component` to integrate with Next.js's routing. |
 | `height`    | `string`        |         | Optional. The height of the image. If provided, it sets the `height` attribute on the image tag.    |
 | `href`      | `string`        | `'/'`   | The URL that the image links to. Defaults to the root directory.                                     |
 | `src`       | `string`        |         | Required. The source URL of the image.                                                               |

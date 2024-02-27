@@ -10,12 +10,17 @@ export default meta;
 // Create as a react component to simulate getting the data from the header component.
 export const Default = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  function toggleSearchInput() {
+    setIsSearchOpen(!isSearchOpen);
+  }
+
   return (
     <SearchInput
-      isSearchOpen={isSearchOpen}
-      setIsSearchOpen={setIsSearchOpen}
       url="search"
       queryKey="keys"
+      isSearchOpen={isSearchOpen}
+      toggleInput={toggleSearchInput}
     />
   );
 };
