@@ -217,7 +217,10 @@ export default function MainMenu({
             title={item.title}
             isActive={index === active}
             linkComponent={LinkComponent}
-            onClick={() => setActive(index)}
+            onClick={() => {
+              setActive(index);
+              if (item.url) onCloseMainMenu();
+            }}
             index={index}
           />
         );
@@ -230,6 +233,7 @@ export default function MainMenu({
             title={item.title}
             linkComponent={LinkComponent}
             description={item.description}
+            onClick={onCloseMainMenu}
           />
         );
       }
@@ -243,6 +247,7 @@ export default function MainMenu({
             component={LinkComponent}
             endIcon={<ChevronRightIcon />}
             className="my-0 font-medium lg:mb-0"
+            onClick={onCloseMainMenu}
           >
             {item.title}
           </Link>
@@ -259,6 +264,7 @@ export default function MainMenu({
             description={item.description}
             iconOnHover={item.iconOnHover}
             size={item.width === 'full_width' ? 'large' : 'small'}
+            onClick={onCloseMainMenu}
           />
         );
       }
@@ -270,6 +276,7 @@ export default function MainMenu({
             href={item.url}
             component={LinkComponent}
             className="block w-full text-center lg:w-fit"
+            onClick={onCloseMainMenu}
           >
             {item.title}
           </Button>
@@ -285,6 +292,7 @@ export default function MainMenu({
             component={LinkComponent}
             endIcon={<ArrowRightIcon />}
             className="max-lg:w-full max-lg:text-center lg:block lg:pt-sm"
+            onClick={onCloseMainMenu}
           >
             {item.title}
           </Link>
@@ -296,11 +304,12 @@ export default function MainMenu({
             isNav
             url={item.url}
             title={item.title}
+            bgColor={item.bgColor}
             linkText={item.ctaButton}
             eyebrow={item.description}
             linkComponent={LinkComponent}
-            bgColor={item.bgColor}
             className="h-full lg:max-w-none"
+            onClick={onCloseMainMenu}
           />
         );
       }
@@ -320,6 +329,10 @@ export default function MainMenu({
 
   const grouping = (display: string = '') => {
     return ['label', 'no_label'].includes(display);
+  };
+
+  const onCloseMainMenu = () => {
+    if (handlerCloseMenu) handlerCloseMenu();
   };
 
   const renderSubMenuContainer = (

@@ -15,6 +15,7 @@ export type CardNavHighlightProps = {
   size?: 'small' | 'large';
   title: string;
   url?: string;
+  onClick?: () => void;
 };
 
 const cardStyles = {
@@ -42,9 +43,10 @@ export default function CardNavHighlight({
   size = 'large',
   title,
   url,
+  ...props
 }: CardNavHighlightProps) {
   return (
-    <Link href={url} component={LinkComponent} className={'w-full'}>
+    <Link href={url} component={LinkComponent} className={'w-full'} {...props}>
       <div
         className={cn(
           'group relative flex w-full overflow-hidden rounded-m bg-gradient-to-tr from-violette-darker to-violette',

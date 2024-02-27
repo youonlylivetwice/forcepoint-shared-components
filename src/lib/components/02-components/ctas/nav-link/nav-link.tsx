@@ -11,6 +11,7 @@ export type NavLinkProps = {
   icon?: MenuItemImageProps;
   linkComponent?: ElementType;
   title: string;
+  onClick?: () => void;
 };
 
 export default function NavLink({
@@ -20,12 +21,14 @@ export default function NavLink({
   icon,
   linkComponent: LinkComponent = 'a',
   title,
+  ...props
 }: NavLinkProps) {
   return (
     <Link
       href={href}
       component={LinkComponent}
       className={cn('group/nav-link w-full lg:max-w-[380px]', className)}
+      {...props}
     >
       <div className="flex w-full gap-md">
         {/* Link icon */}
