@@ -16,6 +16,7 @@ export type LanguageSwitcherProps = {
   handlerCloseMenu?: () => void;
   linkComponent?: ElementType;
   locales: LocaleMenuItem[];
+  menuLabel?: string;
   onFooter?: boolean;
   url: string;
 };
@@ -24,6 +25,7 @@ export default function LanguageSwitcher({
   handlerCloseMenu,
   linkComponent: LinkComponent = 'a',
   locales,
+  menuLabel = 'Language switcher',
   onFooter = false,
   url,
 }: LanguageSwitcherProps) {
@@ -53,9 +55,10 @@ export default function LanguageSwitcher({
     <SecondaryMenu
       items={[menuItems]}
       onFooter={onFooter}
+      menuLabel={menuLabel}
       isLanguageSwitcher={true}
+      menuClass="language-switcher"
       linkComponent={LinkComponent}
-      menuLabel="Language switcher"
       handlerCloseMenu={handlerCloseMenu}
     />
   );
