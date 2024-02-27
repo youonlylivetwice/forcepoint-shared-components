@@ -15,8 +15,9 @@ export const Default: Story = {
     title: 'Our Approach',
     href: '#',
     icon: {
-      src: 'https://www.forcepoint.com/sites/default/files/casb_0.svg?itok=RgNIGydh',
-      alt: 'CASB',
+      media: {
+        src: 'https://www.forcepoint.com/sites/default/files/casb_0.svg?itok=RgNIGydh',
+      },
     },
   },
 };
