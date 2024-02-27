@@ -48,7 +48,7 @@ export default function FooterMenu({
           component={LinkComponent}
           {...item.linkProps}
           className={cn(
-            'pointer-events-auto text-left text-h5 font-semibold text-grey hover:text-blue focus:text-blue max-md:leading-none md:text-h6 md:font-medium',
+            'pointer-events-auto text-left text-h5 font-semibold text-grey hover:text-blue focus:text-blue rtl:text-right max-md:leading-none md:text-h6 md:font-medium',
             { 'text-chateau': item.active },
           )}
         >
