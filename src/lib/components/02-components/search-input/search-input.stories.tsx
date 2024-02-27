@@ -11,12 +11,16 @@ export default meta;
 export const Default = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
+  function toggleSearchInput() {
+    setIsSearchOpen(!isSearchOpen);
+  }
+
   return (
     <SearchInput
       url="search"
       queryKey="keys"
       isSearchOpen={isSearchOpen}
-      setIsSearchOpen={setIsSearchOpen}
+      toggleInput={toggleSearchInput}
     />
   );
 };
