@@ -4,15 +4,17 @@ import ArrowBottomIcon from '../../../00-tokens/icons/arrow-bottom-icon';
 import Link from '../../../01-elements/link/link';
 
 export type MainNavLinkProps = {
-  onClick?: () => void;
+  handlerCloseMenu: () => void;
   href?: string;
+  index: number;
   isActive?: boolean;
   linkComponent?: ElementType;
+  onClick?: () => void;
   title: string;
-  index: number;
 };
 
 export default function MainNavLink({
+  handlerCloseMenu,
   href,
   isActive,
   linkComponent: LinkComponent = 'a',
@@ -34,7 +36,13 @@ export default function MainNavLink({
       )}
     >
       {href && (
-        <Link animated href={href} className="flex-1" component={LinkComponent}>
+        <Link
+          animated
+          href={href}
+          className="flex-1"
+          component={LinkComponent}
+          onClick={handlerCloseMenu}
+        >
           {itemLabel}
         </Link>
       )}

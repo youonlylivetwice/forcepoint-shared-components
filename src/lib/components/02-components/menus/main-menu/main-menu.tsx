@@ -217,10 +217,8 @@ export default function MainMenu({
             title={item.title}
             isActive={index === active}
             linkComponent={LinkComponent}
-            onClick={() => {
-              setActive(index);
-              if (item.url) onCloseMainMenu();
-            }}
+            onClick={() => setActive(index)}
+            handlerCloseMenu={handlerCloseMenu}
             index={index}
           />
         );
