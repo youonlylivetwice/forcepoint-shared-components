@@ -23,6 +23,7 @@ export type SecondaryMenuProps = {
   isLanguageSwitcher?: boolean;
   items: SecondaryMenuItemProps[];
   linkComponent?: ElementType;
+  menuClass?: string;
   menuLabel?: string;
   onFooter?: boolean;
 };
@@ -32,11 +33,11 @@ export default function SecondaryMenu({
   isLanguageSwitcher,
   items,
   linkComponent: LinkComponent = 'a',
+  menuClass = 'secondary-menu',
   menuLabel = 'Secondary Menu',
   onFooter = false,
 }: SecondaryMenuProps) {
   const [active, setActive] = useState<number | undefined>();
-  const menuClass = menuLabel.toLowerCase().replace(/\s/g, '-');
 
   useEffect(() => {
     const handleClick = (event: MouseEvent) => {
@@ -60,7 +61,19 @@ export default function SecondaryMenu({
    * @param index - The index of the submenu to be opened or closed.
    */
   const handlerOpenSubmenu = (index: number) => {
-    setActive(index !== active ? index : -1);
+    const isActive = index === active;
+    const isIndexAbsent = index === -1;
+    const isMobile = window.innerWidth < 1156;
+    const siteHeader = document.querySelector('.site-header');
+
+    if (siteHeader && isMobile && isIndexAbsent) {
+      removeOverflowHiddenClass(siteHeader);
+    } else if (siteHeader && isMobile && !isActive) {
+      siteHeader.classList.add('max-lg:overflow-hidden');
+      siteHeader.scrollTo(0, 0);
+    }
+
+    setActive(isActive ? -1 : index);
   };
 
   /**
@@ -129,6 +142,18 @@ export default function SecondaryMenu({
     }
   };
 
+  const onCloseMainMenu = () => {
+    const siteHeader = document.querySelector('.site-header');
+    if (siteHeader) removeOverflowHiddenClass(siteHeader);
+    if (handlerCloseMenu) handlerCloseMenu();
+  };
+
+  const removeOverflowHiddenClass = (element: Element) => {
+    if (element.classList.contains('max-lg:overflow-hidden')) {
+      element.classList.remove('max-lg:overflow-hidden');
+    }
+  };
+
   const renderSubitem = (item: SecondaryMenuItemProps, index: number) => {
     if (!item.url) return;
 
@@ -138,6 +163,7 @@ export default function SecondaryMenu({
           color="black"
           href={item.url}
           component={LinkComponent}
+          onClick={onCloseMainMenu}
           className={cn(
             'submenu-item flex w-full flex-row items-center gap-x-xs px-md py-sm lg:p-0',
             {
@@ -148,7 +174,6 @@ export default function SecondaryMenu({
                 item.active && onFooter && isLanguageSwitcher,
             },
           )}
-          onClick={() => handlerCloseMenu && handlerCloseMenu()}
           {...item.linkProps}
         >
           <span className="text-right text-h5 font-semibold text-inherit lg:text-h6">
@@ -170,7 +195,7 @@ export default function SecondaryMenu({
       <div
         id={`${menuClass}-submenu-${index}`}
         className={cn(
-          'absolute top-0 z-10 flex h-screen w-full flex-col lg:top-[100%] lg:h-auto lg:w-[280px]',
+          'absolute top-0 z-10 flex h-screen w-full flex-col overflow-scroll lg:top-[100%] lg:h-auto lg:w-[280px] lg:overflow-visible',
           {
             hidden: active !== index,
             'h-auto max-lg:static lg:bottom-[100%] lg:top-auto':
@@ -196,15 +221,13 @@ export default function SecondaryMenu({
           <span className="block flex-1 text-start text-body-2 text-grey rtl:text-right">
             {item.title}
           </span>
-          {handlerCloseMenu && (
-            <button
-              className="block p-md text-center"
-              onClick={handlerCloseMenu}
-              aria-label="Close menu"
-            >
-              <CloseIcon className="text-grey" />
-            </button>
-          )}
+          <button
+            className="block p-md text-center"
+            onClick={onCloseMainMenu}
+            aria-label="Close menu"
+          >
+            <CloseIcon className="text-grey" />
+          </button>
         </div>
         {/* Desktop Heading */}
         <div
@@ -266,9 +289,10 @@ export default function SecondaryMenu({
       >
         {item.url && (
           <Link
+            onClick={onCloseMainMenu}
+            component={LinkComponent}
             className="w-full"
             color="inherit"
-            component={LinkComponent}
             href={item.url}
             {...item.linkProps}
           >
