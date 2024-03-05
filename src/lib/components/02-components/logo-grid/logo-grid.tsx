@@ -1,6 +1,5 @@
-import { ElementType, useEffect, useState } from 'react';
-import Button from '../../01-elements/button/button';
 import { cn } from '../../../utils/tailwind-merge';
+import { ElementType } from 'react';
 
 export type LogoInfo = {
   alt: string;
@@ -10,8 +9,6 @@ export type LogoInfo = {
 export type LogoGridProps = {
   imageComponent?: ElementType;
   items: LogoInfo[];
-  showLessText?: string;
-  showMoreText?: string;
   subtitle?: string;
   title?: string;
 };
@@ -26,85 +23,50 @@ const templateColumns: Record<number, string> = {
 export default function LogoGrid({
   imageComponent: Element = 'img',
   items,
-  showLessText = 'Show less',
-  showMoreText = 'Show more',
   subtitle,
   title,
 }: LogoGridProps) {
-  const [isMobile, setIsMobile] = useState<boolean>();
-  const [isExpanded, setIsExpanded] = useState<boolean>(false);
-  const maxElements = isMobile ? 10 : 30;
-
-  useEffect(() => {
-    const handleResize = () => {
-      const isMobile = window.innerWidth < 950;
-      setIsMobile(isMobile);
-    };
-
-    window.addEventListener('resize', handleResize);
-    setTimeout(handleResize, 100);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  const handleExpand = () => {
-    setIsExpanded(!isExpanded);
-  };
-
-  const displayItems = isExpanded ? items : items.slice(0, maxElements) || [];
   const columns: number = items?.length < 6 ? items?.length : 6;
-  const heightExceeded = items?.length > maxElements;
+
+  const titleRendered = () => (
+    <h2
+      className={cn(
+        'my-md text-center text-h3 font-light leading-none text-black md:my-lg md:text-h1',
+        { 'md:mb-md': subtitle },
+      )}
+    >
+      {title}
+    </h2>
+  );
+
+  const subtitleRendered = () => (
+    <h3 className="mb-md text-center text-h4 font-light leading-none text-grey md:mb-lg md:text-h3">
+      {subtitle}
+    </h3>
+  );
+
+  const renderLogoItem = (item: LogoInfo, index: number) => (
+    <li key={index} className="h-[100px] w-[170px] px-lg py-md sm:w-[200px]">
+      <Element
+        className="mx-auto h-full w-full object-contain"
+        src={item.src}
+        alt={item.alt}
+      />
+    </li>
+  );
 
   return (
     <div className="mx-auto my-md md:max-w-screen-lg">
-      {(title || subtitle) && (
-        <div className="my-md flex flex-col gap-md md:my-lg">
-          {title && (
-            <h2 className="text-center text-h3 font-light text-black md:text-h1">
-              {title}
-            </h2>
-          )}
-          {subtitle && (
-            <h3 className="text-center text-h4 font-light text-grey md:text-h3">
-              {subtitle}
-            </h3>
-          )}
-        </div>
-      )}
-      <div className="relative">
-        <ul
-          className={cn(
-            'mx-auto grid w-fit grid-cols-2',
-            templateColumns[columns],
-          )}
-        >
-          {!!displayItems?.length &&
-            displayItems.map((item: LogoInfo, index: number) => (
-              <li
-                key={index}
-                className="h-[100px] w-[170px] px-lg py-md sm:w-[200px]"
-              >
-                <Element
-                  className="mx-auto h-full w-full object-contain"
-                  src={item.src}
-                  alt={item.alt}
-                />
-              </li>
-            ))}
-        </ul>
-        {heightExceeded && !isExpanded && (
-          <div className="absolute bottom-0 h-[70px] w-full bg-gradient-to-t from-white to-transparent"></div>
+      {title && titleRendered()}
+      {subtitle && subtitleRendered()}
+      <ul
+        className={cn(
+          'mx-auto grid w-fit grid-cols-2',
+          templateColumns[columns],
         )}
-      </div>
-      {heightExceeded && (
-        <div className="mx-auto mt-md w-fit">
-          <Button onClick={handleExpand}>
-            {isExpanded ? showLessText : showMoreText}
-          </Button>
-        </div>
-      )}
+      >
+        {items?.length > 0 && items.map(renderLogoItem)}
+      </ul>
     </div>
   );
 }
