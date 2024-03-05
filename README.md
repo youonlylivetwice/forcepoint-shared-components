@@ -40,6 +40,7 @@ export default {
 - [Language Switcher](./docs/api/languageSwitcher.md)
 - [Legal Menu](./docs/api/legalMenu.md)
 - [Link](./docs/api/link.md)
+- [Logo Grid](./docs/api/logoGrid.md)
 - [Main Menu](./docs/api/mainMenu.md)
 - [Secondary Menu](./docs/api/secondaryMenu.md)
 - [Social Menu](./docs/api/socialMenu.md)
