@@ -13,8 +13,7 @@ const meta = {
     },
     color: {
       options: {
-        navy: 'navy',
-        viola: 'viola',
+        blue: 'blue',
         'white (dark background)': 'white',
         'sandwisp (dark background)': 'sandwisp',
       },
@@ -39,7 +38,7 @@ export const Default: Story = {
   args: {
     animated: false,
     children: 'Get It Today',
-    color: 'navy',
+    color: 'blue',
     endIcon: <ArrowRight />,
     href: 'http://localhost:6006/',
     size: 'large',

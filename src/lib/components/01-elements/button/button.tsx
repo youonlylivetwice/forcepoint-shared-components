@@ -9,7 +9,7 @@ import { cn } from '../../../utils/tailwind-merge';
 
 type DefaultProps = {
   animated?: boolean;
-  color?: 'navy' | 'viola' | 'white' | 'sandwisp' | 'blue';
+  color?: 'blue' | 'white' | 'sandwisp';
   component?: ElementType;
   disabled?: boolean;
   endIcon?: ReactNode;
@@ -35,31 +35,23 @@ const sizeButtonSchema = {
 };
 
 const colorButtonSchema = {
+  blue: {
+    solid: 'bg-blue text-white hover:bg-navy',
+    outline: 'border-blue border-2 text-blue hover:border-navy',
+  },
   sandwisp: {
-    solid: 'bg-sandwisp text-black hover:text-white hover:bg-teal',
-    outline: 'border-sandwisp border-2 text-white hover:border-teal',
+    solid: 'bg-sandwisp text-black hover:bg-white hover:text-blue',
+    outline: 'border-sandwisp border-2 text-sandwisp hover:border-white',
   },
   white: {
-    solid: 'bg-white text-black hover:text-white hover:bg-teal',
-    outline: 'border-white border-2 text-white hover:border-teal',
-  },
-  viola: {
-    solid: 'bg-viola text-white hover:bg-teal',
-    outline: 'border-viola border-2 text-navy hover:border-teal',
-  },
-  navy: {
-    solid: 'bg-navy text-white hover:bg-teal',
-    outline: 'border-navy border-2 text-navy hover:border-teal',
-  },
-  blue: {
-    solid: 'bg-blue text-white hover:bg-black',
-    outline: 'border-blue border-2 text-blue hover:border-black',
+    solid: 'bg-white text-blue hover:text-black hover:bg-sandwisp',
+    outline: 'border-white border-2 text-white hover:border-sandwisp',
   },
 };
 
 export default function Button({
   animated = false,
-  color = 'navy',
+  color = 'blue',
   component: Element = 'a',
   disabled = false,
   endIcon,

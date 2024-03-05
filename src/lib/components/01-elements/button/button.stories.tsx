@@ -13,8 +13,6 @@ const meta = {
     },
     color: {
       options: {
-        navy: 'navy',
-        viola: 'viola',
         blue: 'blue',
         'white (dark background)': 'white',
         'sandwisp (dark background)': 'sandwisp',
@@ -58,7 +56,7 @@ export const Default: Story = (args: ButtonProps) => {
 
 Default.args = {
   animated: false,
-  color: 'navy',
+  color: 'blue',
   disabled: false,
   endIcon: <ArrowRight />,
   size: 'medium',
