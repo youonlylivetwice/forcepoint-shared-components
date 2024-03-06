@@ -22,8 +22,7 @@ function duplicateArrayItems(arr: LogoInfo[], times: number) {
 
 export const Default: Story = {
   args: {
-    title: 'Test Title',
-    subtitle: 'Test Subtitle',
+    title: 'Figma ipsum component variant main layer. Scrolling flows.',
     items: duplicateArrayItems(logoItems, 32),
   },
 };

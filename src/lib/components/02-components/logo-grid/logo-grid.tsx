@@ -1,15 +1,17 @@
 import { cn } from '../../../utils/tailwind-merge';
 import { ElementType } from 'react';
+import Typography from '../../01-elements/typography/typography';
 
 export type LogoInfo = {
   alt: string;
+  height?: string;
   src: string;
+  width?: string;
 };
 
 export type LogoGridProps = {
   imageComponent?: ElementType;
   items: LogoInfo[];
-  subtitle?: string;
   title?: string;
 };
 
@@ -23,27 +25,18 @@ const templateColumns: Record<number, string> = {
 export default function LogoGrid({
   imageComponent: Element = 'img',
   items,
-  subtitle,
   title,
 }: LogoGridProps) {
-  const columns: number = items?.length < 6 ? items?.length : 6;
+  const columns: number = items.length < 6 ? items.length : 6;
 
-  const titleRendered = () => (
-    <h2
-      className={cn(
-        'my-md text-center text-h3 font-light leading-none text-black md:my-lg md:text-h1',
-        { 'md:mb-md': subtitle },
-      )}
+  const titleRendered = title ? (
+    <Typography
+      variant="h2"
+      className="mb-md text-center font-semibold leading-none text-navy md:mb-lg"
     >
       {title}
-    </h2>
-  );
-
-  const subtitleRendered = () => (
-    <h3 className="mb-md text-center text-h4 font-light leading-none text-grey md:mb-lg md:text-h3">
-      {subtitle}
-    </h3>
-  );
+    </Typography>
+  ) : null;
 
   const renderLogoItem = (item: LogoInfo, index: number) => (
     <li key={index} className="h-[100px] w-[170px] px-lg py-md sm:w-[200px]">
@@ -51,14 +44,15 @@ export default function LogoGrid({
         className="mx-auto h-full w-full object-contain"
         src={item.src}
         alt={item.alt}
+        {...(item.width && { width: item.width })}
+        {...(item.height && { height: item.height })}
       />
     </li>
   );
 
   return (
-    <div className="mx-auto my-md md:max-w-screen-lg">
-      {title && titleRendered()}
-      {subtitle && subtitleRendered()}
+    <div className="mx-auto my-lg md:my-xl md:max-w-screen-lg">
+      {titleRendered}
       <ul
         className={cn(
           'mx-auto grid w-fit grid-cols-2',

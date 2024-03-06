@@ -14,8 +14,7 @@ import { LogoGrid } from 'forcepoint-shared-components';
 | --- | --- | --- | --- |
 | imageComponent | `elementType` | `img` | Specifies the root node's element type for individual logos. It accepts a string for a standard HTML `img` element or a custom component. Defaults to `img` |
 | items | `LogoInfo[]` | `-` | Required. An array of objects containing information about each logo. See the LogoInfo type for details. |
-| subtitle | `string` | `-` | Optional. A subtitle or description for the LogoGrid, displayed above the logos. |
-| title | `string` | `-` | Optional. A title for the LogoGrid, displayed above the subtitle and logos. |
+| title | `string` | `-` | Optional. A title for the LogoGrid, displayed above the logos. |
 
 ## LogoInfo Type
 
@@ -23,13 +22,15 @@ import { LogoGrid } from 'forcepoint-shared-components';
 | --- | --- | --- | --- |
 | alt | `string` | `-` | Required. Alternative text for the logo image. |
 | src | `string` | `-` | Required. The source URL of the logo image. |
+| height | `string` | `-` | Optional. The height of the image. If provided, it sets the `height` attribute on the image tag. |
+| width | `string` | `-` | Optional. The width of the image. If provided, it sets the `width` attribute on the image tag. |
 
 ## Usage
 
 Below is an example of how to use the `LogoGrid` component:
 
 ```jsx
-import { LogoGrid } from 'tu-paquete-de-componentes';
+import { LogoGrid } from 'forcepoint-shared-components';
 
 const logos = [
   { alt: 'Brand 1', src: '/path-to-brand1-logo.png' },
@@ -39,7 +40,6 @@ const logos = [
 
 <LogoGrid
   items={logos}
-  title="Our Partners"
-  subtitle="Explore the brands we collaborate with."
+  title="Figma ipsum component variant main layer. Scrolling flows."
 />
 ```
