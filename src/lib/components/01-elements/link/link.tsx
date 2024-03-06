@@ -7,8 +7,10 @@ export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
     | 'black'
     | 'blue'
     | 'grey'
-    | 'inherit'
+    | 'navy'
     | 'sandwisp'
+    | 'viola'
+    | 'inherit'
     | 'white';
   component?: ElementType;
   disabled?: boolean;
@@ -23,7 +25,9 @@ const colorLinkSchema = {
   blue: 'text-blue hover:text-navy',
   grey: 'text-grey hover:text-teal',
   inherit: 'text-inherit',
+  navy: 'text-navy hover:text-teal',
   sandwisp: 'text-sandwisp hover:text-white',
+  viola: 'text-viola hover:text-teal',
   white: 'text-white hover:text-sandwisp',
 };
 
@@ -49,10 +53,11 @@ export default function Link({
     <span className="absolute inline-block transform rtl:[transform:rotateY(180deg)]">
       <i
         className={cn(
-          'inline-block translate-x-[0.25rem] transition-transform duration-200',
+          'inline-block translate-x-[0.5rem] transition-transform duration-200',
           {
-            'group-hover/link:translate-x-[0.5rem]': animated,
+            'group-hover/link:translate-x-[0.75rem]': animated,
           },
+          sizeLinkSchema[size],
         )}
       >
         {icon}

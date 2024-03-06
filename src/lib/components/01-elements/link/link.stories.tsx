@@ -14,8 +14,10 @@ const meta = {
     color: {
       options: {
         blue: 'blue',
-        'white (dark background)': 'white',
+        navy: 'navy',
         'sandwisp (dark background)': 'sandwisp',
+        viola: 'viola',
+        'white (dark background)': 'white',
       },
       control: { type: 'select' },
     },
@@ -38,7 +40,7 @@ export const Default: Story = {
   args: {
     animated: false,
     children: 'Get It Today',
-    color: 'blue',
+    color: 'navy',
     endIcon: <ArrowRight />,
     href: 'http://localhost:6006/',
     size: 'large',
