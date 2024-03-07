@@ -276,9 +276,9 @@ export default function SecondaryMenu({
       <li
         key={`${menuClass}-item-${index}`}
         className={cn(
-          'group flex flex-row items-center justify-center text-grey hover:text-teal lg:relative lg:gap-xs',
+          'group flex flex-row items-center justify-center text-grey hover:text-blue lg:relative lg:gap-xs',
           {
-            'text-teal': isActive,
+            'text-blue': isActive,
             'flex-col': onFooter && isLanguageSwitcher,
             'max-lg:text-grey max-lg:hover:text-grey':
               isActive && onFooter && isLanguageSwitcher,
