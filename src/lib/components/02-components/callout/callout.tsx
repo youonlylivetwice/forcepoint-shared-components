@@ -5,8 +5,10 @@ import { cn } from '../../../utils/tailwind-merge';
 import ArrowRightIcon from '../../00-tokens/icons/arrow-right-icon';
 
 export type CalloutImageDetails = {
-  src: string;
   alt: string;
+  height?: string;
+  src: string;
+  width?: string;
 };
 
 export type CalloutLinkDetails = {
@@ -22,6 +24,7 @@ export type CalloutProps = {
   image: CalloutImageDetails;
   imageComponent?: ElementType;
   link: CalloutLinkDetails;
+  linkComponent?: ElementType;
 };
 
 export type CalloutColorVariant = 'white' | 'black' | 'navy' | 'violette';
@@ -54,14 +57,14 @@ const colorSchema: { [key in CalloutColorVariant]: CalloutColorSchema } = {
     content: 'text-azure',
     eyebrow: 'text-sandwisp',
     title: 'text-white',
-    wrapper: 'bg-black',
+    wrapper: 'bg-navy',
   },
   violette: {
     button: 'sandwisp',
     content: 'text-azure',
     eyebrow: 'text-sandwisp',
     title: 'text-white',
-    wrapper: 'bg-black',
+    wrapper: 'bg-violette',
   },
 };
 
@@ -71,20 +74,25 @@ export default function Callout({
   eyebrow,
   header,
   image,
-  imageComponent: Element = 'img',
+  imageComponent: ImageElement = 'img',
   link,
+  linkComponent: LinkElement = 'a',
 }: CalloutProps) {
   return (
     <div className={colorSchema[color].wrapper}>
       <div className="mx-auto flex max-w-screen-xl flex-col-reverse md:flex-row md:items-center md:gap-lg xl:gap-xl">
         {/* Image */}
-        <Element
-          className="aspect-video w-full object-cover object-top max-md:min-h-[284px] md:mx-auto md:aspect-square md:max-w-[480px]"
-          src={image.src}
-          alt={image.alt}
-        />
+        <div className="aspect-[16/9] max-md:min-h-[284px] md:aspect-[1/1] md:max-w-[480px]">
+          <ImageElement
+            className="h-full w-full object-cover object-top md:mx-auto"
+            src={image.src}
+            alt={image.alt}
+            {...(image.width && { width: image.width })}
+            {...(image.height && { height: image.height })}
+          />
+        </div>
         {/* Content */}
-        <div className="flex flex-col gap-md p-lg">
+        <div className="flex flex-1 flex-col gap-md p-lg">
           <span
             className={cn(
               'text-h5 font-semibold uppercase',
@@ -93,7 +101,11 @@ export default function Callout({
           >
             {eyebrow}
           </span>
-          <Typography variant="display" className={colorSchema[color].title}>
+          <Typography
+            component="h2"
+            variant="display"
+            className={cn('font-semibold', colorSchema[color].title)}
+          >
             {header}
           </Typography>
           <Typography variant="body-2" className={colorSchema[color].content}>
@@ -103,6 +115,7 @@ export default function Callout({
             animated
             as="link"
             href={link.url}
+            component={LinkElement}
             endIcon={<ArrowRightIcon />}
             color={colorSchema[color].button}
             className="mt-md justify-center md:w-fit"

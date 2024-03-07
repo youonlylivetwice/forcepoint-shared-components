@@ -318,10 +318,6 @@ module.exports = {
       '2xl': '1600px',
     },
     extend: {
-      aspectRatio: {
-        video: '16 / 9',
-        square: '1 / 1',
-      },
       boxShadow: {
         md: '0px 4px 10px 0px rgba(29, 37, 44, 0.20)',
       },
