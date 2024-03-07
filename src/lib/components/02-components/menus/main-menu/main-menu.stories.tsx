@@ -327,7 +327,7 @@ const menuItems: MainMenuItemProps[] = [
                   'Monitor, analyze and gain insight on user behavior.',
                 icon: {
                   media: {
-                    src: 'https://forcepoint.com/sites/default/files/insider_threat.svg?itok=Nk7wLh80',
+                    src: 'https://forcepoint.com/sites/default/files/data_classification.svg?itok=V4Jn8zog',
                   },
                 },
               },

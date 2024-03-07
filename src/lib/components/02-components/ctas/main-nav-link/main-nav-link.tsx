@@ -23,7 +23,7 @@ export default function MainNavLink({
   index,
 }: MainNavLinkProps) {
   const itemLabel = (
-    <span className="w-full py-md text-h4 font-semibold text-inherit rtl:text-right lg:text-body-3 lg:font-normal">
+    <span className="w-full py-md font-semibold text-inherit rtl:text-right text-body-2 lg:font-normal">
       {title}
     </span>
   );
@@ -31,8 +31,8 @@ export default function MainNavLink({
   return (
     <div
       className={cn(
-        'group flex w-full flex-row items-center justify-center text-black hover:text-teal lg:relative lg:w-fit lg:gap-xs',
-        { 'text-teal': isActive },
+        'group flex w-full flex-row items-center justify-center text-black hover:text-blue lg:relative lg:w-fit lg:gap-xs',
+        { 'text-blue': isActive },
       )}
     >
       {href && (
