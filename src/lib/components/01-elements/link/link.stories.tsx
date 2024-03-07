@@ -13,10 +13,11 @@ const meta = {
     },
     color: {
       options: {
+        blue: 'blue',
         navy: 'navy',
+        'sandwisp (dark background)': 'sandwisp',
         viola: 'viola',
         'white (dark background)': 'white',
-        'sandwisp (dark background)': 'sandwisp',
       },
       control: { type: 'select' },
     },

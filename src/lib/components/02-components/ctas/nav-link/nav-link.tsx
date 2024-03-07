@@ -49,7 +49,7 @@ export default function NavLink({
             color="black"
             component="span"
             endIcon={<ChevronRightIcon />}
-            className={cn('group-hover/nav-link:text-teal', {
+            className={cn('group-hover/nav-link:text-blue', {
               'text-body-3 font-semibold': icon,
               'text-body-3 font-medium leading-none lg:text-h6': !icon,
             })}
