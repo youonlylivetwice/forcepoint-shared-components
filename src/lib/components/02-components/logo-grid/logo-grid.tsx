@@ -32,6 +32,7 @@ export default function LogoGrid({
   const titleRendered = title ? (
     <Typography
       variant="h2"
+      component="h2"
       className="mb-md text-center font-semibold leading-none text-navy md:mb-lg"
     >
       {title}
