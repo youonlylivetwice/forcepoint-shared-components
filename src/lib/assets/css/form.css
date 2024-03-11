@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.hs_name .input input,
+.hs_email .input input,
+.hs_name .input input,
+.hs_company .input input,
+.hs_phone .input input,
+.hs_jobtitle .input input,
+.hs-fieldtype-select .input select {
+  @apply block w-full px-5 py-3 border border-brumosa rounded-m text-grey outline-none focus:rounded-m focus:px-5 focus:py-3 focus:border-teal focus:border-2 focus:border-teal;
+}
+
+.hs-fieldtype-select .input select {
+  @apply appearance-none;
+}
+
+.hs-fieldtype-select .input {
+  @apply after:content-[""] after:bg-[url('../img/icons/chevron-down.svg')] after:absolute after:w-4 after:h-4 after:right-4 after:top-5;
+}
+
+.hs_name .input input.invalid.error,
+.hs_email .input input.invalid.error,
+.hs_name .input input.invalid.error,
+.hs_company .input input.invalid.error,
+.hs_phone .input input.invalid.error,
+.hs_jobtitle .input input.invalid.error,
+.hs-fieldtype-select select.invalid.error {
+  @apply text-crimson border-2 border-crimson;
+
+}
+
+.hs-fieldtype-select select {
+  @apply focus:text-blue;
+}
+
+.hs_name,
+.hs_email,
+.hs_name,
+.hs_company,
+.hs_phone,
+.hs_jobtitle,
+.hs-fieldtype-select {
+  @apply flex flex-col;
+}
+
+.hs_name .input,
+.hs_email .input,
+.hs_name .input,
+.hs_company .input,
+.hs_phone .input,
+.hs_jobtitle .input,
+.hs-fieldtype-select .input {
+  @apply relative before:content-["*"] before:block before:absolute before:text-teal before:top-sm before:left-sm
+}
+
+.hs-fieldtype-booleancheckbox .input label,
+.hs-fieldtype-checkbox .input label {
+  @apply flex items-center gap-[5px];
+}
+
+.hs-fieldtype-booleancheckbox .input .hs-input .invalid .error,
+.hs-fieldtype-checkbox .input input {
+  @apply border border-chateau appearance-none w-4 h-4;
+}
+
+.hs-fieldtype-booleancheckbox .input .inputs-list li,
+.hs-fieldtype-checkbox .input .inputs-list li {
+  @apply mb-[10px];
+}
+
+.dark-theme .hs-fieldtype-booleancheckbox label,
+.dark-theme .hs-fieldtype-checkbox label {
+  @apply text-white;
+}
+
+.dark-theme .hs-fieldtype-booleancheckbox .input input,
+.dark-theme .hs-fieldtype-checkbox .input input {
+  @apply bg-white;
+}
+
+.hs-fieldtype-booleancheckbox .input input {
+  @apply rounded-m;
+}
+
+.hs-fieldtype-checkbox .input input {
+  @apply rounded-s;
+}
+
+.hs-fieldtype-booleancheckbox .input input:checked {
+  @apply before:content-[""] before:block before:relative before:bg-teal before:w-2 before:h-2 before:rounded-m before:top-[3px] before:left-[3px];
+}
+
+.navy-checkbox .hs-fieldtype-booleancheckbox .input input:checked {
+  @apply before:bg-navy;
+}
+
+.hs-fieldtype-checkbox .input input:checked {
+  @apply before:content-[""] before:bg-[url('../img/icons/check-teal.svg')] before:block before:relative before:w-2 before:h-2 before:rounded-m before:top-[3px] before:left-[3px];
+}
+
+.navy-checkbox .hs-fieldtype-checkbox .input input:checked {
+  @apply before:bg-[url('../img/icons/check-navy.svg')];
+}
+
+ul.hs-error-msgs {
+  @apply mt-[8px] self-end;
+}
+
+label.hs-error-msg {
+  @apply bg-crimson px-5 py-[10px] text-white rounded-m;
+}
