@@ -28,6 +28,10 @@ export {
   type LegalMenuProps,
 } from './02-components/menus/legal-menu/legal-menu';
 export {
+  default as LogoGrid,
+  type LogoGridProps,
+} from './02-components/logo-grid/logo-grid';
+export {
   default as MainMenu,
   type MainMenuProps,
   type MainMenuItemProps,
