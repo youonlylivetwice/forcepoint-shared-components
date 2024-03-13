@@ -27,6 +27,12 @@ export const Default: Story = {
   },
 };
 
+export const ImageWithoutCaption: Story = {
+  args: {
+    imgPath: 'https://via.placeholder.com/150',
+  },
+};
+
 export const DarkTheme: Story = {
   args: {
     imgPath: 'https://via.placeholder.com/150',
