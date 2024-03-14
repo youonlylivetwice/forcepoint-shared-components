@@ -30,6 +30,7 @@ export {
 export {
   default as LogoGrid,
   type LogoGridProps,
+  type LogoInfo,
 } from './02-components/logo-grid/logo-grid';
 export {
   default as MainMenu,
