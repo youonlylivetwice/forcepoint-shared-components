@@ -437,7 +437,7 @@ export default function MainMenu({
         )}
       </ul>
       <span
-        className="nav-highlight transition-left transition-height height-0 pointer-events-none absolute bottom-[-2px] z-10 bg-teal duration-300"
+        className="nav-highlight transition-left transition-height height-0 pointer-events-none absolute bottom-[-2px] z-10 bg-blue duration-300"
         aria-hidden
       ></span>
     </nav>

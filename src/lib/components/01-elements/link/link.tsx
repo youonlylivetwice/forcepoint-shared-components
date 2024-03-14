@@ -4,15 +4,14 @@ import { cn } from '../../../utils/tailwind-merge';
 export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   animated?: boolean;
   color?:
-    | 'navy'
-    | 'viola'
-    | 'white'
-    | 'sandwisp'
-    | 'grey'
     | 'black'
-    | 'veridian'
+    | 'blue'
+    | 'grey'
+    | 'navy'
+    | 'sandwisp'
+    | 'viola'
     | 'inherit'
-    | 'blue';
+    | 'white';
   component?: ElementType;
   disabled?: boolean;
   endIcon?: ReactNode;
@@ -22,15 +21,14 @@ export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
 };
 
 const colorLinkSchema = {
-  navy: 'text-navy hover:text-teal',
-  sandwisp: 'text-white hover:text-sandwisp',
-  viola: 'text-viola hover:text-teal',
-  white: 'text-white hover:text-teal',
-  grey: 'text-grey hover:text-teal',
   black: 'text-black hover:text-teal',
-  blue: 'text-black hover:text-teal',
-  veridian: 'text-veridian hover:text-teal',
+  blue: 'text-blue hover:text-navy',
+  grey: 'text-grey hover:text-teal',
   inherit: 'text-inherit',
+  navy: 'text-navy hover:text-teal',
+  sandwisp: 'text-sandwisp hover:text-white',
+  viola: 'text-viola hover:text-teal',
+  white: 'text-white hover:text-sandwisp',
 };
 
 const sizeLinkSchema = {
@@ -40,7 +38,7 @@ const sizeLinkSchema = {
 
 export default function Link({
   animated = false,
-  color = 'navy',
+  color = 'blue',
   component: Element = 'a',
   disabled = false,
   endIcon,
@@ -52,13 +50,14 @@ export default function Link({
   ...props
 }: LinkProps) {
   const renderIcon = (icon: ReactNode) => (
-    <span className="absolute inline-block transform leading-[100%] rtl:[transform:rotateY(180deg)]">
+    <span className="absolute inline-block transform rtl:[transform:rotateY(180deg)]">
       <i
         className={cn(
-          'inline-block translate-x-[0.25rem] transition-transform duration-200',
+          'inline-block translate-x-[0.5rem] transition-transform duration-200',
           {
-            'group-hover/link:translate-x-[0.5rem]': animated,
+            'group-hover/link:translate-x-[0.75rem]': animated,
           },
+          sizeLinkSchema[size],
         )}
       >
         {icon}
