@@ -14,6 +14,13 @@ export {
   type BrandingProps,
 } from './02-components/branding/branding';
 export {
+  default as Callout,
+  type CalloutProps,
+  type CalloutImageDetails,
+  type CalloutLinkDetails,
+  type CalloutColorVariant,
+} from './02-components/callout/callout';
+export {
   default as FooterMenu,
   type FooterMenuProps,
 } from './02-components/menus/footer/footer-menu';
