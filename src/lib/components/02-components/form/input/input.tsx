@@ -11,7 +11,7 @@ export default function TextInput({ className, hasError = false, ...props }: Tex
       <div className="input">
         <input className={hasError ? 'hs-input invalid error' : 'hs-input'} {...props} />
       </div>
-      {hasError && <ul className="no-list hs-error-msgs inputs-list" role="alert">
+      {hasError && <ul className="no-list" role="alert">
         <li>
           <label className="hs-error-msg">
             Please complete this required field.

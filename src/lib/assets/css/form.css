@@ -1,6 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+.hubspot-form-wrapper form>div:not(:last-of-type) {
+  @apply mb-md;
+}
 
 .hs_name .input input,
 .hs_email .input input,
@@ -9,7 +9,7 @@
 .hs_phone .input input,
 .hs_jobtitle .input input,
 .hs-fieldtype-select .input select {
-  @apply block w-full px-5 py-3 border border-brumosa rounded-m text-grey outline-none focus:rounded-m focus:px-5 focus:py-3 focus:border-teal focus:border-2 focus:border-teal;
+  @apply block w-full px-5 py-3 border border-brumosa rounded-m text-grey outline-none focus:rounded-m focus:px-5 focus:py-3 focus:border-teal focus:border-2;
 }
 
 .hs-fieldtype-select .input select {
@@ -18,17 +18,6 @@
 
 .hs-fieldtype-select .input {
   @apply after:content-[""] after:bg-[url('../img/icons/chevron-down.svg')] after:absolute after:w-4 after:h-4 after:right-4 after:top-5;
-}
-
-.hs_name .input input.invalid.error,
-.hs_email .input input.invalid.error,
-.hs_name .input input.invalid.error,
-.hs_company .input input.invalid.error,
-.hs_phone .input input.invalid.error,
-.hs_jobtitle .input input.invalid.error,
-.hs-fieldtype-select select.invalid.error {
-  @apply text-crimson border-2 border-crimson;
-
 }
 
 .hs-fieldtype-select select {
@@ -104,10 +93,27 @@
   @apply before:bg-[url('../img/icons/check-navy.svg')];
 }
 
-ul.hs-error-msgs {
-  @apply mt-[8px] self-end;
+/* Error messages */
+.hs_name ul[role=alert] li,
+.hs_email ul[role=alert] li,
+.hs_name ul[role=alert] li,
+.hs_company ul[role=alert] li,
+.hs_phone ul[role=alert] li,
+.hs_jobtitle ul[role=alert] li,
+.hs-fieldtype-select ul[role=alert] li {
+  @apply flex justify-end;
+}
+
+.hs_name .input input.invalid.error,
+.hs_email .input input.invalid.error,
+.hs_name .input input.invalid.error,
+.hs_company .input input.invalid.error,
+.hs_phone .input input.invalid.error,
+.hs_jobtitle .input input.invalid.error,
+.hs-fieldtype-select select.invalid.error {
+  @apply text-crimson border-2 border-crimson;
 }
 
 label.hs-error-msg {
-  @apply bg-crimson px-5 py-[10px] text-white rounded-m;
+  @apply bg-crimson px-5 py-[10px] text-white rounded-m relative right-0;
 }

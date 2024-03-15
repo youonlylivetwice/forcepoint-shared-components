@@ -14,7 +14,7 @@ export default function Select({ className, options, hasError = false, ...props 
           { options.map((option) => <option key={option} value={option}>{option}</option>) }
         </select>
       </div>
-      {hasError && <ul className="no-list hs-error-msgs inputs-list" role="alert">
+      {hasError && <ul className="no-list" role="alert">
         <li>
           <label className="hs-error-msg">
             Please complete this required field.
