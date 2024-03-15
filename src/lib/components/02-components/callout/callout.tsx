@@ -19,6 +19,7 @@ export type CalloutLinkDetails = {
 export type CalloutProps = {
   color?: CalloutColorVariant;
   content: string;
+  contentElement?: ElementType;
   eyebrow: string;
   header: string;
   image?: CalloutImageDetails;
@@ -71,6 +72,7 @@ const colorSchema: { [key in CalloutColorVariant]: CalloutColorSchema } = {
 export default function Callout({
   color = 'white',
   content,
+  contentElement: ContentElement,
   eyebrow,
   header,
   image,
@@ -110,9 +112,19 @@ export default function Callout({
           >
             {header}
           </Typography>
-          <Typography variant="body-2" className={colorSchema[color].content}>
-            {content}
-          </Typography>
+          {/* Content */}
+          {ContentElement ? (
+            <ContentElement
+              variant="body-2"
+              className={cn(colorSchema[color].content, 'text-body-2')}
+              body={content}
+            />
+          ) : (
+            <Typography variant="body-2" className={colorSchema[color].content}>
+              {content}
+            </Typography>
+          )}
+          {/* Link */}
           {link && (
             <Button
               animated
