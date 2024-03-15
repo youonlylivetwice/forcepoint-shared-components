@@ -1,14 +1,14 @@
 import { ElementType } from 'react';
-import Button from '../../01-elements/button/button';
-import Typography from '../../01-elements/typography/typography';
 import { cn } from '../../../utils/tailwind-merge';
 import ArrowRightIcon from '../../00-tokens/icons/arrow-right-icon';
+import Button from '../../01-elements/button/button';
+import Typography from '../../01-elements/typography/typography';
 
 export type CalloutImageDetails = {
   alt: string;
-  height?: string;
+  height?: string | number;
   src: string;
-  width?: string;
+  width?: string | number;
 };
 
 export type CalloutLinkDetails = {
@@ -21,9 +21,9 @@ export type CalloutProps = {
   content: string;
   eyebrow: string;
   header: string;
-  image: CalloutImageDetails;
+  image?: CalloutImageDetails;
   imageComponent?: ElementType;
-  link: CalloutLinkDetails;
+  link?: CalloutLinkDetails;
   linkComponent?: ElementType;
 };
 
@@ -82,15 +82,17 @@ export default function Callout({
     <div className={colorSchema[color].wrapper}>
       <div className="mx-auto flex max-w-screen-xl flex-col-reverse md:flex-row md:items-center md:gap-lg xl:gap-xl">
         {/* Image */}
-        <div className="aspect-[16/9] max-md:min-h-[284px] md:aspect-[1/1] md:max-w-[480px]">
-          <ImageElement
-            className="h-full w-full object-cover object-top md:mx-auto"
-            src={image.src}
-            alt={image.alt}
-            {...(image.width && { width: image.width })}
-            {...(image.height && { height: image.height })}
-          />
-        </div>
+        {image && (
+          <div className="aspect-[16/9] max-md:min-h-[284px] md:aspect-[1/1] md:max-w-[480px]">
+            <ImageElement
+              className="h-full w-full object-cover object-top md:mx-auto"
+              src={image.src}
+              alt={image.alt}
+              {...(image.width && { width: image.width })}
+              {...(image.height && { height: image.height })}
+            />
+          </div>
+        )}
         {/* Content */}
         <div className="flex flex-1 flex-col gap-md p-lg">
           <span
@@ -111,17 +113,19 @@ export default function Callout({
           <Typography variant="body-2" className={colorSchema[color].content}>
             {content}
           </Typography>
-          <Button
-            animated
-            as="link"
-            href={link.url}
-            component={LinkElement}
-            endIcon={<ArrowRightIcon />}
-            color={colorSchema[color].button}
-            className="mt-md justify-center md:w-fit"
-          >
-            {link.title}
-          </Button>
+          {link && (
+            <Button
+              animated
+              as="link"
+              href={link.url}
+              component={LinkElement}
+              endIcon={<ArrowRightIcon />}
+              color={colorSchema[color].button}
+              className="mt-md justify-center md:w-fit"
+            >
+              {link.title}
+            </Button>
+          )}
         </div>
       </div>
     </div>
