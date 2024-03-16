@@ -1,4 +1,4 @@
-import { ElementType } from 'react';
+import { ElementType, ReactNode } from 'react';
 import { cn } from '../../../utils/tailwind-merge';
 import ArrowRightIcon from '../../00-tokens/icons/arrow-right-icon';
 import Button from '../../01-elements/button/button';
@@ -18,12 +18,13 @@ export type CalloutLinkDetails = {
 
 export type CalloutProps = {
   color?: CalloutColorVariant;
-  content: string;
+  content?: string;
   contentElement?: ElementType;
-  eyebrow: string;
-  header: string;
+  eyebrow?: string;
+  header?: string;
   image?: CalloutImageDetails;
-  imageComponent?: ElementType;
+  renderedImageComponent?: ReactNode;
+  renderedContentComponent?: ReactNode;
   link?: CalloutLinkDetails;
   linkComponent?: ElementType;
 };
@@ -72,59 +73,62 @@ const colorSchema: { [key in CalloutColorVariant]: CalloutColorSchema } = {
 export default function Callout({
   color = 'white',
   content,
-  contentElement: ContentElement,
+  renderedContentComponent,
   eyebrow,
   header,
   image,
-  imageComponent: ImageElement = 'img',
   link,
   linkComponent: LinkElement = 'a',
+  renderedImageComponent,
 }: CalloutProps) {
+  const renderedImage = renderedImageComponent ? (
+    renderedImageComponent
+  ) : image ? (
+    <div className="aspect-[16/9] max-md:min-h-[284px] md:aspect-[1/1] md:max-w-[480px]">
+      <img
+        className="h-full w-full object-cover object-top md:mx-auto"
+        src={image.src}
+        alt={image.alt}
+        {...(image.width && { width: image.width })}
+        {...(image.height && { height: image.height })}
+      />
+    </div>
+  ) : null;
+
+  const renderedContent = renderedContentComponent ? (
+    renderedContentComponent
+  ) : content ? (
+    <Typography variant="body-2" className={colorSchema[color].content}>
+      {content}
+    </Typography>
+  ) : null;
+
   return (
     <div className={colorSchema[color].wrapper}>
       <div className="mx-auto flex max-w-screen-xl flex-col-reverse md:flex-row md:items-center md:gap-lg xl:gap-xl">
-        {/* Image */}
-        {image && (
-          <div className="aspect-[16/9] max-md:min-h-[284px] md:aspect-[1/1] md:max-w-[480px]">
-            <ImageElement
-              className="h-full w-full object-cover object-top md:mx-auto"
-              src={image.src}
-              alt={image.alt}
-              {...(image.width && { width: image.width })}
-              {...(image.height && { height: image.height })}
-            />
-          </div>
-        )}
-        {/* Content */}
+        {renderedImage}
         <div className="flex flex-1 flex-col gap-md p-lg">
-          <span
-            className={cn(
-              'text-h5 font-semibold uppercase',
-              colorSchema[color].eyebrow,
-            )}
-          >
-            {eyebrow}
-          </span>
-          <Typography
-            component="h2"
-            variant="display"
-            className={cn('font-semibold', colorSchema[color].title)}
-          >
-            {header}
-          </Typography>
-          {/* Content */}
-          {ContentElement ? (
-            <ContentElement
-              variant="body-2"
-              className={cn(colorSchema[color].content, 'text-body-2')}
-              body={content}
-            />
-          ) : (
-            <Typography variant="body-2" className={colorSchema[color].content}>
-              {content}
+          {eyebrow && (
+            <span
+              className={cn(
+                'text-h5 font-semibold uppercase',
+                colorSchema[color].eyebrow,
+              )}
+            >
+              {eyebrow}
+            </span>
+          )}
+          {header && (
+            <Typography
+              component="h2"
+              variant="display"
+              className={cn('font-semibold', colorSchema[color].title)}
+            >
+              {header}
             </Typography>
           )}
-          {/* Link */}
+
+          {renderedContent}
           {link && (
             <Button
               animated
