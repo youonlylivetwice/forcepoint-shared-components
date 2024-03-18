@@ -7,3 +7,7 @@
 .sb-main-padded.sb-show-main:has(.secondary-menu) {
   @apply p-0;
 }
+
+.dark-theme {
+  @apply bg-navy p-3 rounded-m;
+}
