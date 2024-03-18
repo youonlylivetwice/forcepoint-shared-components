@@ -68,6 +68,7 @@ export default function Button({
   variant = 'solid',
   children,
   className,
+  as,
   ...props
 }: ButtonProps) {
   const renderIcon = (icon: ReactNode) => (
@@ -95,7 +96,7 @@ export default function Button({
     className,
   );
 
-  if (props.as === 'button') {
+  if (as === 'button') {
     Element = 'button';
   }
 
