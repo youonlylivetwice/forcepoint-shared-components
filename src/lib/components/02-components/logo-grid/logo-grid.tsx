@@ -1,12 +1,12 @@
+import type { ElementType } from 'react';
 import { cn } from '../../../utils/tailwind-merge';
-import { ElementType } from 'react';
 import Typography from '../../01-elements/typography/typography';
 
 export type LogoInfo = {
   alt: string;
-  height?: string;
+  height?: string | number;
   src: string;
-  width?: string;
+  width?: string | number;
 };
 
 export type LogoGridProps = {

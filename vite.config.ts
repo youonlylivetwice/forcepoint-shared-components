@@ -20,6 +20,7 @@ export default defineConfig({
       targets: [
         { src: 'src/lib/assets/css/*.css', dest: 'dist/assets/css' },
         { src: 'src/lib/assets/fonts/*', dest: 'dist/assets/fonts' },
+        { src: 'src/lib/assets/img/*', dest: 'dist/assets/img' },
         { src: 'tailwind-theme-preset.js', dest: 'dist' },
       ],
       hook: 'writeBundle',
@@ -44,6 +45,8 @@ export default defineConfig({
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
+          clsx: 'clsx',
+          'tailwind-merge': 'tailwindMerge',
         },
       },
     },
