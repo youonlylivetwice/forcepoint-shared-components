@@ -52,7 +52,7 @@ export type MainMenuItemProps = {
   bgColor?: string;
   bottomLink?: string;
   className?: string;
-  ctaButton?: string;
+  ctaHeader?: string;
   description?: string;
   display: MenuItemDisplay;
   icon?: MenuItemImageProps;
@@ -257,7 +257,7 @@ export default function MainMenu({
             url={item.url}
             icon={item.icon}
             title={item.title}
-            ctaButton={item.ctaButton}
+            ctaButton={item.ctaHeader}
             linkComponent={LinkComponent}
             description={item.description}
             iconOnHover={item.iconOnHover}
@@ -303,7 +303,7 @@ export default function MainMenu({
             url={item.url}
             title={item.title}
             bgColor={item.bgColor}
-            linkText={item.ctaButton}
+            linkText={item.ctaHeader}
             eyebrow={item.description}
             linkComponent={LinkComponent}
             className="h-full lg:max-w-none"
