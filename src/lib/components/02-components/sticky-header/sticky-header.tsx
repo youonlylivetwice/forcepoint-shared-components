@@ -60,12 +60,14 @@ export default function StickyHeader({
             src={stickyHeaderLogo}
           />
           {/* Sticky header title */}
-          <Typography
-            component="h2"
-            variant="h3"
-            className="text-white font-semibold py-md">
-            {headerTitle}
-          </Typography>
+          {headerTitle && (
+            <Typography
+              component="h2"
+              variant="h3"
+              className="text-white font-semibold py-md">
+              {headerTitle}
+            </Typography>
+          )}
         </div>
         <div className="flex gap-3">
           {/* CTAs */}
