@@ -50,11 +50,11 @@ export default function StickyHeader({
     <header className={cn("bg-black fixed right-0 left-0 -top-[100px] z-20 transition-top duration-300 ease-in-out delay-0", {
       "top-auto lg:top-0": showHeader
     })}>
-      <div className="flex justify-center items-center lg:max-w-screen-xl lg:mx-auto lg:px-lg lg:justify-between">
+      <div className="flex justify-center items-center lg:max-w-screen-xl lg:mx-auto lg:pr-lg lg:justify-between">
         <div className="hidden lg:flex lg:items-center">
           {/* Sticky header logo variant */}
           <Branding
-            className={"w-[20px] mr-md"}
+            className={"w-[20px] mr-lg"}
             alt={headerLogoAlt}
             linkComponent={linkComponent}
             src={stickyHeaderLogo}
