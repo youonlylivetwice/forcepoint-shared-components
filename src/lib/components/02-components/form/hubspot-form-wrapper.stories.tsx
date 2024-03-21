@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import HubspotFormWrapper from './hubspot-form-wrapper';
 
 const meta = {
-  title: 'Components/HubspotFormWrapper',
+  title: 'Components/Form/HubspotFormWrapper',
   component: HubspotFormWrapper,
 } satisfies Meta<typeof HubspotFormWrapper>;
 
