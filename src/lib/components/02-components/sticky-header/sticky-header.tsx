@@ -25,7 +25,7 @@ export type HeaderCta = {
 export default function StickyHeader({
   headerTitle,
   headerCtas,
-  showHeader,
+  showHeader = true,
   linkComponent = 'a',
   headerLogoAlt,
 }: StickyHeaderProps) {
@@ -47,8 +47,8 @@ export default function StickyHeader({
   });
 
   return (
-    <header className={cn("bg-black fixed right-0 left-0 -top-[100px] z-20 transition-top duration-300 ease-in-out delay-0", {
-      "top-auto lg:top-0": showHeader
+    <header className={cn("bg-black fixed right-0 left-0 -top-[100px] z-10 lg:z-20 transition-top duration-300 ease-in-out delay-0", {
+      "top-[61px] lg:top-0": showHeader
     })}>
       <div className="flex justify-center items-center lg:max-w-screen-xl lg:mx-auto lg:pr-lg lg:justify-between">
         <div className="hidden lg:flex lg:items-center">
