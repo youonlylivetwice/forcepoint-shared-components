@@ -58,3 +58,8 @@ export {
   default as SearchInput,
   type SearchProps,
 } from './02-components/search-input/search-input';
+export {
+  default as StickyHeader,
+  type StickyHeaderProps,
+  type HeaderCta,
+} from './02-components/sticky-header/sticky-header';
