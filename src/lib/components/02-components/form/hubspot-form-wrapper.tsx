@@ -35,7 +35,10 @@ export default function HubspotFormWrapper({
   return (
     <div
       {...props}
-      className={cn('rounded-m bg-white px-md py-lg sm:px-lg', className)}
+      className={cn(
+        'sm:px-2xl shadow-3xl rounded-m bg-white px-md py-lg',
+        className,
+      )}
     >
       {renderedHeadline}
       {renderedSubheadline}
