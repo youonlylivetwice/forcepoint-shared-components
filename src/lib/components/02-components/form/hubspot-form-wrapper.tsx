@@ -1,13 +1,15 @@
-import { ComponentPropsWithoutRef } from 'react';
+import { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { cn } from '../../../utils/tailwind-merge';
 import Typography from '../../01-elements/typography/typography';
 
 export type HubspotFormWrapperProps = ComponentPropsWithoutRef<'div'> & {
   headLine?: string | null;
   subHeadLine?: string | null;
+  logo?: ReactNode;
 };
 
 export default function HubspotFormWrapper({
+  logo,
   headLine,
   subHeadLine,
   children,
@@ -36,10 +38,11 @@ export default function HubspotFormWrapper({
     <div
       {...props}
       className={cn(
-        'sm:px-2xl shadow-3xl rounded-m bg-white px-md py-lg',
+        'sm:px-2xl rounded-m bg-white px-md py-lg shadow-3xl',
         className,
       )}
     >
+      {logo}
       {renderedHeadline}
       {renderedSubheadline}
       {children}
