@@ -8,20 +8,6 @@ The StickyHeader component interface allows you to create sticky headers within 
 import { StickyHeader } from 'forcepoint-shared-components';
 ```
 
-export type StickyHeaderProps = {
-  headerTitle?: string;
-  headerCtas: HeaderCta[];
-  showHeader: boolean;
-  linkComponent?: ElementType;
-  headerLogoAlt: string;
-};
-
-export type HeaderCta = {
-  url: string;
-  title: string;
-  color?: ButtonColorVariant;
-}
-
 ## Props
 
 | Name | Type | Default | Description |
@@ -31,7 +17,6 @@ export type HeaderCta = {
 | showHeader | `bool` | `true` | Displays the header if set to `true`. |
 | linkComponent | `elementType` | `a` | The component to use for the link. |
 | headerLogoAlt | `string` | `-` | The alt text for the header logo. |
-
 
 ## HeaderCta
 

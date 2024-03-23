@@ -15,11 +15,16 @@ export {
 } from './02-components/branding/branding';
 export {
   default as Callout,
-  type CalloutProps,
+  type CalloutColorVariant,
   type CalloutImageDetails,
   type CalloutLinkDetails,
-  type CalloutColorVariant,
+  type CalloutProps,
 } from './02-components/callout/callout';
+export {
+  default as LogoGrid,
+  type LogoGridProps,
+  type LogoInfo,
+} from './02-components/logo-grid/logo-grid';
 export {
   default as FooterMenu,
   type FooterMenuProps,
@@ -35,14 +40,9 @@ export {
   type LegalMenuProps,
 } from './02-components/menus/legal-menu/legal-menu';
 export {
-  default as LogoGrid,
-  type LogoGridProps,
-  type LogoInfo,
-} from './02-components/logo-grid/logo-grid';
-export {
   default as MainMenu,
-  type MainMenuProps,
   type MainMenuItemProps,
+  type MainMenuProps,
 } from './02-components/menus/main-menu/main-menu';
 export {
   default as SecondaryMenu,
@@ -60,6 +60,6 @@ export {
 } from './02-components/search-input/search-input';
 export {
   default as StickyHeader,
-  type StickyHeaderProps,
   type HeaderCta,
+  type StickyHeaderProps,
 } from './02-components/sticky-header/sticky-header';

@@ -1,12 +1,9 @@
-import { ElementType } from "react";
-import { cn } from "../../../utils/tailwind-merge";
-import Button, { ButtonColorVariant } from "../../01-elements/button/button";
-import Link from "../../01-elements/link/link";
-import Typography from "../../01-elements/typography/typography";
-import Branding from "../branding/branding";
-
-const stickyHeaderLogo =
-  'https://www.forcepoint.com/sites/all/themes/custom/fp/assets/img/logos/f-white.svg';
+import { ElementType } from 'react';
+import Logo from '../../../assets/img/branding/logo-white.svg';
+import { cn } from '../../../utils/tailwind-merge';
+import Button, { ButtonColorVariant } from '../../01-elements/button/button';
+import Typography from '../../01-elements/typography/typography';
+import Branding from '../branding/branding';
 
 export type StickyHeaderProps = {
   headerTitle?: string;
@@ -20,7 +17,7 @@ export type HeaderCta = {
   url: string;
   title: string;
   color?: ButtonColorVariant;
-}
+};
 
 export default function StickyHeader({
   headerTitle,
@@ -29,17 +26,17 @@ export default function StickyHeader({
   linkComponent = 'a',
   headerLogoAlt,
 }: StickyHeaderProps) {
-  const ctas = headerCtas.map((cta, index) => {
+  const renderedCtas = headerCtas.map((cta, index) => {
     return (
       <Button
         key={index}
         animated
-        as="link"
+        as='link'
         href={cta.url}
-        component={Link}
+        component={linkComponent}
         color={cta.color || 'white'}
-        className="my-2.5"
-        size="small"
+        className='my-2.5'
+        size='small'
       >
         {cta.title}
       </Button>
@@ -47,31 +44,37 @@ export default function StickyHeader({
   });
 
   return (
-    <header className={cn("bg-black fixed right-0 left-0 -top-[100px] z-10 lg:z-20 transition-top duration-300 ease-in-out delay-0", {
-      "top-[61px] lg:top-0": showHeader
-    })}>
-      <div className="flex justify-center items-center lg:max-w-screen-xl lg:mx-auto lg:pr-lg lg:justify-between">
-        <div className="hidden lg:flex lg:items-center">
+    <header
+      className={cn(
+        'transition-top fixed -top-[100px] left-0 right-0 z-10 bg-black delay-0 duration-300 ease-in-out lg:z-20',
+        {
+          'top-[61px] lg:top-0': showHeader,
+        },
+      )}
+    >
+      <div className='flex items-center justify-center lg:mx-auto lg:max-w-screen-xl lg:justify-between lg:pr-lg'>
+        <div className='hidden lg:flex lg:items-center'>
           {/* Sticky header logo variant */}
           <Branding
-            className={"w-[20px] mr-lg"}
+            className={'mr-lg w-[20px]'}
             alt={headerLogoAlt}
             linkComponent={linkComponent}
-            src={stickyHeaderLogo}
+            src={Logo}
           />
           {/* Sticky header title */}
           {headerTitle && (
             <Typography
-              component="h2"
-              variant="h3"
-              className="text-white font-semibold py-md">
+              component='h2'
+              variant='h3'
+              className='py-md font-semibold text-white'
+            >
               {headerTitle}
             </Typography>
           )}
         </div>
-        <div className="flex gap-3">
+        <div className='flex gap-3'>
           {/* CTAs */}
-          {ctas}
+          {renderedCtas}
         </div>
       </div>
     </header>
