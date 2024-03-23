@@ -6,6 +6,10 @@
   @apply mb-md;
 }
 
+.hubspot-form-wrapper .hs-form-field > label {
+  @apply sr-only focus-visible:not-sr-only;
+}
+
 .hubspot-form-wrapper .hs_name .input input,
 .hubspot-form-wrapper .hs_email .input input,
 .hubspot-form-wrapper .hs_name .input input,
