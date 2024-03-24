@@ -16,8 +16,10 @@
     "dist"
   ],
   "scripts": {
-    "dev": "run-p watch-typescript storybook",
     "prepare": "rm -rf dist && npm run build",
+    "predev": "rm -rf src/lib/components/00-tokens/icons/* && npm run create-icons && npm run create-icons-story",
+    "dev": "run-p watch-typescript storybook",
+    "prebuild": "rm -rf src/lib/components/00-tokens/icons/* && npm run create-icons && npm run create-icons-story",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "yalc-publish": "yalc publish --push",
@@ -26,9 +28,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "create-icons": "node scripts/create-icons.mjs",
-    "create-icons-story": "node scripts/create-icons-story.mjs",
-    "predev": "rm -rf src/lib/components/00-tokens/icons/* && npm run create-icons && npm run create-icons-story",
-    "prebuild": "rm -rf src/lib/components/00-tokens/icons/* && npm run create-icons && npm run create-icons-story"
+    "create-icons-story": "node scripts/create-icons-story.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.0",
