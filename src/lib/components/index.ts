@@ -4,6 +4,7 @@ export {
   default as Button,
   type ButtonProps,
 } from './01-elements/button/button';
+export { default as Img, type ImgProps } from './01-elements/img/img';
 export { default as Link, type LinkProps } from './01-elements/link/link';
 export {
   default as Typography,
@@ -20,6 +21,10 @@ export {
   type CalloutLinkDetails,
   type CalloutProps,
 } from './02-components/callout/callout';
+export {
+  default as HubspotFormWrapper,
+  type HubspotFormWrapperProps,
+} from './02-components/form/hubspot-form-wrapper';
 export {
   default as LogoGrid,
   type LogoGridProps,
@@ -58,9 +63,8 @@ export {
   default as SearchInput,
   type SearchProps,
 } from './02-components/search-input/search-input';
-
-export { default as Img, type ImgProps } from './01-elements/img/img';
 export {
-  default as HubspotFormWrapper,
-  type HubspotFormWrapperProps,
-} from './02-components/form/hubspot-form-wrapper';
+  default as StickyHeader,
+  type HeaderCta,
+  type StickyHeaderProps,
+} from './02-components/sticky-header/sticky-header';
