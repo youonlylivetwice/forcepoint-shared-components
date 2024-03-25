@@ -1,24 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState, ReactNode } from 'react';
 import Typography from '../../01-elements/typography/typography';
 import { cn } from '../../../utils/tailwind-merge';
 
 type AccortionItemProps = {
   title: string;
-  children: React.ReactNode;
+  children: ReactNode;
   active: boolean;
   isMouseOver: boolean;
+  theme: 'light' | 'dark';
   onClick: () => void;
 };
 
 type AccordionSliderItemProps = {
   title: string;
   img: string;
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 type AccordionSliderProps = {
   sliderTitle?: string;
   sliderSubTitle?: string;
+  theme?: 'light' | 'dark';
+  alignment?: 'left' | 'right';
   accordionItems: AccordionSliderItemProps[];
 };
 
@@ -26,6 +29,8 @@ export default function AccordionSlider({
   sliderTitle,
   sliderSubTitle,
   accordionItems,
+  theme = 'light',
+  alignment = 'left',
 }: AccordionSliderProps) {
   const [active, setActive] = useState<number>(0);
   const [isFocused, setIsFocused] = useState<boolean>(false);
@@ -48,17 +53,31 @@ export default function AccordionSlider({
   return (
     <div>
       {sliderTitle && (
-        <Typography variant="display" className="w-full">
+        <Typography
+          variant="display"
+          className={cn('mb-4 w-full font-bold', {
+            'text-azure': theme === 'dark',
+          })}
+        >
           {sliderTitle}
         </Typography>
       )}
 
       {sliderSubTitle && (
-        <Typography variant="display" className="w-full">
+        <Typography
+          variant="h2"
+          className={cn('mb-4 w-full font-bold', {
+            'text-azure': theme === 'dark',
+          })}
+        >
           {sliderSubTitle}
         </Typography>
       )}
-      <div className="flex gap-[120px]">
+      <div
+        className={cn('flex w-fit  gap-[120px]', {
+          'flex-row-reverse': alignment === 'right',
+        })}
+      >
         <div>
           {accordionItems.map((item, index) => (
             <div
@@ -70,6 +89,7 @@ export default function AccordionSlider({
             >
               <AccortionItem
                 title={item.title}
+                theme={theme}
                 active={active === index}
                 isMouseOver={isFocused}
                 onClick={() => handleClick(index)}
@@ -95,7 +115,7 @@ export default function AccordionSlider({
       </div>
     </div>
   );
-};
+}
 
 function AccortionItem({
   title,
@@ -103,6 +123,7 @@ function AccortionItem({
   onClick,
   children,
   isMouseOver,
+  theme,
 }: AccortionItemProps) {
   return (
     <div className="max-w-[480px]">
@@ -126,13 +147,16 @@ function AccortionItem({
           className={cn(
             'mb-0 font-semibold',
             active ? 'text-navy' : 'text-grey',
+            { 'text-azure': theme === 'dark' },
           )}
         >
           {title}
         </Typography>
       </button>
 
-      {active && <div>{children}</div>}
+      {active && (
+        <div className={cn({ 'text-azure': theme === 'dark' })}>{children}</div>
+      )}
     </div>
   );
 }

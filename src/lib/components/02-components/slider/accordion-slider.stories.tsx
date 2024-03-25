@@ -49,6 +49,29 @@ const accordionItems = [
 const meta = {
   title: 'Components/Sliders/Accordion Slider',
   component: AccordionSlider,
+  argTypes: {
+    theme: {
+      control: {
+        type: 'select',
+        options: ['light', 'dark'],
+      },
+    },
+    alignment: {
+      control: {
+        type: 'select',
+        options: ['left', 'right'],
+      },
+    },
+    sliderTitle: {
+      control: { type: 'text' },
+    },
+    sliderSubTitle: {
+      control: { type: 'text' },
+    },
+    accordionItems: {
+      control: { type: 'array' },
+    },
+  },
 } satisfies Meta<typeof AccordionSlider>;
 
 export default meta;
@@ -58,5 +81,33 @@ export const Default: Story = {
   args: {
     sliderTitle: 'Accordion Slider',
     accordionItems: accordionItems,
+  },
+};
+
+export const WithSubtitle: Story = {
+  args: {
+    sliderTitle: 'Accordion Slider',
+    sliderSubTitle: 'Here goes a subtitle',
+    accordionItems: accordionItems,
+  },
+};
+
+export const ImagesOnTheRight: Story = {
+  args: {
+    sliderTitle: 'Accordion Slider',
+    alignment: 'right',
+    accordionItems: accordionItems,
+  },
+};
+
+export const DarkTheme: Story = {
+  args: {
+    sliderTitle: 'Accordion Slider',
+    sliderSubTitle: 'Here goes a subtitle',
+    theme: 'dark',
+    accordionItems: accordionItems,
+  },
+  parameters: {
+    backgrounds: { default: 'dark' },
   },
 };
