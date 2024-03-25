@@ -59,6 +59,7 @@ export {
   type SearchProps,
 } from './02-components/search-input/search-input';
 
+export { default as Img, type ImgProps } from './01-elements/img/img';
 export {
   default as HubspotFormWrapper,
   type HubspotFormWrapperProps,
