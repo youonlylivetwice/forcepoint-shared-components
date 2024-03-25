@@ -8,10 +8,10 @@ const meta = {
   title: 'Elements/Image',
   component: Img,
   argTypes: {
-    imgPath: {
+    src: {
       control: { type: 'text' },
     },
-    imgDesc: {
+    description: {
       control: { type: 'text' },
     },
   },
@@ -22,22 +22,23 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    imgPath: 'https://via.placeholder.com/150',
-    imgDesc: 'Placeholder image',
+    src: 'https://via.placeholder.com/150',
+    description: 'Placeholder image',
   },
 };
 
 export const ImageWithoutCaption: Story = {
   args: {
-    imgPath: 'https://via.placeholder.com/150',
+    src: 'https://via.placeholder.com/150',
+    description: '',
   },
 };
 
 export const DarkTheme: Story = {
   args: {
-    imgPath: 'https://via.placeholder.com/150',
-    imgDesc: 'Placeholder image',
-    theme: 'dark',
+    src: 'https://via.placeholder.com/150',
+    description: 'Placeholder image',
+    bgColor: 'dark',
   },
   parameters: {
     backgrounds: { default: 'dark' },
