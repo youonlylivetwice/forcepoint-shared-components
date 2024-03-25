@@ -2,70 +2,79 @@ import React, { useEffect, useState } from 'react';
 import Typography from '../../01-elements/typography/typography';
 import { cn } from '../../../utils/tailwind-merge';
 
-const accordionItems = [
-  {
-    id: '1',
-    title: 'Accordion item 1',
-    content:
-      'Seamlessly extend Zero Trust to private applications in internal data centers and private clouds and limit user access to only the apps and data they need.',
-    img: 'https://placehold.co/600x400/FFFF33/000000/png',
-  },
-  {
-    id: '2',
-    title: 'Accordion item 2',
-    content:
-      'Seamlessly extend Zero Trust to private applications in internal data centers and private clouds and limit user access to only the apps and data they need.',
-    img: 'https://placehold.co/600x400/FF33FF/000000/png',
-  },
-  {
-    id: '3',
-    title: 'Accordion item 3',
-    content:
-      'Seamlessly extend Zero Trust to private applications in internal data centers and private clouds and limit user access to only the apps and data they need.',
-    img: 'https://placehold.co/600x400/33FFFF/000000/png',
-  },
-];
+type AccortionItemProps = {
+  title: string;
+  children: React.ReactNode;
+  active: boolean;
+  isMouseOver: boolean;
+  onClick: () => void;
+};
 
-export default function AccordionSlider() {
+type AccordionSliderItemProps = {
+  title: string;
+  img: string;
+  children: React.ReactNode;
+};
+
+type AccordionSliderProps = {
+  sliderTitle?: string;
+  sliderSubTitle?: string;
+  accordionItems: AccordionSliderItemProps[];
+};
+
+export default function AccordionSlider({
+  sliderTitle,
+  sliderSubTitle,
+  accordionItems,
+}: AccordionSliderProps) {
   const [active, setActive] = useState<number>(0);
-  const [isMouseOver, setIsMouseOver] = useState<boolean>(false);
+  const [isFocused, setIsFocused] = useState<boolean>(false);
   const handleClick = (index: number) => {
     setActive(index);
   };
   const activeTime = 10000;
 
   useEffect(() => {
-    if (isMouseOver) return;
-    setTimeout(() => {
-      if (active === accordionItems.length - 1) {
-        setActive(0);
-      } else {
-        setActive(active + 1);
-      }
-    }, activeTime);
-  }, [active, isMouseOver]);
+    if (!isFocused) {
+      setTimeout(() => {
+        if (active === accordionItems.length - 1) {
+          setActive(0);
+        } else {
+          setActive(active + 1);
+        }
+      }, activeTime);
+    }
+  });
   return (
     <div>
-      <Typography variant="display" className="w-full">
-        Some title
-      </Typography>
+      {sliderTitle && (
+        <Typography variant="display" className="w-full">
+          {sliderTitle}
+        </Typography>
+      )}
+
+      {sliderSubTitle && (
+        <Typography variant="display" className="w-full">
+          {sliderSubTitle}
+        </Typography>
+      )}
       <div className="flex gap-[120px]">
         <div>
           {accordionItems.map((item, index) => (
             <div
-              key={item.id}
-              onMouseOver={() => setIsMouseOver(true)}
-              onMouseLeave={() => setIsMouseOver(false)}
+              key={index}
+              onMouseOver={() => setIsFocused(true)}
+              onMouseLeave={() => setIsFocused(false)}
+              onFocus={() => setIsFocused(true)}
+              onBlur={() => setIsFocused(false)}
             >
               <AccortionItem
                 title={item.title}
-                content={item.content}
                 active={active === index}
-                isMouseOver={isMouseOver}
+                isMouseOver={isFocused}
                 onClick={() => handleClick(index)}
               >
-                <Typography variant="body-2">{item.content}</Typography>
-                <img className="inline sm:hidden" src={item.img} alt="" />
+                {item.children}
               </AccortionItem>
             </div>
           ))}
@@ -86,15 +95,6 @@ export default function AccordionSlider() {
       </div>
     </div>
   );
-}
-
-type AccortionItemProps = {
-  title: string;
-  content: string;
-  children: React.ReactNode;
-  active: boolean;
-  isMouseOver: boolean;
-  onClick: () => void;
 };
 
 function AccortionItem({
