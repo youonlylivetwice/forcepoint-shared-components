@@ -58,3 +58,4 @@ export {
   default as SearchInput,
   type SearchProps,
 } from './02-components/search-input/search-input';
+export { default as Img, type ImgProps } from './01-elements/img/img';

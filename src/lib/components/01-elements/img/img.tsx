@@ -1,35 +1,43 @@
 import { ReactNode } from 'react';
-import Typography from '../typography/typography';
 import { cn } from '../../../utils/tailwind-merge';
+import Typography from '../typography/typography';
 
-type ImgProps = {
-  src: string;
-  description: string;
+export type ImgProps = {
+  src?: string;
+  alt?: string;
+  description?: string;
   bgColor?: 'dark' | 'light';
   renderedImageComponent?: ReactNode;
 };
 
 export default function Img({
   src,
+  alt = '',
   description,
   bgColor = 'light',
   renderedImageComponent,
 }: ImgProps) {
-  return renderedImageComponent ? (
+  const renderedImage = renderedImageComponent ? (
     renderedImageComponent
-  ) : (
-    <figure>
-      <img src={src} alt={description} />
-      {description !== '' && (
-        <figcaption>
-          <Typography
-            variant="body-4"
-            className={cn(bgColor === 'dark' ? 'text-azure' : 'text-black')}
-          >
-            {description}
-          </Typography>
-        </figcaption>
-      )}
+  ) : src ? (
+    <img src={src} alt={alt} />
+  ) : null;
+
+  const renderedCaption = description && (
+    <figcaption>
+      <Typography
+        variant="body-4"
+        className={cn(bgColor === 'dark' ? 'text-azure' : 'text-black')}
+      >
+        {description}
+      </Typography>
+    </figcaption>
+  );
+
+  return (
+    <figure className="relative">
+      {renderedImage}
+      {renderedCaption}
     </figure>
   );
 }
