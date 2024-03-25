@@ -36,6 +36,7 @@ export default {
 - [Button](./docs/api/button.md)
 - [Callout](./docs/api/callout.md)
 - [Footer Menu](./docs/api/footerMenu.md)
+- [Image](./docs/api/img.md)
 - [Card 380](./docs/api/card380.md)
 - [Card Nav Highlight](./docs/api/navHighlight.md)
 - [Language Switcher](./docs/api/languageSwitcher.md)
