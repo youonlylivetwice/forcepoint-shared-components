@@ -41,6 +41,7 @@ const items = [
     children: <ContentComponent />;
   }
 ]
+
 <AccordionSlider 
   sliderTitle="Accordion title"
   sliderSubTitle="Accordion subtitle"

@@ -11,13 +11,13 @@ type AccortionItemProps = {
   onClick: () => void;
 };
 
-type AccordionSliderItemProps = {
+export type AccordionSliderItemProps = {
   title: string;
   img: string;
   children: ReactNode;
 };
 
-type AccordionSliderProps = {
+export type AccordionSliderProps = {
   sliderTitle?: string;
   sliderSubTitle?: string;
   theme?: 'light' | 'dark';

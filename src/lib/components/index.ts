@@ -58,3 +58,8 @@ export {
   default as SearchInput,
   type SearchProps,
 } from './02-components/search-input/search-input';
+export {
+  default as AccordionSlider,
+  type AccordionSliderItemProps,
+  type AccordionSliderProps,
+} from './02-components/slider/accordion-slider';
