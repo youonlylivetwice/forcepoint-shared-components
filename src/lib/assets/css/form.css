@@ -1,61 +1,87 @@
-.hubspot-form-wrapper form>div:not(:last-of-type) {
+.hubspot-form-wrapper {
+  @apply text-center;
+}
+
+.hubspot-form-wrapper form > div:not(:last-of-type) {
   @apply mb-md;
 }
 
-.hs_name .input input,
-.hs_email .input input,
-.hs_name .input input,
-.hs_company .input input,
-.hs_phone .input input,
-.hs_jobtitle .input input,
-.hs-fieldtype-select .input select {
+.hubspot-form-wrapper .hs-form-field > label {
+  @apply sr-only focus-visible:not-sr-only;
+}
+
+.hubspot-form-wrapper .hs_name .input input,
+.hubspot-form-wrapper .hs_email .input input,
+.hubspot-form-wrapper .hs_name .input input,
+.hubspot-form-wrapper .hs_company .input input,
+.hubspot-form-wrapper .hs_phone .input input,
+.hubspot-form-wrapper .hs_jobtitle .input input,
+.hubspot-form-wrapper .hs_firstname .input input,
+.hubspot-form-wrapper .hs_lastname .input input,
+.hubspot-form-wrapper .hs-fieldtype-select .input select {
   @apply block w-full px-5 py-3 border border-brumosa rounded-m text-grey outline-none focus:rounded-m focus:px-5 focus:py-3 focus:border-teal focus:border-2;
 }
 
-.hs-fieldtype-select .input select {
+.hubspot-form-wrapper div:not([class]) p {
+  @apply text-[11px] text-grey font-normal !important;
+}
+
+.hubspot-form-wrapper div:not([class]) p a {
+  @apply font-semibold;
+}
+
+.hubspot-form-wrapper .hs_submit input {
+  @apply bg-blue text-white hover:bg-black px-lg py-sm rounded-lg cursor-pointer text-body-4 font-semibold w-full;
+}
+
+.hubspot-form-wrapper .hs-fieldtype-select .input select {
   @apply appearance-none;
 }
 
-.hs-fieldtype-select .input {
+.hubspot-form-wrapper .hs-fieldtype-select .input {
   @apply after:content-[""] after:bg-[url('../img/icons/chevron-down.svg')] after:absolute after:w-4 after:h-4 after:right-4 after:top-5;
 }
 
-.hs-fieldtype-select select {
+.hubspot-form-wrapper .hs-fieldtype-select select {
   @apply focus:text-blue;
 }
 
-.hs_name,
-.hs_email,
-.hs_name,
-.hs_company,
-.hs_phone,
-.hs_jobtitle,
-.hs-fieldtype-select {
+.hubspot-form-wrapper .hs_name,
+.hubspot-form-wrapper .hs_email,
+.hubspot-form-wrapper .hs_name,
+.hubspot-form-wrapper .hs_company,
+.hubspot-form-wrapper .hs_phone,
+.hubspot-form-wrapper .hs_jobtitle,
+.hubspot-form-wrapper .hs_firstname
+.hubspot-form-wrapper .hs_lastname,
+.hubspot-form-wrapper .hs-fieldtype-select {
   @apply flex flex-col;
 }
 
-.hs_name .input,
-.hs_email .input,
-.hs_name .input,
-.hs_company .input,
-.hs_phone .input,
-.hs_jobtitle .input,
-.hs-fieldtype-select .input {
+.hubspot-form-wrapper .hs_name .input,
+.hubspot-form-wrapper .hs_email .input,
+.hubspot-form-wrapper .hs_name .input,
+.hubspot-form-wrapper .hs_company .input,
+.hubspot-form-wrapper .hs_phone .input,
+.hubspot-form-wrapper .hs_jobtitle .input,
+.hubspot-form-wrapper .hs_firstname .input,
+.hubspot-form-wrapper .hs_lastname .input,
+.hubspot-form-wrapper .hs-fieldtype-select .input {
   @apply relative before:content-["*"] before:block before:absolute before:text-teal before:top-sm before:left-sm
 }
 
-.hs-fieldtype-booleancheckbox .input label,
-.hs-fieldtype-checkbox .input label {
+.hubspot-form-wrapper .hs-fieldtype-booleancheckbox .input label,
+.hubspot-form-wrapper .hs-fieldtype-checkbox .input label {
   @apply flex items-center gap-[5px];
 }
 
-.hs-fieldtype-booleancheckbox .input .hs-input .invalid .error,
-.hs-fieldtype-checkbox .input input {
+.hubspot-form-wrapper .hs-fieldtype-booleancheckbox .input .hs-input .invalid .error,
+.hubspot-form-wrapper .hs-fieldtype-checkbox .input input {
   @apply border border-chateau appearance-none w-4 h-4;
 }
 
-.hs-fieldtype-booleancheckbox .input .inputs-list li,
-.hs-fieldtype-checkbox .input .inputs-list li {
+.hubspot-form-wrapper .hs-fieldtype-booleancheckbox .input .inputs-list li,
+.hubspot-form-wrapper .hs-fieldtype-checkbox .input .inputs-list li {
   @apply mb-[10px];
 }
 
@@ -100,6 +126,8 @@
 .hs_company ul[role=alert] li,
 .hs_phone ul[role=alert] li,
 .hs_jobtitle ul[role=alert] li,
+.hs_firstname ul[role=alert] li,
+.hs_lastname ul[role=alert] li,
 .hs-fieldtype-select ul[role=alert] li {
   @apply flex justify-end;
 }
@@ -110,6 +138,8 @@
 .hs_company .input input.invalid.error,
 .hs_phone .input input.invalid.error,
 .hs_jobtitle .input input.invalid.error,
+.hs_firstname .input input.invalid.error,
+.hs_lastname .input input.invalid.error,
 .hs-fieldtype-select select.invalid.error {
   @apply text-crimson border-2 border-crimson;
 }
