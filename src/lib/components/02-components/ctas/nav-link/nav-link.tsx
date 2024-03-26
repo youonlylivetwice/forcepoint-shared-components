@@ -1,8 +1,8 @@
-import { cn } from '../../../../utils/tailwind-merge';
 import { ElementType } from 'react';
-import { MenuItemImageProps } from '../../menus/main-menu/main-menu';
+import { cn } from '../../../../utils/tailwind-merge';
 import ChevronRightIcon from '../../../00-tokens/icons/chevron-right-icon';
 import Link from '../../../01-elements/link/link';
+import { MenuItemImageProps } from '../../menus/main-menu/main-menu';
 
 export type NavLinkProps = {
   className?: string;
@@ -43,7 +43,7 @@ export default function NavLink({
           </div>
         )}
         {/* Link content */}
-        <div className="flex flex-1 flex-col justify-center gap-sm">
+        <div className="flex flex-1 flex-col justify-center gap-xs">
           <Link
             animated
             color="black"

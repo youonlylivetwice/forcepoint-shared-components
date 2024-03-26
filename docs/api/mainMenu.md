@@ -27,7 +27,7 @@ import { MainMenu } from 'forcepoint-shared-components';
 | bgColor | `string` | `-` | Background color for the menu item. |
 | bottomLink | `string` | `-` | The link associated with the bottom of the menu item. |
 | className | `string` | `-` | Additional CSS class to style the menu item. |
-| ctaButton | `string` | `-` | Call-to-action button text for the menu item. |
+| ctaHeader | `string` | `-` | Call-to-action header text for the menu item. |
 | description | `string` | `-` | Additional descriptive text for the menu item. |
 | display | `label` \| `no_label` \| `label_small_arrow` \| `label_large_arrow` \| `heading` \| `heading_icon` \| `button` \| `button_with_arrow` \| `button_outline` \| `image_display` \| `image_with_content` \| `card` | `-` | Specifies the display type of the menu item. |
 | icon | `MenuItemImageProps` | `-` | Additional CSS class to style the menu item. |

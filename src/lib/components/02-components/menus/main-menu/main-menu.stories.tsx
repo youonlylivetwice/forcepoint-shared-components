@@ -1,10 +1,10 @@
-import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import MenuIcon from '../../../00-tokens/icons/menu-icon';
-import CloseIcon from '../../../00-tokens/icons/close-icon';
-import MainMenu, { MainMenuItemProps, MainMenuProps } from './main-menu';
-import Branding from '../../branding/branding';
+import { useState } from 'react';
 import { cn } from '../../../../utils/tailwind-merge';
+import CloseIcon from '../../../00-tokens/icons/close-icon';
+import MenuIcon from '../../../00-tokens/icons/menu-icon';
+import Branding from '../../branding/branding';
+import MainMenu, { MainMenuItemProps, MainMenuProps } from './main-menu';
 
 const menuItems: MainMenuItemProps[] = [
   {
@@ -93,7 +93,7 @@ const menuItems: MainMenuItemProps[] = [
                     src: 'https://www.forcepoint.com/sites/default/files/fp_one_icon-hover_0.svg?itok=ecRnPBsZ',
                   },
                 },
-                ctaButton: 'Learn More',
+                ctaHeader: 'Learn More',
               },
             ],
           },
@@ -689,7 +689,7 @@ const menuItems: MainMenuItemProps[] = [
                     src: 'https://forcepoint.com/sites/default/files/cyber_edu_icon-hover.svg?itok=1K3wTAcl',
                   },
                 },
-                ctaButton: 'Learn More',
+                ctaHeader: 'Learn More',
               },
             ],
           },
@@ -717,7 +717,7 @@ const menuItems: MainMenuItemProps[] = [
                 alignment: 'left_align',
                 description: 'Guide',
                 bgColor: '#00AF9A',
-                ctaButton: 'Dive into the Guide',
+                ctaHeader: 'Dive into the Guide',
               },
               {
                 title:
@@ -728,7 +728,7 @@ const menuItems: MainMenuItemProps[] = [
                 alignment: 'left_align',
                 description: 'Video',
                 bgColor: '#3D1152',
-                ctaButton: 'Watch the Video',
+                ctaHeader: 'Watch the Video',
               },
               {
                 title: '2023 Gartner® Magic Quadrant™ for Single-Vendor SASE',
@@ -738,7 +738,7 @@ const menuItems: MainMenuItemProps[] = [
                 alignment: 'left_align',
                 description: 'Analyst Report',
                 bgColor: '#FF671D',
-                ctaButton: 'Read the Report',
+                ctaHeader: 'Read the Report',
               },
               {
                 title: 'The Radical Transparency Opportunity in Cybersecurity',
@@ -748,7 +748,7 @@ const menuItems: MainMenuItemProps[] = [
                 alignment: 'left_align',
                 description: 'Podcast',
                 bgColor: '#F6DFA4',
-                ctaButton: 'Listen to the Podcast',
+                ctaHeader: 'Listen to the Podcast',
               },
             ],
           },

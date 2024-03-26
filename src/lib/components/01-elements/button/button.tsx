@@ -9,7 +9,7 @@ import { cn } from '../../../utils/tailwind-merge';
 
 type DefaultProps = {
   animated?: boolean;
-  color?: 'blue' | 'navy' | 'sandwisp' | 'viola' | 'white';
+  color?: ButtonColorVariant;
   component?: ElementType;
   disabled?: boolean;
   endIcon?: ReactNode;
@@ -17,6 +17,8 @@ type DefaultProps = {
   startIcon?: ReactNode;
   variant?: 'solid' | 'outline';
 };
+
+export type ButtonColorVariant = 'blue' | 'navy' | 'sandwisp' | 'viola' | 'white';
 
 export type ButtonProps = DefaultProps &
   (
