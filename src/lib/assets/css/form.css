@@ -1,7 +1,9 @@
+/* Add field margin */
 .hubspot-form-wrapper form > div:not(:last-of-type) {
   @apply mb-md;
 }
 
+/* Hide labels */
 .hubspot-form-wrapper .hs-form-field > label {
   @apply sr-only focus-visible:not-sr-only;
 }
@@ -53,7 +55,15 @@
   @apply bg-white text-blue hover:text-black hover:bg-sandwisp;
 }
 
-/* ============================== */
+/* Submit arrow */
+.hubspot-form-wrapper-submit-arrow .hs_submit .actions {
+  @apply w-max relative after:content-[""] after:bg-[url('../img/icons/arrow-right-white.svg')] after:absolute after:w-4 after:h-4 after:right-8 after:top-3;
+}
+
+.hubspot-form-wrapper-submit-arrow .hs_submit input {
+  @apply pr-14;
+}
+
 
 .hubspot-form-wrapper .hs-fieldtype-select .input select {
   @apply appearance-none;
