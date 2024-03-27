@@ -6,6 +6,7 @@ export type HubspotFormWrapperProps = ComponentPropsWithoutRef<'div'> & {
   headLine?: string | null;
   subHeadLine?: string | null;
   logo?: ReactNode;
+  bgColor?: 'white' | 'navy' | 'blue';
 };
 
 export default function HubspotFormWrapper({
@@ -14,13 +15,16 @@ export default function HubspotFormWrapper({
   subHeadLine,
   children,
   className,
+  bgColor = 'white',
   ...props
 }: HubspotFormWrapperProps) {
   const renderedHeadline = headLine && (
     <Typography
       component="h3"
       variant="h2"
-      className="mb-sm text-center font-semibold text-navy "
+      className={cn('mb-sm font-semibold text-navy', {
+        'text-white': bgColor !== 'white',
+      })}
     >
       {headLine}
     </Typography>
@@ -29,7 +33,9 @@ export default function HubspotFormWrapper({
     <Typography
       component="h4"
       variant="body-2"
-      className="mb-md text-center text-grey "
+      className={cn('mb-md text-grey ', {
+        'text-azure': bgColor !== 'white',
+      })}
     >
       {subHeadLine}
     </Typography>
@@ -38,7 +44,12 @@ export default function HubspotFormWrapper({
     <div
       {...props}
       className={cn(
-        'sm:px-2xl rounded-m bg-white px-md py-lg shadow-3xl',
+        'rounded-m bg-white px-md py-lg text-center shadow-3xl',
+        {
+          'bg-white': bgColor === 'white',
+          'bg-navy': bgColor === 'navy',
+          'bg-blue': bgColor === 'blue',
+        },
         className,
       )}
     >
