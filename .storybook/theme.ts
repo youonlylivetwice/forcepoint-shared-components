@@ -14,6 +14,6 @@ export default create({
   brandImage: '../src/lib/assets/img/branding/logo-white.svg',
 
   // Main colors
-  colorPrimary: '#ff4185', // primary-600
-  colorSecondary: '#00af9a', // secondary-400
+  colorPrimary: '#ff2c6d',
+  colorSecondary: '#00af9a',
 });
