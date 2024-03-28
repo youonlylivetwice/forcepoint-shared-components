@@ -44,7 +44,7 @@
 }
 
 .hubspot-form-wrapper-white .hs_submit input {
-  @apply bg-blue text-white hover:bg-black;
+  @apply bg-blue text-white hover:bg-navy;
 }
 
 .hubspot-form-wrapper-navy .hs_submit input {
@@ -57,11 +57,11 @@
 
 /* Submit arrow */
 .hubspot-form-wrapper-submit-arrow .hs_submit .actions {
-  @apply w-max relative after:content-[""] after:bg-[url('../img/icons/arrow-right-white.svg')] after:absolute after:w-4 after:h-4 after:right-8 after:top-3;
+  @apply w-max relative after:content-[""] after:bg-[url('../img/icons/arrow-right-white.svg')] after:absolute after:w-4 after:h-4 after:right-[69px] after:top-3;
 }
 
 .hubspot-form-wrapper-submit-arrow .hs_submit input {
-  @apply pr-14;
+  @apply pl-[70px] pr-[90px];
 }
 
 
