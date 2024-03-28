@@ -886,5 +886,8 @@ export const Default: Story = ({ items }: MainMenuProps) => {
 };
 
 Default.args = {
+  handlerCloseMenu() {
+    console.log('handlerCloseMenu');
+  },
   items: menuItems,
 };
