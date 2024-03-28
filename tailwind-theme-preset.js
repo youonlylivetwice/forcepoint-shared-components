@@ -168,7 +168,7 @@ module.exports = {
       white: '#ffffff',
     },
     fontFamily: {
-      sans: ['Hoves', 'sans-serif'],
+      hoves: ['Hoves', 'sans-serif'],
     },
     fontSize: {
       // 115px.
@@ -353,9 +353,5 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require('@tailwindcss/typography')({
-      className: 'wysiwyg',
-    }),
-  ],
+  plugins: [],
 };
