@@ -18,8 +18,10 @@ const ChilrenComponent = ({ content, img }: ChilrenComponentProps) => {
 
 const accordionItems = [
   {
-    img: 'https://placehold.co/600x400/FFFF33/000000/png',
+    img: <img src="https://placehold.co/600x400/FFFF33/000000/png" alt="" />,
     title: 'Accordion item 1',
+    cta: 'Go somewhere',
+    ctaLink: '#',
     children: ChilrenComponent({
       content:
         'Seamlessly extend Zero Trust to private applications in internal data centers and private clouds and limit user access to only the apps and data they need.',
@@ -27,7 +29,7 @@ const accordionItems = [
     }),
   },
   {
-    img: 'https://placehold.co/600x400/FFFF33/000000/png',
+    img: <img src="https://placehold.co/600x400/FFFF33/000000/png" alt="" />,
     title: 'Accordion item 1',
     children: ChilrenComponent({
       content:
@@ -36,7 +38,7 @@ const accordionItems = [
     }),
   },
   {
-    img: 'https://placehold.co/600x400/FFFF33/000000/png',
+    img: <img src="https://placehold.co/600x400/FFFF33/000000/png" alt="" />,
     title: 'Accordion item 1',
     children: ChilrenComponent({
       content:

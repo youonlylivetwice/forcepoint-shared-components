@@ -4,6 +4,7 @@ import '../src/lib/assets/css/fonts.css';
 import '../src/lib/assets/css/form.css';
 import '../src/lib/assets/css/main-menu.css';
 import '../src/lib/assets/css/theme.css';
+import '../src/lib/assets/css/animation.css';
 
 initializeRTL();
 

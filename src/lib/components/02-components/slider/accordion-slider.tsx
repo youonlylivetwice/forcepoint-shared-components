@@ -1,6 +1,8 @@
 import { useEffect, useState, ReactNode } from 'react';
 import Typography from '../../01-elements/typography/typography';
 import { cn } from '../../../utils/tailwind-merge';
+import Link from '../../01-elements/link/link';
+import ArrowRightIcon from '../../00-tokens/icons/arrow-right-icon';
 
 type AccortionItemProps = {
   title: string;
@@ -9,12 +11,16 @@ type AccortionItemProps = {
   isMouseOver: boolean;
   theme: 'light' | 'dark';
   onClick: () => void;
+  cta?: string;
+  ctaLink?: string;
 };
 
 export type AccordionSliderItemProps = {
   title: string;
-  img: string;
+  img: ReactNode;
   children: ReactNode;
+  cta?: string;
+  ctaLink?: string;
 };
 
 export type AccordionSliderProps = {
@@ -24,6 +30,8 @@ export type AccordionSliderProps = {
   alignment?: 'left' | 'right';
   accordionItems: AccordionSliderItemProps[];
 };
+
+const activeTime = 10000;
 
 export default function AccordionSlider({
   sliderTitle,
@@ -37,7 +45,6 @@ export default function AccordionSlider({
   const handleClick = (index: number) => {
     setActive(index);
   };
-  const activeTime = 10000;
 
   useEffect(() => {
     if (!isFocused) {
@@ -73,12 +80,8 @@ export default function AccordionSlider({
           {sliderSubTitle}
         </Typography>
       )}
-      <div
-        className={cn('flex w-fit  gap-[120px]', {
-          'flex-row-reverse': alignment === 'right',
-        })}
-      >
-        <div>
+      <div className="grid w-fit grid-cols-2  gap-[120px]">
+        <div className={cn({ 'col-start-2': alignment === 'right' })}>
           {accordionItems.map((item, index) => (
             <div
               key={index}
@@ -93,23 +96,29 @@ export default function AccordionSlider({
                 active={active === index}
                 isMouseOver={isFocused}
                 onClick={() => handleClick(index)}
+                cta={item.cta}
+                ctaLink={item.ctaLink}
               >
                 {item.children}
               </AccortionItem>
             </div>
           ))}
         </div>
-        <div className="hidden sm:inline">
+        <div
+          className={cn('hidden sm:inline', {
+            'col-start-1 row-start-1': alignment === 'right',
+          })}
+        >
           {accordionItems.map((item, index) => (
-            <img
+            <div
               key={index}
               className={cn(
                 'transition-[opacity] delay-100 duration-500 ease-in-out',
                 active !== index ? 'h-0 opacity-0' : 'h-[100%] opacity-100',
               )}
-              src={item.img}
-              alt={item.title}
-            />
+            >
+              {item.img}
+            </div>
           ))}
         </div>
       </div>
@@ -124,15 +133,15 @@ function AccortionItem({
   children,
   isMouseOver,
   theme,
+  cta,
+  ctaLink,
 }: AccortionItemProps) {
   return (
     <div className="max-w-[480px]">
       {active && (
         <div className="relative my-4 h-1 w-full bg-brumosa">
           {!isMouseOver && (
-            <div
-              className={`t-0 l-0 absolute h-1 animate-[progress-bar_10000ms_ease-in-out_1] bg-teal`}
-            />
+            <div className="t-0 l-0 absolute h-1 animate-[progress-bar_10000ms_ease-in-out_1] bg-teal" />
           )}
         </div>
       )}
@@ -155,7 +164,23 @@ function AccortionItem({
       </button>
 
       {active && (
-        <div className={cn({ 'text-azure': theme === 'dark' })}>{children}</div>
+        <div className={cn({ 'text-azure': theme === 'dark' })}>
+          <div>{children}</div>
+          {cta && (
+            <div>
+              <Link
+                href={ctaLink}
+                color={theme === 'dark' ? 'sandwisp' : 'blue'}
+                size="small"
+                endIcon={<ArrowRightIcon />}
+                animated
+                className="py-4"
+              >
+                {cta}
+              </Link>
+            </div>
+          )}
+        </div>
       )}
     </div>
   );

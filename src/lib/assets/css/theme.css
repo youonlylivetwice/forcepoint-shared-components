@@ -12,12 +12,3 @@
   @apply bg-navy p-3 rounded-m;
 }
 
-@keyframes progress-bar {
-  0% {
-    width: 0;
-  }
-
-  100% {
-    width: 100%;
-  }
-}
