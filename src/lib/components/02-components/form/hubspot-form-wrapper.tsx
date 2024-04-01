@@ -7,6 +7,7 @@ export type HubspotFormWrapperProps = ComponentPropsWithoutRef<'div'> & {
   subHeadLine?: string | null;
   logo?: ReactNode;
   bgColor?: 'white' | 'navy' | 'blue';
+  formType?: 'default' | 'sign-up' | 'demo-request';
 };
 
 export default function HubspotFormWrapper({
@@ -16,6 +17,7 @@ export default function HubspotFormWrapper({
   children,
   className,
   bgColor = 'white',
+  formType = 'default',
   ...props
 }: HubspotFormWrapperProps) {
   const renderedHeadline = headLine && (
@@ -32,7 +34,7 @@ export default function HubspotFormWrapper({
   const renderedSubheadline = subHeadLine && (
     <Typography
       component="h4"
-      variant="body-2"
+      variant={formType === 'sign-up' ? 'h3' : 'body-2'}
       className={cn('mb-md text-grey ', {
         'text-azure': bgColor !== 'white',
       })}
