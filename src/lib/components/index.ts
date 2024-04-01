@@ -68,3 +68,9 @@ export {
   type HeaderCta,
   type StickyHeaderProps,
 } from './02-components/sticky-header/sticky-header';
+export {
+  default as Table,
+  type TableProps,
+  type ColumnData,
+  type RowData,
+} from './02-components/table/table';
