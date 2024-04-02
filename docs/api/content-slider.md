@@ -16,9 +16,9 @@ import { AccordionSlider } from 'forcepoint-shared-components';
 | sliderSubTitle | `-` | `string` | Optional. Subtitle of the slider. |
 | theme | 'light' | `string` | Default value is `light`. This prop will set the slider theme. Accepted values are `dark` or `light` |
 | alignment | 'left' | `string` | Default value is `left`. This prop will set which side the image will be rendered. Accepted values are `left` or `right` |
-| accordionItems | `ContentSliderItemProps` | `-` | Required. An array thal will display the slider content. |
+| sliderItems | `ContentSliderItemProps` | `-` | Required. An array thal will display the slider content. |
 
-### AccordionSliderItemProps
+### ContentSliderItemProps
 
 | Name | Type | Description |
 | --- | --- | --- |
