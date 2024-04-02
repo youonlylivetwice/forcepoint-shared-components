@@ -24,7 +24,7 @@ export default function HubspotFormWrapper({
     <Typography
       component="h3"
       variant="h2"
-      className={cn('mb-sm font-semibold text-navy', {
+      className={cn('mb-[15px] font-semibold text-navy', {
         'text-white': bgColor !== 'white',
       })}
     >
@@ -35,7 +35,7 @@ export default function HubspotFormWrapper({
     <Typography
       component="h4"
       variant={formType === 'sign-up' ? 'h3' : 'body-2'}
-      className={cn('mb-md text-grey ', {
+      className={cn('mb-md md:mb-[40px] text-grey ', {
         'text-azure': bgColor !== 'white',
       })}
     >

@@ -1,6 +1,6 @@
 /* Add field margin */
 .hubspot-form-wrapper form > div:not(:last-of-type) {
-  @apply mb-md;
+  @apply mb-sm;
 }
 
 /* Hide labels */
@@ -22,7 +22,7 @@
 
 /* Terms of use styles */
 .hubspot-form-wrapper div:not([class]) p {
-  @apply text-[11px] font-normal !important;
+  @apply mb-sm mt-md text-[11px] font-normal md:mb-[30px] !important;
 }
 
 .hubspot-form-wrapper div:not([class]) p a {
@@ -40,7 +40,12 @@
 
 /* Submit button styles */
 .hubspot-form-wrapper .hs_submit input {
-  @apply cursor-pointer rounded-lg border-2 px-lg py-sm text-body-4 font-semibold;
+  @apply cursor-pointer rounded-lg border-2 px-lg py-sm text-[1.0625rem] font-semibold;
+}
+
+/* input elements */
+.hs-form .hs-input {
+  @apply text-[1.125rem];
 }
 
 .hubspot-form-wrapper-white .hs_submit input {
@@ -48,18 +53,18 @@
 }
 
 .hubspot-form-wrapper-navy .hs_submit input {
-  @apply bg-sandwisp text-black hover:bg-white hover:text-blue;
+  @apply border-sandwisp bg-sandwisp text-black transition-colors hover:border-white hover:bg-white hover:text-blue;
 }
 
 .hubspot-form-wrapper-blue .hs_submit input {
-  @apply bg-white text-blue hover:bg-sandwisp hover:text-black;
+  @apply border-white bg-white text-blue transition-colors hover:border-sandwisp hover:bg-sandwisp hover:text-black;
 }
 
 /* Sign-Up form type */
 .hubspot-form-wrapper-submit-arrow.hubspot-form-wrapper-sign-up
   .hs_submit
   input {
-  @apply transition-colors duration-300 hover:border-blue hover:bg-white hover:text-blue hover:ease-in-out;
+  @apply border-blue text-[0.9375rem] transition-colors duration-300 hover:border-blue hover:bg-white hover:text-blue hover:ease-in-out;
 }
 
 /* Submit arrow */
