@@ -17,3 +17,4 @@ import { HubspotFormWrapper } from 'forcepoint-shared-components';
 | headLine | `string` | `-` | The headline content to be used as `h2` element |
 | subHeadLine | `string` | `-` | The sub-headline content to be used as `h3` element |
 | logo | `ReactNode` | - | Renders the logo using and external component. |
+| bgColor | `union` | `white` | Background color of the component. |
