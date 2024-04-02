@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import AccordionSlider from './accordion-slider';
+import ContentSlider from './content-slider';
 import Typography from '../../01-elements/typography/typography';
 
 type ChilrenComponentProps = {
@@ -16,7 +16,7 @@ const ChilrenComponent = ({ content, img }: ChilrenComponentProps) => {
   );
 };
 
-const accordionItems = [
+const sliderItems = [
   {
     img: <img src="https://placehold.co/600x400/FFFF33/000000/png" alt="" />,
     title: 'Accordion item 1',
@@ -29,8 +29,8 @@ const accordionItems = [
     }),
   },
   {
-    img: <img src="https://placehold.co/600x400/FFFF33/000000/png" alt="" />,
-    title: 'Accordion item 1',
+    img: <img src="https://placehold.co/600x400/FF33FF/000000/png" alt="" />,
+    title: 'Accordion item 2',
     children: ChilrenComponent({
       content:
         'Seamlessly extend Zero Trust to private applications in internal data centers and private clouds and limit user access to only the apps and data they need.',
@@ -38,8 +38,8 @@ const accordionItems = [
     }),
   },
   {
-    img: <img src="https://placehold.co/600x400/FFFF33/000000/png" alt="" />,
-    title: 'Accordion item 1',
+    img: <img src="https://placehold.co/600x400/33FFFF/000000/png" alt="" />,
+    title: 'Accordion item 3',
     children: ChilrenComponent({
       content:
         'Seamlessly extend Zero Trust to private applications in internal data centers and private clouds and limit user access to only the apps and data they need.',
@@ -50,7 +50,7 @@ const accordionItems = [
 
 const meta = {
   title: 'Components/Sliders/Accordion Slider',
-  component: AccordionSlider,
+  component: ContentSlider,
   argTypes: {
     theme: {
       control: {
@@ -70,11 +70,11 @@ const meta = {
     sliderSubTitle: {
       control: { type: 'text' },
     },
-    accordionItems: {
+    sliderItems: {
       control: { type: 'array' },
     },
   },
-} satisfies Meta<typeof AccordionSlider>;
+} satisfies Meta<typeof ContentSlider>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -82,7 +82,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     sliderTitle: 'Accordion Slider',
-    accordionItems: accordionItems,
+    sliderItems: sliderItems,
   },
 };
 
@@ -90,7 +90,7 @@ export const WithSubtitle: Story = {
   args: {
     sliderTitle: 'Accordion Slider',
     sliderSubTitle: 'Here goes a subtitle',
-    accordionItems: accordionItems,
+    sliderItems: sliderItems,
   },
 };
 
@@ -98,7 +98,7 @@ export const ImagesOnTheRight: Story = {
   args: {
     sliderTitle: 'Accordion Slider',
     alignment: 'right',
-    accordionItems: accordionItems,
+    sliderItems: sliderItems,
   },
 };
 
@@ -107,7 +107,7 @@ export const DarkTheme: Story = {
     sliderTitle: 'Accordion Slider',
     sliderSubTitle: 'Here goes a subtitle',
     theme: 'dark',
-    accordionItems: accordionItems,
+    sliderItems: sliderItems,
   },
   parameters: {
     backgrounds: { default: 'dark' },

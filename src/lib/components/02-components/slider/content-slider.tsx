@@ -4,18 +4,18 @@ import { cn } from '../../../utils/tailwind-merge';
 import Link from '../../01-elements/link/link';
 import ArrowRightIcon from '../../00-tokens/icons/arrow-right-icon';
 
-type AccortionItemProps = {
+export type ContentSlideItemProps = {
   title: string;
   children: ReactNode;
-  active: boolean;
-  isMouseOver: boolean;
-  theme: 'light' | 'dark';
-  onClick: () => void;
+  active?: boolean;
+  isMouseOver?: boolean;
+  theme?: 'light' | 'dark';
+  onClick?: () => void;
   cta?: string;
   ctaLink?: string;
 };
 
-export type AccordionSliderItemProps = {
+export type ContentSliderItemProps = {
   title: string;
   img: ReactNode;
   children: ReactNode;
@@ -23,12 +23,12 @@ export type AccordionSliderItemProps = {
   ctaLink?: string;
 };
 
-export type AccordionSliderProps = {
+export type ContentSliderProps = {
   sliderTitle?: string;
   sliderSubTitle?: string;
   theme?: 'light' | 'dark';
   alignment?: 'left' | 'right';
-  accordionItems: AccordionSliderItemProps[];
+  sliderItems: ContentSliderItemProps[];
 };
 
 const activeTime = 10000;
@@ -36,10 +36,10 @@ const activeTime = 10000;
 export default function AccordionSlider({
   sliderTitle,
   sliderSubTitle,
-  accordionItems,
+  sliderItems,
   theme = 'light',
   alignment = 'left',
-}: AccordionSliderProps) {
+}: ContentSliderProps) {
   const [active, setActive] = useState<number>(0);
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const handleClick = (index: number) => {
@@ -49,7 +49,7 @@ export default function AccordionSlider({
   useEffect(() => {
     if (!isFocused) {
       setTimeout(() => {
-        if (active === accordionItems.length - 1) {
+        if (active === sliderItems.length - 1) {
           setActive(0);
         } else {
           setActive(active + 1);
@@ -82,7 +82,7 @@ export default function AccordionSlider({
       )}
       <div className="grid w-fit grid-cols-2  gap-[120px]">
         <div className={cn({ 'col-start-2': alignment === 'right' })}>
-          {accordionItems.map((item, index) => (
+          {sliderItems.map((item, index) => (
             <div
               key={index}
               onMouseOver={() => setIsFocused(true)}
@@ -90,7 +90,7 @@ export default function AccordionSlider({
               onFocus={() => setIsFocused(true)}
               onBlur={() => setIsFocused(false)}
             >
-              <AccortionItem
+              <ContentSlideItem
                 title={item.title}
                 theme={theme}
                 active={active === index}
@@ -100,7 +100,7 @@ export default function AccordionSlider({
                 ctaLink={item.ctaLink}
               >
                 {item.children}
-              </AccortionItem>
+              </ContentSlideItem>
             </div>
           ))}
         </div>
@@ -109,7 +109,7 @@ export default function AccordionSlider({
             'col-start-1 row-start-1': alignment === 'right',
           })}
         >
-          {accordionItems.map((item, index) => (
+          {sliderItems.map((item, index) => (
             <div
               key={index}
               className={cn(
@@ -126,7 +126,7 @@ export default function AccordionSlider({
   );
 }
 
-function AccortionItem({
+export function ContentSlideItem({
   title,
   active,
   onClick,
@@ -135,7 +135,7 @@ function AccortionItem({
   theme,
   cta,
   ctaLink,
-}: AccortionItemProps) {
+}: ContentSlideItemProps) {
   return (
     <div className="max-w-[480px]">
       {active && (
@@ -149,7 +149,7 @@ function AccortionItem({
         className={cn('mt-4 w-full border-t-2 border-brumosa py-4 text-left', {
           'mt-0 border-none pt-0': active,
         })}
-        onClick={() => onClick()}
+        onClick={() => onClick && onClick()}
       >
         <Typography
           variant="h3"

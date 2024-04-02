@@ -69,7 +69,9 @@ export {
   type StickyHeaderProps,
 } from './02-components/sticky-header/sticky-header';
 export {
-  default as AccordionSlider,
-  type AccordionSliderItemProps,
-  type AccordionSliderProps,
-} from './02-components/slider/accordion-slider';
+  default as ContentSlider,
+  ContentSlideItem,
+  type ContentSliderItemProps,
+  type ContentSliderProps,
+  type ContentSlideItemProps,
+} from './02-components/slider/content-slider';
