@@ -1,32 +1,31 @@
-import { CSSProperties, useState } from 'react';
+import { CSSProperties, ReactNode, useState } from 'react';
 import { cn } from '../../../utils/tailwind-merge';
 import useMediaQuery from '../../../hooks/use-media-query';
 import Typography from '../../01-elements/typography/typography';
 
-export interface RowData {
+export interface TableRowProps {
   bgColor?: string;
-  columns: ColumnData[];
+  columns: TableColumnProps[];
 }
 
-export interface ColumnData {
-  text: string;
+export interface TableColumnProps {
+  text?: string;
   bgColor?: string;
+  renderedContentComponent?: ReactNode;
 }
-
-export type GroupedColumns = Record<number, ColumnData[]>;
 
 export type TableProps = {
   heading?: string;
-  subheading?: string;
   description?: string;
-  data: RowData[];
+  renderedDescriptionComponent?: ReactNode;
+  data: TableRowProps[];
 };
 
 export default function Table({
-  heading,
-  subheading,
-  description,
   data,
+  description,
+  heading,
+  renderedDescriptionComponent,
 }: TableProps) {
   // Table variables
   const isMobile = useMediaQuery('(max-width: 59.374rem)');
@@ -43,9 +42,9 @@ export default function Table({
 
   function extractTableDataByDevice() {
     if (isMobile) {
-      const items: RowData[] = [];
-      data.forEach((row: RowData) => {
-        row.columns.forEach((column: ColumnData, index: number) => {
+      const items: TableRowProps[] = [];
+      data.forEach((row: TableRowProps) => {
+        row.columns.forEach((column: TableColumnProps, index: number) => {
           items[index] = items[index] || { columns: [] };
           items[index].columns.push(column);
         });
@@ -57,7 +56,7 @@ export default function Table({
   }
 
   const renderColumn = (
-    column: ColumnData,
+    column: TableColumnProps,
     colIndex: number,
     columns: number,
     rowIndex: number,
@@ -96,12 +95,16 @@ export default function Table({
           'md:rounded-b-m': isLastRow,
         })}
       >
-        <div dangerouslySetInnerHTML={{ __html: column.text }} />
+        {column.renderedContentComponent ? (
+          column.renderedContentComponent
+        ) : column.text ? (
+          <div dangerouslySetInnerHTML={{ __html: column.text }} />
+        ) : null}
       </th>
     );
   };
 
-  const renderRow = (row: RowData, rowIndex: number) => {
+  const renderRow = (row: TableRowProps, rowIndex: number) => {
     let columns = row.columns;
     const rowStyles: CSSProperties = {};
 
@@ -121,7 +124,7 @@ export default function Table({
         style={rowStyles}
         className="bg-white max-md:divide-x-2 max-md:divide-chateau"
       >
-        {columns.map((column: ColumnData, colIndex: number) =>
+        {columns.map((column: TableColumnProps, colIndex: number) =>
           renderColumn(column, colIndex, columns.length, rowIndex),
         )}
       </tr>
@@ -161,12 +164,7 @@ export default function Table({
   };
 
   return (
-    <div>
-      {subheading && (
-        <span className="mb-md block max-w-[580px] text-h5 font-semibold uppercase text-violette">
-          {subheading}
-        </span>
-      )}
+    <div className="py-lg md:py-xl">
       {heading && (
         <Typography
           variant="h2"
@@ -176,11 +174,13 @@ export default function Table({
           {heading}
         </Typography>
       )}
-      {description && (
+      {renderedDescriptionComponent ? (
+        renderedDescriptionComponent
+      ) : description ? (
         <Typography className="mb-md max-w-[580px] font-normal text-grey">
           {description}
         </Typography>
-      )}
+      ) : null}
       {renderTable()}
       {renderPager()}
     </div>

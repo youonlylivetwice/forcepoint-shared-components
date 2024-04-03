@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Table, { RowData } from './table';
+import Table, { TableRowProps } from './table';
 
 const meta = {
   title: 'Components/Table',
@@ -9,7 +9,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const rows: RowData[] = [
+const rows: TableRowProps[] = [
   {
     columns: [
       {
@@ -155,7 +155,6 @@ const rows: RowData[] = [
 export const Default: Story = {
   args: {
     data: rows,
-    subheading: 'eyebrow',
     heading:
       'Figma ipsum component variant main layer. Duplicate align figjam.',
     description:

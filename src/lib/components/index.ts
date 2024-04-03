@@ -71,6 +71,6 @@ export {
 export {
   default as Table,
   type TableProps,
-  type ColumnData,
-  type RowData,
+  type TableColumnProps,
+  type TableRowProps,
 } from './02-components/table/table';
