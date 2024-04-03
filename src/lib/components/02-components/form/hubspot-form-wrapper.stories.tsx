@@ -4,6 +4,7 @@ import HubspotFormWrapper from './hubspot-form-wrapper';
 const meta = {
   title: 'Components/Form/HubspotFormWrapper',
   component: HubspotFormWrapper,
+  tags: ['autodocs'],
 } satisfies Meta<typeof HubspotFormWrapper>;
 
 export default meta;
