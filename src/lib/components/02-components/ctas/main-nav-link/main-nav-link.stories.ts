@@ -13,5 +13,8 @@ export const Default: Story = {
   args: {
     title: 'Why Forcepoint',
     index: 0,
+    handlerCloseMenu() {
+      console.log('handlerCloseMenu');
+    },
   },
 };
