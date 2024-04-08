@@ -32,7 +32,7 @@ export default {
 
 ### Components API
 
-- [Accordion Slider](./docs/api/accordion-slider.md)
+- [Content Image Slider](./docs/api/content-slider.md)
 - [Branding](./docs/api/branding.md)
 - [Button](./docs/api/button.md)
 - [Callout](./docs/api/callout.md)

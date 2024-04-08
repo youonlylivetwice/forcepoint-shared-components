@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 import { ContentSlideItemProps } from './content-slide-item';
 import Typography from '../../01-elements/typography/typography';
 import { cn } from '../../../utils/tailwind-merge';
@@ -9,7 +9,7 @@ export type ContentSliderProps = {
   theme?: 'light' | 'dark';
   alignment?: 'left' | 'right';
   sliderItems: ContentSlideItemProps[];
-  SlideItemComponent: (props: ContentSlideItemProps) => JSX.Element;
+  SlideItemComponent: (props: ContentSlideItemProps) => ReactNode;
 };
 
 const activeTime = 10000;
