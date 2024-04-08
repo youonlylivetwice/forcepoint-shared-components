@@ -1,17 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import ContentSlider from './content-slider';
 import Typography from '../../01-elements/typography/typography';
+import ContentSlideItem from './content-slide-item';
 
 type ChilrenComponentProps = {
   content: string;
-  img: string;
 };
 
-const ChilrenComponent = ({ content, img }: ChilrenComponentProps) => {
+const ChilrenComponent = ({ content }: ChilrenComponentProps) => {
   return (
     <>
       <Typography variant="body-2">{content}</Typography>
-      <img className="inline sm:hidden" src={img} alt="" />
     </>
   );
 };
@@ -25,7 +24,6 @@ const sliderItems = [
     children: ChilrenComponent({
       content:
         'Seamlessly extend Zero Trust to private applications in internal data centers and private clouds and limit user access to only the apps and data they need.',
-      img: 'https://placehold.co/600x400/FFFF33/000000/png',
     }),
   },
   {
@@ -34,7 +32,6 @@ const sliderItems = [
     children: ChilrenComponent({
       content:
         'Seamlessly extend Zero Trust to private applications in internal data centers and private clouds and limit user access to only the apps and data they need.',
-      img: 'https://placehold.co/600x400/FF33FF/000000/png',
     }),
   },
   {
@@ -43,7 +40,6 @@ const sliderItems = [
     children: ChilrenComponent({
       content:
         'Seamlessly extend Zero Trust to private applications in internal data centers and private clouds and limit user access to only the apps and data they need.',
-      img: 'https://placehold.co/600x400/33FFFF/000000/png',
     }),
   },
 ];
@@ -53,16 +49,10 @@ const meta = {
   component: ContentSlider,
   argTypes: {
     theme: {
-      control: {
-        type: 'select',
-        options: ['light', 'dark'],
-      },
+      control: { type: 'text' },
     },
     alignment: {
-      control: {
-        type: 'select',
-        options: ['left', 'right'],
-      },
+      control: { type: 'text' },
     },
     sliderTitle: {
       control: { type: 'text' },
@@ -83,6 +73,8 @@ export const Default: Story = {
   args: {
     sliderTitle: 'Accordion Slider',
     sliderItems: sliderItems,
+    theme: 'light',
+    SlideItemComponent: ContentSlideItem,
   },
 };
 
@@ -91,6 +83,8 @@ export const WithSubtitle: Story = {
     sliderTitle: 'Accordion Slider',
     sliderSubTitle: 'Here goes a subtitle',
     sliderItems: sliderItems,
+    theme: 'light',
+    SlideItemComponent: ContentSlideItem,
   },
 };
 
@@ -99,6 +93,8 @@ export const ImagesOnTheRight: Story = {
     sliderTitle: 'Accordion Slider',
     alignment: 'right',
     sliderItems: sliderItems,
+    theme: 'light',
+    SlideItemComponent: ContentSlideItem,
   },
 };
 
@@ -108,6 +104,7 @@ export const DarkTheme: Story = {
     sliderSubTitle: 'Here goes a subtitle',
     theme: 'dark',
     sliderItems: sliderItems,
+    SlideItemComponent: ContentSlideItem,
   },
   parameters: {
     backgrounds: { default: 'dark' },

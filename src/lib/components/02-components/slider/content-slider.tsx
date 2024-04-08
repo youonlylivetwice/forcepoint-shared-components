@@ -1,67 +1,54 @@
-import { useEffect, useState, ReactNode } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { ContentSlideItemProps } from './content-slide-item';
 import Typography from '../../01-elements/typography/typography';
 import { cn } from '../../../utils/tailwind-merge';
-import Link from '../../01-elements/link/link';
-import ArrowRightIcon from '../../00-tokens/icons/arrow-right-icon';
-
-export type ContentSlideItemProps = {
-  title: string;
-  children: ReactNode;
-  active?: boolean;
-  isMouseOver?: boolean;
-  theme?: 'light' | 'dark';
-  onClick?: () => void;
-  cta?: string;
-  ctaLink?: string;
-};
-
-export type ContentSliderItemProps = {
-  title: string;
-  img: ReactNode;
-  children: ReactNode;
-  cta?: string;
-  ctaLink?: string;
-};
 
 export type ContentSliderProps = {
   sliderTitle?: string;
   sliderSubTitle?: string;
   theme?: 'light' | 'dark';
   alignment?: 'left' | 'right';
-  sliderItems: ContentSliderItemProps[];
+  sliderItems: ContentSlideItemProps[];
+  SlideItemComponent: (props: ContentSlideItemProps) => JSX.Element;
 };
 
 const activeTime = 10000;
 
-export default function AccordionSlider({
+export default function ContentSlider({
   sliderTitle,
   sliderSubTitle,
   sliderItems,
   theme = 'light',
   alignment = 'left',
+  SlideItemComponent,
 }: ContentSliderProps) {
   const [active, setActive] = useState<number>(0);
   const [isFocused, setIsFocused] = useState<boolean>(false);
-  const handleClick = (index: number) => {
-    setActive(index);
-  };
+  const timeoutRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  function resetTimeout() {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  }
 
   useEffect(() => {
     if (!isFocused) {
-      setTimeout(() => {
-        if (active === sliderItems.length - 1) {
-          setActive(0);
-        } else {
-          setActive(active + 1);
-        }
+      timeoutRef.current = setTimeout(() => {
+        setActive((prevIndex) =>
+          prevIndex === sliderItems.length - 1 ? 0 : prevIndex + 1,
+        );
       }, activeTime);
     }
-  });
+    return () => {
+      resetTimeout();
+    };
+  }, [active, isFocused, sliderItems.length]);
   return (
     <div>
       {sliderTitle && (
         <Typography
           variant="display"
+          component="h2"
           className={cn('mb-4 w-full font-bold', {
             'text-azure': theme === 'dark',
           })}
@@ -72,7 +59,7 @@ export default function AccordionSlider({
 
       {sliderSubTitle && (
         <Typography
-          variant="h2"
+          variant="h3"
           className={cn('mb-4 w-full font-bold', {
             'text-azure': theme === 'dark',
           })}
@@ -80,7 +67,7 @@ export default function AccordionSlider({
           {sliderSubTitle}
         </Typography>
       )}
-      <div className="grid w-fit grid-cols-2  gap-[120px]">
+      <div className="grid w-full grid-cols-1 gap-[120px] sm:w-fit sm:grid-cols-2">
         <div className={cn({ 'col-start-2': alignment === 'right' })}>
           {sliderItems.map((item, index) => (
             <div
@@ -90,22 +77,18 @@ export default function AccordionSlider({
               onFocus={() => setIsFocused(true)}
               onBlur={() => setIsFocused(false)}
             >
-              <ContentSlideItem
-                title={item.title}
+              <SlideItemComponent
+                {...item}
                 theme={theme}
-                active={active === index}
                 isMouseOver={isFocused}
-                onClick={() => handleClick(index)}
-                cta={item.cta}
-                ctaLink={item.ctaLink}
-              >
-                {item.children}
-              </ContentSlideItem>
+                active={active === index}
+                onClick={() => setActive(index)}
+              />
             </div>
           ))}
         </div>
         <div
-          className={cn('hidden sm:inline', {
+          className={cn('hidden overflow-hidden sm:inline', {
             'col-start-1 row-start-1': alignment === 'right',
           })}
         >
@@ -113,7 +96,7 @@ export default function AccordionSlider({
             <div
               key={index}
               className={cn(
-                'transition-[opacity] delay-100 duration-500 ease-in-out',
+                'relative top-0 h-full w-full transition-[opacity] duration-500 ease-in-out',
                 active !== index ? 'h-0 opacity-0' : 'h-[100%] opacity-100',
               )}
             >
@@ -122,66 +105,6 @@ export default function AccordionSlider({
           ))}
         </div>
       </div>
-    </div>
-  );
-}
-
-export function ContentSlideItem({
-  title,
-  active,
-  onClick,
-  children,
-  isMouseOver,
-  theme,
-  cta,
-  ctaLink,
-}: ContentSlideItemProps) {
-  return (
-    <div className="max-w-[480px]">
-      {active && (
-        <div className="relative my-4 h-1 w-full bg-brumosa">
-          {!isMouseOver && (
-            <div className="t-0 l-0 absolute h-1 animate-[progress-bar_10000ms_ease-in-out_1] bg-teal" />
-          )}
-        </div>
-      )}
-      <button
-        className={cn('mt-4 w-full border-t-2 border-brumosa py-4 text-left', {
-          'mt-0 border-none pt-0': active,
-        })}
-        onClick={() => onClick && onClick()}
-      >
-        <Typography
-          variant="h3"
-          className={cn(
-            'mb-0 font-semibold',
-            active ? 'text-navy' : 'text-grey',
-            { 'text-azure': theme === 'dark' },
-          )}
-        >
-          {title}
-        </Typography>
-      </button>
-
-      {active && (
-        <div className={cn({ 'text-azure': theme === 'dark' })}>
-          <div>{children}</div>
-          {cta && (
-            <div>
-              <Link
-                href={ctaLink}
-                color={theme === 'dark' ? 'sandwisp' : 'blue'}
-                size="small"
-                endIcon={<ArrowRightIcon />}
-                animated
-                className="py-4"
-              >
-                {cta}
-              </Link>
-            </div>
-          )}
-        </div>
-      )}
     </div>
   );
 }

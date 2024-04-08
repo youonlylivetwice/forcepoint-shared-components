@@ -70,8 +70,9 @@ export {
 } from './02-components/sticky-header/sticky-header';
 export {
   default as ContentSlider,
-  ContentSlideItem,
-  type ContentSliderItemProps,
   type ContentSliderProps,
-  type ContentSlideItemProps,
 } from './02-components/slider/content-slider';
+export {
+  default as ContentSlideItem,
+  type ContentSlideItemProps,
+} from './02-components/slider/content-slide-item';
