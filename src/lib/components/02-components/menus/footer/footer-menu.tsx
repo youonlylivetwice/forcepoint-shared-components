@@ -50,6 +50,7 @@ export default function FooterMenu({
           className={cn(
             'pointer-events-auto text-left text-h5 font-semibold text-grey hover:text-blue focus:text-blue rtl:text-right max-md:leading-none md:text-h6 md:font-medium',
             { 'text-chateau': item.active },
+            item?.class,
           )}
         >
           {item.title}
