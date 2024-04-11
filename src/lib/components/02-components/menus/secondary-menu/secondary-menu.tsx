@@ -16,6 +16,7 @@ export type SecondaryMenuItemProps = {
   };
   title: string;
   url?: string;
+  class?: string | null;
 };
 
 export type SecondaryMenuProps = {
