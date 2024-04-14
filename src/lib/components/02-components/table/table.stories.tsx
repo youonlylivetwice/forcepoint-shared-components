@@ -1,163 +1,213 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import Table, { TableRowProps } from './table';
+import ArrowRightIcon from '../../00-tokens/icons/arrow-right-icon';
+import Link from '../../01-elements/link/link';
+import Table from './table';
+import TableColumn from './table-column';
+import TableRow from './table-row';
 
 const meta = {
   title: 'Components/Table',
-  component: Table,
-} satisfies Meta<typeof Table>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-const rows: TableRowProps[] = [
-  {
-    columns: [
-      {
-        text: `
-          <a href="#">Download Full Table</a>
-        `,
-      },
-      {
-        text: '<b>Forcepoint</b>',
-        bgColor: '#F5F6F6',
-      },
-      {
-        text: `
-          <p>Legacy Security Vendors</p>
-          <small>(e.g. Zscaler, Netskope)</small>
-        `,
-      },
-      {
-        text: `
-          <p>Legacy Networking Vendors</p>
-          <small>(e.g. Palo Alto, Fortinet, Check Point)</small>
-        `,
-      },
-    ],
-  },
-  {
-    columns: [
-      {
-        text: `
-          <p className="text-start">
-            <h1><b>Data Security Features</b></h1><br>
-            Lorem ipsum dolor sit amet consectetur. Laoreet aliquet diam eu commodo nisl pretium. Dictumst justo accumsan.<br>
-            <ul>
-              <li>Shadow IT reporting & blocking</li>
-              <li>Inline inspection & control</li>
-              <li>API inspection</li>
-              <li>Agentless application access</li>
-            </ul>
+export const Default = () => {
+  return (
+    <Table
+      heading="Figma ipsum component variant main layer. Duplicate align figjam."
+      subheading="Figma ipsum component variant main layer. Scale editor mask bullet flatten export team blur. Main prototype scrolling scale frame main distribute. Undo image vertical ipsum italic link layout community project arrow."
+      description="DISCLAIMER: Product comparison is based off of in-product capabilities and cross-portfolio integrations available from the same vendor as of Mar 1st, 2023. Comparisons do not include integrations with third-party vendors. Feature comparison is based off of each vendor’s most recent and modern version available as of Mar 1st, 2023. Information is based off of data collected from public websites and forums, analyst papers, and product datasheets as of Mar 1st, 2023."
+    >
+      <TableRow>
+        <TableColumn>
+          <div>
+            <Link endIcon={<ArrowRightIcon />} animated>
+              Download Full Table
+            </Link>
+          </div>
+        </TableColumn>
+        <TableColumn bgColor="#F5F6F6">
+          <p className="md:text-center">
+            <strong>Forcepoint</strong>
           </p>
-        `,
-      },
-      {
-        text: '0',
-        bgColor: '#F5F6F6',
-      },
-      {
-        text: '0',
-      },
-      {
-        text: '0',
-      },
-    ],
-  },
-  {
-    columns: [
-      {
-        text: `
+        </TableColumn>
+        <TableColumn>
+          <p className="flex flex-col md:text-center">
+            <strong>Legacy Security Vendors</strong>
+            <small>(e.g. Zscaler, Netskope)</small>
+          </p>
+        </TableColumn>
+        <TableColumn>
+          <p className="flex flex-col md:text-center">
+            <strong>Legacy Networking Vendors</strong>
+            <small>(e.g. Palo Alto, Fortinet, Check Point)</small>
+          </p>
+        </TableColumn>
+      </TableRow>
+      <TableRow>
+        <TableColumn>
           <p>
-            <h1><b>Data Security Features</b></h1><br>
-            <ul>
-              <li>Shadow IT reporting & blocking</li>
-              <li>Inline inspection & control</li>
-              <li>API inspection</li>
-              <li>Agentless application access</li>
-            </ul>
+            <p>
+              <strong>Data Security Features</strong>
+            </p>
+            <br />
+            <p>
+              Lorem ipsum dolor sit amet consectetur. Laoreet aliquet diam eu
+              commodo nisl pretium. Dictumst justo accumsan.
+            </p>
           </p>
-        `,
-      },
-      {
-        text: `
+        </TableColumn>
+        <TableColumn bgColor="#F5F6F6">
+          <svg
+            width="30px"
+            height="30px"
+            className="mx-auto"
+            viewBox="0 0 512 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+              fill="#003654"
+            />
+          </svg>
+        </TableColumn>
+        <TableColumn>
+          <svg
+            width="30px"
+            height="30px"
+            className="mx-auto"
+            viewBox="0 0 512 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z"
+              fill="#a2a9ad"
+            />
+          </svg>
+        </TableColumn>
+        <TableColumn>
+          <svg
+            width="30px"
+            height="30px"
+            className="mx-auto"
+            viewBox="0 0 512 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+              fill="#a2a9ad"
+            />
+          </svg>
+        </TableColumn>
+      </TableRow>
+      <TableRow>
+        <TableColumn>
           <p>
-            <p>o</p>
-            <p>AAA</p>
-            <p>Lorem ipsum dolor sit</p>
+            <p>
+              <strong>Data Security Features</strong>
+            </p>
+            <br />
+            <p>
+              Lorem ipsum dolor sit amet consectetur. Laoreet aliquet diam eu
+              commodo nisl pretium. Dictumst justo accumsan.
+            </p>
           </p>
-        `,
-        bgColor: '#F5F6F6',
-      },
-      {
-        text: `
+        </TableColumn>
+        <TableColumn bgColor="#F5F6F6">
+          <p className="text-center">
+            <svg
+              width="30px"
+              height="30px"
+              className="mx-auto"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+                fill="#003654"
+              />
+            </svg>
+            <br />
+            <span className="text-h3 text-navy">AAA</span>
+            <br />
+            <span className="text-grey">Lorem ipsum dolor sit</span>
+          </p>
+        </TableColumn>
+        <TableColumn>
+          <p className="text-center">
+            <svg
+              width="30px"
+              height="30px"
+              className="mx-auto"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M448 256c0-106-86-192-192-192V448c106 0 192-86 192-192zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z"
+                fill="#a2a9ad"
+              />
+            </svg>
+            <br />
+            <span className="text-h3 text-black">AAA</span>
+            <br />
+            <span className="text-grey">Lorem ipsum dolor sit</span>
+          </p>
+        </TableColumn>
+        <TableColumn>
+          <p className="text-center">
+            <svg
+              width="30px"
+              height="30px"
+              className="mx-auto"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z"
+                fill="#a2a9ad"
+              />
+            </svg>
+            <br />
+            <span className="text-h3 text-black">AAA</span>
+            <br />
+            <span className="text-grey">Lorem ipsum dolor sit</span>
+          </p>
+        </TableColumn>
+      </TableRow>
+      <TableRow>
+        <TableColumn>
           <p>
-            <p>o</p>
-            <p>AAA</p>
-            <p>Lorem ipsum dolor sit</p>
+            <p>
+              <strong>Data Security Features</strong>
+            </p>
+            <br />
+            <p>
+              Lorem ipsum dolor sit amet consectetur. Laoreet aliquet diam eu
+              commodo nisl pretium. Dictumst justo accumsan.
+            </p>
           </p>
-        `,
-      },
-      {
-        text: `
-          <p>
-            <p>o</p>
-            <p>AAA</p>
-            <p>Lorem ipsum dolor sit</p>
+        </TableColumn>
+        <TableColumn bgColor="#F5F6F6">
+          <p className="text-center">
+            <span className="text-h3 text-navy">AAA</span>
+            <br />
+            <span className="text-grey">Lorem ipsum dolor sit</span>
           </p>
-        `,
-      },
-    ],
-  },
-  {
-    columns: [
-      {
-        text: `
-          <p>
-            <h1><b>Data Security Features</b></h1><br>
-            <p>Lorem ipsum dolor sit amet consectetur. Laoreet aliquet diam eu commodo nisl pretium. Dictumst justo accumsan.</p>
-            <br>
-            <a href="/">Get It Today</a>
+        </TableColumn>
+        <TableColumn>
+          <p className="text-center">
+            <span className="text-h3 text-black">AAA</span>
+            <br />
+            <span className="text-grey">Lorem ipsum dolor sit</span>
           </p>
-        `,
-      },
-      {
-        text: `
-          <p>
-            <p>o</p>
-            <p>AAA</p>
-            <p>Lorem ipsum dolor sit</p>
+        </TableColumn>
+        <TableColumn>
+          <p className="text-center">
+            <span className="text-h3 text-black">AAA</span>
+            <br />
+            <span className="text-grey">Lorem ipsum dolor sit</span>
           </p>
-        `,
-        bgColor: '#F5F6F6',
-      },
-      {
-        text: `
-          <p>
-            <p>o</p>
-            <p>AAA</p>
-            <p>Lorem ipsum dolor sit</p>
-          </p>
-        `,
-      },
-      {
-        text: `
-          <p>
-            <p>o</p>
-            <p>AAA</p>
-            <p>Lorem ipsum dolor sit</p>
-          </p>
-        `,
-      },
-    ],
-  },
-];
-
-export const Default: Story = {
-  args: {
-    data: rows,
-    heading:
-      'Figma ipsum component variant main layer. Duplicate align figjam.',
-    description:
-      'Figma ipsum component variant main layer. Scale editor mask bullet flatten export team blur. Main prototype scrolling scale frame main distribute. Undo image vertical ipsum italic link layout community project arrow.',
-  },
+        </TableColumn>
+      </TableRow>
+    </Table>
+  );
 };

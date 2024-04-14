@@ -10,17 +10,39 @@ export type ColorProps = {
   palettes: ColorPalette[];
 };
 
+// Function to convert hex color to RGB array
+export function hexToRgb(hex: string) {
+  hex = hex.replace('#', '');
+
+  const r = parseInt(hex.substring(0, 2), 16);
+  const g = parseInt(hex.substring(2, 4), 16);
+  const b = parseInt(hex.substring(4, 6), 16);
+
+  return [r, g, b];
+}
+
+// Function to calculate brightness using RGB values
+export function calculateBrightness(rgb: number[]) {
+  const brightness = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000;
+  return brightness;
+}
+
 /**
  * Converts an RGB color string to its hexadecimal representation.
- * @param rgb - RGB color string.
- * @returns Hexadecimal representation of the RGB color.
+ * @param rgb - RGB color string in the format "rgb(r, g, b)".
+ * @returns Hexadecimal representation of the RGB color (e.g., "#RRGGBB").
  */
 const rgbToHex = (rgb: string): string => {
+  // Extract RGB values from the string and convert to numbers
   const [red, green, blue] = rgb.match(/\d+/g)!.map(Number);
-  return `#${((1 << 24) | (red << 16) | (green << 8) | blue)
-    .toString(16)
-    .slice(1)
-    .toUpperCase()}`;
+
+  // Convert RGB values to a single 24-bit integer
+  const rgbValue = (red << 16) | (green << 8) | blue;
+
+  // Convert the integer to hexadecimal format and prepend '#'
+  const hexValue = `#${rgbValue.toString(16).padStart(6, '0').toUpperCase()}`;
+
+  return hexValue;
 };
 
 /**
