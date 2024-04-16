@@ -1,17 +1,11 @@
-import React from 'react';
 import { cn } from '../../../utils/tailwind-merge';
+import { useDataTable } from './data-table-provider';
 
-export interface TablePagerProps {
-  totalPages: number;
-  currentPage: number;
-  handlePageClick: (page: number) => void;
-}
+const TablePager = () => {
+  const { currentPage, totalItems, itemsPerPage, setCurrentPage } =
+    useDataTable();
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
 
-const TablePager: React.FC<TablePagerProps> = ({
-  totalPages,
-  currentPage,
-  handlePageClick,
-}) => {
   const generatePagerButtons = (): JSX.Element[] => {
     const pagerButtons: JSX.Element[] = [];
 
@@ -20,7 +14,7 @@ const TablePager: React.FC<TablePagerProps> = ({
         <button
           key={i}
           className="group py-md"
-          onClick={() => handlePageClick(i)}
+          onClick={() => setCurrentPage(i)}
         >
           <span
             className={cn(

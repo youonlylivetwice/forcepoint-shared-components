@@ -1,7 +1,8 @@
 import { TableRowProps } from './table-row';
-import React, { ReactNode, useEffect, useRef, useState } from 'react';
+import React, { ReactNode, useEffect, useRef } from 'react';
 import TablePager from './table-pager';
 import Typography from '../../01-elements/typography/typography';
+import { useDataTable } from './data-table-provider';
 
 export interface TableProps {
   children: ReactNode;
@@ -17,18 +18,20 @@ const Table: React.FC<TableProps> = ({
   heading,
   subheading,
 }) => {
-  const [currentPage, setCurrentPage] = useState<number>(1);
   const table = useRef<HTMLTableElement>(null);
-  const itemsPerPage = 2;
+  const { setTotalItems } = useDataTable();
 
   useEffect(() => {
-    calculateColumnHeights();
+    if (table && table.current) {
+      calculateColumnHeights();
+      setTotalItems(table.current.rows.length);
 
-    window.addEventListener('resize', calculateColumnHeights);
+      window.addEventListener('resize', calculateColumnHeights);
 
-    return () => {
-      window.removeEventListener('resize', calculateColumnHeights);
-    };
+      return () => {
+        window.removeEventListener('resize', calculateColumnHeights);
+      };
+    }
   }, [table.current]);
 
   /**
@@ -83,13 +86,6 @@ const Table: React.FC<TableProps> = ({
     return parentWidth / 2;
   }
 
-  function handlePageClick(page: number) {
-    setCurrentPage(page);
-    if (table && table.current) {
-      table.current.dataset.currentPage = `${page}`;
-    }
-  }
-
   const renderHeading = heading && (
     <Typography
       variant="h2"
@@ -110,8 +106,6 @@ const Table: React.FC<TableProps> = ({
     <div className="table-wrapper max-md:overflow-x-hidden">
       <table
         className="my-md min-w-full table-auto max-md:overflow-x-auto md:mt-lg"
-        data-items-per-page={itemsPerPage}
-        data-current-page={1}
         ref={table}
       >
         <tbody className="divide-chateau max-md:flex max-md:flex-row md:divide-y-2">
@@ -119,14 +113,6 @@ const Table: React.FC<TableProps> = ({
         </tbody>
       </table>
     </div>
-  );
-
-  const renderPager = (
-    <TablePager
-      totalPages={itemsPerPage}
-      currentPage={currentPage}
-      handlePageClick={handlePageClick}
-    />
   );
 
   const renderDescription = (
@@ -140,7 +126,7 @@ const Table: React.FC<TableProps> = ({
       {renderHeading}
       {renderSubheading}
       {renderTable}
-      {renderPager}
+      <TablePager />
       {renderDescription}
     </div>
   );

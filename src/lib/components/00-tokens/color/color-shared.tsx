@@ -27,6 +27,25 @@ export function calculateBrightness(rgb: number[]) {
   return brightness;
 }
 
+// Function to set text color based on background color to ensure contrast
+export function setContrastTextColor(bgColor: string): {
+  backgroundColor: string;
+  color: string;
+} {
+  const defaultTextColor = '#53575a';
+  const styles = { backgroundColor: bgColor, color: defaultTextColor };
+
+  if (bgColor) {
+    const rgbArray = hexToRgb(bgColor);
+    if (rgbArray) {
+      const brightness = calculateBrightness(rgbArray);
+      styles.color = brightness < 125 ? '#ffffff' : defaultTextColor;
+    }
+  }
+
+  return styles;
+}
+
 /**
  * Converts an RGB color string to its hexadecimal representation.
  * @param rgb - RGB color string in the format "rgb(r, g, b)".

@@ -1,50 +1,26 @@
-import { extractDataNumber, setContrastTextColor } from './table-utils';
-import React, { ReactNode, useEffect, useRef } from 'react';
+import { setContrastTextColor } from '../../00-tokens/color/color-shared';
+import React, { ReactNode, useRef } from 'react';
 import useMediaQuery from '../../../hooks/use-media-query';
+import { useDataTable } from './data-table-provider';
 
 export interface TableRowProps {
   bgColor?: string;
   children: ReactNode;
 }
 
-const TableRow: React.FC<TableRowProps> = ({ bgColor, children }) => {
+const TableRow = ({ bgColor, children }: TableRowProps) => {
   let rowStyles: React.CSSProperties = {};
   const row = useRef<HTMLTableRowElement>(null);
+  const { currentPage, itemsPerPage } = useDataTable();
   const isMobile = useMediaQuery('(max-width: 59.374rem)');
 
-  useEffect(() => {
-    if (row && row.current && isMobile) {
-      const table = row.current.closest('table');
-
-      if (table) {
-        const observer = new MutationObserver((mutationsList) => {
-          mutationsList.forEach((mutation) => {
-            if (mutation.attributeName === 'data-current-page') {
-              currentPageHandler(table);
-            }
-          });
-        });
-
-        observer.observe(table, { attributes: true });
-        currentPageHandler(table);
-
-        return () => {
-          observer.disconnect();
-        };
-      }
-    }
-  }, [row.current]);
-
-  function currentPageHandler(table: HTMLTableElement) {
+  function currentPageAnimation() {
     if (row && row.current) {
       const tableElement = row.current.closest('table');
 
       if (tableElement) {
-        const itemsPerPage = extractDataNumber(table, 'itemsPerPage');
-        const currentPageNumber = extractDataNumber(table, 'currentPage');
-
         // Trying to retrieve the target element for the current page.
-        const targetElementIndex = (currentPageNumber - 1) * itemsPerPage;
+        const targetElementIndex = (currentPage - 1) * itemsPerPage;
         const targetElement = tableElement.rows[targetElementIndex];
 
         targetElement?.scrollIntoView({
@@ -58,6 +34,10 @@ const TableRow: React.FC<TableRowProps> = ({ bgColor, children }) => {
 
   if (bgColor) {
     rowStyles = setContrastTextColor(bgColor);
+  }
+
+  if (isMobile) {
+    currentPageAnimation();
   }
 
   return (

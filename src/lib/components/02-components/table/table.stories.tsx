@@ -1,8 +1,8 @@
 import ArrowRightIcon from '../../00-tokens/icons/arrow-right-icon';
 import Link from '../../01-elements/link/link';
-import Table from './table';
 import TableColumn from './table-column';
 import TableRow from './table-row';
+import TableWrapper from './table-wrapper';
 
 const meta = {
   title: 'Components/Table',
@@ -12,7 +12,7 @@ export default meta;
 
 export const Default = () => {
   return (
-    <Table
+    <TableWrapper
       heading="Figma ipsum component variant main layer. Duplicate align figjam."
       subheading="Figma ipsum component variant main layer. Scale editor mask bullet flatten export team blur. Main prototype scrolling scale frame main distribute. Undo image vertical ipsum italic link layout community project arrow."
       description="DISCLAIMER: Product comparison is based off of in-product capabilities and cross-portfolio integrations available from the same vendor as of Mar 1st, 2023. Comparisons do not include integrations with third-party vendors. Feature comparison is based off of each vendor’s most recent and modern version available as of Mar 1st, 2023. Information is based off of data collected from public websites and forums, analyst papers, and product datasheets as of Mar 1st, 2023."
@@ -45,7 +45,7 @@ export const Default = () => {
       </TableRow>
       <TableRow>
         <TableColumn>
-          <p>
+          <div>
             <p>
               <strong>Data Security Features</strong>
             </p>
@@ -54,7 +54,7 @@ export const Default = () => {
               Lorem ipsum dolor sit amet consectetur. Laoreet aliquet diam eu
               commodo nisl pretium. Dictumst justo accumsan.
             </p>
-          </p>
+          </div>
         </TableColumn>
         <TableColumn bgColor="#F5F6F6">
           <svg
@@ -101,7 +101,7 @@ export const Default = () => {
       </TableRow>
       <TableRow>
         <TableColumn>
-          <p>
+          <div>
             <p>
               <strong>Data Security Features</strong>
             </p>
@@ -110,7 +110,7 @@ export const Default = () => {
               Lorem ipsum dolor sit amet consectetur. Laoreet aliquet diam eu
               commodo nisl pretium. Dictumst justo accumsan.
             </p>
-          </p>
+          </div>
         </TableColumn>
         <TableColumn bgColor="#F5F6F6">
           <p className="text-center">
@@ -175,7 +175,7 @@ export const Default = () => {
       </TableRow>
       <TableRow>
         <TableColumn>
-          <p>
+          <div>
             <p>
               <strong>Data Security Features</strong>
             </p>
@@ -184,7 +184,7 @@ export const Default = () => {
               Lorem ipsum dolor sit amet consectetur. Laoreet aliquet diam eu
               commodo nisl pretium. Dictumst justo accumsan.
             </p>
-          </p>
+          </div>
         </TableColumn>
         <TableColumn bgColor="#F5F6F6">
           <p className="text-center">
@@ -208,6 +208,6 @@ export const Default = () => {
           </p>
         </TableColumn>
       </TableRow>
-    </Table>
+    </TableWrapper>
   );
 };
