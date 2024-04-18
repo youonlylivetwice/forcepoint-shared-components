@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useRef, useState } from 'react';
-import { ContentSlideItemProps } from './content-slide-item';
-import Typography from '../../01-elements/typography/typography';
 import { cn } from '../../../utils/tailwind-merge';
+import Typography from '../../01-elements/typography/typography';
+import { ContentSlideItemProps } from './content-slide-item';
 
 export type ContentSliderProps = {
   sliderTitle?: string;
@@ -44,7 +44,11 @@ export default function ContentSlider({
     };
   }, [active, isFocused, sliderItems.length]);
   return (
-    <div>
+    <div
+      className={cn('p-lg', {
+        'bg-black': theme === 'dark',
+      })}
+    >
       {sliderTitle && (
         <Typography
           variant="display"

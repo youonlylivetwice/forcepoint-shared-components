@@ -1,9 +1,9 @@
 import { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { cn } from '../../../utils/tailwind-merge';
-import Typography from '../../01-elements/typography/typography';
-import Link from '../../01-elements/link/link';
 import ArrowRightIcon from '../../00-tokens/icons/arrow-right-icon';
 import ChevronDownIcon from '../../00-tokens/icons/chevron-down-icon';
+import Link from '../../01-elements/link/link';
+import Typography from '../../01-elements/typography/typography';
 
 export type ContentSlideItemProps = ComponentPropsWithoutRef<'button'> & {
   title: string;
@@ -55,6 +55,7 @@ export default function ContentSlideItem({
         />
         <Typography
           variant="h3"
+          component="span"
           className={cn(
             'mb-0 font-semibold',
             theme !== 'dark'
