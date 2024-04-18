@@ -30,7 +30,7 @@ export default function MenuModal({
     <div
       id={id}
       className={cn(
-        'fixed top-0 z-10 flex h-screen w-fit flex-col overflow-scroll bg-white lg:absolute lg:top-[100%] lg:h-auto lg:overflow-visible lg:bg-transparent',
+        'fixed top-0 z-10 flex h-screen w-fit flex-col overflow-scroll border-t-1 border-brumosa lg:absolute lg:top-[100%] lg:h-auto lg:overflow-visible lg:bg-transparent',
         { hidden: !isOpen },
         className,
       )}
@@ -45,7 +45,7 @@ export default function MenuModal({
         >
           <BackIcon className="rotate-0 text-grey lg:rotate-[90deg]" />
         </button>
-        <span className="block flex-1 text-start text-body-2 text-grey rtl:text-right">
+        <span className="block flex-1 pt-[3px] text-start text-body-2 text-grey rtl:text-right">
           {title}
         </span>
         <button
