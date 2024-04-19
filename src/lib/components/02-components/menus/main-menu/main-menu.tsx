@@ -373,7 +373,7 @@ export default function MainMenu({
           handlerCloseSubMenu={() => handlerOpenSubmenu(-1)}
           className="left-0 w-full lg:w-auto lg:rtl:left-auto lg:rtl:right-0"
         >
-          <div className="h-full bg-white lg:overflow-hidden lg:rounded-b-m lg:shadow-md">
+          <div className="bg-white lg:overflow-hidden lg:rounded-b-m lg:shadow-md">
             {renderedItems}
           </div>
         </MenuModal>
