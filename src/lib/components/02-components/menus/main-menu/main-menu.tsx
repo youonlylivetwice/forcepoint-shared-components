@@ -270,10 +270,9 @@ export default function MainMenu({
         return (
           <Button
             as="link"
-            color="blue"
             href={item.url}
             component={LinkComponent}
-            className="block w-full text-center lg:w-fit"
+            className="block w-full bg-[radial-gradient(circle,#0360d5_0,#023e8a_100%)] text-center hover:bg-[radial-gradient(circle,#0249a3_0,#023e8a_100%)] lg:w-fit"
             onClick={onCloseMainMenu}
           >
             {item.title}
