@@ -88,7 +88,7 @@ const itemAlignmentSchema: {
 const itemWidthSchema: { [key in MenuItemWidth]: Record<string, string> } = {
   full_width: {
     child: 'lg:col-span-full w-full',
-    parent: 'grid lg:grid-cols-1 h-[100%]',
+    parent: 'grid lg:grid-cols-1 h-full',
   },
   fifth_width: {
     child: 'lg:col-span-1',
@@ -373,7 +373,7 @@ export default function MainMenu({
           handlerCloseSubMenu={() => handlerOpenSubmenu(-1)}
           className="left-0 w-full lg:w-auto lg:rtl:left-auto lg:rtl:right-0"
         >
-          <div className="bg-white lg:overflow-hidden lg:rounded-b-m lg:shadow-md">
+          <div className="h-full bg-white lg:overflow-hidden lg:rounded-b-m lg:shadow-md">
             {renderedItems}
           </div>
         </MenuModal>
