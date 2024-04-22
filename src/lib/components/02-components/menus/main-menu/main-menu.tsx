@@ -88,7 +88,7 @@ const itemAlignmentSchema: {
 const itemWidthSchema: { [key in MenuItemWidth]: Record<string, string> } = {
   full_width: {
     child: 'lg:col-span-full w-full',
-    parent: 'grid lg:grid-cols-1 h-full',
+    parent: 'grid lg:grid-cols-1 lg:h-full',
   },
   fifth_width: {
     child: 'lg:col-span-1',
