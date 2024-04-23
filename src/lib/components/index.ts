@@ -78,3 +78,11 @@ export {
   default as TableColumn,
   type TableColumnProps,
 } from './02-components/table/table-column';
+export {
+  default as FeaturedResourceCard,
+  type FeaturedResourceCardProps,
+} from './02-components/featured-resource/featured-resource--card';
+export {
+  default as FeaturedResourceListItem,
+  type FeaturedResourceListItemProps,
+} from './02-components/featured-resource/featured-resource--list-item';
