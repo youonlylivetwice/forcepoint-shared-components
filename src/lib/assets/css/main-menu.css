@@ -115,4 +115,7 @@
   @apply max-lg:pt-0;
 }
 
+.menu-item--wrapper-button:last-child {
+  @apply mb-20 lg:mb-0;
+}
 /* Main Navigation - End */
