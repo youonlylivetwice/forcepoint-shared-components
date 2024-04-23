@@ -36,12 +36,25 @@ export default function LanguageSwitcher({
     locales.unshift(activeLocale);
   }
 
-  const belowItems: SecondaryMenuItemProps[] = locales.map((item) => ({
-    title: item.localeName,
-    url: url,
-    active: item.active,
-    linkProps: item.linkProps,
-  }));
+  const belowItems: SecondaryMenuItemProps[] = locales.map((item) => {
+    let itemUrl = url;
+
+    // Prefix language code to anchor tags
+    if (LinkComponent === 'a') {
+      itemUrl = `/${item.localeCode}${url}`;
+
+      if (url === '/') {
+        itemUrl = `/${item.localeCode}`;
+      }
+    }
+
+    return {
+      title: item.localeName,
+      url: itemUrl,
+      active: item.active,
+      linkProps: item.linkProps,
+    };
+  });
 
   const activeLocaleName =
     locales.find((locale) => locale.active)?.localeName || '';
