@@ -78,3 +78,11 @@ export {
   default as TableColumn,
   type TableColumnProps,
 } from './02-components/table/table-column';
+export {
+  default as ContentSlider,
+  type ContentSliderProps,
+} from './02-components/slider/content-slider';
+export {
+  default as ContentSlideItem,
+  type ContentSlideItemProps,
+} from './02-components/slider/content-slide-item';
