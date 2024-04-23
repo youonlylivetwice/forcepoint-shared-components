@@ -30,7 +30,7 @@ export default function MenuModal({
     <div
       id={id}
       className={cn(
-        'fixed top-0 z-10 flex h-screen w-fit flex-col overflow-scroll border-t-1 border-brumosa lg:absolute lg:top-[100%] lg:h-auto lg:overflow-visible lg:bg-transparent',
+        'fixed top-0 z-10 flex h-full w-fit flex-col overflow-scroll border-t-1 border-brumosa bg-white lg:absolute lg:top-[100%] lg:h-auto lg:overflow-visible lg:bg-transparent',
         { hidden: !isOpen },
         className,
       )}
