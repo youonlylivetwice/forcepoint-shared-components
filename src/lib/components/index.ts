@@ -86,3 +86,11 @@ export {
   default as FeaturedResourceListItem,
   type FeaturedResourceListItemProps,
 } from './02-components/featured-resource/featured-resource--list-item';
+export {
+  default as ContentSlider,
+  type ContentSliderProps,
+} from './02-components/slider/content-slider';
+export {
+  default as ContentSlideItem,
+  type ContentSlideItemProps,
+} from './02-components/slider/content-slide-item';
