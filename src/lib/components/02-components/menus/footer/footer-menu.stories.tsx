@@ -39,7 +39,7 @@ const menuItems = [
       {
         title: 'All Products',
         url: '#',
-        class: 'font-bold md:font-bold text-blue pt-xs',
+        class: 'font-bold md:font-bold text-blue pt-sm',
       },
     ],
   },
@@ -79,7 +79,7 @@ const menuItems = [
       {
         title: 'All Solutions',
         url: '#',
-        class: 'font-bold md:font-bold text-blue pt-xs',
+        class: 'font-bold md:font-bold text-blue pt-sm',
       },
     ],
   },
