@@ -21,13 +21,40 @@ export const Card = () => {
   );
 };
 
-export const ListItem = () => {
+export const List = () => {
+  const sectionBgColor = '#1d252c';
+  let listStyles: React.CSSProperties = {
+    backgroundColor: sectionBgColor,
+  };
+
   return (
-    <FeaturedResourceListItem
-      url="/"
-      eyebrow="eyebrow"
-      endIcon={<ArrowRight />}
-      title="Forcepoint Data Visibility"
-    />
+    <div style={listStyles}>
+      <div
+        className="px-md py-lg md:mx-auto md:max-w-screen-xl"
+        style={listStyles}
+      >
+        <FeaturedResourceListItem
+          url="/"
+          eyebrow="eyebrow"
+          endIcon={<ArrowRight />}
+          sectionBgColor={sectionBgColor}
+          title="Forcepoint Data Visibility"
+        />
+        <FeaturedResourceListItem
+          url="/"
+          eyebrow="eyebrow"
+          endIcon={<ArrowRight />}
+          sectionBgColor={sectionBgColor}
+          title="Forcepoint Data Visibility"
+        />
+        <FeaturedResourceListItem
+          url="/"
+          eyebrow="eyebrow"
+          endIcon={<ArrowRight />}
+          sectionBgColor={sectionBgColor}
+          title="Forcepoint Data Visibility"
+        />
+      </div>
+    </div>
   );
 };
