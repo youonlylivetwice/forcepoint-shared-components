@@ -1,6 +1,7 @@
-import ArrowRight from '../../../assets/img/icons/arrow-right.svg?react';
+import DownloadIcon from '../../00-tokens/icons/download-icon';
 import FeaturedResourceCard from './featured-resource--card';
 import FeaturedResourceListItem from './featured-resource--list-item';
+import PlayIcon from '../../00-tokens/icons/play-icon';
 
 /**
  * Storybook Definition.
@@ -36,23 +37,23 @@ export const List = () => {
         <FeaturedResourceListItem
           url="/"
           eyebrow="eyebrow"
-          endIcon={<ArrowRight />}
           sectionBgColor={sectionBgColor}
           title="Forcepoint Data Visibility"
+          startIcon={<DownloadIcon color='white' />}
         />
         <FeaturedResourceListItem
           url="/"
           eyebrow="eyebrow"
-          endIcon={<ArrowRight />}
           sectionBgColor={sectionBgColor}
-          title="Forcepoint Data Visibility"
+          title="Forcepoint Data Visibility Infographic"
+          startIcon={<DownloadIcon color='white' />}
         />
         <FeaturedResourceListItem
           url="/"
           eyebrow="eyebrow"
-          endIcon={<ArrowRight />}
           sectionBgColor={sectionBgColor}
-          title="Forcepoint Data Visibility"
+          startIcon={<PlayIcon color='white' />}
+          title="Gain a Panoramic View into all your Unstructured Data with Forcepoint Data Visibility"
         />
       </div>
     </div>

@@ -56,7 +56,7 @@ export default function FeaturedResourceListItem({
             endIcon={endIcon}
             color={isDarkMode ? 'white' : 'blue'}
             className={cn(
-              'text-h4 normal-case leading-none group-hover/resource-link:text-navy',
+              'font-[600] text-h4 normal-case leading-none group-hover/resource-link:text-navy',
               {
                 'group-hover/resource-link:text-sandwisp': isDarkMode,
               },
