@@ -5,7 +5,7 @@ import CloseIcon from "../../../00-tokens/icons/close-icon";
 import Link from "../../../01-elements/link/link";
 import Typography from "../../../01-elements/typography/typography";
 
-type BannerProps = {
+export type BannerProps = {
   id: string;
   title: string;
   linkDetails?: BannerLinkProps;
@@ -21,9 +21,11 @@ export type BannerLinkProps = {
   url: string;
 }
 
-export type MastheadBannerProps = BannerProps;
+export type MastheadBannerProps = BannerProps & {
+  handleClose: (event: React.MouseEvent, id: string) => void;
+}
 
-const MastheadBannerStyles: Record<BannerBackgroundColor, string> = {
+export const MastheadBannerStyles: Record<BannerBackgroundColor, string> = {
   azure: 'bg-azure text-navy',
   violette: 'bg-violette text-white',
   black: 'bg-black text-white',
@@ -37,12 +39,13 @@ export default function MastheadBanner({
   linkComponent: LinkComponent = 'a',
   backgroundColor,
   isCloseable = false,
+  handleClose,
 }: MastheadBannerProps) {
   const renderedTitle =
     <Typography
       variant="body-2"
       component="p"
-      className="inline"
+      className="inline mr-2"
     >
       {title}
     </Typography>;
@@ -53,7 +56,7 @@ export default function MastheadBanner({
       component={LinkComponent}
       underline="always"
       className={cn(
-        "ml-2 text-body-2 font-normal underline-offset-auto align-baseline",
+        "text-body-2 font-normal underline-offset-auto align-baseline",
         backgroundColor === 'azure' ? 'text-navy' : 'text-white',
       )}
       endIcon={<ArrowRightIcon />}
@@ -65,11 +68,12 @@ export default function MastheadBanner({
 
   const renderedCloseButton = isCloseable && (
     <button
-      className="absolute top-0 right-0 cursor-pointer inline-block h-6"
+      className="absolute top-0 right-0 lg:right-lg cursor-pointer inline-block h-6"
+      onClick={(e) => handleClose(e, id)}
     >
       <CloseIcon className="h-4" />
     </button>
-  )
+  );
 
   return (
     <div
@@ -81,7 +85,7 @@ export default function MastheadBanner({
       )}
     >
       <div
-        className="relative my-0 mx-auto pr-10 max-w-7xl"
+        className="relative my-0 mx-auto lg:px-lg lg:max-w-screen-xl"
       >
         {renderedTitle}
         {renderedLink}
