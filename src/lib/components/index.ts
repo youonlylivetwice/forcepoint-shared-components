@@ -1,5 +1,6 @@
 export { default as CloseIcon } from './00-tokens/icons/close-icon';
 export { default as MenuIcon } from './00-tokens/icons/menu-icon';
+export { default as ArrowRightIcon } from './00-tokens/icons/arrow-right-icon';
 export {
   default as Button,
   type ButtonProps,
