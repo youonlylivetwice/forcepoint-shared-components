@@ -46,10 +46,15 @@ export default function CardNavHighlight({
   ...props
 }: CardNavHighlightProps) {
   return (
-    <Link href={url} component={LinkComponent} className={'w-full'} {...props}>
+    <Link
+      href={url}
+      component={LinkComponent}
+      className={'h-full w-full'}
+      {...props}
+    >
       <div
         className={cn(
-          'group relative flex w-full overflow-hidden rounded-m bg-gradient-to-tr from-violette-darker to-violette',
+          'group relative flex h-full w-full overflow-hidden rounded-m bg-gradient-to-tr from-violette-darker to-violette',
           cardStyles[size].wrap,
           className,
         )}
@@ -78,34 +83,36 @@ export default function CardNavHighlight({
         {/* Link content */}
         <div
           className={cn(
-            'flex flex-1 flex-col justify-center lg:justify-normal',
+            'flex flex-1 flex-col justify-between',
             cardStyles[size].content,
           )}
         >
-          <span
-            className={cn(
-              'flex items-center gap-xs font-medium text-white',
-              cardStyles[size].title,
-            )}
-          >
-            {title}
-            <ChevronRightIcon
-              className={cn('sm:hidden', {
-                hidden: size === 'large',
-              })}
-            />
-          </span>
-          {description && (
-            <span className="text-body-4 font-medium text-white">
-              {description}
+          <div>
+            <span
+              className={cn(
+                'mb-5 flex items-center gap-xs font-medium text-white',
+                cardStyles[size].title,
+              )}
+            >
+              {title}
+              <ChevronRightIcon
+                className={cn('sm:hidden', {
+                  hidden: size === 'large',
+                })}
+              />
             </span>
-          )}
+            {description && (
+              <span className="text-body-4 font-medium text-white">
+                {description}
+              </span>
+            )}
+          </div>
           {ctaButton && (
             <Link
               animated
               component="span"
               endIcon={<ArrowRightIcon />}
-              className="ml-auto hidden font-normal !text-white rtl:ml-0 rtl:mr-auto sm:block"
+              className="ml-auto hidden text-[16px] font-normal !text-white rtl:ml-0 rtl:mr-auto sm:block"
             >
               {ctaButton}
             </Link>
