@@ -92,3 +92,9 @@ export {
   type BannerBackgroundColor,
   type BannerLinkProps,
 } from './02-components/banners/masthead/masthead-banner';
+export {
+  default as FlyoutBanner,
+  type FlyoutBannerProps,
+  type FlyoutBannerDateRange,
+  type FlyoutBannerLocation,
+} from './02-components/banners/flyout/flyout-banner';

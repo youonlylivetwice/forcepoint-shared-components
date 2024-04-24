@@ -55,10 +55,8 @@ export default function MastheadBanner({
       href={linkDetails.url}
       component={LinkComponent}
       underline="always"
-      className={cn(
-        "text-body-2 font-normal underline-offset-auto align-baseline",
-        backgroundColor === 'azure' ? 'text-navy' : 'text-white',
-      )}
+      color={backgroundColor === 'azure' ? 'navy' : 'white'}
+      className="text-body-2 font-normal underline-offset-auto align-baseline"
       endIcon={<ArrowRightIcon />}
       animated
     >
