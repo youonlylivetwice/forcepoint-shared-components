@@ -86,3 +86,9 @@ export {
   default as ContentSlideItem,
   type ContentSlideItemProps,
 } from './02-components/slider/content-slide-item';
+export {
+  default as MastheadBanner,
+  type MastheadBannerProps,
+  type BannerBackgroundColor,
+  type BannerLinkProps,
+} from './02-components/banners/masthead/masthead-banner';

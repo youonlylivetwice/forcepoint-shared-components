@@ -53,7 +53,7 @@ export default function Link({
     <span className="absolute inline-block transform rtl:[transform:rotateY(180deg)]">
       <i
         className={cn(
-          'inline-block translate-x-[0.5rem] transition-transform duration-200',
+          'inline-block translate-x-[0.5rem] transition-transform duration-200 align-middle',
           {
             'group-hover/link:translate-x-[0.75rem]': animated,
           },
