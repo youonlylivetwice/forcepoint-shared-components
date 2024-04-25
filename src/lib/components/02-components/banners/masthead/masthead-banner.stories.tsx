@@ -30,7 +30,13 @@ const Template = (args: MastheadBannerProps) => {
     setShowBanner(false);
   };
 
-  return <MastheadBanner {...args} showBanner={showBanner} handleClose={handleClose} />;
+  return (
+    <MastheadBanner
+      {...args}
+      showBanner={showBanner}
+      handleClose={handleClose}
+    />
+  );
 };
 
 export const Default = (args: MastheadBannerProps) => <Template {...args} />;
