@@ -13,7 +13,6 @@ export type FlyoutBannerProps = BannerProps & {
   icon?: ReactNode;
   toggleText: string;
   isMobile: boolean;
-  showDetails: boolean;
   handleOpen: (event?: React.MouseEvent) => void;
 };
 
@@ -49,16 +48,25 @@ export default function FlyoutBanner({
   icon,
   isMobile = false,
   toggleText,
-  showDetails = true,
 }: FlyoutBannerProps) {
   useEffect(() => {
-    if (showDetails) {
-      handleOpen();
-    } else {
-      handleClose();
-    }
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      if (scrollPosition <= 200) {
+        handleOpen();
+      } else {
+        handleClose();
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Cleanup the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [showDetails]);
+  }, []);
 
   if (isMobile) {
     return null;
