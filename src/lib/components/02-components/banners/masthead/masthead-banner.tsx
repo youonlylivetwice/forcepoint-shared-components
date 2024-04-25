@@ -1,9 +1,9 @@
-import { ElementType } from "react";
-import { cn } from "../../../../utils/tailwind-merge";
-import ArrowRightIcon from "../../../00-tokens/icons/arrow-right-icon";
-import CloseIcon from "../../../00-tokens/icons/close-icon";
-import Link from "../../../01-elements/link/link";
-import Typography from "../../../01-elements/typography/typography";
+import { ElementType } from 'react';
+import { cn } from '../../../../utils/tailwind-merge';
+import ArrowRightIcon from '../../../00-tokens/icons/arrow-right-icon';
+import CloseIcon from '../../../00-tokens/icons/close-icon';
+import Link from '../../../01-elements/link/link';
+import Typography from '../../../01-elements/typography/typography';
 
 export type BannerProps = {
   id: string;
@@ -12,18 +12,18 @@ export type BannerProps = {
   linkComponent?: ElementType;
   backgroundColor: BannerBackgroundColor;
   isCloseable: boolean;
-}
+  handleClose: (event: React.MouseEvent) => void;
+  showBanner: boolean;
+};
 
 export type BannerBackgroundColor = 'azure' | 'violette' | 'black' | 'navy';
 
 export type BannerLinkProps = {
   title: string;
   url: string;
-}
+};
 
-export type MastheadBannerProps = BannerProps & {
-  handleClose: (event: React.MouseEvent, id: string) => void;
-}
+export type MastheadBannerProps = BannerProps;
 
 export const MastheadBannerStyles: Record<BannerBackgroundColor, string> = {
   azure: 'bg-azure text-navy',
@@ -40,15 +40,17 @@ export default function MastheadBanner({
   backgroundColor,
   isCloseable = false,
   handleClose,
+  showBanner,
 }: MastheadBannerProps) {
-  const renderedTitle =
-    <Typography
-      variant="body-2"
-      component="p"
-      className="inline mr-2"
-    >
+  if (!showBanner) {
+    return null;
+  }
+
+  const renderedTitle = (
+    <Typography variant="body-2" component="p" className="mr-2 inline">
       {title}
-    </Typography>;
+    </Typography>
+  );
 
   const renderedLink = linkDetails && (
     <Link
@@ -56,7 +58,7 @@ export default function MastheadBanner({
       component={LinkComponent}
       underline="always"
       color={backgroundColor === 'azure' ? 'navy' : 'white'}
-      className="text-body-2 font-normal underline-offset-auto align-baseline"
+      className="align-baseline text-body-2 font-normal underline-offset-auto"
       endIcon={<ArrowRightIcon />}
       animated
     >
@@ -66,8 +68,8 @@ export default function MastheadBanner({
 
   const renderedCloseButton = isCloseable && (
     <button
-      className="absolute top-0 right-0 lg:right-lg cursor-pointer inline-block h-6"
-      onClick={(e) => handleClose(e, id)}
+      className="absolute right-0 top-0 inline-block h-6 cursor-pointer lg:right-lg"
+      onClick={(e) => handleClose(e)}
     >
       <CloseIcon className="h-4" />
     </button>
@@ -78,13 +80,11 @@ export default function MastheadBanner({
       id={`node-${id}`}
       role="banner"
       className={cn(
-        "px-5 py-6 text-body-2",
+        'px-5 py-6 text-body-2',
         MastheadBannerStyles[backgroundColor],
       )}
     >
-      <div
-        className="relative my-0 mx-auto lg:px-lg lg:max-w-screen-xl"
-      >
+      <div className="relative mx-auto my-0 lg:max-w-screen-xl lg:px-lg">
         {renderedTitle}
         {renderedLink}
         {renderedCloseButton}
