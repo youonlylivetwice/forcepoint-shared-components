@@ -51,15 +51,13 @@ export default function FlyoutBanner({
   toggleText,
   showDetails = true,
 }: FlyoutBannerProps) {
-
   useEffect(() => {
     if (showDetails) {
       handleOpen();
-    }
-    else {
+    } else {
       handleClose();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showDetails]);
 
   if (isMobile) {
