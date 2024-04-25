@@ -12,7 +12,7 @@ export type BannerProps = {
   linkComponent?: ElementType;
   backgroundColor: BannerBackgroundColor;
   isCloseable: boolean;
-  handleClose: (event: React.MouseEvent) => void;
+  handleClose: (event?: React.MouseEvent) => void;
   showBanner: boolean;
 };
 

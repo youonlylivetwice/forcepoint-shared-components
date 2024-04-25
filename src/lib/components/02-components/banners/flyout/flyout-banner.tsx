@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { cn } from '../../../../utils/tailwind-merge';
 import ArrowRightIcon from '../../../00-tokens/icons/arrow-right-icon';
 import ChevronLeftIcon from '../../../00-tokens/icons/chevron-left-icon';
@@ -13,7 +13,8 @@ export type FlyoutBannerProps = BannerProps & {
   icon?: ReactNode;
   toggleText: string;
   isMobile: boolean;
-  handleOpen: (event: React.MouseEvent) => void;
+  showDetails: boolean;
+  handleOpen: (event?: React.MouseEvent) => void;
 };
 
 export type FlyoutBannerDateRange = {
@@ -48,7 +49,19 @@ export default function FlyoutBanner({
   icon,
   isMobile = false,
   toggleText,
+  showDetails = true,
 }: FlyoutBannerProps) {
+
+  useEffect(() => {
+    if (showDetails) {
+      handleOpen();
+    }
+    else {
+      handleClose();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showDetails]);
+
   if (isMobile) {
     return null;
   }
