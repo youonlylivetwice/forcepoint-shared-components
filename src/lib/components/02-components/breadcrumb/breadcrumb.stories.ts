@@ -9,7 +9,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Azure: Story = {
   args: {
     links: [
       {
@@ -17,12 +17,32 @@ export const Default: Story = {
         url: '/',
       },
       {
-        label: 'Products',
-        url: '/products',
+        label: 'Data-first SASE',
+        url: '/da-first-sase',
       },
       {
-        label: 'Data Security',
-        url: '/products/data-security',
+        label: 'Simplify Security at the Edge',
+        url: '/simple-security-at-the-edge',
+      },
+    ],
+  },
+};
+
+export const Navy: Story = {
+  args: {
+    bgColor: 'navy',
+    links: [
+      {
+        label: 'Home',
+        url: '/',
+      },
+      {
+        label: 'Data-first SASE',
+        url: '/da-first-sase',
+      },
+      {
+        label: 'Simplify Security at the Edge',
+        url: '/simple-security-at-the-edge',
       },
     ],
   },
