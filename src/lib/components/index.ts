@@ -86,3 +86,9 @@ export {
   default as ContentSlideItem,
   type ContentSlideItemProps,
 } from './02-components/slider/content-slide-item';
+export {
+  default as MarketoReference,
+  type MarketoReferenceColor,
+  type MarketoReferenceFormStyle,
+  type MarketoReferenceImageDetails,
+} from './02-components/marketo-reference/marketo-reference';
