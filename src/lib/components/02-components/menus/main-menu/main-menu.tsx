@@ -272,7 +272,7 @@ export default function MainMenu({
             as="link"
             href={item.url}
             component={LinkComponent}
-            className="flex w-full bg-[radial-gradient(circle,#0360d5_0,#023e8a_100%)] text-center hover:bg-[radial-gradient(circle,#0249a3_0,#023e8a_100%)] lg:w-fit"
+            className="flex w-full justify-center bg-[radial-gradient(circle,#0360d5_0,#023e8a_100%)] text-center hover:bg-[radial-gradient(circle,#0249a3_0,#023e8a_100%)] lg:w-fit"
             onClick={onCloseMainMenu}
             endIcon={<ArrowRightIcon />}
           >
