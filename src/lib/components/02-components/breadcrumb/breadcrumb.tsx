@@ -1,5 +1,7 @@
 import { ComponentPropsWithoutRef, ElementType } from 'react';
+import useMediaQuery from '../../../hooks/use-media-query';
 import { cn } from '../../../utils/tailwind-merge';
+import ChevronLeftIcon from '../../00-tokens/icons/chevron-left-icon';
 
 export interface BreadcrumbProps extends ComponentPropsWithoutRef<'nav'> {
   separator?: string;
@@ -23,7 +25,39 @@ export default function Breadcrumb({
   links,
   ...props
 }: BreadcrumbProps) {
-  const renderedItems = links?.map((link, index) => {
+  const isMobile = useMediaQuery('(max-width: 46.875rem)');
+
+  const renderedMobileItems = Array.isArray(links) && links.length && (
+    <>
+      <li key={`0-${links[0].label}`} className="flex items-baseline">
+        <LinkComponent {...linkComponentProps} href={links[0].url}>
+          <span className="sr-only">{links[0].label}</span>
+          <ChevronLeftIcon
+            className={cn({
+              'hover:text-blue': bgColor === 'azure',
+              'hover:text-sandwisp': bgColor === 'navy',
+            })}
+          />
+        </LinkComponent>
+      </li>
+      <li
+        key={`1-${links[links.length - 1].label}`}
+        className={cn('last:font-medium', {
+          'hover:text-blue': bgColor === 'azure',
+          'hover:text-sandwisp': bgColor === 'navy',
+        })}
+      >
+        <LinkComponent
+          {...linkComponentProps}
+          href={links[links.length - 1].url}
+        >
+          {links[links.length - 1].label}
+        </LinkComponent>
+      </li>
+    </>
+  );
+
+  const renderedDesktopItems = links?.map((link, index) => {
     let renderedLabel = `${link.label}${separator}`;
     // Remove separator from last item.
     if (index === links.length - 1) {
@@ -63,7 +97,7 @@ export default function Breadcrumb({
           'text-azure': bgColor === 'navy',
         })}
       >
-        {renderedItems}
+        {isMobile ? renderedMobileItems : renderedDesktopItems}
       </ol>
     </nav>
   );
