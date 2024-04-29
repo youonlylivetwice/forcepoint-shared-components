@@ -50,6 +50,7 @@ export default function Breadcrumb({
         <LinkComponent
           {...linkComponentProps}
           href={links[links.length - 1].url}
+          aria-current="page"
         >
           {links[links.length - 1].label}
         </LinkComponent>
@@ -59,9 +60,11 @@ export default function Breadcrumb({
 
   const renderedDesktopItems = links?.map((link, index) => {
     let renderedLabel = `${link.label}${separator}`;
+    let currentPage = false;
     // Remove separator from last item.
     if (index === links.length - 1) {
       renderedLabel = `${link.label}`;
+      currentPage = true;
     }
     return (
       <li
@@ -71,7 +74,11 @@ export default function Breadcrumb({
           'hover:text-sandwisp': bgColor === 'navy',
         })}
       >
-        <LinkComponent {...linkComponentProps} href={link.url}>
+        <LinkComponent
+          {...linkComponentProps}
+          href={link.url}
+          aria-current={currentPage ? 'page' : null}
+        >
           {renderedLabel}
         </LinkComponent>
       </li>
