@@ -25,7 +25,7 @@ export default function HubspotFormWrapper({
       component="h3"
       variant="h2"
       className={cn('mb-[15px] font-semibold text-navy', {
-        'text-white': bgColor !== 'white',
+        'text-white': bgColor !== 'white' && bgColor !== 'azure',
       })}
     >
       {headLine}
