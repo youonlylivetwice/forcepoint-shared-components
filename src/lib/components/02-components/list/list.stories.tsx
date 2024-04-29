@@ -21,6 +21,16 @@ export const Default: Story = {
   },
 };
 
+export const MultiColumn: Story = {
+  args: {
+    ...Default.args,
+    children: Array.from({ length: 6 }, (_, i) => (
+      <ListItem key={i} {...ListItemStories.Default.args} />
+    )),
+    multicol: true,
+  },
+};
+
 export const Checkmark: Story = {
   args: {
     children: Array.from({ length: 3 }, (_, i) => (

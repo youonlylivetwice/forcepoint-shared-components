@@ -1,8 +1,9 @@
 import { ReactNode } from 'react';
+import { cn } from '../../../utils/tailwind-merge';
 
 export type ListProps = {
-  title?: string;
-  subtitle?: string;
+  title?: string | null;
+  subtitle?: string | null;
   headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   multicol?: boolean;
   children: ReactNode;
@@ -15,19 +16,27 @@ export default function List({
   multicol = false,
   children,
 }: ListProps) {
+  const listWrapperClasses = cn('list-none', {
+    'sm:grid group multicol': multicol,
+    'sm:grid-cols-2':
+      multicol && children instanceof Array && children?.length > 1,
+    'md:grid-cols-3':
+      multicol && children instanceof Array && children?.length > 2,
+  });
+
+  const titleClasses = cn('text-h2 sm:text-h1 font-semibold text-navy', {
+    'mb-lg': !multicol,
+  });
+
   return (
-    <div className="px-xxl py-xl">
+    <div>
       {subtitle && (
         <p className="mb-md text-h5 font-semibold uppercase text-violette">
           {subtitle}
         </p>
       )}
-      {title && (
-        <HeadingLevel className="mb-lg text-h1 font-semibold text-navy">
-          {title}
-        </HeadingLevel>
-      )}
-      <ul className="list-none">{children}</ul>
+      {title && <HeadingLevel className={titleClasses}>{title}</HeadingLevel>}
+      <ul className={listWrapperClasses}>{children}</ul>
     </div>
   );
 }
