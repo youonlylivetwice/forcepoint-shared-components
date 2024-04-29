@@ -408,7 +408,12 @@ export default function MainMenu({
           {
             'menu-item__group': isGroup,
             'px-md lg:px-0': depth === 1,
-            'last:pl-[45px]': depth === 2 && item.display === 'no_label',
+            'last:lg:pl-[45px]':
+              depth === 2 &&
+              item.display === 'no_label' &&
+              item.alignment === 'left_align' &&
+              item.width !== 'full_width',
+
             'menu-item__with-icon': item.icon,
             'menu-item__group--with-title': isGroup && hasTitle,
           },
