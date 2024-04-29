@@ -407,8 +407,8 @@ export default function MainMenu({
           item.alignment && itemAlignmentSchema[item.alignment],
           {
             'menu-item__group': isGroup,
-            'px-md last:pl-[45px] lg:px-0': depth === 1,
-            'last:pl-[45px]': depth === 2,
+            'px-md lg:px-0': depth === 1,
+            'last:pl-[45px]': depth === 2 && item.display === 'no_label',
             'menu-item__with-icon': item.icon,
             'menu-item__group--with-title': isGroup && hasTitle,
           },
