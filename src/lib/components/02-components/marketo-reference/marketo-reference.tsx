@@ -1,7 +1,8 @@
+import { CSSProperties, ComponentPropsWithoutRef } from 'react';
 import { cn } from '../../../utils/tailwind-merge';
 
-export type MarketoReferenceProps = {
-  renderedMarketoForm: React.ReactNode;
+export type MarketoReferenceProps = ComponentPropsWithoutRef<'div'> & {
+  marketoForm: React.ReactNode;
   image?: MarketoReferenceImageDetails;
   renderedImageComponent?: React.ReactNode;
   bgColor: MarketoReferenceColor;
@@ -30,29 +31,34 @@ const marketoReferenceColorStyles: Record<MarketoReferenceColor, string> = {
   white: 'bg-white text-navy',
 };
 
-const marketoReferenceFormStyles: Record<MarketoReferenceFormStyle, string> = {
-  none: 'flex justify-center',
-  aside_contained_image_overflow_top: 'grid grid-cols-2',
-  aside_form_image_as_background: 'flex',
-  centered_form_image_as_background: 'flex justify-center',
+const marketoReferenceFormWrapperStyles: Record<
+  MarketoReferenceFormStyle,
+  string
+> = {
+  none: 'justify-center',
+  aside_contained_image_overflow_top: 'md:grid md:grid-cols-2',
+  aside_form_image_as_background: 'bg-cover bg-center',
+  centered_form_image_as_background: 'justify-center bg-cover bg-center',
 };
 
-const marketoReferenceImageStyles: Record<MarketoReferenceFormStyle, string> = {
-  none: 'hidden',
-  aside_contained_image_overflow_top: 'rounded-lg -mt-8',
-  aside_form_image_as_background: 'rounded-lg',
-  centered_form_image_as_background: 'rounded-lg',
+const marketoReferenceFormStyles: Record<MarketoReferenceFormStyle, string> = {
+  none: 'mx-auto my-0 lg:px-0 lg:w-full',
+  aside_contained_image_overflow_top: 'lg:w-full lg:px-lg',
+  aside_form_image_as_background: '',
+  centered_form_image_as_background: 'mx-auto my-0 lg:px-0',
 };
 
 export default function MarketoReference({
-  renderedMarketoForm,
+  marketoForm: renderedMarketoForm,
   image,
   renderedImageComponent,
   bgColor,
-  formStyle = 'none',
+  formStyle: style = 'none',
+  className,
 }: MarketoReferenceProps) {
+  const formStyle = style ? style : 'none';
   const renderedImage =
-    formStyle !== 'none' &&
+    formStyle === 'aside_contained_image_overflow_top' &&
     (renderedImageComponent ? (
       renderedImageComponent
     ) : image ? (
@@ -65,19 +71,45 @@ export default function MarketoReference({
       />
     ) : null);
 
+  // Tailwind does not support dynamic background image URLs.
+  const bgImageStyles: CSSProperties = {};
+  if (
+    formStyle === 'aside_form_image_as_background' ||
+    formStyle === 'centered_form_image_as_background'
+  ) {
+    bgImageStyles.backgroundImage = `url(${image?.src})`;
+  }
+
   return (
     <div
+      style={bgImageStyles}
       className={cn(
-        'w-full md:min-w-[300px]',
+        'flex w-full',
         marketoReferenceColorStyles[bgColor],
-        marketoReferenceFormStyles[formStyle],
+        marketoReferenceFormWrapperStyles[formStyle],
+        className,
       )}
     >
       {renderedImage && (
-        <div className={cn('w-full', marketoReferenceImageStyles[formStyle])}>
+        <div
+          className={cn('hidden md:block md:w-full', {
+            'md:-mt-5': formStyle === 'aside_contained_image_overflow_top',
+          })}
+        >
           {renderedImage}
         </div>
       )}
+      <div
+        className={cn(
+          'w-full px-md py-lg lg:px-lg lg:py-xl',
+          marketoReferenceFormStyles[formStyle],
+          {
+            'lg:max-w-1/2': formStyle !== 'aside_contained_image_overflow_top',
+          }
+        )}
+      >
+        {renderedMarketoForm}
+      </div>
     </div>
   );
 }
