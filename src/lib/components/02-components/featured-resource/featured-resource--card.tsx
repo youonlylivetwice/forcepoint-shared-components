@@ -38,9 +38,11 @@ export default function FeaturedResourceCard({
 
   return (
     <div className="md:white rounded-m max-md:border-2 max-md:border-azure md:max-w-[480px] md:bg-azure">
-      <div className="overflow-hidden rounded-m max-md:hidden md:max-h-[240px]">
-        {renderedImage}
-      </div>
+      {renderedImage && (
+        <div className="overflow-hidden rounded-m max-md:hidden md:max-h-[240px]">
+          {renderedImage}
+        </div>
+      )}
       <div className="flex flex-col gap-md p-md md:gap-lg md:p-lg">
         {title && (
           <span className="text-h3 font-[600] text-black md:text-h4">

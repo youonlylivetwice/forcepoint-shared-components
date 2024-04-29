@@ -24,7 +24,7 @@ export const Card = () => {
 
 export const List = () => {
   const sectionBgColor = '#1d252c';
-  let listStyles: React.CSSProperties = {
+  const listStyles: React.CSSProperties = {
     backgroundColor: sectionBgColor,
   };
 
@@ -39,20 +39,20 @@ export const List = () => {
           eyebrow="eyebrow"
           sectionBgColor={sectionBgColor}
           title="Forcepoint Data Visibility"
-          startIcon={<DownloadIcon color='white' />}
+          startIcon={<DownloadIcon color="white" />}
         />
         <FeaturedResourceListItem
           url="/"
           eyebrow="eyebrow"
           sectionBgColor={sectionBgColor}
           title="Forcepoint Data Visibility Infographic"
-          startIcon={<DownloadIcon color='white' />}
+          startIcon={<DownloadIcon color="white" />}
         />
         <FeaturedResourceListItem
           url="/"
           eyebrow="eyebrow"
           sectionBgColor={sectionBgColor}
-          startIcon={<PlayIcon color='white' />}
+          startIcon={<PlayIcon color="white" />}
           title="Gain a Panoramic View into all your Unstructured Data with Forcepoint Data Visibility"
         />
       </div>
