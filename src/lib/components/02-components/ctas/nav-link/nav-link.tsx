@@ -51,7 +51,7 @@ export default function NavLink({
             endIcon={<ChevronRightIcon />}
             className={cn('group-hover/nav-link:text-blue', {
               'text-[16px] font-semibold': icon,
-              'text-[16px] font-medium leading-none lg:text-h6': !icon,
+              'text-[16px] font-medium leading-none': !icon,
             })}
           >
             {title}

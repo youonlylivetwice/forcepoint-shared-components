@@ -114,7 +114,5 @@
 .menu-item--subitems-1 .menu-item--wrapper-button_with_arrow {
   @apply max-lg:pt-0;
 }
-.menu-item__no_label.submenu-item.menu-item__group:last-child:not(:nth-child(1)) {
-  @apply lg:pl-[45px];
-}
+
 /* Main Navigation - End */
