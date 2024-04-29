@@ -107,7 +107,7 @@ export default function SearchInput({
         {isSearchOpen ? (
           <CloseThickIcon className="text-teal" />
         ) : (
-          <SearchThickIcon className="text-grey hover:text-teal" />
+          <SearchThickIcon className="text-grey hover:text-blue" />
         )}
       </button>
     </div>
