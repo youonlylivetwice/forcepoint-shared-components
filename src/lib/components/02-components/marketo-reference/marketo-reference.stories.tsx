@@ -4,6 +4,7 @@ import MarketoReference from './marketo-reference';
 const meta = {
   title: 'Components/Marketo Reference',
   component: MarketoReference,
+  tags: ['autodocs'],
 } satisfies Meta<typeof MarketoReference>;
 
 export default meta;
