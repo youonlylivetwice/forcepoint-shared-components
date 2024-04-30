@@ -72,7 +72,7 @@
 }
 
 .menu-item--wrapper-label_small_arrow:not(
-                                                                :has(.menu-item__label_small_arrow.menu-item__with-icon)
+    :has(.menu-item__label_small_arrow.menu-item__with-icon)
   ) {
   @apply gap-lg lg:gap-md;
 }  
