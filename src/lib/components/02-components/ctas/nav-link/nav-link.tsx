@@ -50,14 +50,14 @@ export default function NavLink({
             component="span"
             endIcon={<ChevronRightIcon />}
             className={cn('group-hover/nav-link:text-blue', {
-              'text-body-3 font-semibold': icon,
-              'text-body-3 font-medium leading-none lg:text-h6': !icon,
+              'text-[16px] font-semibold': icon,
+              'text-[16px] font-medium leading-none': !icon,
             })}
           >
             {title}
           </Link>
           {description && (
-            <span className="text-h6 font-normal leading-none text-black">
+            <span className="text-[14px] font-normal leading-none text-black">
               {description}
             </span>
           )}

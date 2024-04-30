@@ -21,7 +21,7 @@ export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
 };
 
 const colorLinkSchema = {
-  black: 'text-black hover:text-teal',
+  black: 'text-black hover:text-blue',
   blue: 'text-blue hover:text-navy',
   grey: 'text-grey hover:text-teal',
   inherit: 'text-inherit',
