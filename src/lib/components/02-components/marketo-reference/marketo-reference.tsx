@@ -63,7 +63,10 @@ export default function MarketoReference({
       renderedImageComponent
     ) : image ? (
       <img
-        className="h-full w-full object-cover object-center"
+        className={cn({
+          'mx-auto my-0 md:max-w-md':
+            formStyle === 'aside_contained_image_overflow_top',
+        })}
         {...(image.height && { height: image.height })}
         {...(image.width && { width: image.width })}
         src={image.src}
@@ -105,7 +108,7 @@ export default function MarketoReference({
           marketoReferenceFormStyles[formStyle],
           {
             'lg:max-w-1/2': formStyle !== 'aside_contained_image_overflow_top',
-          }
+          },
         )}
       >
         {renderedMarketoForm}
