@@ -86,3 +86,4 @@ export {
   default as ContentSlideItem,
   type ContentSlideItemProps,
 } from './02-components/slider/content-slide-item';
+export { default as CTA, type CtaProps } from './02-components/ctas/cta/cta';

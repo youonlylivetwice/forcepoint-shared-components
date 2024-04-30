@@ -36,6 +36,7 @@ export default {
 - [Branding](./docs/api/branding.md)
 - [Button](./docs/api/button.md)
 - [Callout](./docs/api/callout.md)
+- [CTA](./docs/api/cta.md)
 - [Footer Menu](./docs/api/footerMenu.md)
 - [Image](./docs/api/img.md)
 - [Card 380](./docs/api/card380.md)

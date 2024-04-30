@@ -318,6 +318,11 @@ module.exports = {
       '2xl': '1600px',
     },
     extend: {
+      backgroundImage: {
+        'cta-warp': "url('/src/lib/assets/img/cta-warp.jpg')",
+        'cta-glow': "url('/src/lib/assets/img/cta-glow.jpg')",
+        'cta-gray': "url('/src/lib/assets/img/cta-gray.jpg')",
+      },
       boxShadow: {
         md: '0px 4px 10px 0px rgba(29, 37, 44, 0.20)',
         '3xl': '0px 10px 20px 0px rgba(29, 37, 44, 0.25)',
