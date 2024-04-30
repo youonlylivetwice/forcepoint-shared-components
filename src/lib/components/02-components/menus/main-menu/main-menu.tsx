@@ -8,8 +8,8 @@ import Link, { LinkProps } from '../../../01-elements/link/link';
 import Typography from '../../../01-elements/typography/typography';
 import Card380 from '../../cards/card-380/card-380';
 import CardNavHighlight from '../../cards/nav-highlight/nav-highlight';
-import MainNavLink from '../../ctas/main-nav-link/main-nav-link';
-import NavLink from '../../ctas/nav-link/nav-link';
+import MainNavLink from '../menu-links/main-nav-link/main-nav-link';
+import NavLink from '../menu-links/nav-link/nav-link';
 import MenuModal from '../menu-modal/menu-modal';
 
 export type MenuItemImageProps = {

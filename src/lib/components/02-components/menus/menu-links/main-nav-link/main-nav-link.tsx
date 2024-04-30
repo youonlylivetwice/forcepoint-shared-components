@@ -1,7 +1,7 @@
 import { ElementType } from 'react';
-import { cn } from '../../../../utils/tailwind-merge';
-import ArrowBottomIcon from '../../../00-tokens/icons/arrow-bottom-icon';
-import Link from '../../../01-elements/link/link';
+import { cn } from '../../../../../utils/tailwind-merge';
+import ArrowBottomIcon from '../../../../00-tokens/icons/arrow-bottom-icon';
+import Link from '../../../../01-elements/link/link';
 
 export type MainNavLinkProps = {
   handlerCloseMenu: () => void;
@@ -23,7 +23,7 @@ export default function MainNavLink({
   index,
 }: MainNavLinkProps) {
   const itemLabel = (
-    <span className="w-full py-md font-semibold text-inherit rtl:text-right text-body-2 lg:font-normal">
+    <span className="w-full py-md text-body-2 font-semibold text-inherit rtl:text-right lg:font-normal">
       {title}
     </span>
   );
