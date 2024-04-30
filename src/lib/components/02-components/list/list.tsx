@@ -1,20 +1,20 @@
-import { ReactNode } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 import { cn } from '../../../utils/tailwind-merge';
 
-export type ListProps = {
-  title?: string | null;
+export interface ListProps extends ComponentPropsWithoutRef<'div'> {
+  listTitle?: string | null;
   subtitle?: string | null;
   headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   multicol?: boolean;
-  children: ReactNode;
-};
+}
 
 export default function List({
-  title,
+  listTitle,
   subtitle,
   headingLevel: HeadingLevel = 'h2',
   multicol = false,
   children,
+  ...props
 }: ListProps) {
   const listWrapperClasses = cn('list-none', {
     'sm:grid group multicol': multicol,
@@ -29,13 +29,15 @@ export default function List({
   });
 
   return (
-    <div>
+    <div {...props}>
       {subtitle && (
         <p className="mb-md text-h5 font-semibold uppercase text-violette">
           {subtitle}
         </p>
       )}
-      {title && <HeadingLevel className={titleClasses}>{title}</HeadingLevel>}
+      {listTitle && (
+        <HeadingLevel className={titleClasses}>{listTitle}</HeadingLevel>
+      )}
       <ul className={listWrapperClasses}>{children}</ul>
     </div>
   );

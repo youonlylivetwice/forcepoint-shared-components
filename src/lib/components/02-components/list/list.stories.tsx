@@ -13,7 +13,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    title: 'Secure Data Everywhere it Goes',
+    listTitle: 'Secure Data Everywhere it Goes',
     subtitle: 'Eyebrow',
     children: Array.from({ length: 6 }, (_, i) => (
       <ListItem key={i} {...ListItemStories.Default.args} />
