@@ -42,7 +42,7 @@ export default function FooterMenu({
     if (!item.url) return;
 
     return (
-      <li key={`footer-subitem-${index}`} className="py-sm leading-none">
+      <li key={`footer-subitem-${index}`} className="pt-xs pb-sm leading-none">
         <Link
           href={item.url}
           component={LinkComponent}
