@@ -20,7 +20,7 @@ export type CardNavHighlightProps = {
 
 const cardStyles = {
   large: {
-    content: 'p-md gap-md',
+    content: 'p-lg gap-md',
     icon: 'right-0 absolute bottom-0 right-[-20%]',
     title: 'text-h1',
     wrap: 'max-w-none lg:max-w-[380px]',
