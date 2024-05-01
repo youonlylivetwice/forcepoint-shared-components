@@ -15,7 +15,7 @@ import { CTA } from 'forcepoint-shared-components';
 | header | `string` | `-` | The main text of the call to action. |
 | link | `string` | `-` | Details of the link associated with the call to action. See the `CtaLinkDetails` type for details. |
 | linkComponent | `string` | `-` | Specifies the root node's element type for the link. It accepts a string for a standard HTML element or a custom component. Defaults to a (anchor). |
-| style | `azure` \| `black` \| `navy` \| `warp` \| `gray` \| `warp` | `glow` | `-` | Additional style for the CTA component. |
+| theme | `azure` \| `black` \| `navy` \| `warp` \| `gray` \| `warp` | `glow` | `-` | Additional theme for the CTA component. |
 
 
 ### CtaLinkDetails
@@ -31,7 +31,8 @@ import { CTA } from 'forcepoint-shared-components';
 import { CTA } from 'forcepoint-shared-components';
 
 <CTA
-  header="Sign up now for full access."
-  link={{ title: "Sign Up", url: "/signup" }}
+  theme="warp"
+  header="Schedule a Live Demo of Forcepoint ONE"
+  link={{ title: "Secondary", url: "/" }}
 />;
 ```

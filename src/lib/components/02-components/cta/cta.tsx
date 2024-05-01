@@ -1,8 +1,13 @@
 import { cn } from '../../../utils/tailwind-merge';
-import { ComponentPropsWithoutRef, ElementType } from 'react';
+import { CSSProperties, ComponentPropsWithoutRef, ElementType } from 'react';
 import ArrowRightIcon from '../../00-tokens/icons/arrow-right-icon';
 import Button, { ButtonColorVariant } from '../../01-elements/button/button';
 import Typography from '../../01-elements/typography/typography';
+
+// Background images.
+import GlowBgImage from '../../../assets/img/components/cta-glow.png';
+import GrayBgImage from '../../../assets/img/components/cta-gray.png';
+import WarpBgImage from '../../../assets/img/components/cta-warp.png';
 
 export type CtaLinkDetails = {
   title: string;
@@ -16,7 +21,7 @@ export interface CtaProps extends ComponentPropsWithoutRef<'div'> {
   theme?: CtaTheme;
 }
 
-export type CtaTheme = 'azure' | 'black' | 'navy' | 'warp' | 'gray' | 'glow';
+export type CtaTheme = 'azure' | 'black' | 'glow' | 'gray' | 'navy' | 'warp';
 
 export type CtaColorSchema = {
   button: ButtonColorVariant;
@@ -35,6 +40,16 @@ const colorSchema: { [key in CtaTheme]: CtaColorSchema } = {
     header: 'text-white',
     wrapper: 'bg-black',
   },
+  glow: {
+    button: 'sandwisp',
+    header: 'text-white',
+    wrapper: 'bg-cover bg-center',
+  },
+  gray: {
+    button: 'blue',
+    header: 'text-navy',
+    wrapper: 'bg-cover bg-center',
+  },
   navy: {
     button: 'sandwisp',
     header: 'text-white',
@@ -43,18 +58,14 @@ const colorSchema: { [key in CtaTheme]: CtaColorSchema } = {
   warp: {
     button: 'sandwisp',
     header: 'text-white',
-    wrapper: 'bg-cta-warp bg-cover bg-center',
+    wrapper: `bg-cover bg-center`,
   },
-  gray: {
-    button: 'blue',
-    header: 'text-navy',
-    wrapper: 'bg-cta-gray bg-cover bg-center',
-  },
-  glow: {
-    button: 'sandwisp',
-    header: 'text-white',
-    wrapper: 'bg-cta-glow bg-cover bg-center',
-  },
+};
+
+const bgImages: Record<any, string> = {
+  glow: GlowBgImage,
+  gray: GrayBgImage,
+  warp: WarpBgImage,
 };
 
 export default function CTA({
@@ -64,8 +75,17 @@ export default function CTA({
   linkComponent: LinkElement = 'a',
   theme = 'azure',
 }: CtaProps) {
+  const cardStyles: CSSProperties = {};
+
+  if (bgImages[theme]) {
+    cardStyles.backgroundImage = `url(${bgImages[theme]})`;
+  }
+
   return (
-    <div className={cn('py-lg md:py-xl', colorSchema[theme].wrapper)}>
+    <div
+      className={cn('py-lg md:py-xl', colorSchema[theme].wrapper)}
+      style={cardStyles}
+    >
       <div
         className={cn(
           'mx-lg flex max-w-screen-xl flex-col items-center gap-y-lg text-center md:mx-auto',
