@@ -88,7 +88,7 @@ const itemAlignmentSchema: {
 const itemWidthSchema: { [key in MenuItemWidth]: Record<string, string> } = {
   full_width: {
     child: 'lg:col-span-full w-full',
-    parent: 'grid lg:grid-cols-1',
+    parent: 'grid lg:grid-cols-1 lg:h-full',
   },
   fifth_width: {
     child: 'lg:col-span-1',
@@ -240,11 +240,11 @@ export default function MainMenu({
           <Link
             animated
             size="large"
-            color="black"
+            color="blue"
             href={item.url}
             component={LinkComponent}
             endIcon={<ChevronRightIcon />}
-            className="my-0 font-medium lg:mb-0"
+            className="my-0 font-medium hover:text-black lg:mb-0"
             onClick={onCloseMainMenu}
           >
             {item.title}
@@ -270,11 +270,11 @@ export default function MainMenu({
         return (
           <Button
             as="link"
-            color="blue"
             href={item.url}
             component={LinkComponent}
-            className="block w-full text-center lg:w-fit"
+            className="flex w-full justify-center bg-[radial-gradient(circle,#0360d5_0,#023e8a_100%)] text-center hover:bg-[radial-gradient(circle,#0249a3_0,#023e8a_100%)] lg:w-fit"
             onClick={onCloseMainMenu}
+            endIcon={<ArrowRightIcon />}
           >
             {item.title}
           </Button>
@@ -343,7 +343,7 @@ export default function MainMenu({
 
     const subClasses = cn(
       {
-        'py-lg gap-y-md lg:gap-y-sm lg:px-lg lg:gap-x-lg lg:h-full lg:content-start':
+        'py-lg gap-y-md lg:gap-y-sm lg:px-lg lg:gap-x-0 lg:h-full lg:content-start':
           depth === 1 && isGroup,
       },
       isGroup && lastItem?.width && [itemWidthSchema[lastItem?.width].parent],
@@ -408,6 +408,12 @@ export default function MainMenu({
           {
             'menu-item__group': isGroup,
             'px-md lg:px-0': depth === 1,
+            'last:lg:pl-[45px]':
+              depth === 2 &&
+              item.display === 'no_label' &&
+              item.alignment === 'left_align' &&
+              item.width !== 'full_width',
+
             'menu-item__with-icon': item.icon,
             'menu-item__group--with-title': isGroup && hasTitle,
           },

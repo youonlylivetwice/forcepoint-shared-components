@@ -14,7 +14,7 @@
 
 /* Main Navigation - Beginning */
 .menu-item__group--with-title.w-full + .menu-item__group--with-title.w-full {
-  @apply mt-md border-t border-brumosa pt-md;
+  @apply mt-md border-t border-brumosa pt-lg;
 }
 
 /* Main Navigation - Grouping */
@@ -44,7 +44,7 @@
 
 .w-full.menu-item__group:not(.menu-item__group--with-title)
   + .w-full.menu-item__group:not(.menu-item__group--with-title) {
-  @apply border-t border-brumosa pb-0 lg:mt-md lg:py-md;
+  @apply pb-0 lg:mt-md lg:py-md;
 }
 
 /* Main Navigation - Label */
@@ -63,7 +63,7 @@
 
 /* Main Navigation - Label with small arrow */
 .menu-item--wrapper-label_small_arrow {
-  @apply grid gap-md lg:gap-x-md;
+  @apply grid gap-lg lg:gap-x-md;
 }
 
 .menu-item__label_large_arrow
@@ -74,7 +74,11 @@
 .menu-item--wrapper-label_small_arrow:not(
     :has(.menu-item__label_small_arrow.menu-item__with-icon)
   ) {
-  @apply gap-sm lg:gap-md;
+  @apply gap-lg lg:gap-md;
+}  
+
+:is(#main-submenu-3) .menu-item--wrapper-label_small_arrow {
+    @apply gap-lg lg:gap-sm;
 }
 
 .menu-item__label_small_arrow {

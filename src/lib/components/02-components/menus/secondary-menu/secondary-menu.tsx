@@ -170,7 +170,7 @@ export default function SecondaryMenu({
             {
               'max-lg:text-h5 max-lg:font-semibold max-lg:leading-none max-lg:text-grey max-lg:hover:text-blue max-lg:focus:text-blue':
                 onFooter && isLanguageSwitcher,
-              'text-brumosa hover:text-brumosa': item.active,
+              'text-chateau-dark hover:text-chateau-dark': item.active,
               'max-lg:text-brumosa max-lg:hover:text-brumosa':
                 item.active && onFooter && isLanguageSwitcher,
             },
