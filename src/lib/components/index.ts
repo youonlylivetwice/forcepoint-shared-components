@@ -16,6 +16,10 @@ export {
   type BrandingProps,
 } from './02-components/branding/branding';
 export {
+  default as Breadcrumb,
+  type BreadcrumbProps,
+} from './02-components/breadcrumb/breadcrumb';
+export {
   default as Callout,
   type CalloutColorVariant,
   type CalloutImageDetails,
@@ -26,6 +30,12 @@ export {
   default as HubspotFormWrapper,
   type HubspotFormWrapperProps,
 } from './02-components/form/hubspot-form-wrapper';
+export {
+  default as ListItem,
+  type ListItemProps,
+  type ListItemStyleType,
+} from './02-components/list-item/list-item';
+export { default as List, type ListProps } from './02-components/list/list';
 export {
   default as LogoGrid,
   type LogoGridProps,
@@ -65,20 +75,9 @@ export {
   type SearchProps,
 } from './02-components/search-input/search-input';
 export {
-  default as StickyHeader,
-  type HeaderCta,
-  type StickyHeaderProps,
-} from './02-components/sticky-header/sticky-header';
-export { type TableProps } from './02-components/table/table';
-export { default as Table } from './02-components/table/table-wrapper';
-export {
-  default as TableRow,
-  type TableRowProps,
-} from './02-components/table/table-row';
-export {
-  default as TableColumn,
-  type TableColumnProps,
-} from './02-components/table/table-column';
+  default as ContentSlideItem,
+  type ContentSlideItemProps,
+} from './02-components/slider/content-slide-item';
 export {
   default as FeaturedResourceCard,
   type FeaturedResourceCardProps,
@@ -92,6 +91,17 @@ export {
   type ContentSliderProps,
 } from './02-components/slider/content-slider';
 export {
-  default as ContentSlideItem,
-  type ContentSlideItemProps,
-} from './02-components/slider/content-slide-item';
+  default as StickyHeader,
+  type HeaderCta,
+  type StickyHeaderProps,
+} from './02-components/sticky-header/sticky-header';
+export { type TableProps } from './02-components/table/table';
+export {
+  default as TableColumn,
+  type TableColumnProps,
+} from './02-components/table/table-column';
+export {
+  default as TableRow,
+  type TableRowProps,
+} from './02-components/table/table-row';
+export { default as Table } from './02-components/table/table-wrapper';
