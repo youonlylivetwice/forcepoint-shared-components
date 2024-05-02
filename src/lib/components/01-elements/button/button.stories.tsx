@@ -12,13 +12,13 @@ const meta = {
       control: { type: 'select' },
     },
     color: {
-      options: {
-        blue: 'blue',
-        navy: 'navy',
-        'sandwisp (dark background)': 'sandwisp',
-        viola: 'viola',
-        'white (dark background)': 'white',
-      },
+      options: [
+        'blue',
+        'navy',
+        'sandwisp (dark background)',
+        'viola',
+        'white (dark background)',
+      ],
       control: { type: 'select' },
     },
     variant: {
