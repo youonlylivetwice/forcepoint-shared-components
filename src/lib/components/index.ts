@@ -31,6 +31,12 @@ export {
   type HubspotFormWrapperProps,
 } from './02-components/form/hubspot-form-wrapper';
 export {
+  default as ListItem,
+  type ListItemProps,
+  type ListItemStyleType,
+} from './02-components/list-item/list-item';
+export { default as List, type ListProps } from './02-components/list/list';
+export {
   default as LogoGrid,
   type LogoGridProps,
   type LogoInfo,
