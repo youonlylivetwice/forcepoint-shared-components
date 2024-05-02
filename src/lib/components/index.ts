@@ -1,5 +1,6 @@
 export { default as CloseIcon } from './00-tokens/icons/close-icon';
 export { default as MenuIcon } from './00-tokens/icons/menu-icon';
+export { default as ArrowRightIcon } from './00-tokens/icons/arrow-right-icon';
 export {
   default as Button,
   type ButtonProps,
@@ -71,6 +72,14 @@ export {
   default as ContentSlideItem,
   type ContentSlideItemProps,
 } from './02-components/slider/content-slide-item';
+export {
+  default as FeaturedResourceCard,
+  type FeaturedResourceCardProps,
+} from './02-components/featured-resource/featured-resource--card';
+export {
+  default as FeaturedResourceListItem,
+  type FeaturedResourceListItemProps,
+} from './02-components/featured-resource/featured-resource--list-item';
 export {
   default as ContentSlider,
   type ContentSliderProps,
