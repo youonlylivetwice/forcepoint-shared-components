@@ -1,6 +1,6 @@
+export { default as ArrowRightIcon } from './00-tokens/icons/arrow-right-icon';
 export { default as CloseIcon } from './00-tokens/icons/close-icon';
 export { default as MenuIcon } from './00-tokens/icons/menu-icon';
-export { default as ArrowRightIcon } from './00-tokens/icons/arrow-right-icon';
 export {
   default as Button,
   type ButtonProps,
@@ -27,6 +27,14 @@ export {
   type CalloutProps,
 } from './02-components/callout/callout';
 export {
+  default as FeaturedResourceCard,
+  type FeaturedResourceCardProps,
+} from './02-components/featured-resource/featured-resource--card';
+export {
+  default as FeaturedResourceListItem,
+  type FeaturedResourceListItemProps,
+} from './02-components/featured-resource/featured-resource--list-item';
+export {
   default as HubspotFormWrapper,
   type HubspotFormWrapperProps,
 } from './02-components/form/hubspot-form-wrapper';
@@ -41,6 +49,12 @@ export {
   type LogoGridProps,
   type LogoInfo,
 } from './02-components/logo-grid/logo-grid';
+export {
+  default as MarketoReference,
+  type MarketoReferenceColor,
+  type MarketoReferenceFormStyle,
+  type MarketoReferenceImageDetails,
+} from './02-components/marketo-reference/marketo-reference';
 export {
   default as FooterMenu,
   type FooterMenuProps,
@@ -78,14 +92,6 @@ export {
   default as ContentSlideItem,
   type ContentSlideItemProps,
 } from './02-components/slider/content-slide-item';
-export {
-  default as FeaturedResourceCard,
-  type FeaturedResourceCardProps,
-} from './02-components/featured-resource/featured-resource--card';
-export {
-  default as FeaturedResourceListItem,
-  type FeaturedResourceListItemProps,
-} from './02-components/featured-resource/featured-resource--list-item';
 export {
   default as ContentSlider,
   type ContentSliderProps,
