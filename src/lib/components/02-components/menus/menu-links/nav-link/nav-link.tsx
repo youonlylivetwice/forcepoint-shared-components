@@ -50,7 +50,7 @@ export default function NavLink({
             component="span"
             endIcon={<ChevronRightIcon />}
             className={cn('group-hover/nav-link:text-blue', {
-              'text-[16px] font-semibold': icon,
+              'text-[16px] font-bold': icon,
               'text-[16px] font-medium leading-none': !icon,
             })}
           >
