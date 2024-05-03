@@ -62,7 +62,7 @@ const colorSchema: { [key in CtaTheme]: CtaColorSchema } = {
   },
 };
 
-const bgImages: Record<any, string> = {
+const bgImages: Record<string, string> = {
   glow: GlowBgImage,
   gray: GrayBgImage,
   warp: WarpBgImage,
@@ -76,6 +76,10 @@ export default function CTA({
   theme = 'azure',
 }: CtaProps) {
   const cardStyles: CSSProperties = {};
+
+  if (!colorSchema[theme]) {
+    return null;
+  }
 
   if (bgImages[theme]) {
     cardStyles.backgroundImage = `url(${bgImages[theme]})`;
