@@ -12,7 +12,6 @@ export type FlyoutBannerProps = BannerProps & {
   location?: FlyoutBannerLocation;
   icon?: ReactNode;
   toggleText: string;
-  isMobile: boolean;
   handleOpen: (event?: React.MouseEvent) => void;
 };
 
@@ -46,7 +45,6 @@ export default function FlyoutBanner({
   date,
   location,
   icon,
-  isMobile = false,
   toggleText,
 }: FlyoutBannerProps) {
   useEffect(() => {
@@ -67,10 +65,6 @@ export default function FlyoutBanner({
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  if (isMobile) {
-    return null;
-  }
 
   const renderedTitle = (
     <Typography variant="h3" component="h3" className="mb-sm">
@@ -144,7 +138,7 @@ export default function FlyoutBanner({
     <div
       id={`node-${id}`}
       role="banner"
-      className="relative text-body-2 text-white"
+      className="relative hidden text-body-2 text-white md:block"
     >
       <div
         className={cn(
