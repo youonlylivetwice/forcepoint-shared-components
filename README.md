@@ -32,14 +32,17 @@ export default {
 
 ### Components API
 
-- [Content Image Slider](./docs/api/content-slider.md)
 - [Branding](./docs/api/branding.md)
+- [Breadcrumb](./docs/api/breadcrumb.md)
 - [Button](./docs/api/button.md)
 - [Callout](./docs/api/callout.md)
-- [Footer Menu](./docs/api/footerMenu.md)
-- [Image](./docs/api/img.md)
 - [Card 380](./docs/api/card380.md)
 - [Card Nav Highlight](./docs/api/navHighlight.md)
+- [Content Image Slider](./docs/api/content-slider.md)
+- [Featured Resource - Card](./docs/api/featuredResourceCard.md)
+- [Featured Resource - List Item](./docs/api/featuredResourceListItem.md)
+- [Footer Menu](./docs/api/footerMenu.md)
+- [Image](./docs/api/img.md)
 - [Language Switcher](./docs/api/languageSwitcher.md)
 - [Legal Menu](./docs/api/legalMenu.md)
 - [Link](./docs/api/link.md)

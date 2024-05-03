@@ -6,7 +6,7 @@ export type HubspotFormWrapperProps = ComponentPropsWithoutRef<'div'> & {
   headLine?: string | null;
   subHeadLine?: string | null;
   logo?: ReactNode;
-  bgColor?: 'white' | 'navy' | 'blue';
+  bgColor?: 'white' | 'navy' | 'blue' | 'azure' | 'black';
   formType?: 'default' | 'sign-up' | 'demo-request';
 };
 
@@ -25,7 +25,7 @@ export default function HubspotFormWrapper({
       component="h3"
       variant="h2"
       className={cn('mb-[15px] font-semibold text-navy', {
-        'text-white': bgColor !== 'white',
+        'text-white': bgColor !== 'white' && bgColor !== 'azure',
       })}
     >
       {headLine}
@@ -35,7 +35,7 @@ export default function HubspotFormWrapper({
     <Typography
       component="h4"
       variant={formType === 'sign-up' ? 'h3' : 'body-2'}
-      className={cn('mb-md md:mb-[40px] text-grey ', {
+      className={cn('mb-md text-grey md:mb-[40px] ', {
         'text-azure': bgColor !== 'white',
       })}
     >
@@ -46,11 +46,13 @@ export default function HubspotFormWrapper({
     <div
       {...props}
       className={cn(
-        'rounded-m bg-white px-md py-lg text-center shadow-3xl',
+        'rounded-m px-md py-lg text-center shadow-3xl',
         {
           'bg-white': bgColor === 'white',
           'bg-navy': bgColor === 'navy',
           'bg-blue': bgColor === 'blue',
+          'bg-azure': bgColor === 'azure',
+          'bg-black': bgColor === 'black',
         },
         className,
       )}

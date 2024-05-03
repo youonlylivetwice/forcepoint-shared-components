@@ -5,7 +5,7 @@ The Callout component is designed to create visually appealing callout sections 
 ## Import
 
 ```javascript
-import { Callout } from 'your-component-library';
+import { Callout } from 'forcepoint-shared-components';
 ```
 
 ## Props
@@ -41,7 +41,7 @@ import { Callout } from 'your-component-library';
 ### Usage
 
 ```javascript
-import { Callout } from 'your-component-library';
+import { Callout } from 'forcepoint-shared-components';
 
 <Callout
  color="black"
