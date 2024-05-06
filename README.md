@@ -4,14 +4,14 @@ React Shared Components Library System for Forcepoint. Built on Vite.
 
 ## At a glance
 
-|   |   |
-|---|---|
-| Library bundler | [Vite](https://vitejs.dev/) |
-| Component visualization | [Storybook](https://storybook.js.org/) |
-| Storybook | 8.0 |
-| Storybook instance | [GitHub Pages](https://fourkitchens.github.io/forcepoint-shared-components) |
-| CSS Framework | [TailwindCSS](https://tailwindcss.com/) |
-| Node | 18 |
+|                         |                                                                             |
+| ----------------------- | --------------------------------------------------------------------------- |
+| Library bundler         | [Vite](https://vitejs.dev/)                                                 |
+| Component visualization | [Storybook](https://storybook.js.org/)                                      |
+| Storybook               | 8.0                                                                         |
+| Storybook instance      | [GitHub Pages](https://fourkitchens.github.io/forcepoint-shared-components) |
+| CSS Framework           | [TailwindCSS](https://tailwindcss.com/)                                     |
+| Node                    | 18                                                                          |
 
 ## Library reference
 
@@ -36,6 +36,7 @@ export default {
 - [Breadcrumb](./docs/api/breadcrumb.md)
 - [Button](./docs/api/button.md)
 - [Callout](./docs/api/callout.md)
+- [CTA](./docs/api/cta.md)
 - [Card 380](./docs/api/card380.md)
 - [Card Nav Highlight](./docs/api/navHighlight.md)
 - [Content Image Slider](./docs/api/content-slider.md)
@@ -60,7 +61,7 @@ This section is intended for developers who want to contribute to the project or
 
 - Clone the repository
 - Run `nvm use` or use a tool such as [NVM](https://github.com/nvm-sh/nvm) to
-automatically switch to the correct Node version
+  automatically switch to the correct Node version
 - Run `npm install`
 - Run `npm run dev` to start storybook and the Typescript compiler.
 
