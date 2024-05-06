@@ -97,7 +97,18 @@ export {
   type ContentSliderProps,
 } from './02-components/slider/content-slider';
 export {
-  default as StickyHeader,
+  default as MastheadBanner,
+  type MastheadBannerProps,
+  type BannerBackgroundColor,
+  type BannerLinkProps,
+} from './02-components/banners/masthead/masthead-banner';
+export {
+  default as FlyoutBanner,
+  type FlyoutBannerProps,
+  type FlyoutBannerDateRange,
+  type FlyoutBannerLocation,
+} from './02-components/banners/flyout/flyout-banner';
+export { default as StickyHeader,
   type HeaderCta,
   type StickyHeaderProps,
 } from './02-components/sticky-header/sticky-header';
