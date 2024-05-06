@@ -27,6 +27,12 @@ export {
   type CalloutProps,
 } from './02-components/callout/callout';
 export {
+  default as CTA,
+  type CtaProps,
+  type CtaTheme,
+  type CtaLinkDetails,
+} from './02-components/cta/cta';
+export {
   default as FeaturedResourceCard,
   type FeaturedResourceCardProps,
 } from './02-components/featured-resource/featured-resource--card';
