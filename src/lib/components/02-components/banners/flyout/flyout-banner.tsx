@@ -110,6 +110,7 @@ export default function FlyoutBanner({
 
   const renderedCloseButton = (
     <button
+      aria-label="Close"
       className="absolute -top-8 right-xs inline-block cursor-pointer"
       onClick={(e) => handleClose(e)}
     >

@@ -68,6 +68,7 @@ export default function MastheadBanner({
 
   const renderedCloseButton = isCloseable && (
     <button
+      aria-label="Close"
       className="absolute right-0 top-0 inline-block h-6 cursor-pointer lg:right-lg"
       onClick={(e) => handleClose(e)}
     >

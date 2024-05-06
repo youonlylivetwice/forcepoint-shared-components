@@ -5,25 +5,6 @@ import FlyoutBanner, { FlyoutBannerProps } from './flyout-banner';
 const meta = {
   title: 'Components/Banners/Flyout Banner',
   component: FlyoutBanner,
-  argTypes: {
-    id: { control: 'text' },
-    title: { control: 'text' },
-    linkDetails: { control: 'object' },
-    backgroundColor: {
-      control: {
-        type: 'select',
-        options: ['azure', 'violette', 'black', 'navy'],
-      },
-    },
-    isCloseable: { control: 'boolean' },
-    showBanner: { control: 'boolean' },
-    handleClose: { action: 'handleClose' },
-    date: { control: 'object' },
-    location: { control: 'object' },
-    icon: { control: 'node' },
-    toggleText: { control: 'text' },
-    isMobile: { control: 'boolean' },
-  },
 } as Meta;
 
 export default meta;
