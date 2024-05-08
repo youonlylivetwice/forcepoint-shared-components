@@ -85,7 +85,7 @@ export default meta;
 export const Default = () => {
   return (
     <div className="md:mx-3xl">
-      <LanguageSwitcher locales={locales} url={url} />
+      <LanguageSwitcher locales={locales} url={url} excludedLancode="en" />
     </div>
   );
 };
