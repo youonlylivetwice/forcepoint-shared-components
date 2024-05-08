@@ -62,14 +62,16 @@ export default function ListItem({
       <CircleCheckmarkIcon className="mt-xs flex-shrink-0 flex-grow-0 text-teal" />
     ),
     icon: icon ? (
-      <img
-        src={icon.url}
-        role="presentation"
-        alt={icon.alt ?? ''}
-        height={icon.height}
-        width={icon.width}
-        className="flex-shrink-0 flex-grow-0"
-      />
+      <div className="flex-shrink-0 flex-grow-0 basis-[50px] sm:basis-[80px]">
+        <img
+          src={icon.url}
+          role="presentation"
+          alt={icon.alt ?? ''}
+          height={icon.height}
+          width={icon.width}
+          className="w-full h-auto"
+        />
+      </div>
     ) : null,
   };
 
