@@ -18,8 +18,8 @@ export type ListItemProps = {
   icon?: {
     url: string;
     alt?: string | null;
-    height: number;
-    width: number;
+    height: number | 'auto';
+    width: number | 'auto';
   };
 };
 
@@ -68,6 +68,7 @@ export default function ListItem({
         alt={icon.alt ?? ''}
         height={icon.height}
         width={icon.width}
+        className="flex-shrink-0 flex-grow-0"
       />
     ) : null,
   };
