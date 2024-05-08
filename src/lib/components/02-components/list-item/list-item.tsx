@@ -46,8 +46,10 @@ export default function ListItem({
     ],
     {
       flex: style !== 'none',
+      'items-start': style !== 'none',
       'gap-md': style === 'checkmark',
-      'gap-lg': style === 'icon',
+      'gap-sm': style === 'icon',
+      'sm:gap-lg': style === 'icon',
       'mb-md': style === 'checkmark',
       'mt-md pb-md sm:mt-lg sm:pb-lg': style !== 'checkmark',
       'border-b-2 border-b-brumosa': style !== 'checkmark',
