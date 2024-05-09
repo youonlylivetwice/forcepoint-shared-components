@@ -14,7 +14,6 @@ import { SecondaryMenu } from 'forcepoint-shared-components';
 |---------------|---------------|---------|-------------------------------------------------------|
 | locales       | `Locale[]`    | –       | Required. The available locales with additional properties. See below for more specifics     |
 | url           | `string`      | –       | Required. The URL to use for the links. If the `URL` includes the locale code it needs to be removed.`/`                         |
-| linkComponent | `ElementType` | 'a'     | Optional. Specifies the root node's element type. It accepts a string for a standard HTML `a` element or a custom component. For example, in a Next.js application, you can use `next/link` as the `Component` to integrate with Next.js's routing.           |
 
 ## `Locale` Type
 
