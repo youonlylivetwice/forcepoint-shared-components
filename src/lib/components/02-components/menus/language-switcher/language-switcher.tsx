@@ -17,7 +17,7 @@ export type LanguageSwitcherProps = {
   menuLabel?: string;
   onFooter?: boolean;
   url: string;
-  excludedLancode?: string;
+  excludedLangcode?: string;
 };
 
 export default function LanguageSwitcher({
@@ -26,7 +26,7 @@ export default function LanguageSwitcher({
   menuLabel = 'Language switcher',
   onFooter = false,
   url,
-  excludedLancode,
+  excludedLangcode,
 }: LanguageSwitcherProps) {
   // Move active locale to the beginning of the array
   const activeIndex = locales.findIndex((locale) => locale.active);
@@ -37,8 +37,9 @@ export default function LanguageSwitcher({
 
   const belowItems: SecondaryMenuItemProps[] = locales.map((item) => {
     let itemUrl = url;
-    if (excludedLancode !== item.localeCode) {
-      itemUrl = url === '/' ? `/${item.localeCode}` : `/${item.localeCode}${url}`;
+    if (excludedLangcode !== item.localeCode) {
+      itemUrl =
+        url === '/' ? `/${item.localeCode}` : `/${item.localeCode}${url}`;
     }
 
     return {
