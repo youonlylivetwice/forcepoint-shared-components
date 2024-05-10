@@ -18,8 +18,8 @@ export type ListItemProps = {
   icon?: {
     url: string;
     alt?: string | null;
-    height: number;
-    width: number;
+    height: number | 'auto';
+    width: number | 'auto';
   };
 };
 
@@ -46,8 +46,10 @@ export default function ListItem({
     ],
     {
       flex: style !== 'none',
+      'items-start': style !== 'none',
       'gap-md': style === 'checkmark',
-      'gap-lg': style === 'icon',
+      'gap-sm': style === 'icon',
+      'sm:gap-lg': style === 'icon',
       'mb-md': style === 'checkmark',
       'mt-md pb-md sm:mt-lg sm:pb-lg': style !== 'checkmark',
       'border-b-2 border-b-brumosa': style !== 'checkmark',
@@ -60,13 +62,16 @@ export default function ListItem({
       <CircleCheckmarkIcon className="mt-xs flex-shrink-0 flex-grow-0 text-teal" />
     ),
     icon: icon ? (
-      <img
-        src={icon.url}
-        role="presentation"
-        alt={icon.alt ?? ''}
-        height={icon.height}
-        width={icon.width}
-      />
+      <div className="flex-shrink-0 flex-grow-0 basis-[50px] sm:basis-[80px]">
+        <img
+          src={icon.url}
+          role="presentation"
+          alt={icon.alt ?? ''}
+          height={icon.height}
+          width={icon.width}
+          className="w-full h-auto"
+        />
+      </div>
     ) : null,
   };
 
