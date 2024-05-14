@@ -106,6 +106,7 @@ export {
   type SocialMenuItem,
   type SocialMenuProps,
 } from './02-components/menus/social-menu/social-menu';
+export { default as Pager, type PagerProps } from './02-components/pager/pager';
 export {
   default as SearchInput,
   type SearchProps,
