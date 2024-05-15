@@ -48,7 +48,7 @@ export default function Pager({
   );
 
   const renderedCurrentPage = (
-    <li className="flex-shrink-0 items-center text-h4 font-semibold sm:mx-xl">{`${currentPage + 1} ${currentPageLabel} ${totalPages}`}</li>
+    <li className="mx-auto flex-shrink-0 items-center text-h4 font-semibold">{`${currentPage + 1} ${currentPageLabel} ${totalPages}`}</li>
   );
 
   const renderedNext = currentPage + 1 < totalPages && (
@@ -65,7 +65,7 @@ export default function Pager({
   );
   return (
     <nav className={className} {...props}>
-      <ul className="flex items-center justify-between sm:justify-normal">
+      <ul className="flex items-center">
         {renderedPrevious}
         {renderedCurrentPage}
         {renderedNext}

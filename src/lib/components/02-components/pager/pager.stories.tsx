@@ -15,6 +15,6 @@ export const Default: Story = {
     baseUrl: `${window.location.href}`,
     currentPage: 1,
     totalPages: 10,
-    className: 'my-0 mx-auto max-w-[30rem]',
+    className: 'mx-auto max-w-screen-sm',
   },
 };
