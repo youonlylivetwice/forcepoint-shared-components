@@ -5,10 +5,10 @@ import {
 } from 'react';
 import ChevronDownSvgIcon from '../../../../assets/img/icons/chevron-down.svg';
 import { cn } from '../../../../utils/tailwind-merge';
-import ArrowRightIcon from '../../../00-tokens/icons/arrow-right-icon';
+import { ArrowRightIcon } from '../../../00-tokens/icons';
 import Button from '../../../01-elements/button/button';
 
-export interface GlobalSearchProps extends ComponentPropsWithoutRef<'form'> {
+export interface SiteSearchProps extends ComponentPropsWithoutRef<'form'> {
   theme?: 'navy' | 'blue';
   inputName?: string;
   inputLabel?: string;
@@ -25,7 +25,7 @@ export interface GlobalSearchProps extends ComponentPropsWithoutRef<'form'> {
   onChangeSelect?: ChangeEventHandler<HTMLSelectElement> | undefined;
   selectValue?: string;
 }
-export default function GlobalSearch({
+export default function SiteSearch({
   theme = 'navy',
   inputName,
   inputLabel = 'Enter your Keywords',
@@ -40,7 +40,7 @@ export default function GlobalSearch({
   onChangeSelect,
   selectValue,
   className,
-}: GlobalSearchProps) {
+}: SiteSearchProps) {
   const selectInlineStyles: CSSProperties = {
     backgroundImage: `url(${ChevronDownSvgIcon})`,
     backgroundPosition: 'right 20px center',

@@ -51,13 +51,13 @@ export {
   type FeaturedResourceListItemProps,
 } from './02-components/featured-resource/featured-resource--list-item';
 export {
-  default as GlobalSearch,
-  type GlobalSearchProps,
-} from './02-components/form/global-search/global-search';
-export {
   default as HubspotFormWrapper,
   type HubspotFormWrapperProps,
 } from './02-components/form/hubspot-form-wrapper';
+export {
+  default as SiteSearch,
+  type SiteSearchProps,
+} from './02-components/form/site-search/site-search';
 export {
   default as ListItem,
   type ListItemProps,

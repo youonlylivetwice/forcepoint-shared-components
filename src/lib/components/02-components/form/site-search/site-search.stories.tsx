@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import GlobalSearch from './global-search';
+import GlobalSearch from './site-search';
 
 const meta = {
-  title: 'Components/Form/GlobalSearch',
+  title: 'Components/Form/Site Search',
   component: GlobalSearch,
   tags: ['autodocs'],
 } satisfies Meta<typeof GlobalSearch>;
