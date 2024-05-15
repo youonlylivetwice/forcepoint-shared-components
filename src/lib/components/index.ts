@@ -1,9 +1,4 @@
-export { default as ArrowRightIcon } from './00-tokens/icons/arrow-right-icon';
-export { default as CloseIcon } from './00-tokens/icons/close-icon';
-export { default as FacebookIcon } from './00-tokens/icons/facebook-icon';
-export { default as LinkedInIcon } from './00-tokens/icons/linkedin-icon';
-export { default as MenuIcon } from './00-tokens/icons/menu-icon';
-export { default as TwitterIcon } from './00-tokens/icons/twitter-icon';
+export * from './00-tokens/icons';
 export {
   default as Button,
   type ButtonProps,

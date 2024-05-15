@@ -1,7 +1,6 @@
 import { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { cn } from '../../../utils/tailwind-merge';
-import ArrowRightIcon from '../../00-tokens/icons/arrow-right-icon';
-import ChevronDownIcon from '../../00-tokens/icons/chevron-down-icon';
+import { ArrowRightIcon, ChevronDownIcon } from '../../00-tokens/icons';
 import Link from '../../01-elements/link/link';
 import Typography from '../../01-elements/typography/typography';
 

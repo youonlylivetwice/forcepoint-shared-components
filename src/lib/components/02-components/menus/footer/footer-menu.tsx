@@ -1,6 +1,6 @@
 import { ElementType, useState } from 'react';
 import { cn } from '../../../../utils/tailwind-merge';
-import ArrowBottomIcon from '../../../00-tokens/icons/arrow-bottom-icon';
+import { ArrowBottomIcon } from '../../../00-tokens/icons';
 import Link from '../../../01-elements/link/link';
 import { SecondaryMenuItemProps } from '../secondary-menu/secondary-menu';
 
