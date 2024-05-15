@@ -17,7 +17,7 @@
   ],
   "scripts": {
     "prepare": "rm -rf dist && npm run build",
-    "predev": "rm -rf src/lib/components/00-tokens/icons/* && npm run create-icons && npm run create-icons-story",
+    "predev": "npm run create-icons",
     "dev": "run-p watch-typescript storybook",
     "prebuild": "rm -rf src/lib/components/00-tokens/icons/* && npm run create-icons && npm run create-icons-story",
     "build": "tsc && vite build",
@@ -27,8 +27,7 @@
     "prettier": "prettier --write \"src/**/*.{ts,tsx,js,jsx}\"",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "create-icons": "node scripts/create-icons.mjs",
-    "create-icons-story": "node scripts/create-icons-story.mjs"
+    "create-icons": "node scripts/create-icons.mjs"
   },
   "dependencies": {
     "@storybook/addon-a11y": "^8.0.9",

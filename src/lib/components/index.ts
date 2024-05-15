@@ -1,6 +1,4 @@
-export { default as ArrowRightIcon } from './00-tokens/icons/arrow-right-icon';
-export { default as CloseIcon } from './00-tokens/icons/close-icon';
-export { default as MenuIcon } from './00-tokens/icons/menu-icon';
+export * from './00-tokens/icons';
 export {
   default as Button,
   type ButtonProps,
@@ -11,6 +9,18 @@ export {
   default as Typography,
   type TypographyProps,
 } from './01-elements/typography/typography';
+export {
+  default as FlyoutBanner,
+  type FlyoutBannerDateRange,
+  type FlyoutBannerLocation,
+  type FlyoutBannerProps,
+} from './02-components/banners/flyout/flyout-banner';
+export {
+  default as MastheadBanner,
+  type BannerBackgroundColor,
+  type BannerLinkProps,
+  type MastheadBannerProps,
+} from './02-components/banners/masthead/masthead-banner';
 export {
   default as Branding,
   type BrandingProps,
@@ -28,9 +38,9 @@ export {
 } from './02-components/callout/callout';
 export {
   default as CTA,
+  type CtaLinkDetails,
   type CtaProps,
   type CtaTheme,
-  type CtaLinkDetails,
 } from './02-components/cta/cta';
 export {
   default as FeaturedResourceCard,
@@ -103,18 +113,7 @@ export {
   type ContentSliderProps,
 } from './02-components/slider/content-slider';
 export {
-  default as MastheadBanner,
-  type MastheadBannerProps,
-  type BannerBackgroundColor,
-  type BannerLinkProps,
-} from './02-components/banners/masthead/masthead-banner';
-export {
-  default as FlyoutBanner,
-  type FlyoutBannerProps,
-  type FlyoutBannerDateRange,
-  type FlyoutBannerLocation,
-} from './02-components/banners/flyout/flyout-banner';
-export { default as StickyHeader,
+  default as StickyHeader,
   type HeaderCta,
   type StickyHeaderProps,
 } from './02-components/sticky-header/sticky-header';

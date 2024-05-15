@@ -1,8 +1,8 @@
 import { CSSProperties, ElementType } from 'react';
+import { cn } from '../../../../utils/tailwind-merge';
+import { ArrowRightIcon } from '../../../00-tokens/icons';
 import Link from '../../../01-elements/link/link';
 import Typography from '../../../01-elements/typography/typography';
-import ArrowRightIcon from '../../../00-tokens/icons/arrow-right-icon';
-import { cn } from '../../../../utils/tailwind-merge';
 
 export type Card380Props = {
   bgColor?: string;

@@ -1,7 +1,6 @@
 import { ReactNode } from 'react';
 import { cn } from '../../../../utils/tailwind-merge';
-import BackIcon from '../../../00-tokens/icons/back-icon';
-import CloseIcon from '../../../00-tokens/icons/close-icon';
+import { BackIcon, CloseIcon } from '../../../00-tokens/icons';
 
 export type MenuModalProps = {
   children: ReactNode;

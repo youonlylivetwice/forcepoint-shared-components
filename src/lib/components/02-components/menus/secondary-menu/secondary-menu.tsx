@@ -1,10 +1,6 @@
 import { ElementType, useEffect, useState } from 'react';
 import { cn } from '../../../../utils/tailwind-merge';
-import ArrowBottomIcon from '../../../00-tokens/icons/arrow-bottom-icon';
-import ArrowExitIcon from '../../../00-tokens/icons/arrow-exit-icon';
-import BackIcon from '../../../00-tokens/icons/back-icon';
-import CloseIcon from '../../../00-tokens/icons/close-icon';
-import GlobeIcon from '../../../00-tokens/icons/globe-icon';
+import { ArrowBottomIcon, ArrowExitIcon, BackIcon, CloseIcon, GlobeIcon } from '../../../00-tokens/icons';
 import Link from '../../../01-elements/link/link';
 import Typography from '../../../01-elements/typography/typography';
 

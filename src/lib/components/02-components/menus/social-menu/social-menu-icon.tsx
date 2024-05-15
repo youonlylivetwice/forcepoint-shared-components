@@ -1,8 +1,4 @@
-import FacebookIcon from '../../../00-tokens/icons/facebook-icon';
-import LinkedinIcon from '../../../00-tokens/icons/linkedin-icon';
-import RssIcon from '../../../00-tokens/icons/rss-icon';
-import TwitterIcon from '../../../00-tokens/icons/twitter-icon';
-import YoutubeIcon from '../../../00-tokens/icons/youtube-icon';
+import { FacebookIcon, LinkedinIcon, RssIcon, TwitterIcon, YoutubeIcon } from '../../../00-tokens/icons';
 
 export type SocialMenuIconProps = {
   icon: 'facebook' | 'linkedin' | 'twitter' | 'rss' | 'youtube';

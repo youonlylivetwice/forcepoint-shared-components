@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { cn } from '../../../../utils/tailwind-merge';
-import CloseIcon from '../../../00-tokens/icons/close-icon';
-import MenuIcon from '../../../00-tokens/icons/menu-icon';
+import { CloseIcon, MenuIcon } from '../../../00-tokens/icons';
 import Branding from '../../branding/branding';
 import MainMenu, { MainMenuItemProps, MainMenuProps } from './main-menu';
 

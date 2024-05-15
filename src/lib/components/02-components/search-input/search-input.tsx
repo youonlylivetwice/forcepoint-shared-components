@@ -1,8 +1,6 @@
 import { FormEvent, FormHTMLAttributes, KeyboardEvent, useState } from 'react';
 import { cn } from '../../../utils/tailwind-merge';
-import ArrowRightIcon from '../../00-tokens/icons/arrow-right-icon.tsx';
-import CloseThickIcon from '../../00-tokens/icons/close-thick-icon.tsx';
-import SearchThickIcon from '../../00-tokens/icons/search-thick-icon.tsx';
+import { ArrowRightIcon, CloseThickIcon, SearchThickIcon } from '../../00-tokens/icons';
 
 export type SearchProps = FormHTMLAttributes<HTMLFormElement> & {
   isSearchOpen: boolean;

@@ -1,6 +1,6 @@
 import { ElementType } from 'react';
 import { cn } from '../../../../../utils/tailwind-merge';
-import ChevronRightIcon from '../../../../00-tokens/icons/chevron-right-icon';
+import { ChevronRightIcon } from '../../../../00-tokens/icons';
 import Link from '../../../../01-elements/link/link';
 import { MenuItemImageProps } from '../../main-menu/main-menu';
 

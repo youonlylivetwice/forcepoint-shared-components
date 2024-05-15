@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef, ElementType } from 'react';
 import useMediaQuery from '../../../hooks/use-media-query';
 import { cn } from '../../../utils/tailwind-merge';
-import ChevronLeftIcon from '../../00-tokens/icons/chevron-left-icon';
+import { ChevronLeftIcon } from '../../00-tokens/icons';
 
 export interface BreadcrumbProps extends ComponentPropsWithoutRef<'nav'> {
   separator?: string;
