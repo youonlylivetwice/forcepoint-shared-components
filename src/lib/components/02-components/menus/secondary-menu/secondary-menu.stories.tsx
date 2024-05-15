@@ -1,13 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import CloseIcon from '../../../00-tokens/icons/close-icon';
-import MenuIcon from '../../../00-tokens/icons/menu-icon';
+import { cn } from '../../../../utils/tailwind-merge';
+import { CloseIcon, MenuIcon } from '../../../00-tokens/icons';
+import Branding from '../../branding/branding';
 import SecondaryMenu, {
   SecondaryMenuItemProps,
   SecondaryMenuProps,
 } from './secondary-menu';
-import Branding from '../../branding/branding';
-import { cn } from '../../../../utils/tailwind-merge';
 
 const menuItems: SecondaryMenuItemProps[] = [
   {

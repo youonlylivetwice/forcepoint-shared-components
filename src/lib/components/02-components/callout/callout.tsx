@@ -1,6 +1,6 @@
 import { ElementType, ReactNode } from 'react';
 import { cn } from '../../../utils/tailwind-merge';
-import ArrowRightIcon from '../../00-tokens/icons/arrow-right-icon';
+import { ArrowRightIcon } from '../../00-tokens/icons';
 import Button from '../../01-elements/button/button';
 import Typography from '../../01-elements/typography/typography';
 

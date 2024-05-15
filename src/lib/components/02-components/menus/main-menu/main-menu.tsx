@@ -1,8 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import { CSSProperties, ElementType, MouseEvent, useState } from 'react';
 import { cn } from '../../../../utils/tailwind-merge';
-import ArrowRightIcon from '../../../00-tokens/icons/arrow-right-icon';
-import ChevronRightIcon from '../../../00-tokens/icons/chevron-right-icon';
+import { ArrowRightIcon, ChevronRightIcon } from '../../../00-tokens/icons';
 import Button from '../../../01-elements/button/button';
 import Link, { LinkProps } from '../../../01-elements/link/link';
 import Typography from '../../../01-elements/typography/typography';
