@@ -1,4 +1,4 @@
-import ArrowRightIcon from '../../00-tokens/icons/arrow-right-icon';
+import { ArrowRightIcon } from '../../00-tokens/icons';
 import Link from '../../01-elements/link/link';
 import TableColumn from './table-column';
 import TableRow from './table-row';

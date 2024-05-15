@@ -1,9 +1,8 @@
-import { cn } from '../../../../utils/tailwind-merge';
 import { ElementType } from 'react';
-import { MenuItemImageProps } from '../../menus/main-menu/main-menu';
-import ArrowRightIcon from '../../../00-tokens/icons/arrow-right-icon';
-import ChevronRightIcon from '../../../00-tokens/icons/chevron-right-icon';
+import { cn } from '../../../../utils/tailwind-merge';
+import { ArrowRightIcon, ChevronRightIcon } from '../../../00-tokens/icons';
 import Link from '../../../01-elements/link/link';
+import { MenuItemImageProps } from '../../menus/main-menu/main-menu';
 
 export type CardNavHighlightProps = {
   className?: string;

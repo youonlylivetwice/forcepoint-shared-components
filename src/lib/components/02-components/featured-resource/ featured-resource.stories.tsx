@@ -1,7 +1,6 @@
-import DownloadIcon from '../../00-tokens/icons/download-icon';
+import { DownloadIcon, PlayIcon } from '../../00-tokens/icons';
 import FeaturedResourceCard from './featured-resource--card';
 import FeaturedResourceListItem from './featured-resource--list-item';
-import PlayIcon from '../../00-tokens/icons/play-icon';
 
 /**
  * Storybook Definition.

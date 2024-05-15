@@ -1,7 +1,6 @@
 import { ElementType } from 'react';
 import { cn } from '../../../../utils/tailwind-merge';
-import ArrowRightIcon from '../../../00-tokens/icons/arrow-right-icon';
-import CloseIcon from '../../../00-tokens/icons/close-icon';
+import { ArrowRightIcon, CloseIcon } from '../../../00-tokens/icons';
 import Link from '../../../01-elements/link/link';
 import Typography from '../../../01-elements/typography/typography';
 

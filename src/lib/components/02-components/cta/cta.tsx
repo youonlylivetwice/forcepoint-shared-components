@@ -1,6 +1,6 @@
-import { cn } from '../../../utils/tailwind-merge';
 import { CSSProperties, ComponentPropsWithoutRef, ElementType } from 'react';
-import ArrowRightIcon from '../../00-tokens/icons/arrow-right-icon';
+import { cn } from '../../../utils/tailwind-merge';
+import { ArrowRightIcon } from '../../00-tokens/icons';
 import Button, { ButtonColorVariant } from '../../01-elements/button/button';
 import Typography from '../../01-elements/typography/typography';
 

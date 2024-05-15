@@ -1,6 +1,6 @@
 import { ElementType, ReactNode } from 'react';
 import { cn } from '../../../utils/tailwind-merge';
-import CircleCheckmarkIcon from '../../00-tokens/icons/circle-checkmark-icon';
+import { CircleCheckmarkIcon } from '../../00-tokens/icons';
 import Link from '../../01-elements/link/link';
 
 export type ListItemStyleType = 'none' | 'checkmark' | 'icon';
