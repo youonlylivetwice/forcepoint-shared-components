@@ -114,7 +114,6 @@ export {
 } from './02-components/slider/content-slider';
 export {
   default as StickyHeader,
-  default as StickyHeader,
   type HeaderCta,
   type StickyHeaderProps,
 } from './02-components/sticky-header/sticky-header';
