@@ -43,8 +43,6 @@ export default function SiteSearch({
 }: SiteSearchProps) {
   const selectInlineStyles: CSSProperties = {
     backgroundImage: `url(${ChevronDownSvgIcon})`,
-    // backgroundPosition: 'right 20px center',
-    backgroundRepeat: 'no-repeat',
   };
   return (
     <form
