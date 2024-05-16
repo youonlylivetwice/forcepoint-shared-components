@@ -31,8 +31,7 @@ export default function ContentSlideItem({
         className={cn(
           'relative my-4 h-1 w-full bg-brumosa',
           active ? 'visible' : 'hidden',
-        )}
-      >
+        )}>
         {!isMouseOver && (
           <div className="t-0 l-0 absolute h-1 animate-[progress-bar_10000ms_ease-in-out_1] bg-teal" />
         )}
@@ -44,11 +43,10 @@ export default function ContentSlideItem({
             'mt-0 border-none pt-0': active,
           },
         )}
-        onClick={(evt) => onClick && onClick(evt)}
-      >
+        onClick={(evt) => onClick && onClick(evt)}>
         <ChevronDownIcon
           className={cn(
-            active ? 'rotate-180 stroke-teal' : 'stroke-grey',
+            active ? 'rotate-180 text-teal' : 'text-grey',
             'transition-all',
           )}
         />
@@ -64,8 +62,7 @@ export default function ContentSlideItem({
               : active
                 ? 'text-white'
                 : 'text-brumosa',
-          )}
-        >
+          )}>
           {title}
         </Typography>
       </button>
@@ -74,8 +71,7 @@ export default function ContentSlideItem({
         className={cn(
           { 'text-azure': theme === 'dark' },
           active ? 'visible' : 'hidden',
-        )}
-      >
+        )}>
         <div className="py-5 sm:hidden">{img}</div>
 
         <div>{children}</div>
@@ -86,8 +82,7 @@ export default function ContentSlideItem({
               color={theme === 'dark' ? 'sandwisp' : 'blue'}
               endIcon={<ArrowRightIcon />}
               animated
-              className="py-4 text-[19px]"
-            >
+              className="py-4 text-[19px]">
               {cta}
             </Link>
           </div>

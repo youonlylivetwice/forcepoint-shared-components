@@ -55,6 +55,10 @@ export {
   type HubspotFormWrapperProps,
 } from './02-components/form/hubspot-form-wrapper';
 export {
+  default as SiteSearch,
+  type SiteSearchProps,
+} from './02-components/form/site-search/site-search';
+export {
   default as ListItem,
   type ListItemProps,
   type ListItemStyleType,
@@ -100,6 +104,7 @@ export {
   type SocialMenuItem,
   type SocialMenuProps,
 } from './02-components/menus/social-menu/social-menu';
+export { default as Pager, type PagerProps } from './02-components/pager/pager';
 export {
   default as SearchInput,
   type SearchProps,

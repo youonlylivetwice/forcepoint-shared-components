@@ -6,40 +6,7 @@ import Button, { ButtonProps } from './button';
 const meta = {
   title: 'Elements/Button',
   component: Button,
-  argTypes: {
-    size: {
-      options: ['small', 'medium', 'large'],
-      control: { type: 'select' },
-    },
-    color: {
-      options: [
-        'blue',
-        'navy',
-        'sandwisp (dark background)',
-        'viola',
-        'white (dark background)',
-      ],
-      control: { type: 'select' },
-    },
-    variant: {
-      options: ['solid', 'outline'],
-      control: { type: 'select' },
-    },
-    as: {
-      options: ['button', 'link'],
-      control: { type: 'select' },
-    },
-    endIcon: {
-      table: {
-        disable: true,
-      },
-    },
-    children: {
-      table: {
-        disable: true,
-      },
-    },
-  },
+  tags: ['autodocs'],
 } satisfies Meta<typeof Button>;
 
 export default meta;
