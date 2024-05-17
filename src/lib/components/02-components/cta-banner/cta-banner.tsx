@@ -1,6 +1,10 @@
-import { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react';
+import {
+  CSSProperties,
+  ComponentPropsWithoutRef,
+  ElementType,
+  ReactNode,
+} from 'react';
 import { cn } from '../../../utils/tailwind-merge';
-import { ArrowRightIcon } from '../../00-tokens/icons';
 import Button, { ButtonColorVariant } from '../../01-elements/button/button';
 import Typography from '../../01-elements/typography/typography';
 
@@ -9,10 +13,10 @@ export interface CtaBannerProps extends ComponentPropsWithoutRef<'div'> {
   title?: string;
   renderedTitleComponent?: ReactNode;
   primaryButton?: CtaButtonDetails;
-  secondaryButton?: CtaButtonDetails;
   buttonComponent?: ElementType;
   image?: CtaBannerImageDetails;
   renderedImageComponent?: ReactNode;
+  backgroundImage?: CtaBannerImageDetails;
   imageComponent?: ElementType;
   theme: CtaBannerTheme;
 }
@@ -31,7 +35,7 @@ export type CtaBannerImageDetails = {
 
 export type CtaBannerTheme = 'azure' | 'black' | 'violette' | 'navy';
 
-export type CtaBannerColorSchema = {
+type CtaBannerColorSchema = {
   button: ButtonColorVariant;
   eyebrow: string;
   title: string;
@@ -41,7 +45,7 @@ export type CtaBannerColorSchema = {
 const colorSchema: { [key in CtaBannerTheme]: CtaBannerColorSchema } = {
   azure: {
     button: 'blue',
-    eyebrow: 'violette',
+    eyebrow: 'text-violette',
     title: 'text-navy',
     wrapper: 'bg-azure',
   },
@@ -70,10 +74,10 @@ export default function CtaBanner({
   title,
   renderedTitleComponent,
   primaryButton,
-  secondaryButton,
   buttonComponent: ButtonElement = 'a',
   image,
   renderedImageComponent,
+  backgroundImage,
   imageComponent: ImageElement = 'img',
   theme,
   className,
@@ -92,23 +96,9 @@ export default function CtaBanner({
       as="link"
       href={primaryButton.url}
       component={ButtonElement}
-      endIcon={<ArrowRightIcon />}
       color={colorSchema[theme].button}
-      className="mt-md w-full justify-center md:w-fit">
+      className="mt-md w-full justify-center md:ml-10 md:mt-0 lg:w-60">
       {primaryButton.title}
-    </Button>
-  );
-
-  const renderedSecondaryButton = secondaryButton && (
-    <Button
-      animated
-      as="link"
-      href={secondaryButton.url}
-      component={ButtonElement}
-      endIcon={<ArrowRightIcon />}
-      color={colorSchema[theme].button}
-      className="mt-md w-full justify-center md:w-fit">
-      {secondaryButton.title}
     </Button>
   );
 
@@ -124,27 +114,38 @@ export default function CtaBanner({
     />
   ) : null;
 
+  const bgImageStyles: CSSProperties = {};
+  if (backgroundImage) {
+    bgImageStyles.backgroundImage = `url(${backgroundImage.src})`;
+  }
+
   return (
-    <div className={cn(className, colorSchema[theme].wrapper)}>
+    <div
+      style={bgImageStyles}
+      className={cn(
+        'flex w-full flex-col bg-cover bg-center p-10 md:flex-row',
+        colorSchema[theme].wrapper,
+        className,
+      )}>
       {renderedImage && (
-        <div className="h-24 w-full md:h-[160px]">{renderedImage}</div>
+        <div className="mb-5 h-[160px] w-auto md:mb-0 md:mr-10">
+          {renderedImage}
+        </div>
       )}
-      <div>
+      <div className="flex flex-col md:flex-row md:items-center">
         <div>
           {eyebrow && (
-            <Typography className={colorSchema[theme].eyebrow} variant="h5">
+            <span
+              className={cn(
+                'mb-3 block text-h5 font-semibold uppercase',
+                colorSchema[theme].eyebrow,
+              )}>
               {eyebrow}
-            </Typography>
+            </span>
           )}
           {renderedTitle}
         </div>
-        {renderedPrimaryButton ||
-          (renderedSecondaryButton && (
-            <div>
-              {renderedPrimaryButton}
-              {renderedSecondaryButton}
-            </div>
-          ))}
+        {renderedPrimaryButton}
       </div>
     </div>
   );
