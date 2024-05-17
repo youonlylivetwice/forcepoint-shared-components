@@ -132,3 +132,10 @@ export {
   type TableRowProps,
 } from './02-components/table/table-row';
 export { default as Table } from './02-components/table/table-wrapper';
+export {
+  default as CtaBanner,
+  type CtaBannerProps,
+  type CtaBannerTheme,
+  type CtaButtonDetails,
+  type CtaBannerImageDetails,
+} from './02-components/cta-banner/cta-banner';
