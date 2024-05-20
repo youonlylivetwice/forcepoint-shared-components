@@ -4,7 +4,6 @@ import { cn } from '../../../utils/tailwind-merge';
 import { ChevronLeftIcon } from '../../00-tokens/icons';
 
 export interface BreadcrumbProps extends ComponentPropsWithoutRef<'nav'> {
-  separator?: string;
   ariaLabel?: string;
   bgColor?: 'azure' | 'navy';
   linkComponent?: ElementType;
@@ -16,7 +15,6 @@ export interface BreadcrumbProps extends ComponentPropsWithoutRef<'nav'> {
 }
 
 export default function Breadcrumb({
-  separator = ':',
   bgColor = 'azure',
   ariaLabel = 'Breadcrumb',
   linkComponent: LinkComponent = 'a',
@@ -59,19 +57,18 @@ export default function Breadcrumb({
   );
 
   const renderedDesktopItems = links?.map((link, index) => {
-    let renderedLabel = `${link.label}${separator}`;
     let currentPage = false;
-    // Remove separator from last item.
     if (index === links.length - 1) {
-      renderedLabel = `${link.label}`;
       currentPage = true;
     }
     return (
       <li
         key={`${index}-${link.label}`}
-        className={cn('last:font-medium', {
+        className={cn({
           'hover:text-blue': bgColor === 'azure',
           'hover:text-sandwisp': bgColor === 'navy',
+          'font-medium': currentPage,
+          'after:content-[":"]': !currentPage
         })}
       >
         <LinkComponent
@@ -79,7 +76,7 @@ export default function Breadcrumb({
           href={link.url}
           aria-current={currentPage ? 'page' : null}
         >
-          {renderedLabel}
+          {link.label}
         </LinkComponent>
       </li>
     );

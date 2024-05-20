@@ -9,6 +9,7 @@ export interface PagerProps extends ComponentPropsWithoutRef<'nav'> {
   previousLabel?: string;
   nextLabel?: string;
   currentPageLabel?: string;
+  linkAttributes?: Record<string, any>;
 }
 
 export default function Pager({
@@ -20,6 +21,7 @@ export default function Pager({
   currentPageLabel = 'of',
   component: Element = 'a',
   totalPages,
+  linkAttributes,
   ...props
 }: PagerProps) {
   function createPageURL(page: number) {
@@ -41,7 +43,8 @@ export default function Pager({
         component={Element}
         as="link"
         color="blue"
-        href={createPageURL(currentPage - 1)}>
+        href={createPageURL(currentPage - 1)}
+        {...linkAttributes}>
         {previousLabel}
       </Button>
     </li>
@@ -58,7 +61,8 @@ export default function Pager({
         component={Element}
         as="link"
         color="blue"
-        href={createPageURL(currentPage + 1)}>
+        href={createPageURL(currentPage + 1)}
+        {...linkAttributes}>
         {nextLabel}
       </Button>
     </li>
