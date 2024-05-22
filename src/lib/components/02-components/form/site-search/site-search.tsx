@@ -43,8 +43,6 @@ export default function SiteSearch({
 }: SiteSearchProps) {
   const selectInlineStyles: CSSProperties = {
     backgroundImage: `url(${ChevronDownSvgIcon})`,
-    backgroundPosition: 'right 20px center',
-    backgroundRepeat: 'no-repeat',
   };
   return (
     <form
@@ -67,7 +65,7 @@ export default function SiteSearch({
           id={inputName}
           name={inputName}
           type="search"
-          className="block w-full rounded-m border border-brumosa px-5 py-3 text-grey outline-none focus:border-teal"
+          className="block w-full rounded-m border border-brumosa px-5 py-3 text-body-2 text-grey outline-none focus:border-teal"
           placeholder={inputPlaceholder ?? undefined}
           onChange={onChangeInput}
           value={inputValue}
@@ -81,7 +79,7 @@ export default function SiteSearch({
             {selectLabel}
           </label>
           <select
-            className="block w-full appearance-none rounded-m border border-brumosa px-5 py-3 text-grey outline-none focus:rounded-m focus:border-teal"
+            className="block w-full appearance-none rounded-m border border-brumosa bg-[right_20px_center] bg-no-repeat px-5 py-3 text-body-2 text-grey outline-none focus:rounded-m focus:border-teal rtl:bg-[left_20px_center]"
             style={selectInlineStyles}
             name={selectName}
             id={selectName}
@@ -97,7 +95,7 @@ export default function SiteSearch({
       )}
       <div className="sm:self-end">
         <Button
-          className="jus w-full justify-center py-4 sm:w-auto"
+          className="w-full justify-center py-4 text-h4 leading-none sm:w-auto"
           animated
           type="submit"
           as="button"

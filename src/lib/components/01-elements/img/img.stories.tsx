@@ -4,20 +4,6 @@ import Img from './img';
 const meta = {
   title: 'Elements/Image',
   component: Img,
-  argTypes: {
-    alt: {
-      control: { type: 'text' },
-    },
-    src: {
-      control: { type: 'text' },
-    },
-    description: {
-      control: { type: 'text' },
-    },
-    bgColor: {
-      control: { type: 'select', options: ['dark', 'light'] },
-    },
-  },
 } satisfies Meta<typeof Img>;
 
 export default meta;

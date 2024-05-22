@@ -1,14 +1,14 @@
-import { ReactNode } from 'react';
+import { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { cn } from '../../../utils/tailwind-merge';
 import Typography from '../typography/typography';
 
-export type ImgProps = {
+export interface ImgProps extends ComponentPropsWithoutRef<'figure'> {
   src?: string;
   alt?: string;
-  description?: string;
+  description?: string | ReactNode;
   bgColor?: 'dark' | 'light';
   renderedImageComponent?: ReactNode;
-};
+}
 
 export default function Img({
   src,
@@ -16,6 +16,7 @@ export default function Img({
   description,
   bgColor = 'light',
   renderedImageComponent,
+  ...props
 }: ImgProps) {
   const renderedImage = renderedImageComponent ? (
     renderedImageComponent
@@ -24,18 +25,16 @@ export default function Img({
   ) : null;
 
   const renderedCaption = description && (
-    <figcaption>
-      <Typography
-        variant="body-4"
-        className={cn(bgColor === 'dark' ? 'text-azure' : 'text-black')}
-      >
-        {description}
-      </Typography>
-    </figcaption>
+    <Typography
+      component="figcaption"
+      variant="body-4"
+      className={cn(bgColor === 'dark' ? 'text-azure' : 'text-black')}>
+      {description}
+    </Typography>
   );
 
   return (
-    <figure className="relative">
+    <figure {...props}>
       {renderedImage}
       {renderedCaption}
     </figure>
