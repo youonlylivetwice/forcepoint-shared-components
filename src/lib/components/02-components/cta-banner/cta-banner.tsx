@@ -133,7 +133,7 @@ export default function CtaBanner({
             renderedImage === null,
         })}>
         {renderedImage && (
-          <div className="relative mb-5 aspect-[16/9] w-auto md:mb-0 md:mr-10 md:aspect-[1/1] md:w-[480px]">
+          <div className="relative mb-5 aspect-[16/9] w-auto md:mb-0 md:mr-10 md:aspect-[1/1] md:w-[350px]">
             {renderedImage}
           </div>
         )}
