@@ -60,6 +60,8 @@ export type MainMenuItemProps = {
   title: string;
   url?: string;
   width?: MenuItemWidth;
+  component?: ElementType;
+  modalId?: string;
 };
 
 export type MainMenuProps = {
@@ -244,8 +246,7 @@ export default function MainMenu({
             component={LinkComponent}
             endIcon={<ChevronRightIcon />}
             className="my-0 font-medium hover:text-black lg:mb-0"
-            onClick={onCloseMainMenu}
-          >
+            onClick={onCloseMainMenu}>
             {item.title}
           </Link>
         );
@@ -270,11 +271,11 @@ export default function MainMenu({
           <Button
             as="link"
             href={item.url}
-            component={LinkComponent}
+            component={item.component ?? LinkComponent}
+            modalId={item.modalId}
             className="flex w-full justify-center bg-[radial-gradient(circle,#0360d5_0,#023e8a_100%)] text-center hover:bg-[radial-gradient(circle,#0249a3_0,#023e8a_100%)] lg:w-fit"
             onClick={onCloseMainMenu}
-            endIcon={<ArrowRightIcon />}
-          >
+            endIcon={<ArrowRightIcon />}>
             {item.title}
           </Button>
         );
@@ -289,8 +290,7 @@ export default function MainMenu({
             component={LinkComponent}
             endIcon={<ArrowRightIcon />}
             className="max-lg:w-full max-lg:text-center lg:block lg:pt-sm"
-            onClick={onCloseMainMenu}
-          >
+            onClick={onCloseMainMenu}>
             {item.title}
           </Link>
         );
@@ -315,8 +315,7 @@ export default function MainMenu({
           <Typography
             variant="h6"
             component="span"
-            className="block font-semibold uppercase text-violette"
-          >
+            className="block font-semibold uppercase text-violette">
             {item.title}
           </Typography>
         );
@@ -371,8 +370,7 @@ export default function MainMenu({
           id={`main-submenu-${index}`}
           handlerCloseMenu={handlerCloseMenu}
           handlerCloseSubMenu={() => handlerOpenSubmenu(-1)}
-          className="left-0 w-full lg:w-auto lg:rtl:left-auto lg:rtl:right-0"
-        >
+          className="left-0 w-full lg:w-auto lg:rtl:left-auto lg:rtl:right-0">
           <div className="h-full bg-white lg:overflow-hidden lg:rounded-b-m lg:shadow-md">
             {renderedItems}
           </div>
@@ -423,8 +421,7 @@ export default function MainMenu({
         onMouseOut={() => {
           if (depth === 0) handleOnMouseOut(item);
         }}
-        style={menuItemStyles}
-      >
+        style={menuItemStyles}>
         {renderMenuItemComponent(item, index)}
         {item.below && renderSubMenuContainer(item, index, depth)}
       </li>
@@ -435,16 +432,14 @@ export default function MainMenu({
     <nav className="main-menu relative lg:px-lg" aria-label={menuLabel}>
       <ul
         className="flex flex-col gap-x-md divide-y divide-brumosa lg:flex-row lg:items-center lg:divide-y-0"
-        onKeyDown={handleKeyDown}
-      >
+        onKeyDown={handleKeyDown}>
         {items.map((item: MainMenuItemProps, index: number) =>
           renderItem(item, index),
         )}
       </ul>
       <span
         className="nav-highlight transition-left transition-height height-0 pointer-events-none absolute bottom-[-2px] z-10 bg-blue duration-300"
-        aria-hidden
-      ></span>
+        aria-hidden></span>
     </nav>
   );
 }
