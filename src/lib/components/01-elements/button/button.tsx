@@ -16,9 +16,15 @@ type DefaultProps = {
   size?: 'small' | 'medium' | 'large';
   startIcon?: ReactNode;
   variant?: 'solid' | 'outline';
+  modalId?: string;
 };
 
-export type ButtonColorVariant = 'blue' | 'navy' | 'sandwisp' | 'viola' | 'white';
+export type ButtonColorVariant =
+  | 'blue'
+  | 'navy'
+  | 'sandwisp'
+  | 'viola'
+  | 'white';
 
 export type ButtonProps = DefaultProps &
   (
@@ -81,8 +87,7 @@ export default function Button({
           'group-hover:translate-x-[0.25rem] rtl:group-hover:translate-x-[-0.25rem]':
             animated,
         },
-      )}
-    >
+      )}>
       {icon}
     </div>
   );
