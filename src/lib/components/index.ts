@@ -139,3 +139,7 @@ export {
   type CtaButtonDetails,
   type CtaBannerImageDetails,
 } from './02-components/cta-banner/cta-banner';
+export {
+  default as SocialShare,
+  type SocialShareProps,
+} from './02-components/social-share/social-share';
