@@ -35,6 +35,7 @@ export {
   type CalloutImageDetails,
   type CalloutLinkDetails,
   type CalloutProps,
+  colorSchema,
 } from './02-components/callout/callout';
 export {
   default as CTA,
