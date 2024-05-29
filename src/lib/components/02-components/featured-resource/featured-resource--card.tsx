@@ -15,6 +15,7 @@ export type FeaturedResourceCardProps = {
   renderedImageComponent?: ReactNode;
   title?: string;
   url?: string;
+  id?: string;
 };
 
 export default function FeaturedResourceCard({
@@ -23,6 +24,7 @@ export default function FeaturedResourceCard({
   renderedImageComponent,
   title,
   url,
+  id,
 }: FeaturedResourceCardProps) {
   const renderedImage = renderedImageComponent ? (
     renderedImageComponent
@@ -37,7 +39,7 @@ export default function FeaturedResourceCard({
   ) : null;
 
   return (
-    <div className="md:white rounded-m max-md:border-2 max-md:border-azure md:max-w-[480px] md:bg-azure">
+    <div id={id && `featured-resource-card-${id}`} className="md:white rounded-m max-md:border-2 max-md:border-azure md:max-w-[480px] md:bg-azure">
       {renderedImage && (
         <div className="overflow-hidden rounded-m max-md:hidden md:max-h-[240px]">
           {renderedImage}
