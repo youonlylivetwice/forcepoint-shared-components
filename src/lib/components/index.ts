@@ -37,6 +37,13 @@ export {
   type CalloutProps,
 } from './02-components/callout/callout';
 export {
+  default as CtaBanner,
+  type CtaBannerImageDetails,
+  type CtaBannerProps,
+  type CtaBannerTheme,
+  type CtaButtonDetails,
+} from './02-components/cta-banner/cta-banner';
+export {
   default as CTA,
   type CtaLinkDetails,
   type CtaProps,
@@ -54,6 +61,7 @@ export {
   default as HubspotFormWrapper,
   type HubspotFormWrapperProps,
 } from './02-components/form/hubspot-form-wrapper';
+export { default as SalesforceSearch } from './02-components/form/salesforce-search/salesforce-search';
 export {
   default as SiteSearch,
   type SiteSearchProps,
@@ -132,10 +140,3 @@ export {
   type TableRowProps,
 } from './02-components/table/table-row';
 export { default as Table } from './02-components/table/table-wrapper';
-export {
-  default as CtaBanner,
-  type CtaBannerProps,
-  type CtaBannerTheme,
-  type CtaButtonDetails,
-  type CtaBannerImageDetails,
-} from './02-components/cta-banner/cta-banner';
