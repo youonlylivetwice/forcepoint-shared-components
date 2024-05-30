@@ -1,5 +1,6 @@
-import { ReactNode } from 'react';
+import { ComponentPropsWithoutRef, ReactNode } from 'react';
 import ArrowRight from '../../../assets/img/icons/arrow-right.svg?react';
+import { cn } from '../../../utils/tailwind-merge';
 import Button from '../../01-elements/button/button';
 
 export type ResourceImageDetails = {
@@ -9,14 +10,14 @@ export type ResourceImageDetails = {
   width?: string | number;
 };
 
-export type FeaturedResourceCardProps = {
+export interface FeaturedResourceCardProps
+  extends ComponentPropsWithoutRef<'div'> {
   buttonLabel?: string;
   image?: ResourceImageDetails;
   renderedImageComponent?: ReactNode;
   title?: string;
   url?: string;
-  id?: string;
-};
+}
 
 export default function FeaturedResourceCard({
   buttonLabel,
@@ -24,7 +25,8 @@ export default function FeaturedResourceCard({
   renderedImageComponent,
   title,
   url,
-  id,
+  className,
+  ...props
 }: FeaturedResourceCardProps) {
   const renderedImage = renderedImageComponent ? (
     renderedImageComponent
@@ -39,7 +41,12 @@ export default function FeaturedResourceCard({
   ) : null;
 
   return (
-    <div id={id && `featured-resource-card-${id}`} className="md:white rounded-m max-md:border-2 max-md:border-azure md:max-w-[480px] md:bg-azure">
+    <div
+      {...props}
+      className={cn(
+        'md:white rounded-m max-md:border-2 max-md:border-azure md:max-w-[480px] md:bg-azure',
+        className,
+      )}>
       {renderedImage && (
         <div className="overflow-hidden rounded-m max-md:hidden md:max-h-[240px]">
           {renderedImage}
@@ -57,8 +64,7 @@ export default function FeaturedResourceCard({
           href={url}
           endIcon={<ArrowRight />}
           className="justify-center md:w-fit"
-          animated
-        >
+          animated>
           {buttonLabel}
         </Button>
       </div>
