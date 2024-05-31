@@ -78,6 +78,9 @@ export default function SalesforceSearch({
   const selectInlineStyles: CSSProperties = {
     backgroundImage: `url(${ChevronDownSvgIcon})`,
   };
+  const selectStyles =
+    'block w-full appearance-none rounded-m border border-brumosa bg-[right_20px_center] bg-no-repeat px-5 py-3 text-body-2 uppercase text-grey outline-none focus:rounded-m focus:border-teal rtl:bg-[left_20px_center]';
+  const labelStyles = 'mb-sm block text-h4 font-semibold';
   return (
     <form
       onSubmit={onSubmit}
@@ -92,7 +95,7 @@ export default function SalesforceSearch({
       {...props}>
       <div className="mb-md sm:mb-0 sm:max-w-sm sm:grow">
         <label
-          className={cn('mb-sm block text-h4 font-semibold', {
+          className={cn(labelStyles, {
             'text-blue': theme === 'azure',
             'text-azure': theme === 'navy',
           })}
@@ -112,7 +115,7 @@ export default function SalesforceSearch({
       {partnerServicesOptions && (
         <div className="mb-md sm:mb-0 sm:max-w-sm sm:grow">
           <label
-            className={cn('mb-sm block text-h4 font-semibold', {
+            className={cn(labelStyles, {
               'text-blue': theme === 'azure',
               'text-azure': theme === 'navy',
             })}
@@ -120,7 +123,7 @@ export default function SalesforceSearch({
             {partnerServicesSelectLabel}
           </label>
           <select
-            className="block w-full appearance-none rounded-m border border-brumosa bg-[right_20px_center] bg-no-repeat px-5 py-3 text-body-2 uppercase text-grey outline-none focus:rounded-m focus:border-teal rtl:bg-[left_20px_center]"
+            className={selectStyles}
             style={selectInlineStyles}
             name={partnerServicesSelectName}
             id={partnerServicesSelectName}
@@ -137,7 +140,7 @@ export default function SalesforceSearch({
       {stateProvinceOptions && showStatesForCountry === countrySelectValue && (
         <div className="mb-md sm:mb-0 sm:max-w-sm sm:grow">
           <label
-            className={cn('mb-sm block text-h4 font-semibold', {
+            className={cn(labelStyles, {
               'text-blue': theme === 'azure',
               'text-azure': theme === 'navy',
             })}
@@ -145,7 +148,7 @@ export default function SalesforceSearch({
             {stateProvinceSelectLabel}
           </label>
           <select
-            className="block w-full appearance-none rounded-m border border-brumosa bg-[right_20px_center] bg-no-repeat px-5 py-3 text-body-2 uppercase text-grey outline-none focus:rounded-m focus:border-teal rtl:bg-[left_20px_center]"
+            className={selectStyles}
             style={selectInlineStyles}
             name={stateProvinceSelectName}
             id={stateProvinceSelectName}
@@ -162,7 +165,7 @@ export default function SalesforceSearch({
       {countryOptions && (
         <div className="mb-md sm:mb-0 sm:max-w-sm sm:grow">
           <label
-            className={cn('mb-sm block text-h4 font-semibold', {
+            className={cn(labelStyles, {
               'text-blue': theme === 'azure',
               'text-azure': theme === 'navy',
             })}
@@ -170,7 +173,7 @@ export default function SalesforceSearch({
             {countrySelectLabel}
           </label>
           <select
-            className="block w-full appearance-none rounded-m border border-brumosa bg-[right_20px_center] bg-no-repeat px-5 py-3 text-body-2 uppercase text-grey outline-none focus:rounded-m focus:border-teal rtl:bg-[left_20px_center]"
+            className={selectStyles}
             style={selectInlineStyles}
             name={countrySelectName}
             id={countrySelectName}
