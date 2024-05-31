@@ -73,6 +73,7 @@ export default function SalesforceSearch({
   countrySelectOnChange,
   onSubmit,
   className,
+  ...props
 }: SalesforceSearchProps) {
   const selectInlineStyles: CSSProperties = {
     backgroundImage: `url(${ChevronDownSvgIcon})`,
@@ -87,7 +88,8 @@ export default function SalesforceSearch({
           'bg-navy': theme === 'navy',
         },
         className,
-      )}>
+      )}
+      {...props}>
       <div className="mb-md sm:mb-0 sm:max-w-sm sm:grow">
         <label
           className={cn('mb-sm block text-h4 font-semibold', {
@@ -118,7 +120,7 @@ export default function SalesforceSearch({
             {partnerServicesSelectLabel}
           </label>
           <select
-            className="block w-full appearance-none rounded-m border border-brumosa bg-[right_20px_center] bg-no-repeat px-5 py-3 text-body-2 text-grey outline-none focus:rounded-m focus:border-teal rtl:bg-[left_20px_center]"
+            className="block w-full appearance-none rounded-m border border-brumosa bg-[right_20px_center] bg-no-repeat px-5 py-3 text-body-2 uppercase text-grey outline-none focus:rounded-m focus:border-teal rtl:bg-[left_20px_center]"
             style={selectInlineStyles}
             name={partnerServicesSelectName}
             id={partnerServicesSelectName}
@@ -143,7 +145,7 @@ export default function SalesforceSearch({
             {stateProvinceSelectLabel}
           </label>
           <select
-            className="block w-full appearance-none rounded-m border border-brumosa bg-[right_20px_center] bg-no-repeat px-5 py-3 text-body-2 text-grey outline-none focus:rounded-m focus:border-teal rtl:bg-[left_20px_center]"
+            className="block w-full appearance-none rounded-m border border-brumosa bg-[right_20px_center] bg-no-repeat px-5 py-3 text-body-2 uppercase text-grey outline-none focus:rounded-m focus:border-teal rtl:bg-[left_20px_center]"
             style={selectInlineStyles}
             name={stateProvinceSelectName}
             id={stateProvinceSelectName}
@@ -168,7 +170,7 @@ export default function SalesforceSearch({
             {countrySelectLabel}
           </label>
           <select
-            className="block w-full appearance-none rounded-m border border-brumosa bg-[right_20px_center] bg-no-repeat px-5 py-3 text-body-2 text-grey outline-none focus:rounded-m focus:border-teal rtl:bg-[left_20px_center]"
+            className="block w-full appearance-none rounded-m border border-brumosa bg-[right_20px_center] bg-no-repeat px-5 py-3 text-body-2 uppercase text-grey outline-none focus:rounded-m focus:border-teal rtl:bg-[left_20px_center]"
             style={selectInlineStyles}
             name={countrySelectName}
             id={countrySelectName}
