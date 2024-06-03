@@ -126,6 +126,10 @@ export {
   type ContentSliderProps,
 } from './02-components/slider/content-slider';
 export {
+  default as SocialShare,
+  type SocialShareProps,
+} from './02-components/social-share/social-share';
+export {
   default as StickyHeader,
   type HeaderCta,
   type StickyHeaderProps,
