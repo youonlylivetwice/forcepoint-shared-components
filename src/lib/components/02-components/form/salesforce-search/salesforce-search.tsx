@@ -1,9 +1,4 @@
-import {
-  ChangeEventHandler,
-  ComponentPropsWithoutRef,
-  CSSProperties,
-} from 'react';
-import ChevronDownSvgIcon from '../../../../assets/img/icons/chevron-down.svg';
+import { ChangeEventHandler, ComponentPropsWithoutRef } from 'react';
 import { cn } from '../../../../utils/tailwind-merge';
 import { ArrowRightIcon } from '../../../00-tokens/icons';
 import Button from '../../../01-elements/button/button';
@@ -75,11 +70,10 @@ export default function SalesforceSearch({
   className,
   ...props
 }: SalesforceSearchProps) {
-  const selectInlineStyles: CSSProperties = {
-    backgroundImage: `url(${ChevronDownSvgIcon})`,
-  };
+  const selectFieldsWrapperStyles =
+    'mb-md sm:mb-0 sm:max-w-sm sm:grow basis-1/4 after:content-[""] after:bg-[url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgaWQ9ImNoZXZlcm9uX2Rvd24ueHMiPgo8cGF0aCBpZD0iQ2hldnJvbiIgZD0iTTE1IDRMOCAxMUwxIDQiIHN0cm9rZT0iIzUzNTc1QSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9nPgo8L3N2Zz4K)] relative after:h-[16px] after:absolute after:w-[16px] ltr:after:right-[20px] rtl:after:left-[20px] after:bottom-[16px]';
   const selectStyles =
-    'block w-full appearance-none rounded-m border border-brumosa bg-[right_20px_center] bg-no-repeat px-5 py-3 text-body-2 uppercase text-grey outline-none focus:rounded-m focus:border-teal rtl:bg-[left_20px_center]';
+    'block w-full appearance-none rounded-m border border-brumosa ltr:pr-[46px] rtl:pl-[46px] ltr:pl-5 rtl:pr-5 py-3 text-body-2 uppercase text-grey outline-none focus:rounded-m focus:border-teal truncate';
   const labelStyles = 'mb-sm block text-h4 font-semibold';
   return (
     <form
@@ -113,7 +107,7 @@ export default function SalesforceSearch({
         />
       </div>
       {partnerServicesOptions && (
-        <div className="mb-md sm:mb-0 sm:max-w-sm sm:grow">
+        <div className={selectFieldsWrapperStyles}>
           <label
             className={cn(labelStyles, {
               'text-blue': theme === 'azure',
@@ -124,7 +118,6 @@ export default function SalesforceSearch({
           </label>
           <select
             className={selectStyles}
-            style={selectInlineStyles}
             name={partnerServicesSelectName}
             id={partnerServicesSelectName}
             value={partnerServicesSelectValue}
@@ -138,7 +131,7 @@ export default function SalesforceSearch({
         </div>
       )}
       {stateProvinceOptions && showStatesForCountry === countrySelectValue && (
-        <div className="mb-md sm:mb-0 sm:max-w-sm sm:grow">
+        <div className={selectFieldsWrapperStyles}>
           <label
             className={cn(labelStyles, {
               'text-blue': theme === 'azure',
@@ -149,7 +142,6 @@ export default function SalesforceSearch({
           </label>
           <select
             className={selectStyles}
-            style={selectInlineStyles}
             name={stateProvinceSelectName}
             id={stateProvinceSelectName}
             value={stateProvinceSelectValue}
@@ -163,7 +155,7 @@ export default function SalesforceSearch({
         </div>
       )}
       {countryOptions && (
-        <div className="mb-md sm:mb-0 sm:max-w-sm sm:grow">
+        <div className={selectFieldsWrapperStyles}>
           <label
             className={cn(labelStyles, {
               'text-blue': theme === 'azure',
@@ -174,7 +166,6 @@ export default function SalesforceSearch({
           </label>
           <select
             className={selectStyles}
-            style={selectInlineStyles}
             name={countrySelectName}
             id={countrySelectName}
             value={countrySelectValue}
