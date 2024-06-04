@@ -31,12 +31,19 @@ export {
 } from './02-components/breadcrumb/breadcrumb';
 export {
   default as Callout,
+  colorSchema,
   type CalloutColorVariant,
   type CalloutImageDetails,
   type CalloutLinkDetails,
   type CalloutProps,
-  colorSchema,
 } from './02-components/callout/callout';
+export {
+  default as CtaBanner,
+  type CtaBannerImageDetails,
+  type CtaBannerProps,
+  type CtaBannerTheme,
+  type CtaButtonDetails,
+} from './02-components/cta-banner/cta-banner';
 export {
   default as CTA,
   type CtaLinkDetails,
@@ -119,6 +126,10 @@ export {
   type ContentSliderProps,
 } from './02-components/slider/content-slider';
 export {
+  default as SocialShare,
+  type SocialShareProps,
+} from './02-components/social-share/social-share';
+export {
   default as StickyHeader,
   type HeaderCta,
   type StickyHeaderProps,
@@ -133,14 +144,3 @@ export {
   type TableRowProps,
 } from './02-components/table/table-row';
 export { default as Table } from './02-components/table/table-wrapper';
-export {
-  default as CtaBanner,
-  type CtaBannerProps,
-  type CtaBannerTheme,
-  type CtaButtonDetails,
-  type CtaBannerImageDetails,
-} from './02-components/cta-banner/cta-banner';
-export {
-  default as SocialShare,
-  type SocialShareProps,
-} from './02-components/social-share/social-share';
