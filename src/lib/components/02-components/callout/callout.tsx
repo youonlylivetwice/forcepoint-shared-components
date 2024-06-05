@@ -39,7 +39,7 @@ export type CalloutColorSchema = {
   wrapper: string;
 };
 
-const colorSchema: { [key in CalloutColorVariant]: CalloutColorSchema } = {
+export const colorSchema: { [key in CalloutColorVariant]: CalloutColorSchema } = {
   white: {
     button: 'blue',
     content: 'text-grey',

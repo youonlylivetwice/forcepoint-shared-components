@@ -31,6 +31,7 @@ export {
 } from './02-components/breadcrumb/breadcrumb';
 export {
   default as Callout,
+  colorSchema,
   type CalloutColorVariant,
   type CalloutImageDetails,
   type CalloutLinkDetails,
