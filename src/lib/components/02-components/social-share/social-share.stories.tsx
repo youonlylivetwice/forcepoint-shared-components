@@ -17,3 +17,26 @@ export const Default: Story = {
     ariaNavLabel: 'Social media sharing',
   },
 };
+
+export const CustomColor: Story = {
+  args: {
+    url: 'https://www.example.com',
+    title: 'Example Title',
+    shareText: 'Share on',
+    ariaNavLabel: 'Social media sharing',
+    iconColor: 'text-blue',
+    hasBackground: false,
+  },
+};
+
+export const SmallIcon: Story = {
+  args: {
+    url: 'https://www.example.com',
+    title: 'Example Title',
+    shareText: 'Share on',
+    ariaNavLabel: 'Social media sharing',
+    iconColor: 'text-viola',
+    hasBackground: false,
+    useSmallIcons: true,
+  },
+};
