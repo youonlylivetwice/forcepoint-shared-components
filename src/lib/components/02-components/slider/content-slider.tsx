@@ -45,18 +45,16 @@ export default function ContentSlider({
   }, [active, isFocused, sliderItems.length]);
   return (
     <div
-      className={cn('p-lg', {
+      className={cn({
         'bg-black': theme === 'dark',
-      })}
-    >
+      })}>
       {sliderTitle && (
         <Typography
           variant="display"
           component="h2"
           className={cn('mb-4 w-full font-bold', {
             'text-azure': theme === 'dark',
-          })}
-        >
+          })}>
           {sliderTitle}
         </Typography>
       )}
@@ -66,8 +64,7 @@ export default function ContentSlider({
           variant="h3"
           className={cn('mb-4 w-full font-bold', {
             'text-azure': theme === 'dark',
-          })}
-        >
+          })}>
           {sliderSubTitle}
         </Typography>
       )}
@@ -79,8 +76,7 @@ export default function ContentSlider({
               onMouseOver={() => setIsFocused(true)}
               onMouseLeave={() => setIsFocused(false)}
               onFocus={() => setIsFocused(true)}
-              onBlur={() => setIsFocused(false)}
-            >
+              onBlur={() => setIsFocused(false)}>
               <SlideItemComponent
                 {...item}
                 theme={theme}
@@ -94,16 +90,14 @@ export default function ContentSlider({
         <div
           className={cn('hidden overflow-hidden sm:inline', {
             'col-start-1 row-start-1': alignment === 'right',
-          })}
-        >
+          })}>
           {sliderItems.map((item, index) => (
             <div
               key={index}
               className={cn(
                 'relative top-0 h-full w-full transition-[opacity] duration-500 ease-in-out',
                 active !== index ? 'h-0 opacity-0' : 'h-[100%] opacity-100',
-              )}
-            >
+              )}>
               {item.img}
             </div>
           ))}
