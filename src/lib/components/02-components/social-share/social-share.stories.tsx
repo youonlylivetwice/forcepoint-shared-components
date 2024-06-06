@@ -18,7 +18,7 @@ export const Default: Story = {
   },
 };
 
-export const CustomColor: Story = {
+export const CustomColorNoBackground: Story = {
   args: {
     url: 'https://www.example.com',
     title: 'Example Title',
@@ -29,7 +29,7 @@ export const CustomColor: Story = {
   },
 };
 
-export const SmallIcon: Story = {
+export const SmallIconHorizontal: Story = {
   args: {
     url: 'https://www.example.com',
     title: 'Example Title',
@@ -38,5 +38,6 @@ export const SmallIcon: Story = {
     iconColor: 'text-viola',
     hasBackground: false,
     useSmallIcons: true,
+    horizontal: true,
   },
 };

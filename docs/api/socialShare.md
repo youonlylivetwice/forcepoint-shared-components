@@ -21,7 +21,9 @@ The component accepts the following props for configuration:
 | `ariaNavLabel` | `string`  | Sets `ariaNavLabel`. |
 | `hasBackground` | `boolean`  | Default `true`. If `true` will, the icon will have a rounded grey rectangle as a background for each icon. |
 | `iconColor` | `string`  | Default `text-gray`. Sets the color of the icons |
-| `useSmallIcons` | `boolean`  | Default `false`. If true, icons will be set to 16px. |
+| `useSmallIcons` | `boolean`  | Default `false`. If `true`, icons will be set to 16px. |
+| `horizontal` | `boolean`  | Default `false`. If `false`, icons stacks vertically on mobile. |
+
 
 ## Examples
 
@@ -47,5 +49,6 @@ import { SocialShare } from 'forcepoint-shared-components';
   iconColor='text-blue'
   hasBackground={false}
   useSmallIcons={true}
+  horizontal={true}
  />
 ```

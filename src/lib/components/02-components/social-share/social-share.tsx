@@ -10,6 +10,7 @@ export type SocialShareProps = {
   hasBackground?: boolean;
   iconColor?: string;
   useSmallIcons?: boolean;
+  horizontal?: boolean;
 };
 
 function genericSocialShare(url: string, socialNetwork: string) {
@@ -25,6 +26,7 @@ export default function SocialShare({
   iconColor = 'text-grey',
   hasBackground = true,
   useSmallIcons = false,
+  horizontal = false,
 }: SocialShareProps) {
   const iconClass = `${iconColor} ${useSmallIcons ? 'w-[16px] h-[16px]' : 'w-[20px] h-[20px]'}`;
   const socialButtons = [
@@ -50,7 +52,12 @@ export default function SocialShare({
 
   return (
     <nav aria-label={ariaNavLabel} className={className}>
-      <ul className={cn('flex md:flex-col', hasBackground && 'gap-sm')}>
+      <ul
+        className={cn(
+          'flex md:flex-col',
+          hasBackground && 'gap-sm',
+          horizontal && 'flex-row md:flex-row',
+        )}>
         {socialButtons.map(({ platform, shareUrl, icon, ariaLabel }) => (
           <li key={platform}>
             <button
