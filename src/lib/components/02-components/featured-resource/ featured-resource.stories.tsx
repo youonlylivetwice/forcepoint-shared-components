@@ -31,8 +31,7 @@ export const List = () => {
     <div style={listStyles}>
       <div
         className="px-md py-lg md:mx-auto md:max-w-screen-xl"
-        style={listStyles}
-      >
+        style={listStyles}>
         <FeaturedResourceListItem
           url="/"
           eyebrow="eyebrow"
