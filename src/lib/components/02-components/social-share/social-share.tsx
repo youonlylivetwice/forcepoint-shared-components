@@ -54,9 +54,8 @@ export default function SocialShare({
     <nav aria-label={ariaNavLabel} className={className}>
       <ul
         className={cn(
-          'flex md:flex-col',
-          hasBackground && 'gap-sm',
-          horizontal && 'flex-row md:flex-row',
+          'flex gap-sm md:flex-col',
+          horizontal && 'flex-row gap-5 md:flex-row',
         )}>
         {socialButtons.map(({ platform, shareUrl, icon, ariaLabel }) => (
           <li key={platform}>
@@ -65,8 +64,9 @@ export default function SocialShare({
               aria-label={ariaLabel}
               onClick={() => genericSocialShare(shareUrl, ariaLabel)}
               className={cn(
-                'flex h-[40px] w-[40px] items-center justify-center rounded-[10px]  hover:bg-mercury',
-                hasBackground && 'bg-azure',
+                'flex items-center justify-center',
+                hasBackground &&
+                  'h-[40px] w-[40px] rounded-[10px] bg-azure hover:bg-mercury',
               )}>
               {icon}
             </button>

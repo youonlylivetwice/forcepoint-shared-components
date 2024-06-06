@@ -24,8 +24,9 @@ export const CustomColorNoBackground: Story = {
     title: 'Example Title',
     shareText: 'Share on',
     ariaNavLabel: 'Social media sharing',
-    iconColor: 'text-blue',
+    iconColor: 'text-blue hover:text-viola',
     hasBackground: false,
+    horizontal: true,
   },
 };
 
