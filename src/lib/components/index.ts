@@ -119,6 +119,10 @@ export {
   type SearchProps,
 } from './02-components/search-input/search-input';
 export {
+  default as SimpleSearchInput,
+  type SimpleSearchProps,
+} from './02-components/search-input/search-input-simple';
+export {
   default as ContentSlideItem,
   type ContentSlideItemProps,
 } from './02-components/slider/content-slide-item';
