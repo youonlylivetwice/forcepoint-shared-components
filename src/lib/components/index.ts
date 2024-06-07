@@ -62,6 +62,7 @@ export {
   default as HubspotFormWrapper,
   type HubspotFormWrapperProps,
 } from './02-components/form/hubspot-form-wrapper';
+export { default as SalesforceSearch } from './02-components/form/salesforce-search/salesforce-search';
 export {
   default as SiteSearch,
   type SiteSearchProps,
