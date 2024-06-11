@@ -75,7 +75,7 @@ const menuItems: MainMenuItemProps[] = [
             alignment: 'left_align',
             below: [
               {
-                title: 'Forcepoint ONE SSE',
+                title: 'Datensicherheit – überall',
                 url: '#',
                 display: 'image_with_content',
                 width: 'full_width',

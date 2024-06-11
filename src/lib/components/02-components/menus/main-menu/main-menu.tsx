@@ -340,10 +340,13 @@ export default function MainMenu({
     const lastItem = item.below?.[item.below?.length - 1];
 
     const subClasses = cn(
+      `depth: ${depth}`,
       {
         'py-lg gap-y-md lg:gap-y-sm lg:px-lg lg:gap-x-0 lg:h-full lg:content-start':
           depth === 1 && isGroup,
       },
+      lastItem?.display === 'button' &&
+        'rtl:flex rtl:flex-row-reverse rtl:gap-x-md rtl:justify-end rtl:w-fit',
       isGroup && lastItem?.width && [itemWidthSchema[lastItem?.width].parent],
       !grouping(lastItem?.display) && [
         `menu-item--wrapper-${lastItem?.display}`,
@@ -405,7 +408,7 @@ export default function MainMenu({
           {
             'menu-item__group': isGroup,
             'px-md lg:px-0': depth === 1,
-            'last:lg:pl-[45px]':
+            'ltr:last:lg:pl-[45px] rtl:last:lg:pr-[45px]':
               depth === 2 &&
               item.display === 'no_label' &&
               item.alignment === 'left_align' &&
