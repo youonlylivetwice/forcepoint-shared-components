@@ -51,6 +51,7 @@ export default {
 - [Main Menu](./docs/api/mainMenu.md)
 - [Secondary Menu](./docs/api/secondaryMenu.md)
 - [Social Menu](./docs/api/socialMenu.md)
+- [Social Share](./docs/api/socialShare.md)
 - [Typography](./docs/api/typography.md)
 
 ## Development
