@@ -86,7 +86,7 @@ export default function CardNavHighlight({
           <div>
             <span
               className={cn(
-                'mb-5 flex items-center gap-xs break-all font-medium text-white',
+                'text-wrap mb-5 flex items-center gap-xs font-medium text-white [overflow-wrap:anywhere]',
                 cardStyles[size].title,
               )}>
               {title}
