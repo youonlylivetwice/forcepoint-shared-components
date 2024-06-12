@@ -102,6 +102,7 @@ export {
   type MainMenuItemProps,
   type MainMenuProps,
 } from './02-components/menus/main-menu/main-menu';
+export { default as Podcast } from './02-components/podcast/podcast';
 export {
   default as SecondaryMenu,
   type SecondaryMenuItemProps,
