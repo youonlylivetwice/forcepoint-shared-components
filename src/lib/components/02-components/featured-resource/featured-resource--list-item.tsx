@@ -39,14 +39,13 @@ export default function FeaturedResourceListItem({
       href={url}
       component={LinkComponent}
       className="group/resource-link w-full border-b border-brumosa last:border-transparent"
-    >
+      color={isDarkMode ? 'white' : 'blue'}>
       <div className="flex flex-col gap-md py-md uppercase">
         <Typography
           variant="h5"
           className={cn('font-[600] leading-none text-viola', {
             'text-sandwisp': isDarkMode,
-          })}
-        >
+          })}>
           {eyebrow}
         </Typography>
         <div className="flex gap-md">
@@ -56,13 +55,12 @@ export default function FeaturedResourceListItem({
             endIcon={endIcon}
             color={isDarkMode ? 'white' : 'blue'}
             className={cn(
-              'font-[600] text-h4 normal-case leading-none group-hover/resource-link:text-navy',
+              'text-h4 font-[600] normal-case leading-none group-hover/resource-link:text-navy',
               {
                 'group-hover/resource-link:text-sandwisp': isDarkMode,
               },
             )}
-            animated
-          >
+            animated>
             {title}
           </Link>
         </div>

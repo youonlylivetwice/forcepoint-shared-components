@@ -74,6 +74,7 @@ export default function CTA({
   link,
   linkComponent: LinkElement = 'a',
   theme = 'azure',
+  ...props
 }: CtaProps) {
   const cardStyles: CSSProperties = {};
 
@@ -87,21 +88,19 @@ export default function CTA({
 
   return (
     <div
-      className={cn('py-lg md:py-xl', colorSchema[theme].wrapper)}
-      style={cardStyles}
-    >
-      <div
-        className={cn(
-          'mx-lg flex max-w-screen-xl flex-col items-center gap-y-lg text-center md:mx-auto',
-          className,
-        )}
-      >
+      {...props}
+      className={cn(
+        'px-md py-lg md:py-xl',
+        colorSchema[theme].wrapper,
+        className,
+      )}
+      style={cardStyles}>
+      <div className="flex flex-col items-center gap-y-lg text-center">
         {header && (
           <Typography
             variant="h1"
             component="h1"
-            className={cn('font-semibold', colorSchema[theme].header)}
-          >
+            className={cn('font-semibold', colorSchema[theme].header)}>
             {header}
           </Typography>
         )}
@@ -113,8 +112,7 @@ export default function CTA({
             component={LinkElement}
             endIcon={<ArrowRightIcon />}
             color={colorSchema[theme].button}
-            className="mt-md w-full justify-center md:w-fit"
-          >
+            className="mt-md w-full justify-center md:w-fit">
             {link.title}
           </Button>
         )}
