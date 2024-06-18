@@ -55,6 +55,7 @@ export default function MarketoReference({
   bgColor,
   formStyle: style = 'none',
   className,
+  ...props
 }: MarketoReferenceProps) {
   const formStyle = style ? style : 'none';
   const renderedImage =
@@ -85,20 +86,19 @@ export default function MarketoReference({
 
   return (
     <div
+      {...props}
       style={bgImageStyles}
       className={cn(
         'flex w-full',
         marketoReferenceColorStyles[bgColor],
         marketoReferenceFormWrapperStyles[formStyle],
         className,
-      )}
-    >
+      )}>
       {renderedImage && (
         <div
           className={cn('hidden md:block md:w-full', {
             'md:-mt-5': formStyle === 'aside_contained_image_overflow_top',
-          })}
-        >
+          })}>
           {renderedImage}
         </div>
       )}
@@ -109,8 +109,7 @@ export default function MarketoReference({
           {
             'lg:max-w-1/2': formStyle !== 'aside_contained_image_overflow_top',
           },
-        )}
-      >
+        )}>
         {renderedMarketoForm}
       </div>
     </div>

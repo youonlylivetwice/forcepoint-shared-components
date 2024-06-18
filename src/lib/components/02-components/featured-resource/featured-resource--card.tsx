@@ -1,6 +1,10 @@
 import { ComponentPropsWithoutRef, ReactNode } from 'react';
 import ArrowRight from '../../../assets/img/icons/arrow-right.svg?react';
 import { cn } from '../../../utils/tailwind-merge';
+import {
+  calculateBrightness,
+  hexToRgb,
+} from '../../00-tokens/color/color-shared';
 import Button from '../../01-elements/button/button';
 
 export type ResourceImageDetails = {
@@ -17,6 +21,7 @@ export interface FeaturedResourceCardProps
   renderedImageComponent?: ReactNode;
   title?: string;
   url?: string;
+  sectionBgColor?: string;
 }
 
 export default function FeaturedResourceCard({
@@ -25,9 +30,18 @@ export default function FeaturedResourceCard({
   renderedImageComponent,
   title,
   url,
+  sectionBgColor,
   className,
   ...props
 }: FeaturedResourceCardProps) {
+  let isDarkMode = false;
+
+  if (sectionBgColor) {
+    const color = hexToRgb(sectionBgColor);
+    const brightness = calculateBrightness(color);
+    isDarkMode = brightness < 125;
+  }
+
   const renderedImage = renderedImageComponent ? (
     renderedImageComponent
   ) : image ? (
@@ -44,7 +58,11 @@ export default function FeaturedResourceCard({
     <div
       {...props}
       className={cn(
-        'md:white rounded-m max-md:border-2 max-md:border-azure md:max-w-[480px] md:bg-azure',
+        'rounded-m md:max-w-[480px]',
+        {
+          'border-2 border-azure': isDarkMode,
+          'max-md:border-2 max-md:border-azure md:bg-azure': !isDarkMode,
+        },
         className,
       )}>
       {renderedImage && (
@@ -54,7 +72,11 @@ export default function FeaturedResourceCard({
       )}
       <div className="flex flex-col gap-md p-md md:gap-lg md:p-lg">
         {title && (
-          <span className="text-h3 font-[600] text-black md:text-h4">
+          <span
+            className={cn('text-h3 font-[600] md:text-h4', {
+              'text-white': isDarkMode,
+              'text-black': !isDarkMode,
+            })}>
             {title}
           </span>
         )}
