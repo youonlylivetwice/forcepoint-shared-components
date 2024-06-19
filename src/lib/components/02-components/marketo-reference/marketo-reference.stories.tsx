@@ -25,5 +25,6 @@ export const Default: Story = {
     },
     bgColor: 'azure',
     formStyle: 'aside_contained_image_overflow_top',
+    contentClassName: 'mx-auto max-w-screen-xl',
   },
 };
