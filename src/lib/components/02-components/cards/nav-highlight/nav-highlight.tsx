@@ -49,15 +49,13 @@ export default function CardNavHighlight({
       href={url}
       component={LinkComponent}
       className={'h-full w-full'}
-      {...props}
-    >
+      {...props}>
       <div
         className={cn(
           'group relative flex h-full w-full overflow-hidden rounded-m bg-gradient-to-tr from-violette-darker to-violette',
           cardStyles[size].wrap,
           className,
-        )}
-      >
+        )}>
         {/* Link icon */}
         {icon && (
           <div className={cardStyles[size].icon}>
@@ -84,15 +82,13 @@ export default function CardNavHighlight({
           className={cn(
             'flex flex-1 flex-col justify-between',
             cardStyles[size].content,
-          )}
-        >
+          )}>
           <div>
             <span
               className={cn(
-                'mb-5 flex items-center gap-xs font-medium text-white',
+                'text-wrap mb-5 flex items-center gap-xs font-medium text-white [overflow-wrap:anywhere]',
                 cardStyles[size].title,
-              )}
-            >
+              )}>
               {title}
               <ChevronRightIcon
                 className={cn('sm:hidden', {
@@ -111,8 +107,7 @@ export default function CardNavHighlight({
               animated
               component="span"
               endIcon={<ArrowRightIcon />}
-              className="ml-auto hidden text-[16px] font-normal !text-white rtl:ml-0 rtl:mr-auto sm:block"
-            >
+              className="ml-auto hidden text-[16px] font-normal !text-white rtl:ml-0 rtl:mr-auto sm:block">
               {ctaButton}
             </Link>
           )}
