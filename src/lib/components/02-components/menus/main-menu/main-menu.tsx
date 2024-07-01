@@ -432,7 +432,7 @@ export default function MainMenu({
   };
 
   return (
-    <nav className="main-menu relative lg:px-lg" aria-label={menuLabel}>
+    <nav className="main-menu relative" aria-label={menuLabel}>
       <ul
         className="flex flex-col gap-x-md divide-y divide-brumosa lg:flex-row lg:items-center lg:divide-y-0"
         onKeyDown={handleKeyDown}>

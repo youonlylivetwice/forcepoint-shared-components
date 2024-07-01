@@ -53,7 +53,7 @@ export default function StickyHeader({
           'top-[61px] lg:top-0': showHeader,
         },
       )}>
-      <div className="flex items-center justify-center lg:mx-auto lg:max-w-screen-xl lg:justify-between lg:pr-lg">
+      <div className="flex items-center justify-center lg:mx-auto lg:max-w-screen-xl lg:justify-between lg:px-md">
         <div className="hidden lg:flex lg:items-center">
           {/* Sticky header logo variant */}
           <Branding
