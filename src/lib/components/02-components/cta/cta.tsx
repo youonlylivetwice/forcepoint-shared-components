@@ -19,6 +19,7 @@ export interface CtaProps extends ComponentPropsWithoutRef<'div'> {
   link?: CtaLinkDetails;
   linkComponent?: ElementType;
   theme?: CtaTheme;
+  contentClassName?: string;
 }
 
 export type CtaTheme = 'azure' | 'black' | 'glow' | 'gray' | 'navy' | 'warp';
@@ -74,6 +75,7 @@ export default function CTA({
   link,
   linkComponent: LinkElement = 'a',
   theme = 'azure',
+  contentClassName,
   ...props
 }: CtaProps) {
   const cardStyles: CSSProperties = {};
@@ -95,7 +97,7 @@ export default function CTA({
         className,
       )}
       style={cardStyles}>
-      <div className="flex flex-col items-center gap-y-lg text-center">
+      <div className={cn('flex flex-col items-center gap-y-lg text-center', contentClassName)}>
         {header && (
           <Typography
             variant="h1"
