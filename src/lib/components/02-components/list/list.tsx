@@ -24,9 +24,7 @@ export default function List({
       multicol && children instanceof Array && children?.length > 2,
   });
 
-  const titleClasses = cn('text-h2 sm:text-h1 font-semibold text-navy', {
-    'mb-lg': !multicol,
-  });
+  const titleClasses = 'text-h2 sm:text-h1 font-semibold text-navy mb-lg';
 
   return (
     <div {...props}>
