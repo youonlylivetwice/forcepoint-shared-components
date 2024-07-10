@@ -47,10 +47,11 @@ export default function ContentSlider({
     <div
       className={cn({
         'bg-black': theme === 'dark',
+        'bg-azure': theme === 'light',
       })}>
       {sliderTitle && (
         <Typography
-          variant="display"
+          variant="h2"
           component="h2"
           className={cn('mb-4 w-full font-bold', {
             'text-azure': theme === 'dark',
