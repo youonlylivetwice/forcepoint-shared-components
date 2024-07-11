@@ -1,4 +1,4 @@
-import { ElementType, ReactNode } from 'react';
+import { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react';
 import { cn } from '../../../utils/tailwind-merge';
 import { ArrowRightIcon } from '../../00-tokens/icons';
 import Button from '../../01-elements/button/button';
@@ -16,7 +16,7 @@ export type CalloutLinkDetails = {
   url: string;
 };
 
-export type CalloutProps = {
+export interface CalloutProps extends ComponentPropsWithoutRef<'div'> {
   color?: CalloutColorVariant;
   content?: string;
   contentElement?: ElementType;
@@ -27,7 +27,7 @@ export type CalloutProps = {
   renderedContentComponent?: ReactNode;
   link?: CalloutLinkDetails;
   linkComponent?: ElementType;
-};
+}
 
 export type CalloutColorVariant = 'white' | 'black' | 'navy' | 'violette';
 
@@ -39,36 +39,37 @@ export type CalloutColorSchema = {
   wrapper: string;
 };
 
-export const colorSchema: { [key in CalloutColorVariant]: CalloutColorSchema } = {
-  white: {
-    button: 'blue',
-    content: 'text-grey',
-    eyebrow: 'text-violette',
-    title: 'text-black',
-    wrapper: 'bg-white',
-  },
-  black: {
-    button: 'sandwisp',
-    content: 'text-azure',
-    eyebrow: 'text-sandwisp',
-    title: 'text-white',
-    wrapper: 'bg-black',
-  },
-  navy: {
-    button: 'sandwisp',
-    content: 'text-azure',
-    eyebrow: 'text-sandwisp',
-    title: 'text-white',
-    wrapper: 'bg-navy',
-  },
-  violette: {
-    button: 'sandwisp',
-    content: 'text-azure',
-    eyebrow: 'text-sandwisp',
-    title: 'text-white',
-    wrapper: 'bg-violette',
-  },
-};
+export const colorSchema: { [key in CalloutColorVariant]: CalloutColorSchema } =
+  {
+    white: {
+      button: 'blue',
+      content: 'text-grey',
+      eyebrow: 'text-violette',
+      title: 'text-black',
+      wrapper: 'bg-white',
+    },
+    black: {
+      button: 'sandwisp',
+      content: 'text-azure',
+      eyebrow: 'text-sandwisp',
+      title: 'text-white',
+      wrapper: 'bg-black',
+    },
+    navy: {
+      button: 'sandwisp',
+      content: 'text-azure',
+      eyebrow: 'text-sandwisp',
+      title: 'text-white',
+      wrapper: 'bg-navy',
+    },
+    violette: {
+      button: 'sandwisp',
+      content: 'text-azure',
+      eyebrow: 'text-sandwisp',
+      title: 'text-white',
+      wrapper: 'bg-violette',
+    },
+  };
 
 export default function Callout({
   color = 'white',
@@ -80,6 +81,8 @@ export default function Callout({
   link,
   linkComponent: LinkElement = 'a',
   renderedImageComponent,
+  className,
+  ...props
 }: CalloutProps) {
   const renderedImage = renderedImageComponent ? (
     renderedImageComponent
@@ -104,8 +107,8 @@ export default function Callout({
   ) : null;
 
   return (
-    <div className={colorSchema[color].wrapper}>
-      <div className="mx-auto flex max-w-screen-xl flex-col-reverse md:flex-row md:items-center md:gap-lg xl:gap-xl">
+    <div className={cn(colorSchema[color].wrapper, className)} {...props}>
+      <div className="mx-auto flex max-w-screen-lg flex-col-reverse md:flex-row md:items-center md:gap-lg xl:gap-xl">
         {renderedImage}
         <div className="flex flex-1 flex-col gap-md p-lg">
           {eyebrow && (
@@ -113,8 +116,7 @@ export default function Callout({
               className={cn(
                 'text-h5 font-semibold uppercase',
                 colorSchema[color].eyebrow,
-              )}
-            >
+              )}>
               {eyebrow}
             </span>
           )}
@@ -122,8 +124,7 @@ export default function Callout({
             <Typography
               component="h2"
               variant="display"
-              className={cn('font-semibold', colorSchema[color].title)}
-            >
+              className={cn('font-semibold', colorSchema[color].title)}>
               {header}
             </Typography>
           )}
@@ -137,8 +138,7 @@ export default function Callout({
               component={LinkElement}
               endIcon={<ArrowRightIcon />}
               color={colorSchema[color].button}
-              className="mt-md justify-center md:w-fit"
-            >
+              className="mt-md justify-center md:w-fit">
               {link.title}
             </Button>
           )}
