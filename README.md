@@ -69,8 +69,10 @@ This section is intended for developers who want to contribute to the project or
 ### Publishing local development changes to your Application
 
 This project uses [Yalc](https://www.npmjs.com/package/yalc) for local package publishing and sharing.
+You need to run this command every time you make changes to the library and want to see them in your application.
 
-- Publish local changes: `yalc-publish`
+- Publish local changes: `npm run yalc-publish`
+
 
 ### Coding Guidelines
 
