@@ -112,10 +112,10 @@ export default function MarketoReference({
           className={cn(
             'w-full px-md py-lg lg:px-lg lg:py-xl',
             marketoReferenceFormStyles[formStyle],
-            {
-              'lg:max-w-[540px]':
-                formStyle !== 'aside_contained_image_overflow_top',
-            },
+
+            formStyle !== 'aside_contained_image_overflow_top'
+              ? 'lg:max-w-[1/2]'
+              : 'lg:max-w-[540px]',
           )}>
           {renderedMarketoForm}
         </div>
