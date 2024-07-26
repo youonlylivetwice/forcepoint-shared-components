@@ -13,6 +13,7 @@ export type LogoGridProps = {
   imageComponent?: ElementType;
   items: LogoInfo[];
   title?: string;
+  subtitle?: string;
 };
 
 const templateColumns: Record<number, string> = {
@@ -26,6 +27,7 @@ export default function LogoGrid({
   imageComponent: Element = 'img',
   items,
   title,
+  subtitle
 }: LogoGridProps) {
   const columns: number = items.length < 6 ? items.length : 6;
 
@@ -33,9 +35,19 @@ export default function LogoGrid({
     <Typography
       variant="h2"
       component="h2"
-      className="mb-md text-center font-semibold leading-none text-navy md:mb-lg"
+      className="mb-sm text-center font-semibold leading-none text-navy md:mb-md"
     >
       {title}
+    </Typography>
+  ) : null;
+
+  const subtitleRendered = subtitle ? (
+    <Typography
+      variant="h3"
+      component="h3"
+      className="mb-md text-center font-extralight leading-none text-chateau md:mb-lg"
+    >
+      {subtitle}
     </Typography>
   ) : null;
 
@@ -54,6 +66,7 @@ export default function LogoGrid({
   return (
     <div className="mx-auto my-lg md:my-xl md:max-w-screen-lg">
       {titleRendered}
+      {subtitleRendered}
       <ul
         className={cn(
           'mx-auto grid w-fit grid-cols-2',
