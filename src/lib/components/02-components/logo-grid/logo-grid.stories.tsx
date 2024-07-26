@@ -3,7 +3,7 @@ import LogoGrid, { LogoInfo } from './logo-grid';
 
 const logoItems: LogoInfo[] = [
   {
-    src: 'https://4kdev-forcepoint.pantheonsite.io/sites/default/files/styles/icon_default_small/public/icons/logo-boldon-james-stacked.png?itok=2dzm_0n6',
+    src: 'https://www.forcepoint.com/sites/default/files/styles/icon_default_small/public/icons/logo_6.png',
     alt: 'Boldon James',
   },
 ];
