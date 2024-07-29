@@ -15,6 +15,7 @@ import { LogoGrid } from 'forcepoint-shared-components';
 | imageComponent | `elementType` | `img` | Specifies the root node's element type for individual logos. It accepts a string for a standard HTML `img` element or a custom component. Defaults to `img` |
 | items | `LogoInfo[]` | `-` | Required. An array of objects containing information about each logo. See the LogoInfo type for details. |
 | title | `string` | `-` | Optional. A title for the LogoGrid, displayed above the logos. |
+| subtitle | `string` | `-` | Optional. A subtitle for the LogoGrid, displayed below the title. |
 
 ## LogoInfo Type
 
@@ -41,5 +42,6 @@ const logos = [
 <LogoGrid
   items={logos}
   title="Figma ipsum component variant main layer. Scrolling flows."
+  subtitle="Figma ipsum component variant main layer. Scrolling flows."
 />
 ```
