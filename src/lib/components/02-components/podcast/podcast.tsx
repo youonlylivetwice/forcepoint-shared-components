@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+import { cn } from '../../../utils/tailwind-merge';
 import {
   ApplePodcastIcon,
   GooglePodcastHoverIcon,
@@ -8,8 +10,6 @@ import {
   StitcherIcon,
   TuneInIcon,
 } from '../../00-tokens/icons';
-import { cn } from '../../../utils/tailwind-merge';
-import { ReactNode } from 'react';
 import Link from '../../01-elements/link/link';
 
 export type PodcastProps = {
@@ -102,7 +102,7 @@ export default function Podcast({
         id="podcast-transcript"
         className="mx-auto flex max-w-screen-xl flex-col gap-md px-md py-lg md:flex-row">
         {title && (
-          <p className="text-h4 font-semibold text-white md:max-w-[280px]">
+          <p className="text-h4 font-semibold text-white md:max-w-[280px] leading-6">
             {title}
           </p>
         )}
