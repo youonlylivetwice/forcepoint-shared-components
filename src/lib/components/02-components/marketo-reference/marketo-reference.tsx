@@ -106,21 +106,16 @@ export default function MarketoReference({
           contentClassName,
         )}>
         {renderedImage && (
-          <div
-            className={cn('hidden md:block md:w-full', {
-              'md:-mt-5': formStyle === 'aside_contained_image_overflow_top',
-            })}>
-            {renderedImage}
-          </div>
+          <div className={cn('hidden md:block md:w-full')}>{renderedImage}</div>
         )}
         <div
           className={cn(
             'w-full px-md py-lg lg:px-lg lg:py-xl',
             marketoReferenceFormStyles[formStyle],
-            {
-              'lg:max-w-1/2':
-                formStyle !== 'aside_contained_image_overflow_top',
-            },
+
+            formStyle !== 'aside_contained_image_overflow_top'
+              ? 'lg:max-w-[1/2]'
+              : 'lg:max-w-[540px]',
           )}>
           {renderedMarketoForm}
         </div>
