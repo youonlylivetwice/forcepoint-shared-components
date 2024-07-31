@@ -19,6 +19,7 @@ export interface CtaBannerProps extends ComponentPropsWithoutRef<'div'> {
   backgroundImage?: CtaBannerImageDetails;
   imageComponent?: ElementType;
   theme: CtaBannerTheme;
+  contentRight: boolean;
 }
 
 export type CtaButtonDetails = {
@@ -81,6 +82,7 @@ export default function CtaBanner({
   imageComponent: ImageElement = 'img',
   theme,
   className,
+  contentRight = false,
 }: CtaBannerProps) {
   const renderedTitle = renderedTitleComponent ? (
     renderedTitleComponent
@@ -97,7 +99,12 @@ export default function CtaBanner({
       href={primaryButton.url}
       component={ButtonElement}
       color={colorSchema[theme].button}
-      className="mt-md w-full justify-center px-14 py-4 text-h4 md:ml-10 md:mt-0 md:min-w-[230px] lg:w-60">
+      className={cn(
+        'mt-md w-full justify-center transition md:mt-0',
+        contentRight
+          ? 'px-10 py-sm text-body-3'
+          : 'py-4 text-h4 md:min-w-[230px] lg:w-60',
+      )}>
       {primaryButton.title}
     </Button>
   );
@@ -137,8 +144,15 @@ export default function CtaBanner({
             {renderedImage}
           </div>
         )}
-        <div className="flex flex-col md:flex-row md:items-center">
-          <div className="max-w-screen-sm">
+        <div
+          className={cn(
+            'flex flex-col md:items-center',
+            !contentRight ? 'md:flex-row' : 'py-20',
+          )}>
+          <div
+            className={cn(
+              contentRight ? 'mb-5 md:pl-[50%]' : 'max-w-screen-sm',
+            )}>
             {eyebrow && (
               <span
                 className={cn(
@@ -150,7 +164,12 @@ export default function CtaBanner({
             )}
             {renderedTitle}
           </div>
-          {renderedPrimaryButton}
+          <div
+            className={cn(
+              contentRight ? 'self-start md:pl-[50%]' : 'md:ml-10',
+            )}>
+            {renderedPrimaryButton}
+          </div>
         </div>
       </div>
     </div>
