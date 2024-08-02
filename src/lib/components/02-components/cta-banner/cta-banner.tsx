@@ -5,6 +5,7 @@ import {
   ReactNode,
 } from 'react';
 import { cn } from '../../../utils/tailwind-merge';
+import { ArrowRightIcon } from '../../00-tokens/icons';
 import Button, { ButtonColorVariant } from '../../01-elements/button/button';
 import Typography from '../../01-elements/typography/typography';
 
@@ -99,6 +100,7 @@ export default function CtaBanner({
       href={primaryButton.url}
       component={ButtonElement}
       color={colorSchema[theme].button}
+      endIcon={contentRight && <ArrowRightIcon />}
       className={cn(
         'mt-md w-full justify-center transition md:mt-0',
         contentRight
@@ -146,7 +148,7 @@ export default function CtaBanner({
         )}
         <div
           className={cn(
-            'flex flex-col md:items-center',
+            'flex w-full flex-col md:items-center',
             !contentRight ? 'md:flex-row' : 'py-20',
           )}>
           <div
