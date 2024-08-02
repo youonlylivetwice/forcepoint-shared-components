@@ -22,6 +22,8 @@ import { CtaBanner } from 'forcepoint-shared-components';
 | renderedImageComponent | `ReactNode` | - | Renders the image using and external component. |
 | backgroundImage | `CtaImageDetails` | `-` | Details of the background image to be displayed within the call to action. See the `CtaImageDetails` type for details. |
 | imageComponent | `ElementType` | `img` | Specifies the root node's element type for the image. It accepts a string for a standard HTML element or a custom component. Defaults to `img`. |
+| contentRight | `boolean` | `false` | Content will be aligned to the right. |
+
 
 
 ### CtaButtonDetails

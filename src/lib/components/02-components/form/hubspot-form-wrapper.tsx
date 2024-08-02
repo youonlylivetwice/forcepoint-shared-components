@@ -6,7 +6,7 @@ export type HubspotFormWrapperProps = ComponentPropsWithoutRef<'div'> & {
   headLine?: string | null;
   subHeadLine?: string | null;
   logo?: ReactNode;
-  bgColor?: 'white' | 'navy' | 'blue' | 'azure' | 'black';
+  bgColor?: 'white' | 'navy' | 'blue' | 'azure' | 'black' | 'transparent';
   formType?: 'default' | 'sign-up' | 'demo-request';
 };
 
@@ -53,10 +53,10 @@ export default function HubspotFormWrapper({
           'bg-blue': bgColor === 'blue',
           'bg-azure': bgColor === 'azure',
           'bg-black': bgColor === 'black',
+          'bg-transparent': bgColor === 'transparent',
         },
         className,
-      )}
-    >
+      )}>
       {logo}
       {renderedHeadline}
       {renderedSubheadline}

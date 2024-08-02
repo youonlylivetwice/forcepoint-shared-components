@@ -19,5 +19,20 @@ export const Default: Story = {
       url: '#',
     },
     theme: 'azure',
+    contentRight: false,
+  },
+};
+
+export const ContentToTheRight: Story = {
+  args: {
+    title:
+      'Find it hard to keep pace with modern network demands? Read the Four Steps to Future-Ready Network Security.',
+    eyebrow: 'Independent Report',
+    primaryButton: {
+      title: 'Read Now',
+      url: '#',
+    },
+    theme: 'azure',
+    contentRight: true,
   },
 };
