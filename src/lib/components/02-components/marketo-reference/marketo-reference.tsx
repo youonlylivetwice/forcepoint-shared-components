@@ -115,7 +115,7 @@ export default function MarketoReference({
 
             formStyle === 'aside_contained_image_overflow_top' 
               ? 'lg:max-w-[540px]'
-              : formStyle === 'centered_form_image_as_background' ? 'lg:max-w-[680px]' : 'lg:max-w-[1/2]',
+              : formStyle === 'centered_form_image_as_background' ? 'lg:max-w-[600px]' : 'lg:max-w-[1/2]',
           )}>
           {renderedMarketoForm}
         </div>
