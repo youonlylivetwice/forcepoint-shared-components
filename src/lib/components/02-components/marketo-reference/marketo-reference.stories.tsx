@@ -29,7 +29,7 @@ export const Default: Story = {
   },
 };
 
-export const AsideFormImageAsBackground: Story = {
+export const CenteredFormImageAsBackground: Story = {
   args: {
     marketoForm: renderedForm,
     image: {
@@ -37,7 +37,7 @@ export const AsideFormImageAsBackground: Story = {
       alt: 'image',
     },
     bgColor: 'azure',
-    formStyle: 'aside_form_image_as_background',
+    formStyle: 'centered_form_image_as_background',
     contentClassName: 'mx-auto max-w-screen-xl',
   },
 };
