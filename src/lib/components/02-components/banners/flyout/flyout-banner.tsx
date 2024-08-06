@@ -119,7 +119,7 @@ export default function FlyoutBanner({
   const renderedToggleButton = (
     <button
       className={cn(
-        'fixed top-3xl z-40 min-h-[200px] cursor-pointer rounded-l-m bg-sol px-3 py-10 text-center text-h6 [writing-mode:vertical-lr]',
+        'fixed top-56 z-40 min-h-[200px] cursor-pointer rounded-l-m bg-sol px-3 py-10 text-center text-h6 [writing-mode:vertical-lr]',
         toggleTransition,
         {
           'right-0': !showBanner,
@@ -141,7 +141,7 @@ export default function FlyoutBanner({
     >
       <div
         className={cn(
-          'fixed top-3xl z-30 max-w-[350px] rounded-m bg-black',
+          'fixed top-64 z-30 max-w-[380px] rounded-m bg-black',
           toggleTransition,
           {
             'right-sm': showBanner,
