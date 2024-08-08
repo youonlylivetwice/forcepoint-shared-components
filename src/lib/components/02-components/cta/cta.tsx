@@ -8,6 +8,7 @@ import Typography from '../../01-elements/typography/typography';
 import GlowBgImage from '../../../assets/img/components/cta-glow.png';
 import GrayBgImage from '../../../assets/img/components/cta-gray.png';
 import WarpBgImage from '../../../assets/img/components/cta-warp.png';
+import Link from '../../01-elements/link/link';
 
 export type CtaLinkDetails = {
   title: string;
@@ -20,6 +21,7 @@ export interface CtaProps extends ComponentPropsWithoutRef<'div'> {
   linkComponent?: ElementType;
   theme?: CtaTheme;
   contentClassName?: string;
+  showTextOnly?: boolean;
 }
 
 export type CtaTheme = 'azure' | 'black' | 'glow' | 'gray' | 'navy' | 'warp';
@@ -76,6 +78,7 @@ export default function CTA({
   linkComponent: LinkElement = 'a',
   theme = 'azure',
   contentClassName,
+  showTextOnly,
   ...props
 }: CtaProps) {
   const cardStyles: CSSProperties = {};
@@ -87,7 +90,7 @@ export default function CTA({
   if (bgImages[theme]) {
     cardStyles.backgroundImage = `url(${bgImages[theme]})`;
   }
-
+  const Component = showTextOnly ? Link : Button;
   return (
     <div
       {...props}
@@ -97,7 +100,11 @@ export default function CTA({
         className,
       )}
       style={cardStyles}>
-      <div className={cn('flex flex-col items-center gap-y-lg text-center', contentClassName)}>
+      <div
+        className={cn(
+          'flex flex-col items-center gap-y-lg text-center',
+          contentClassName,
+        )}>
         {header && (
           <Typography
             variant="h1"
@@ -107,16 +114,16 @@ export default function CTA({
           </Typography>
         )}
         {link && (
-          <Button
+          <Component
             animated
             as="link"
             href={link.url}
             component={LinkElement}
-            endIcon={<ArrowRightIcon />}
+            endIcon={!showTextOnly && <ArrowRightIcon />}
             color={colorSchema[theme].button}
             className="mt-md w-full justify-center md:w-fit">
             {link.title}
-          </Button>
+          </Component>
         )}
       </div>
     </div>

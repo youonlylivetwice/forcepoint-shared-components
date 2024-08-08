@@ -61,5 +61,26 @@ export const Icon: Story = {
       height: 80,
       width: 64,
     },
+    noBottomBorder: false,
+  },
+};
+
+export const IconWithoutBottomBorder: Story = {
+  ...Default,
+  args: {
+    title: 'Figma ipsum component variant main layer. Scrolling flows.',
+    style: 'icon',
+    text: (
+      <p>
+        Fugiat laborum id culpa magna laboris dolor elit enim nostrud anim
+        deserunt. Culpa proident veniam esse minim.
+      </p>
+    ),
+    icon: {
+      url: 'https://placehold.co/64x80',
+      height: 80,
+      width: 64,
+    },
+    noBottomBorder: true,
   },
 };
