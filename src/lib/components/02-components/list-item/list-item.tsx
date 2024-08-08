@@ -21,6 +21,7 @@ export type ListItemProps = {
     height: number | 'auto';
     width: number | 'auto';
   };
+  noBottomBorder?: boolean;
 };
 
 export default function ListItem({
@@ -31,6 +32,7 @@ export default function ListItem({
   icon,
   link,
   linkComponent = 'a',
+  noBottomBorder,
 }: ListItemProps) {
   const containerClasses = cn(
     [
@@ -53,6 +55,7 @@ export default function ListItem({
       'mb-md': style === 'checkmark',
       'mt-md pb-md sm:mt-lg sm:pb-lg': style !== 'checkmark',
       'border-b-2 border-b-brumosa': style !== 'checkmark',
+      'border-b-0': noBottomBorder && style === 'icon',
     },
   );
 
@@ -69,7 +72,7 @@ export default function ListItem({
           alt={icon.alt ?? ''}
           height={icon.height}
           width={icon.width}
-          className="w-full h-auto"
+          className="h-auto w-full"
         />
       </div>
     ) : null,
@@ -89,8 +92,7 @@ export default function ListItem({
           <Link
             component={linkComponent}
             href={link.url}
-            className="mt-md text-h4 font-semibold"
-          >
+            className="mt-md text-h4 font-semibold">
             {link.title}
           </Link>
         )}

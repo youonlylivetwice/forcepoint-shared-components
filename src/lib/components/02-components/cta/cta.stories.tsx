@@ -19,3 +19,15 @@ export const Default: Story = {
     },
   },
 };
+
+export const CtaTextOnly: Story = {
+  args: {
+    theme: 'azure',
+    header: 'Schedule a Live Demo of Forcepoint ONE',
+    link: {
+      title: 'Secondary',
+      url: '/',
+    },
+    showTextOnly: true,
+  },
+};

@@ -46,3 +46,11 @@ export const Icon: Story = {
     )),
   },
 };
+
+export const IconWithoutBorder: Story = {
+  args: {
+    children: Array.from({ length: 3 }, (_, i) => (
+      <ListItem key={i} {...ListItemStories.IconWithoutBottomBorder.args} />
+    )),
+  },
+};
