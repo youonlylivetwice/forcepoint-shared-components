@@ -1,8 +1,8 @@
-import { TableRowProps } from './table-row';
 import React, { ReactNode, useEffect, useRef } from 'react';
-import TablePager from './table-pager';
 import Typography from '../../01-elements/typography/typography';
 import { useDataTable } from './data-table-provider';
+import TablePager from './table-pager';
+import { TableRowProps } from './table-row';
 
 export interface TableProps {
   children: ReactNode;
@@ -90,8 +90,7 @@ const Table: React.FC<TableProps> = ({
     <Typography
       variant="h2"
       component="h2"
-      className="mb-md max-w-[580px] font-semibold text-navy"
-    >
+      className="mb-md max-w-[580px] font-semibold text-navy">
       {heading}
     </Typography>
   );
@@ -106,8 +105,7 @@ const Table: React.FC<TableProps> = ({
     <div className="table-wrapper max-md:overflow-x-hidden">
       <table
         className="my-md min-w-full table-auto max-md:overflow-x-auto md:mt-lg"
-        ref={table}
-      >
+        ref={table}>
         <tbody className="divide-chateau max-md:flex max-md:flex-row md:divide-y-2">
           {children}
         </tbody>
@@ -122,7 +120,7 @@ const Table: React.FC<TableProps> = ({
   );
 
   return (
-    <div className="py-lg md:mx-auto md:max-w-screen-xl md:py-xl">
+    <div className="py-lg md:mx-auto md:max-w-screen-lg md:py-xl">
       {renderHeading}
       {renderSubheading}
       {renderTable}
