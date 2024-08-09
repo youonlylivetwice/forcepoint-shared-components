@@ -102,7 +102,7 @@ export default function CTA({
       style={cardStyles}>
       <div
         className={cn(
-          'flex flex-col items-center gap-y-lg text-center',
+          'mx-auto flex max-w-screen-lg flex-col items-center gap-y-lg text-center',
           contentClassName,
         )}>
         {header && (
