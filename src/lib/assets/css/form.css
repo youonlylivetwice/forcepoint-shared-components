@@ -38,6 +38,11 @@
   @apply text-azure !important;
 }
 
+/* Form field elements */
+.hs-form-field {
+  @apply relative;
+}
+
 /* Submit button styles */
 .hubspot-form-wrapper .hs_submit input {
   @apply cursor-pointer rounded-lg border-2 px-lg py-sm text-[1.0625rem] font-semibold;
@@ -197,5 +202,5 @@
 }
 
 label.hs-error-msg {
-  @apply relative right-0 rounded-m bg-crimson px-5 py-[10px] text-white;
+  @apply absolute right-0 z-10 mt-0 rounded-m bg-crimson px-5 py-[10px] text-white;
 }
