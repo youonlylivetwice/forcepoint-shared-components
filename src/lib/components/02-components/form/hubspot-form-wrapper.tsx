@@ -6,8 +6,8 @@ export type HubspotFormWrapperProps = ComponentPropsWithoutRef<'div'> & {
   headLine?: string | null;
   subHeadLine?: string | null;
   logo?: ReactNode;
-  bgColor?: 'white' | 'navy' | 'blue' | 'azure' | 'black' | 'transparent';
-  formType?: 'default' | 'sign-up' | 'demo-request';
+  bgColor?: 'white' | 'navy' | 'blue' | 'azure' | 'black' | 'blue_dotted' | 'transparent';
+  formType?: 'default' | 'sign-up' | 'demo-request' | 'basic-hero-banner';
 };
 
 export default function HubspotFormWrapper({
@@ -20,12 +20,14 @@ export default function HubspotFormWrapper({
   formType = 'default',
   ...props
 }: HubspotFormWrapperProps) {
+
   const renderedHeadline = headLine && (
     <Typography
-      component="h3"
-      variant="h2"
-      className={cn('mb-[15px] font-semibold text-navy', {
+      component={formType === 'basic-hero-banner' ? 'h4' : 'h3'}
+      variant={formType === 'basic-hero-banner' ? 'body-1' : 'h2'}
+      className={cn('mb-[15px] text-navy', {
         'text-white': bgColor !== 'white' && bgColor !== 'azure',
+        'font-semibold': formType !== 'basic-hero-banner' 
       })}
     >
       {headLine}
@@ -46,14 +48,15 @@ export default function HubspotFormWrapper({
     <div
       {...props}
       className={cn(
-        'rounded-m px-md py-lg text-center shadow-3xl',
+        'rounded-m px-md text-center shadow-3xl',
         {
           'bg-white': bgColor === 'white',
           'bg-navy': bgColor === 'navy',
           'bg-blue': bgColor === 'blue',
           'bg-azure': bgColor === 'azure',
           'bg-black': bgColor === 'black',
-          'bg-transparent': bgColor === 'transparent',
+          'bg-transparent': bgColor === 'transparent' || formType === 'basic-hero-banner',
+          'py-lg': formType !== 'basic-hero-banner'
         },
         className,
       )}>
