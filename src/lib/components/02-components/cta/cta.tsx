@@ -2,13 +2,13 @@ import { CSSProperties, ComponentPropsWithoutRef, ElementType } from 'react';
 import { cn } from '../../../utils/tailwind-merge';
 import { ArrowRightIcon } from '../../00-tokens/icons';
 import Button, { ButtonColorVariant } from '../../01-elements/button/button';
+import Link from '../../01-elements/link/link';
 import Typography from '../../01-elements/typography/typography';
 
 // Background images.
 import GlowBgImage from '../../../assets/img/components/cta-glow.png';
 import GrayBgImage from '../../../assets/img/components/cta-gray.png';
 import WarpBgImage from '../../../assets/img/components/cta-warp.png';
-import Link from '../../01-elements/link/link';
 
 export type CtaLinkDetails = {
   title: string;
@@ -90,7 +90,6 @@ export default function CTA({
   if (bgImages[theme]) {
     cardStyles.backgroundImage = `url(${bgImages[theme]})`;
   }
-  const Component = showTextOnly ? Link : Button;
   return (
     <div
       {...props}
@@ -113,18 +112,29 @@ export default function CTA({
             {header}
           </Typography>
         )}
-        {link && (
-          <Component
-            animated
-            as="link"
-            href={link.url}
-            component={LinkElement}
-            endIcon={!showTextOnly && <ArrowRightIcon />}
-            color={colorSchema[theme].button}
-            className="mt-md w-full justify-center md:w-fit">
-            {link.title}
-          </Component>
-        )}
+        {showTextOnly
+          ? link && (
+              <Link
+                animated
+                href={link.url}
+                color={colorSchema[theme].button}
+                className="mt-md w-full justify-center md:w-fit"
+                underline="always">
+                {link.title}
+              </Link>
+            )
+          : link && (
+              <Button
+                animated
+                href={link.url}
+                component={LinkElement}
+                endIcon={<ArrowRightIcon />}
+                color={colorSchema[theme].button}
+                className="mt-md w-full justify-center md:w-fit"
+                as="link">
+                {link?.title}
+              </Button>
+            )}
       </div>
     </div>
   );
