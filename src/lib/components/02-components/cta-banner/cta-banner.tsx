@@ -132,7 +132,7 @@ export default function CtaBanner({
     <div
       style={bgImageStyles}
       className={cn(
-        'bg-cover bg-center p-10',
+        'bg-cover bg-center p-10 rounded-m',
         colorSchema[theme].wrapper,
         className,
       )}>
