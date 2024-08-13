@@ -26,8 +26,9 @@ export default function HubspotFormWrapper({
       component={formType === 'basic-hero-banner' ? 'h4' : 'h3'}
       variant={formType === 'basic-hero-banner' ? 'body-1' : 'h2'}
       className={cn('mb-[15px] text-navy', {
-        'text-white': bgColor !== 'white' && bgColor !== 'azure',
-        'font-semibold': formType !== 'basic-hero-banner' 
+        'font-semibold': formType !== 'basic-hero-banner',
+        'text-black': formType === 'basic-hero-banner',
+        'text-white': bgColor !== 'white' && bgColor !== 'azure',  
       })}
     >
       {headLine}
