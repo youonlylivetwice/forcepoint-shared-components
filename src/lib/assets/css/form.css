@@ -34,7 +34,9 @@
 }
 
 .hubspot-form-wrapper-navy div:not([class]) p,
-.hubspot-form-wrapper-blue div:not([class]) p {
+.hubspot-form-wrapper-blue div:not([class]) p,
+.hubspot-form-wrapper-navy .hs-fieldtype-booleancheckbox .input label,
+.hubspot-form-wrapper-blue .hs-fieldtype-booleancheckbox .input label {
   @apply text-azure !important;
 }
 
