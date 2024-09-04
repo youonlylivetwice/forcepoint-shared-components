@@ -16,8 +16,13 @@
 .hubspot-form-wrapper .hs_jobtitle .input input,
 .hubspot-form-wrapper .hs_firstname .input input,
 .hubspot-form-wrapper .hs_lastname .input input,
+.hubspot-form-wrapper .hs-fieldtype-text .input input,
 .hubspot-form-wrapper .hs-fieldtype-select .input select {
   @apply block w-full rounded-m border border-brumosa px-5 py-3 text-grey outline-none focus:rounded-m focus:border-2 focus:border-teal focus:px-5 focus:py-3;
+}
+
+.hubspot-form-wrapper .hs-fieldtype-select .input select:disabled {
+  @apply text-brumosa;
 }
 
 /* Terms of use styles */
