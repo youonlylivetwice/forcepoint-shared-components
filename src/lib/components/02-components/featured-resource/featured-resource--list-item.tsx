@@ -15,7 +15,7 @@ export type FeaturedResourceListItemProps = {
   startIcon?: ReactNode;
   title: string;
   url: string;
-  onClick?: () => void;
+  onClick?: (e?: React.MouseEvent) => void;
 };
 
 export default function FeaturedResourceListItem({
