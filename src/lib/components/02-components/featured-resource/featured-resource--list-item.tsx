@@ -1,11 +1,11 @@
 import { ElementType, ReactNode } from 'react';
-import Link from '../../01-elements/link/link';
-import Typography from '../../01-elements/typography/typography';
 import { cn } from '../../../utils/tailwind-merge';
 import {
   calculateBrightness,
   hexToRgb,
 } from '../../00-tokens/color/color-shared';
+import Link from '../../01-elements/link/link';
+import Typography from '../../01-elements/typography/typography';
 
 export type FeaturedResourceListItemProps = {
   endIcon?: ReactNode;
@@ -15,6 +15,7 @@ export type FeaturedResourceListItemProps = {
   startIcon?: ReactNode;
   title: string;
   url: string;
+  onClick?: () => void;
 };
 
 export default function FeaturedResourceListItem({
@@ -25,6 +26,7 @@ export default function FeaturedResourceListItem({
   startIcon,
   title,
   url,
+  onClick,
 }: FeaturedResourceListItemProps) {
   let isDarkMode = false;
 
@@ -39,7 +41,8 @@ export default function FeaturedResourceListItem({
       href={url}
       component={LinkComponent}
       className="group/resource-link w-full border-b border-brumosa last:border-transparent"
-      color={isDarkMode ? 'white' : 'blue'}>
+      color={isDarkMode ? 'white' : 'blue'}
+      onClick={onClick}>
       <div className="flex flex-col gap-md py-md uppercase">
         <Typography
           variant="h5"
