@@ -357,9 +357,9 @@ module.exports = {
         '1/2': '50%',
       },
       keyframes: {
-        'shiny-button': {
+        shiny: {
           '0%': { right: '150%' },
-          '8%': { right: '-50%' },
+          '98%': { right: '150%' },
           '100%': { right: '-50%' },
         },
       },
