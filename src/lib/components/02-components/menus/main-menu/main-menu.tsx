@@ -273,7 +273,7 @@ export default function MainMenu({
             href={item.url}
             component={item.component ?? LinkComponent}
             modalId={item.modalId}
-            className="flex w-full justify-center bg-[radial-gradient(circle,#0360d5_0,#023e8a_100%)] text-center hover:bg-[radial-gradient(circle,#0249a3_0,#023e8a_100%)] lg:w-fit"
+            className="relative flex w-full justify-center overflow-hidden bg-[radial-gradient(circle,#0360d5_0,#023e8a_100%)] text-center before:absolute before:-top-10 before:h-[300%] before:w-7 before:rotate-45 before:animate-[shiny-button_16s_ease_infinite] before:bg-white before:opacity-30 hover:bg-[radial-gradient(circle,#0249a3_0,#023e8a_100%)] lg:w-fit"
             onClick={onCloseMainMenu}
             endIcon={<ArrowRightIcon />}>
             {item.title}

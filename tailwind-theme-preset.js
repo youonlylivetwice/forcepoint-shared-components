@@ -355,7 +355,14 @@ module.exports = {
       maxWidth: {
         '1/3': '33.333333%',
         '1/2': '50%',
-      }
+      },
+      keyframes: {
+        'shiny-button': {
+          '0%': { right: '150%' },
+          '8%': { right: '-50%' },
+          '100%': { right: '-50%' },
+        },
+      },
     },
   },
   plugins: [],
