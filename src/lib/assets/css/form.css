@@ -125,7 +125,7 @@
 .hubspot-form-wrapper .hs_jobtitle .input,
 .hubspot-form-wrapper .hs_firstname .input,
 .hubspot-form-wrapper .hs_lastname .input,
-.hubspot-form-wrapper .hs-fieldtype-text  .input,
+.hubspot-form-wrapper .hs-fieldtype-text .input,
 .hubspot-form-wrapper .hs-fieldtype-select .input {
   @apply relative before:absolute before:left-sm before:top-[12px] before:block before:text-teal before:content-["*"];
 }
