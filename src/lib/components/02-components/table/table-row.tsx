@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useRef } from 'react';
+import React, { ReactNode, useRef } from 'react';
 import useMediaQuery from '../../../hooks/use-media-query';
 import { setContrastTextColor } from '../../00-tokens/color/color-shared';
 import { useDataTable } from './data-table-provider';
@@ -17,28 +17,28 @@ const TableRow = ({ bgColor, children }: TableRowProps) => {
   if (bgColor) {
     rowStyles = setContrastTextColor(bgColor);
   }
-  useEffect(() => {
-    function currentPageAnimation() {
-      if (row && row.current) {
-        const tableElement = row.current.closest('table');
+  // useEffect(() => {
+  function currentPageAnimation() {
+    if (row && row.current) {
+      const tableElement = row.current.closest('table');
 
-        if (tableElement) {
-          // Trying to retrieve the target element for the current page.
-          const targetElementIndex = (currentPage - 1) * itemsPerPage;
-          const targetElement = tableElement.rows[targetElementIndex];
+      if (tableElement && currentPage) {
+        // Trying to retrieve the target element for the current page.
+        const targetElementIndex = (currentPage - 1) * itemsPerPage;
+        const targetElement = tableElement.rows[targetElementIndex];
 
-          targetElement?.scrollIntoView({
-            behavior: 'smooth',
-            inline: 'start',
-            block: 'nearest',
-          });
-        }
+        targetElement?.scrollIntoView({
+          behavior: 'smooth',
+          inline: 'start',
+          block: 'nearest',
+        });
       }
     }
-    if (isMobile) {
-      currentPageAnimation();
-    }
-  }, [isMobile, currentPage, itemsPerPage]);
+  }
+  if (isMobile) {
+    currentPageAnimation();
+  }
+  // }, [isMobile, currentPage, itemsPerPage]);
 
   return (
     <tr
