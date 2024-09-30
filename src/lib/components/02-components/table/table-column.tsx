@@ -68,7 +68,7 @@ const TableColumn = ({ bgColor, children }: TableColumnProps) => {
         columnElement.setAttribute('class', columnClasses);
       }
     },
-    [currentPage, itemsPerPage, bgColor],
+    [currentPage, bgColor, itemsPerPage],
   );
 
   useEffect(() => {
