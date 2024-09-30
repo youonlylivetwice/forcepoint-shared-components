@@ -17,15 +17,22 @@ const TableColumn = ({ bgColor, children }: TableColumnProps) => {
     colStyles = setContrastTextColor(bgColor);
   }
 
+  useEffect(() => {
+    if (column && column.current) {
+      applyColumnStyles(column.current);
+    }
+  }, [column.current, currentPage]);
+
   const applyColumnStyles = useCallback(
     (columnElement: HTMLTableCellElement) => {
       const tableElement = columnElement.closest('table');
       const rowElement = columnElement.closest('tr');
 
-      if (tableElement && rowElement && currentPage) {
+      if (tableElement && rowElement) {
         // Calculate start and end indices for the current page
-        const startIndex = (currentPage - 1) * itemsPerPage;
-        const endIndex = currentPage * itemsPerPage - 1;
+        const pageNumber = currentPage ? currentPage : 1;
+        const startIndex = (pageNumber - 1) * itemsPerPage;
+        const endIndex = pageNumber * itemsPerPage - 1;
 
         // Get information about the row and column
         const columnCount = rowElement?.cells.length;
@@ -68,14 +75,8 @@ const TableColumn = ({ bgColor, children }: TableColumnProps) => {
         columnElement.setAttribute('class', columnClasses);
       }
     },
-    [currentPage, bgColor, itemsPerPage],
+    [currentPage],
   );
-
-  useEffect(() => {
-    if (column && column.current) {
-      applyColumnStyles(column.current);
-    }
-  }, [currentPage, applyColumnStyles]);
 
   return (
     <td ref={column} style={colStyles} data-color={bgColor}>
