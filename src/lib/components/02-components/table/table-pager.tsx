@@ -24,7 +24,7 @@ const TablePager = () => {
                   : i === 1,
                 'h-[2px] w-[30px] bg-mercury': currentPage
                   ? i !== currentPage
-                  : currentPage,
+                  : i !== 1,
               },
             )}></span>
         </button>,
