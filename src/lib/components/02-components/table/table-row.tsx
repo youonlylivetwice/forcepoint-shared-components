@@ -18,27 +18,26 @@ const TableRow = ({ bgColor, children }: TableRowProps) => {
     rowStyles = setContrastTextColor(bgColor);
   }
   useEffect(() => {
-    if (!isMobile && !row) {
-      return;
-    }
-    const tableElement = row.current?.closest('table');
+    if (isMobile) {
+      const tableElement = row.current?.closest('table');
 
-    if (tableElement && currentPage) {
-      // Trying to retrieve the target element for the current page.
-      const targetElementIndex = (currentPage - 1) * itemsPerPage;
-      const targetElement = tableElement.rows[targetElementIndex];
+      if (tableElement && currentPage) {
+        // Trying to retrieve the target element for the current page.
+        const targetElementIndex = (currentPage - 1) * itemsPerPage;
+        const targetElement = tableElement.rows[targetElementIndex];
 
-      targetElement?.scrollIntoView({
-        behavior: 'smooth',
-        inline: 'start',
-        block: 'nearest',
-      });
+        targetElement?.scrollIntoView({
+          behavior: 'smooth',
+          inline: 'start',
+          block: 'nearest',
+        });
+      }
     }
   }, [isMobile, currentPage, itemsPerPage]);
 
   return (
     <tr
-      className="overflow-x-auto bg-white max-md:flex max-md:flex-col"
+      className="bg-white max-md:flex max-md:flex-col"
       style={rowStyles}
       ref={row}>
       {children}
