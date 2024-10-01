@@ -14,17 +14,19 @@ const TablePager = () => {
         <button
           key={i}
           className="group py-md"
-          onClick={() => setCurrentPage(i)}
-        >
+          onClick={() => setCurrentPage(i)}>
           <span
             className={cn(
               'block cursor-pointer rounded-m transition-all duration-300 group-hover:h-[4px] group-hover:w-[50px]',
               {
-                'h-[4px] w-[50px] bg-teal shadow-md': i === currentPage,
-                'h-[2px] w-[30px] bg-mercury': i !== currentPage,
+                'h-[4px] w-[50px] bg-teal shadow-md': currentPage
+                  ? i === currentPage
+                  : i === 1,
+                'h-[2px] w-[30px] bg-mercury': currentPage
+                  ? i !== currentPage
+                  : i !== 1,
               },
-            )}
-          ></span>
+            )}></span>
         </button>,
       );
     }

@@ -1,6 +1,6 @@
+import React, { ReactNode, useCallback, useEffect, useRef } from 'react';
 import { cn } from '../../../utils/tailwind-merge';
 import { setContrastTextColor } from '../../00-tokens/color/color-shared';
-import React, { ReactNode, useCallback, useEffect, useRef } from 'react';
 import { useDataTable } from './data-table-provider';
 
 export interface TableColumnProps {
@@ -30,8 +30,9 @@ const TableColumn = ({ bgColor, children }: TableColumnProps) => {
 
       if (tableElement && rowElement) {
         // Calculate start and end indices for the current page
-        const startIndex = (currentPage - 1) * itemsPerPage;
-        const endIndex = currentPage * itemsPerPage - 1;
+        const pageNumber = currentPage ? currentPage : 1;
+        const startIndex = (pageNumber - 1) * itemsPerPage;
+        const endIndex = pageNumber * itemsPerPage - 1;
 
         // Get information about the row and column
         const columnCount = rowElement?.cells.length;
@@ -54,7 +55,7 @@ const TableColumn = ({ bgColor, children }: TableColumnProps) => {
           !bgColor;
 
         // Define dynamic CSS classes based on row and column conditions
-        let columnClasses = cn(
+        const columnClasses = cn(
           'p-md max-md:flex max-md:flex-col max-md:justify-center max-md:items-center md:max-w-[300px] border-brumosa',
           {
             'max-md:rounded-r-m': bgColor && (isLastVisible || isLastRow),
