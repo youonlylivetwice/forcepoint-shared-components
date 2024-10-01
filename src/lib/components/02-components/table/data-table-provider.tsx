@@ -1,10 +1,10 @@
 import {
   createContext,
-  useState,
-  useContext,
   Dispatch,
-  SetStateAction,
   ReactNode,
+  SetStateAction,
+  useContext,
+  useState,
 } from 'react';
 
 interface DataTableProps {
@@ -12,15 +12,15 @@ interface DataTableProps {
 }
 
 type DataTableContextType = {
-  currentPage: number;
+  currentPage: number | null;
   itemsPerPage: number;
-  setCurrentPage: Dispatch<SetStateAction<number>>;
+  setCurrentPage: Dispatch<SetStateAction<number | null>>;
   setTotalItems: Dispatch<SetStateAction<number>>;
   totalItems: number;
 };
 
 const DataTableContext = createContext<DataTableContextType>({
-  currentPage: 0,
+  currentPage: null,
   itemsPerPage: 0,
   setCurrentPage: () => {},
   setTotalItems: () => {},
@@ -30,7 +30,7 @@ const DataTableContext = createContext<DataTableContextType>({
 export const DataTableProvider = ({ children }: DataTableProps) => {
   const itemsPerPage = 2;
   const [totalItems, setTotalItems] = useState<number>(1);
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [currentPage, setCurrentPage] = useState<number | null>(null);
 
   return (
     <DataTableContext.Provider
@@ -40,8 +40,7 @@ export const DataTableProvider = ({ children }: DataTableProps) => {
         setCurrentPage,
         setTotalItems,
         totalItems,
-      }}
-    >
+      }}>
       {children}
     </DataTableContext.Provider>
   );
