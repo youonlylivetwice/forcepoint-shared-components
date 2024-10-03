@@ -9,7 +9,7 @@ React Shared Components Library System for Forcepoint. Built on Vite.
 | Library bundler         | [Vite](https://vitejs.dev/)                                                 |
 | Component visualization | [Storybook](https://storybook.js.org/)                                      |
 | Storybook               | 8.0                                                                         |
-| Storybook instance      | [GitHub Pages](https://fourkitchens.github.io/forcepoint-shared-components) |
+| Storybook instance      | [GitHub Pages](https://youonlylivetwice.github.io/forcepoint-shared-components) |
 | CSS Framework           | [TailwindCSS](https://tailwindcss.com/)                                     |
 | Node                    | 18                                                                          |
 
