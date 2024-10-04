@@ -161,6 +161,7 @@ export default function SecondaryMenu({
           href={item.url}
           component={LinkComponent}
           onClick={onCloseMainMenu}
+          target={item.url.startsWith('http') ? '_blank' : undefined}
           className={cn(
             'submenu-item flex w-full flex-row items-center gap-x-xs px-md py-sm lg:p-0',
             {
@@ -171,8 +172,7 @@ export default function SecondaryMenu({
                 item.active && onFooter && isLanguageSwitcher,
             },
           )}
-          {...item.linkProps}
-        >
+          {...item.linkProps}>
           <span className="text-right text-h5 font-semibold text-inherit lg:text-h6">
             {item.title}
           </span>
@@ -282,8 +282,7 @@ export default function SecondaryMenu({
           },
         )}
         onMouseOver={() => handleOnMouseOver(item, index)}
-        onMouseOut={() => handleOnMouseOut(item)}
-      >
+        onMouseOut={() => handleOnMouseOut(item)}>
         {item.url && (
           <Link
             onClick={onCloseMainMenu}
@@ -291,8 +290,8 @@ export default function SecondaryMenu({
             className="w-full"
             color="inherit"
             href={item.url}
-            {...item.linkProps}
-          >
+            target={item.url.startsWith('http') ? '_blank' : undefined}
+            {...item.linkProps}>
             {itemLabel}
           </Link>
         )}
@@ -311,8 +310,7 @@ export default function SecondaryMenu({
               aria-label={`${item.title} submenu`}
               aria-expanded={isActive}
               aria-haspopup="true"
-              type="button"
-            >
+              type="button">
               {isLanguageSwitcher && (
                 <GlobeIcon className="pointer-events-none h-[16px] w-[16px] min-w-[16px]" />
               )}
