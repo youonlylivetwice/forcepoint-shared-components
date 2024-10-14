@@ -42,17 +42,17 @@ export default function FooterMenu({
     if (!item.url) return;
 
     return (
-      <li key={`footer-subitem-${index}`} className="pt-xs pb-sm leading-none">
+      <li key={`footer-subitem-${index}`} className="pb-sm pt-xs leading-none">
         <Link
           href={item.url}
+          target={item.url.startsWith('http') ? '_blank' : undefined}
           component={LinkComponent}
           {...item.linkProps}
           className={cn(
             'pointer-events-auto text-left text-h5 font-semibold text-grey hover:text-blue focus:text-blue rtl:text-right max-md:leading-none md:text-h6 md:font-medium',
             { 'text-chateau': item.active },
             item?.class,
-          )}
-        >
+          )}>
           {item.title}
         </Link>
       </li>
@@ -84,15 +84,14 @@ export default function FooterMenu({
     return (
       <li
         key={`footer-item-${index}`}
-        className="flex w-full flex-row flex-wrap items-center justify-between md:block"
-      >
+        className="flex w-full flex-row flex-wrap items-center justify-between md:block">
         {item.url && (
           <Link
             href={item.url}
             component={LinkComponent}
+            target={item.url.startsWith('http') ? '_blank' : undefined}
             {...item.linkProps}
-            className="w-[calc(100%-20px)] py-md text-left text-body-2 font-semibold text-navy hover:text-blue focus:text-blue rtl:text-right max-md:leading-none md:py-0 md:text-h4"
-          >
+            className="w-[calc(100%-20px)] py-md text-left text-body-2 font-semibold text-navy hover:text-blue focus:text-blue rtl:text-right max-md:leading-none md:py-0 md:text-h4">
             {item.title}
           </Link>
         )}
@@ -115,8 +114,7 @@ export default function FooterMenu({
                   ? `Close ${item.title} submenu`
                   : `Open ${item.title} submenu`
               }
-              type="button"
-            >
+              type="button">
               {!item.url && item.title}
               <ArrowBottomIcon
                 className={cn(
