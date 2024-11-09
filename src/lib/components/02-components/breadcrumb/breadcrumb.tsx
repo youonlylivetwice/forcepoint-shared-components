@@ -5,7 +5,7 @@ import { ChevronLeftIcon } from '../../00-tokens/icons';
 
 export interface BreadcrumbProps extends ComponentPropsWithoutRef<'nav'> {
   ariaLabel?: string;
-  bgColor?: 'azure' | 'navy';
+  bgColor?: 'azure' | 'navy' | 'blue_shade';
   linkComponent?: ElementType;
   linkComponentProps?: Record<string, string | boolean>;
   links?: {
@@ -34,6 +34,7 @@ export default function Breadcrumb({
             className={cn({
               'hover:text-blue': bgColor === 'azure',
               'hover:text-sandwisp': bgColor === 'navy',
+              'hover:text-white': bgColor === 'blue_shade',
             })}
           />
         </LinkComponent>
@@ -43,6 +44,7 @@ export default function Breadcrumb({
         className={cn('last:font-medium', {
           'hover:text-blue': bgColor === 'azure',
           'hover:text-sandwisp': bgColor === 'navy',
+          'hover:text-white': bgColor === 'blue_shade',
         })}
       >
         <LinkComponent
@@ -67,6 +69,7 @@ export default function Breadcrumb({
         className={cn({
           'hover:text-blue': bgColor === 'azure',
           'hover:text-sandwisp': bgColor === 'navy',
+          'hover:text-white': bgColor === 'blue_shade',
           'font-medium': currentPage,
           'after:content-[":"]': !currentPage
         })}
@@ -99,10 +102,11 @@ export default function Breadcrumb({
         className={cn('flex gap-sm text-[14px]', {
           'text-gray': bgColor === 'azure',
           'text-azure': bgColor === 'navy',
+          'text-sandwisp-brighter': bgColor === 'blue_shade',
         })}
       >
         {isMobile ? renderedMobileItems : renderedDesktopItems}
       </ol>
-    </nav>
+    </nav>  
   );
 }
