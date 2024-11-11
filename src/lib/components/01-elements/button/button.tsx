@@ -24,7 +24,8 @@ export type ButtonColorVariant =
   | 'navy'
   | 'sandwisp'
   | 'viola'
-  | 'white';
+  | 'white'
+  | 'black';
 
 export type ButtonProps = DefaultProps &
   (
@@ -62,6 +63,10 @@ const colorButtonSchema = {
   white: {
     solid: 'bg-white text-blue hover:text-black hover:bg-sandwisp',
     outline: 'border-white border-2 text-white hover:border-sandwisp',
+  },
+  black: {
+    solid: 'bg-blue text-white hover:bg-navy',
+    outline: 'border-blue border-2 text-blue hover:border-navy',
   },
 };
 

@@ -21,6 +21,7 @@ export const Default = () => {
       queryKey="keys"
       isSearchOpen={isSearchOpen}
       toggleInput={toggleSearchInput}
+      color="black"
     />
   );
 };

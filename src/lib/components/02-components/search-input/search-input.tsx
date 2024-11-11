@@ -10,7 +10,10 @@ export type SearchProps = FormHTMLAttributes<HTMLFormElement> & {
   searchLabel?: string;
   toggleInput: () => void;
   url: string;
+  color?: 'black' | 'white';
 };
+
+type iconColor = 'black' | 'white';
 
 export default function SearchInput({
   isSearchOpen,
@@ -20,6 +23,7 @@ export default function SearchInput({
   searchLabel = 'Search',
   toggleInput,
   url,
+  color = 'black',
   ...props
 }: SearchProps) {
   const [inputValue, setInputValue] = useState('');
@@ -46,6 +50,17 @@ export default function SearchInput({
       toggleInput();
     }
   }
+
+  const colorSchema: { [key in iconColor]: { default: string; hover: string, closed: string } } = {
+    black: { 
+      default: 'text-grey', 
+      hover: 'hover:text-blue',
+      closed: 'text-teal'},
+    white: {
+      default: 'text-white', 
+      hover: 'hover:text-sandwisp-bright',
+      closed: 'text-sandwisp-bright'},
+  };
 
   return (
     <div
@@ -103,9 +118,9 @@ export default function SearchInput({
         })}
       >
         {isSearchOpen ? (
-          <CloseThickIcon className="text-teal" />
+          <CloseThickIcon className={cn('', colorSchema[color].closed)} />
         ) : (
-          <SearchThickIcon className="text-grey hover:text-blue" />
+          <SearchThickIcon className={cn('', colorSchema[color].default, colorSchema[color].hover)} />
         )}
       </button>
     </div>

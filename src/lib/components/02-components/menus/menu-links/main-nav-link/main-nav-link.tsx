@@ -11,7 +11,10 @@ export type MainNavLinkProps = {
   linkComponent?: ElementType;
   onClick?: () => void;
   title: string;
+  textColor: 'black' | 'white';
 };
+
+type MenuColor = 'black' | 'white';
 
 export default function MainNavLink({
   handlerCloseMenu,
@@ -21,6 +24,7 @@ export default function MainNavLink({
   title,
   onClick,
   index,
+  textColor = 'black',
 }: MainNavLinkProps) {
   const itemLabel = (
     <span className="w-full py-md text-body-2 font-semibold text-inherit rtl:text-right lg:font-normal">
@@ -28,11 +32,24 @@ export default function MainNavLink({
     </span>
   );
 
+  const textColorSchema: { [key in MenuColor]: { default: string; active: string; hover: string } } = {
+    black: { 
+      default: 'text-black', 
+      active: 'text-blue',
+      hover: 'hover:text-blue'},
+    white: {
+      default: 'text-white', 
+      active: 'text-sandwisp-bright',
+      hover: 'hover:text-sandwisp-bright'},
+  };
+
   return (
     <div
       className={cn(
-        'group flex w-full flex-row items-center justify-center text-black hover:text-blue lg:relative lg:w-fit lg:gap-xs',
-        { 'text-blue': isActive },
+        'group flex w-full flex-row items-center justify-center lg:relative lg:w-fit lg:gap-xs',
+        textColorSchema[textColor].default,
+        textColorSchema[textColor].hover,
+        isActive && textColorSchema[textColor].active,
       )}
     >
       {href && (
