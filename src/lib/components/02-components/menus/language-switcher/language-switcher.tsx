@@ -18,6 +18,7 @@ export type LanguageSwitcherProps = {
   onFooter?: boolean;
   url: string;
   excludedLangcode?: string;
+  textColor: 'black' | 'white';
 };
 
 export default function LanguageSwitcher({
@@ -27,6 +28,7 @@ export default function LanguageSwitcher({
   onFooter = false,
   url,
   excludedLangcode,
+  textColor = 'black',
 }: LanguageSwitcherProps) {
   // Move active locale to the beginning of the array
   const activeIndex = locales.findIndex((locale) => locale.active);
@@ -66,6 +68,7 @@ export default function LanguageSwitcher({
       isLanguageSwitcher={true}
       menuClass="language-switcher"
       handlerCloseMenu={handlerCloseMenu}
+      textColor={textColor}
     />
   );
 }

@@ -15,6 +15,8 @@ export type SecondaryMenuItemProps = {
   class?: string | null;
 };
 
+type SecondaryMenuColor = 'black' | 'white';
+
 export type SecondaryMenuProps = {
   handlerCloseMenu?: () => void;
   isLanguageSwitcher?: boolean;
@@ -23,6 +25,7 @@ export type SecondaryMenuProps = {
   menuClass?: string;
   menuLabel?: string;
   onFooter?: boolean;
+  textColor?: 'black' | 'white';
 };
 
 export default function SecondaryMenu({
@@ -33,8 +36,9 @@ export default function SecondaryMenu({
   menuClass = 'secondary-menu',
   menuLabel = 'Secondary Menu',
   onFooter = false,
+  textColor = 'black',
 }: SecondaryMenuProps) {
-  const [active, setActive] = useState<number | undefined>();
+  const [active, setActive] = useState<number | undefined>(); 
 
   useEffect(() => {
     const handleClick = (event: MouseEvent) => {
@@ -151,6 +155,19 @@ export default function SecondaryMenu({
     }
   };
 
+  const textColorSchema: { [key in SecondaryMenuColor]: { default: string; active: string; hover: string } } = {
+    black: {
+      default: 'text-grey',
+      active: 'text-blue',
+      hover: 'hover:text-blue'
+    },
+    white: {
+      default: 'text-white',
+      active: 'text-sandwisp-bright',
+      hover: 'hover:text-sandwisp-bright'
+    },
+  };
+
   const renderSubitem = (item: SecondaryMenuItemProps, index: number) => {
     if (!item.url) return;
 
@@ -213,9 +230,9 @@ export default function SecondaryMenu({
             className="back-button p-md"
             onClick={() => handlerOpenSubmenu(-1)}
           >
-            <BackIcon className="rotate-0 text-grey lg:rotate-[90deg]" />
+            <BackIcon className={cn('rotate-0 lg:rotate-[90deg]', textColorSchema[textColor].default)} />
           </button>
-          <span className="block flex-1 text-start text-body-2 text-grey rtl:text-right">
+          <span className={cn('block flex-1 text-start text-body-2 rtl:text-right', textColorSchema[textColor].default)}>
             {item.title}
           </span>
           <button
@@ -223,7 +240,7 @@ export default function SecondaryMenu({
             onClick={onCloseMainMenu}
             aria-label="Close menu"
           >
-            <CloseIcon className="text-grey" />
+            <CloseIcon className={cn('',textColorSchema[textColor].default)} />
           </button>
         </div>
         {/* Desktop Heading */}
@@ -273,9 +290,11 @@ export default function SecondaryMenu({
       <li
         key={`${menuClass}-item-${index}`}
         className={cn(
-          'group flex flex-row items-center justify-center text-grey hover:text-blue lg:relative lg:gap-xs',
+          'group flex flex-row items-center justify-center lg:relative lg:gap-xs',
+          textColorSchema[textColor].default,
+          textColorSchema[textColor].hover,
+          isActive && textColorSchema[textColor].active,
           {
-            'text-blue': isActive,
             'flex-col': onFooter && isLanguageSwitcher,
             'max-lg:text-grey max-lg:hover:text-grey':
               isActive && onFooter && isLanguageSwitcher,

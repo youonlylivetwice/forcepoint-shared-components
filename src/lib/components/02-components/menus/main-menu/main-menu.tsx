@@ -69,6 +69,7 @@ export type MainMenuProps = {
   items: MainMenuItemProps[];
   linkComponent?: ElementType;
   menuLabel?: string;
+  color?: 'black' | 'white';
 };
 
 export type TokensType = Record<
@@ -78,6 +79,13 @@ export type TokensType = Record<
     type: string;
   }
 >;
+
+type color = 'black' | 'white'; 
+
+const heighlightColorSchema: { [key in color]: string } = {
+  black: 'bg-blue',
+  white: 'bg-sandwisp',
+};
 
 const itemAlignmentSchema: {
   [key in MenuItemAlignment]: string;
@@ -123,6 +131,7 @@ export default function MainMenu({
   items,
   linkComponent: LinkComponent = 'a',
   menuLabel = 'Main menu',
+  color = 'black',
 }: MainMenuProps) {
   const [active, setActive] = useState<number>(-1);
 
@@ -221,6 +230,7 @@ export default function MainMenu({
             onClick={() => setActive(index)}
             handlerCloseMenu={handlerCloseMenu}
             index={index}
+            textColor={color}
           />
         );
       }
@@ -273,9 +283,17 @@ export default function MainMenu({
             href={item.url}
             component={item.component ?? LinkComponent}
             modalId={item.modalId}
-            className="relative flex w-full justify-center overflow-hidden bg-[radial-gradient(circle,#0360d5_0,#023e8a_100%)] text-center before:absolute before:-top-10 before:right-[150%] before:h-[300%] before:w-7 before:rotate-45 before:animate-[shiny_30s_ease_infinite] before:bg-white before:opacity-30 hover:bg-[radial-gradient(circle,#0249a3_0,#023e8a_100%)] lg:w-fit"
+            className={
+              cn(
+                'relative flex w-full justify-center overflow-hidden text-center before:absolute before:-top-10 before:right-[150%] before:h-[300%] before:w-7 before:rotate-45 lg:w-fit',
+                {
+                  'bg-[radial-gradient(circle,#0360d5_0,#023e8a_100%)] hover:bg-[radial-gradient(circle,#0249a3_0,#023e8a_100%)] before:bg-white before:animate-[shiny_30s_ease_infinite] before:opacity-30': color !== 'white',
+                  'bg-white': color === 'white',
+                }
+              )}
             onClick={onCloseMainMenu}
-            endIcon={<ArrowRightIcon />}>
+            endIcon={<ArrowRightIcon />}
+            color={color === 'black' ? 'blue' : color}>
             {item.title}
           </Button>
         );
@@ -441,7 +459,7 @@ export default function MainMenu({
         )}
       </ul>
       <span
-        className="nav-highlight transition-left transition-height height-0 pointer-events-none absolute bottom-[-2px] z-10 bg-blue duration-300"
+        className={cn('nav-highlight transition-left transition-height height-0 pointer-events-none absolute bottom-[-2px] z-10 duration-300', heighlightColorSchema[color])}
         aria-hidden></span>
     </nav>
   );

@@ -115,7 +115,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = ({ items }: SecondaryMenuProps) => {
+export const Default: Story = ({ items, textColor }: SecondaryMenuProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
 
   const mainMenuRendered = () => (
@@ -137,19 +137,24 @@ export const Default: Story = ({ items }: SecondaryMenuProps) => {
   const secondaryMenuRendered = () => (
     <SecondaryMenu
       items={items}
+      textColor={textColor}
       handlerCloseMenu={() => setIsMenuOpen(false)}
     />
   );
 
   return (
-    <header className="sticky top-0 z-20 bg-white">
+    <header className={cn('sticky top-0 z-20 bg-white',
+      {
+        'bg-blue-shade': textColor === 'white',
+      }
+    )}>
       {/* Desktop */}
       <div className="relative mt-md hidden flex-col gap-xs px-md lg:mx-auto lg:flex lg:max-w-screen-lg">
         <div className="flex flex-1">
           <Branding
             className="inline-flex w-[180px]"
             src={branding.data.info.logo}
-            alt="Site Logo"
+            alt="Site Logo" 
           />
           <div className="flex flex-1 justify-end gap-md">
             {secondaryMenuRendered()}
@@ -204,4 +209,5 @@ export const Default: Story = ({ items }: SecondaryMenuProps) => {
 
 Default.args = {
   items: menuItems,
+  textColor: 'black',
 };
