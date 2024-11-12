@@ -156,14 +156,16 @@ export default function SecondaryMenu({
   };
 
   const textColorSchema: { [key in SecondaryMenuColor]: { default: string; active: string; hover: string } } = {
-    black: { 
-      default: 'text-grey', 
+    black: {
+      default: 'text-grey',
       active: 'text-blue',
-      hover: 'hover:text-blue'},
+      hover: 'hover:text-blue'
+    },
     white: {
-      default: 'text-white', 
+      default: 'text-white',
       active: 'text-sandwisp-bright',
-      hover: 'hover:text-sandwisp-bright'},
+      hover: 'hover:text-sandwisp-bright'
+    },
   };
 
   const renderSubitem = (item: SecondaryMenuItemProps, index: number) => {

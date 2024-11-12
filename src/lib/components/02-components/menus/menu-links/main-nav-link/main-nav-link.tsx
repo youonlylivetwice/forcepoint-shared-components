@@ -33,14 +33,16 @@ export default function MainNavLink({
   );
 
   const textColorSchema: { [key in MenuColor]: { default: string; active: string; hover: string } } = {
-    black: { 
-      default: 'text-black', 
+    black: {
+      default: 'text-black',
       active: 'text-blue',
-      hover: 'hover:text-blue'},
+      hover: 'hover:text-blue'
+    },
     white: {
-      default: 'text-white', 
+      default: 'text-white',
       active: 'text-sandwisp-bright',
-      hover: 'hover:text-sandwisp-bright'},
+      hover: 'hover:text-sandwisp-bright'
+    },
   };
 
   return (

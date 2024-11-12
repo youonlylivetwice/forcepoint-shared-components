@@ -52,14 +52,16 @@ export default function SearchInput({
   }
 
   const colorSchema: { [key in iconColor]: { default: string; hover: string, closed: string } } = {
-    black: { 
-      default: 'text-grey', 
+    black: {
+      default: 'text-grey',
       hover: 'hover:text-blue',
-      closed: 'text-teal'},
+      closed: 'text-teal'
+    },
     white: {
-      default: 'text-white', 
+      default: 'text-white',
       hover: 'hover:text-sandwisp-bright',
-      closed: 'text-sandwisp-bright'},
+      closed: 'text-sandwisp-bright'
+    },
   };
 
   return (

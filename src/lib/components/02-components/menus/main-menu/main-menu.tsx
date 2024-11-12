@@ -293,7 +293,7 @@ export default function MainMenu({
               )}
             onClick={onCloseMainMenu}
             endIcon={<ArrowRightIcon />}
-            color={color}>
+            color={color === 'black' ? 'blue' : color}>
             {item.title}
           </Button>
         );
