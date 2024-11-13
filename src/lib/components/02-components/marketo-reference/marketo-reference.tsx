@@ -8,6 +8,7 @@ export interface MarketoReferenceProps extends ComponentPropsWithoutRef<'div'> {
   bgColor: MarketoReferenceColor;
   formStyle?: MarketoReferenceFormStyle;
   contentClassName?: string;
+  containerId?: string;
 }
 
 export type MarketoReferenceImageDetails = {
@@ -57,6 +58,7 @@ export default function MarketoReference({
   formStyle: style = 'none',
   className,
   contentClassName,
+  containerId,
   ...props
 }: MarketoReferenceProps) {
   const formStyle = style ? style : 'none';
@@ -90,6 +92,7 @@ export default function MarketoReference({
 
   return (
     <div
+      id={containerId}
       {...props}
       style={bgImageStyles}
       className={cn(

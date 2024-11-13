@@ -10,6 +10,7 @@ export interface TableProps {
   description?: string;
   heading?: string;
   subheading?: string;
+  containterId?: string;
 }
 
 const Table: React.FC<TableProps> = ({
@@ -17,6 +18,7 @@ const Table: React.FC<TableProps> = ({
   description,
   heading,
   subheading,
+  containterId
 }) => {
   const table = useRef<HTMLTableElement>(null);
   const { setTotalItems } = useDataTable();
@@ -102,7 +104,7 @@ const Table: React.FC<TableProps> = ({
   );
 
   const renderTable = (
-    <div className="table-wrapper max-md:overflow-x-hidden">
+    <div className="table-wrapper max-md:overflow-x-hidden" id={containterId}>
       <table
         className="my-md min-w-full table-auto max-md:overflow-x-auto md:mt-lg"
         ref={table}>
