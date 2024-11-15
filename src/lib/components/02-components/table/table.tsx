@@ -104,7 +104,7 @@ const Table: React.FC<TableProps> = ({
   );
 
   const renderTable = (
-    <div className="table-wrapper max-md:overflow-x-hidden" id={containterId}>
+    <div className="table-wrapper max-md:overflow-x-hidden">
       <table
         className="my-md min-w-full table-auto max-md:overflow-x-auto md:mt-lg"
         ref={table}>
@@ -122,7 +122,7 @@ const Table: React.FC<TableProps> = ({
   );
 
   return (
-    <div className="py-lg md:mx-auto md:max-w-screen-lg md:py-xl">
+    <div className="py-lg md:mx-auto md:max-w-screen-lg md:py-xl scroll-mt-[30px]" id={containterId}>
       {renderHeading}
       {renderSubheading}
       {renderTable}

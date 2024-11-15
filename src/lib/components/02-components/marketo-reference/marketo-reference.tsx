@@ -101,6 +101,7 @@ export default function MarketoReference({
           'bg-cover bg-no-repeat': isBgImageStyle,
         },
         className,
+        'scroll-mt-[30px]'
       )}>
       <div
         className={cn(
