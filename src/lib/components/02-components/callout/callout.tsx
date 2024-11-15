@@ -17,6 +17,7 @@ export type CalloutLinkDetails = {
 };
 
 export interface CalloutProps extends ComponentPropsWithoutRef<'div'> {
+  id: string;
   color?: CalloutColorVariant;
   content?: string;
   contentElement?: ElementType;
@@ -72,6 +73,7 @@ export const colorSchema: { [key in CalloutColorVariant]: CalloutColorSchema } =
   };
 
 export default function Callout({
+  id,
   color = 'white',
   content,
   renderedContentComponent,
@@ -107,7 +109,7 @@ export default function Callout({
   ) : null;
 
   return (
-    <div className={cn(colorSchema[color].wrapper, className)} {...props}>
+    <div id={id} className={cn(colorSchema[color].wrapper, className)} {...props}>
       <div className="mx-auto flex max-w-screen-lg flex-col-reverse md:flex-row md:items-center md:gap-lg xl:gap-xl">
         {renderedImage}
         <div className="flex flex-1 flex-col gap-md p-lg">
