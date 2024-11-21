@@ -27,6 +27,7 @@ export interface CalloutProps extends ComponentPropsWithoutRef<'div'> {
   renderedContentComponent?: ReactNode;
   link?: CalloutLinkDetails;
   linkComponent?: ElementType;
+  containerId?: string;
 }
 
 export type CalloutColorVariant = 'white' | 'black' | 'navy' | 'violette';
@@ -82,6 +83,7 @@ export default function Callout({
   linkComponent: LinkElement = 'a',
   renderedImageComponent,
   className,
+  containerId,
   ...props
 }: CalloutProps) {
   const renderedImage = renderedImageComponent ? (
@@ -107,7 +109,7 @@ export default function Callout({
   ) : null;
 
   return (
-    <div className={cn(colorSchema[color].wrapper, className)} {...props}>
+    <div id={containerId} className={cn(colorSchema[color].wrapper, className)} {...props}>
       <div className="mx-auto flex max-w-screen-lg flex-col-reverse md:flex-row md:items-center md:gap-lg xl:gap-xl">
         {renderedImage}
         <div className="flex flex-1 flex-col gap-md p-lg">

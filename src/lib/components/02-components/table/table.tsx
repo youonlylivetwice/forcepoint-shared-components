@@ -10,6 +10,7 @@ export interface TableProps {
   description?: string;
   heading?: string;
   subheading?: string;
+  containterId?: string;
 }
 
 const Table: React.FC<TableProps> = ({
@@ -17,6 +18,7 @@ const Table: React.FC<TableProps> = ({
   description,
   heading,
   subheading,
+  containterId
 }) => {
   const table = useRef<HTMLTableElement>(null);
   const { setTotalItems } = useDataTable();
@@ -120,7 +122,7 @@ const Table: React.FC<TableProps> = ({
   );
 
   return (
-    <div className="py-lg md:mx-auto md:max-w-screen-lg md:py-xl">
+    <div className="py-lg md:mx-auto md:max-w-screen-lg md:py-xl scroll-mt-[30px]" id={containterId}>
       {renderHeading}
       {renderSubheading}
       {renderTable}
