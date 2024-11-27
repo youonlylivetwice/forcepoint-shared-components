@@ -64,10 +64,14 @@ const TableColumn = ({ bgColor, children }: TableColumnProps) => {
               ((isFirstVisible && !isLastRow) || isBeforeCurrentPage),
             'max-md:items-start max-md:text-start': isFirstRow,
             'max-md:border-l-2': isLastVisible || isLastRow,
-            'md:rounded-t-m': bgColor && isFirstRow,
-            'md:rounded-b-m': bgColor && isLastRow,
+            'md:rounded-t-lg border-t-2 border-x-2 border-x-transparent border-y-transparent border-gradient':
+              bgColor && isFirstRow,
+            'md:rounded-b-lg border-b-2 border-x-2 border-x-transparent border-y-transparent border-gradient':
+              bgColor && isLastRow,
             'max-md:border-b-2': shouldApplyBorder,
             'md:pl-0': isFirstColumn,
+            'border-x-2 border-x-transparent border-gradient':
+              bgColor && !isFirstRow && !isLastRow,
           },
         );
 

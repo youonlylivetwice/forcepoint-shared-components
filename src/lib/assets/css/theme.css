@@ -12,3 +12,7 @@
   @apply bg-navy p-3 rounded-m;
 }
 
+.border-gradient {
+  background: linear-gradient(white, white) padding-box, linear-gradient(180deg, #36B0C9, #69BC00) border-box;
+}
+
