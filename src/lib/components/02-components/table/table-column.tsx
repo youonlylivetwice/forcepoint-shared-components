@@ -56,21 +56,20 @@ const TableColumn = ({ bgColor, children }: TableColumnProps) => {
 
         // Define dynamic CSS classes based on row and column conditions
         const columnClasses = cn(
-          'p-md max-md:flex max-md:flex-col max-md:justify-center max-md:items-center md:max-w-[300px] border-brumosa',
+          'p-md max-md:flex max-md:flex-col max-md:justify-center max-md:items-center md:max-w-[300px]',
           {
             'max-md:rounded-r-m': bgColor && (isLastVisible || isLastRow),
             'max-md:rounded-l-m':
               bgColor &&
               ((isFirstVisible && !isLastRow) || isBeforeCurrentPage),
             'max-md:items-start max-md:text-start': isFirstRow,
-            'max-md:border-l-2': isLastVisible || isLastRow,
             'md:rounded-t-lg border-t-2 border-x-2 border-x-transparent border-y-transparent border-gradient':
               bgColor && isFirstRow,
             'md:rounded-b-lg border-b-2 border-x-2 border-x-transparent border-y-transparent border-gradient':
               bgColor && isLastRow,
             'max-md:border-b-2': shouldApplyBorder,
             'md:pl-0': isFirstColumn,
-            'border-x-2 border-x-transparent border-gradient':
+            'border-x-2 border-x-transparent border-gradient !bg-white':
               bgColor && !isFirstRow && !isLastRow,
           },
         );
