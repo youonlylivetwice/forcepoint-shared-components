@@ -28,6 +28,7 @@ export interface CalloutProps extends ComponentPropsWithoutRef<'div'> {
   link?: CalloutLinkDetails;
   linkComponent?: ElementType;
   containerId?: string;
+  displayAsCard?: boolean;
 }
 
 export type CalloutColorVariant = 'white' | 'black' | 'navy' | 'violette';
@@ -84,6 +85,7 @@ export default function Callout({
   renderedImageComponent,
   className,
   containerId,
+  displayAsCard,
   ...props
 }: CalloutProps) {
   const renderedImage = renderedImageComponent ? (
@@ -109,8 +111,16 @@ export default function Callout({
   ) : null;
 
   return (
-    <div id={containerId} className={cn(colorSchema[color].wrapper, className)} {...props}>
-      <div className="mx-auto flex max-w-screen-lg flex-col-reverse md:flex-row md:items-center md:gap-lg xl:gap-xl">
+    <div
+      id={containerId}
+      className={cn(!displayAsCard && colorSchema[color].wrapper, className)}
+      {...props}>
+      <div
+        className={cn(
+          'mx-auto flex max-w-screen-lg flex-col-reverse md:flex-row md:items-center md:gap-lg xl:gap-xl',
+          displayAsCard && colorSchema[color].wrapper,
+          displayAsCard && 'overflow-hidden rounded-[40px] shadow-sm',
+        )}>
         {renderedImage}
         <div className="flex flex-1 flex-col gap-md p-lg">
           {eyebrow && (
@@ -126,11 +136,13 @@ export default function Callout({
             <Typography
               component="h2"
               variant="display"
-              className={cn('font-semibold', colorSchema[color].title)}>
+              className={cn(
+                !displayAsCard && 'font-semibold',
+                displayAsCard ? 'text-navy' : colorSchema[color].title,
+              )}>
               {header}
             </Typography>
           )}
-
           {renderedContent}
           {link && (
             <Button
