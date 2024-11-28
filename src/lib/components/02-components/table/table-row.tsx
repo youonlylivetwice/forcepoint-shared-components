@@ -25,9 +25,7 @@ const TableRow = ({ bgColor, children }: TableRowProps) => {
         // Trying to retrieve the target element for the current page.
         const targetElementIndex = (currentPage - 1) * itemsPerPage;
         const targetElement = tableElement.rows[targetElementIndex];
-
         targetElement?.scrollIntoView({
-          behavior: 'smooth',
           inline: 'start',
           block: 'nearest',
         });
