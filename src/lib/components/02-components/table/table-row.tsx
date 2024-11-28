@@ -36,10 +36,7 @@ const TableRow = ({ bgColor, children }: TableRowProps) => {
   }, [isMobile, currentPage, itemsPerPage]);
 
   return (
-    <tr
-      className="bg-white max-md:flex max-md:flex-col"
-      style={rowStyles}
-      ref={row}>
+    <tr className="max-md:flex max-md:flex-col" style={rowStyles} ref={row}>
       {children}
     </tr>
   );
