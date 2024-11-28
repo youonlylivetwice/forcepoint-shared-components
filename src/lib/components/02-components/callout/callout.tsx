@@ -28,7 +28,7 @@ export interface CalloutProps extends ComponentPropsWithoutRef<'div'> {
   link?: CalloutLinkDetails;
   linkComponent?: ElementType;
   containerId?: string;
-  displayAsCard?: boolean;
+  displayAsBanner?: boolean;
 }
 
 export type CalloutColorVariant = 'white' | 'black' | 'navy' | 'violette';
@@ -85,7 +85,7 @@ export default function Callout({
   renderedImageComponent,
   className,
   containerId,
-  displayAsCard,
+  displayAsBanner,
   ...props
 }: CalloutProps) {
   const renderedImage = renderedImageComponent ? (
@@ -113,13 +113,13 @@ export default function Callout({
   return (
     <div
       id={containerId}
-      className={cn(!displayAsCard && colorSchema[color].wrapper, className)}
+      className={cn(!displayAsBanner && colorSchema[color].wrapper, className)}
       {...props}>
       <div
         className={cn(
           'mx-auto flex max-w-screen-lg flex-col-reverse md:flex-row md:items-center md:gap-lg xl:gap-xl',
-          displayAsCard && colorSchema[color].wrapper,
-          displayAsCard && 'overflow-hidden rounded-[40px] shadow-sm',
+          displayAsBanner && colorSchema[color].wrapper,
+          displayAsBanner && 'overflow-hidden rounded-[40px] shadow-sm',
         )}>
         {renderedImage}
         <div className="flex flex-1 flex-col gap-md p-lg">
@@ -137,8 +137,8 @@ export default function Callout({
               component="h2"
               variant="display"
               className={cn(
-                !displayAsCard && 'font-semibold',
-                displayAsCard ? 'text-navy' : colorSchema[color].title,
+                !displayAsBanner && 'font-semibold',
+                displayAsBanner ? 'text-navy' : colorSchema[color].title,
               )}>
               {header}
             </Typography>
