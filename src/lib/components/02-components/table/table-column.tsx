@@ -77,9 +77,6 @@ const TableColumn = ({ bgColor, children }: TableColumnProps) => {
             'border-y-2 border-y-transparent md:border-y-[0] border-r-transparent border-r-transparent md:border-x-2 border-x-transparent border-gradient':
               bgColor && !isFirstRow && !isLastRow,
             '!bg-white': bgColor,
-            // 'border-l-2': isMobile && bgColor && isFirstVisible,
-            // 'border-l-2 border-l-chateau':
-            //   isMobile && !isFirstRow && !isLastRow && isLastVisible,
             'border-r-2 border-x-chateau':
               (isMobile && isEven && !isLastPage) ||
               (isMobile && isLastPage && isBeforeLastRow),
