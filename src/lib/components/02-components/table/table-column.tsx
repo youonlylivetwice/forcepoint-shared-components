@@ -1,4 +1,5 @@
 import React, { ReactNode, useCallback, useEffect, useRef } from 'react';
+import useMediaQuery from '../../../hooks/use-media-query';
 import { cn } from '../../../utils/tailwind-merge';
 import { setContrastTextColor } from '../../00-tokens/color/color-shared';
 import { useDataTable } from './data-table-provider';
@@ -17,11 +18,7 @@ const TableColumn = ({ bgColor, children }: TableColumnProps) => {
     colStyles = setContrastTextColor(bgColor);
   }
 
-  useEffect(() => {
-    if (column && column.current) {
-      applyColumnStyles(column.current);
-    }
-  }, [column.current, currentPage]);
+  const isMobile = useMediaQuery('(max-width: 59.374rem)');
 
   const applyColumnStyles = useCallback(
     (columnElement: HTMLTableCellElement) => {
@@ -58,19 +55,28 @@ const TableColumn = ({ bgColor, children }: TableColumnProps) => {
         const columnClasses = cn(
           'p-md max-md:flex max-md:flex-col max-md:justify-center max-md:items-center md:max-w-[300px]',
           {
-            'max-md:rounded-r-m': bgColor && (isLastVisible || isLastRow),
+            'rounded-r-m sm:rounded-r-[0] border-r-2 border-x-transparent':
+              bgColor && (isLastVisible || isLastRow),
+            'border-x-transparent':
+              bgColor && (!isLastVisible || !isLastRow || !isLastRow),
             'max-md:rounded-l-m':
               bgColor &&
               ((isFirstVisible && !isLastRow) || isBeforeCurrentPage),
             'max-md:items-start max-md:text-start': isFirstRow,
-            'md:rounded-t-lg border-t-2 border-x-2 border-x-transparent border-y-transparent border-gradient':
+            'md:rounded-t-lg border-l-2 md:border-l-[0] border-x-transparent border-y-2 md:border-t-2 md:border-b-[0] md:border-x-2 md:border-x-transparent border-y-transparent border-gradient':
               bgColor && isFirstRow,
-            'md:rounded-b-lg border-b-2 border-x-2 border-x-transparent border-y-transparent border-gradient':
+            'md:rounded-b-lg border-y-2 md:border-b-2 md:border-t-[0] md:border-x-2 md:border-x-transparent border-y-transparent border-gradient':
               bgColor && isLastRow,
-            'max-md:border-b-2': shouldApplyBorder,
+            'max-md:border-b-2 border-b-chateau': shouldApplyBorder,
             'md:pl-0': isFirstColumn,
-            'border-x-2 border-x-transparent border-gradient !bg-white':
+            'border-y-2 border-y-transparent md:border-y-[0] border-r-transparent border-r-transparent md:border-x-2 border-x-transparent border-gradient':
               bgColor && !isFirstRow && !isLastRow,
+            '!bg-white': bgColor,
+            'border-l-2': isMobile && bgColor && isFirstVisible,
+            'border-l-2 border-l-chateau':
+              isMobile && !isFirstRow && !isLastRow && isLastVisible,
+            'border-r-2 border-x-chateau':
+              isMobile && !isFirstRow && !isLastRow && !isLastVisible,
           },
         );
 
@@ -78,8 +84,14 @@ const TableColumn = ({ bgColor, children }: TableColumnProps) => {
         columnElement.setAttribute('class', columnClasses);
       }
     },
-    [currentPage],
+    [currentPage, bgColor, itemsPerPage, isMobile],
   );
+
+  useEffect(() => {
+    if (column && column.current) {
+      applyColumnStyles(column.current);
+    }
+  }, [currentPage, applyColumnStyles]);
 
   return (
     <td ref={column} style={colStyles} data-color={bgColor}>
@@ -89,3 +101,4 @@ const TableColumn = ({ bgColor, children }: TableColumnProps) => {
 };
 
 export default TableColumn;
+
