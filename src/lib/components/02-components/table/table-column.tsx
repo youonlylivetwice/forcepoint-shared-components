@@ -28,6 +28,7 @@ const TableColumn = ({ bgColor, children }: TableColumnProps) => {
       if (tableElement && rowElement) {
         // Calculate start and end indices for the current page
         const pageNumber = currentPage ? currentPage : 1;
+        const lastPage = Math.ceil(tableElement.rows.length / itemsPerPage);
         const startIndex = (pageNumber - 1) * itemsPerPage;
         const endIndex = pageNumber * itemsPerPage - 1;
 
@@ -42,8 +43,12 @@ const TableColumn = ({ bgColor, children }: TableColumnProps) => {
         const isFirstVisible = rowIndex === startIndex;
         const isLastVisible = rowIndex === endIndex;
         const isLastRow = rowIndex === rowCount - 1;
+        const isBeforeLastRow = rowIndex === rowCount - 2;
         const isFirstColumn = columnIndex === 0;
         const isFirstRow = rowIndex === 0;
+        const isEven = rowIndex % 2 === 0;
+        const isOdd = rowIndex % 2 !== 0;
+        const isLastPage = pageNumber === lastPage;
 
         // Determine if a border should be applied
         const shouldApplyBorder =
@@ -72,11 +77,18 @@ const TableColumn = ({ bgColor, children }: TableColumnProps) => {
             'border-y-2 border-y-transparent md:border-y-[0] border-r-transparent border-r-transparent md:border-x-2 border-x-transparent border-gradient':
               bgColor && !isFirstRow && !isLastRow,
             '!bg-white': bgColor,
-            'border-l-2': isMobile && bgColor && isFirstVisible,
-            'border-l-2 border-l-chateau':
-              isMobile && !isFirstRow && !isLastRow && isLastVisible,
+            // 'border-l-2': isMobile && bgColor && isFirstVisible,
+            // 'border-l-2 border-l-chateau':
+            //   isMobile && !isFirstRow && !isLastRow && isLastVisible,
             'border-r-2 border-x-chateau':
-              isMobile && !isFirstRow && !isLastRow && !isLastVisible,
+              (isMobile && isEven && !isLastPage) ||
+              (isMobile && isLastPage && isBeforeLastRow),
+            'border-l-2':
+              (isMobile && bgColor && isEven && !isLastPage) ||
+              (isMobile && bgColor && isLastPage && isBeforeLastRow),
+            'border-r-2':
+              isMobile && bgColor && isOdd && !isBeforeLastRow && !isLastPage,
+            // 'border-l-viola border-l-2': isLastPage && isBeforeLastRow,
           },
         );
 
