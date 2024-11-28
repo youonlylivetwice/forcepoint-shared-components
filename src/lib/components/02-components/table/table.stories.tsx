@@ -201,6 +201,41 @@ export const Default = () => {
           </p>
         </TableColumn>
       </TableRow>
+      <TableRow>
+        <TableColumn>
+          <div>
+            <p>
+              <strong>Last Column</strong>
+            </p>
+            <br />
+            <p>
+              Lorem ipsum dolor sit amet consectetur. Laoreet aliquet diam eu
+              commodo nisl pretium. Dictumst justo accumsan.
+            </p>
+          </div>
+        </TableColumn>
+        <TableColumn bgColor="#F5F6F6">
+          <p className="text-center">
+            <span className="text-h3 text-navy">AAA</span>
+            <br />
+            <span className="text-grey">Lorem ipsum dolor sit</span>
+          </p>
+        </TableColumn>
+        <TableColumn>
+          <p className="text-center">
+            <span className="text-h3 text-black">AAA</span>
+            <br />
+            <span className="text-grey">Lorem ipsum dolor sit</span>
+          </p>
+        </TableColumn>
+        <TableColumn>
+          <p className="text-center">
+            <span className="text-h3 text-black">AAA</span>
+            <br />
+            <span className="text-grey">Lorem ipsum dolor sit</span>
+          </p>
+        </TableColumn>
+      </TableRow>
     </TableWrapper>
   );
 };
