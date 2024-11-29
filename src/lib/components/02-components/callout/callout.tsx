@@ -29,6 +29,7 @@ export interface CalloutProps extends ComponentPropsWithoutRef<'div'> {
   linkComponent?: ElementType;
   containerId?: string;
   displayAsBanner?: boolean;
+  backgroundImageUrl?: string;
 }
 
 export type CalloutColorVariant = 'white' | 'black' | 'navy' | 'violette';
@@ -38,6 +39,7 @@ export type CalloutColorSchema = {
   content: string;
   eyebrow: string;
   title: string;
+  bannerTitle: string;
   wrapper: string;
 };
 
@@ -48,6 +50,7 @@ export const colorSchema: { [key in CalloutColorVariant]: CalloutColorSchema } =
       content: 'text-grey',
       eyebrow: 'text-violette',
       title: 'text-black',
+      bannerTitle: 'text-navy',
       wrapper: 'bg-white',
     },
     black: {
@@ -55,6 +58,7 @@ export const colorSchema: { [key in CalloutColorVariant]: CalloutColorSchema } =
       content: 'text-azure',
       eyebrow: 'text-sandwisp',
       title: 'text-white',
+      bannerTitle: 'text-white',
       wrapper: 'bg-black',
     },
     navy: {
@@ -62,6 +66,7 @@ export const colorSchema: { [key in CalloutColorVariant]: CalloutColorSchema } =
       content: 'text-azure',
       eyebrow: 'text-sandwisp',
       title: 'text-white',
+      bannerTitle: 'text-white',
       wrapper: 'bg-navy',
     },
     violette: {
@@ -69,6 +74,7 @@ export const colorSchema: { [key in CalloutColorVariant]: CalloutColorSchema } =
       content: 'text-azure',
       eyebrow: 'text-sandwisp',
       title: 'text-white',
+      bannerTitle: 'text-white',
       wrapper: 'bg-violette',
     },
   };
@@ -86,6 +92,7 @@ export default function Callout({
   className,
   containerId,
   displayAsBanner,
+  backgroundImageUrl,
   ...props
 }: CalloutProps) {
   const renderedImage = renderedImageComponent ? (
@@ -117,10 +124,15 @@ export default function Callout({
       {...props}>
       <div
         className={cn(
-          'mx-auto flex max-w-screen-lg flex-col-reverse md:flex-row md:items-center md:gap-lg xl:gap-xl',
+          'mx-auto flex max-w-screen-lg flex-col-reverse bg-cover bg-no-repeat md:flex-row md:items-center md:gap-lg xl:gap-xl',
           displayAsBanner && colorSchema[color].wrapper,
           displayAsBanner && 'overflow-hidden rounded-[40px] shadow-sm',
-        )}>
+        )}
+        style={
+          backgroundImageUrl
+            ? { backgroundImage: `url(${backgroundImageUrl})` }
+            : undefined
+        }>
         {renderedImage}
         <div className="flex flex-1 flex-col gap-md p-lg">
           {eyebrow && (
@@ -138,7 +150,9 @@ export default function Callout({
               variant="display"
               className={cn(
                 !displayAsBanner && 'font-semibold',
-                displayAsBanner ? 'text-navy' : colorSchema[color].title,
+                displayAsBanner
+                  ? colorSchema[color].bannerTitle
+                  : colorSchema[color].title,
               )}>
               {header}
             </Typography>
