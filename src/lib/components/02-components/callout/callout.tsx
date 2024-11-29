@@ -134,7 +134,7 @@ export default function Callout({
             : undefined
         }>
         {renderedImage}
-        <div className={'flex flex-1 flex-col gap-md p-lg'}>
+        <div className="flex flex-1 flex-col gap-md p-lg">
           {eyebrow && (
             <span
               className={cn(
