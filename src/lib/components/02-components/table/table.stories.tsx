@@ -177,6 +177,10 @@ export const Default = () => {
               Lorem ipsum dolor sit amet consectetur. Laoreet aliquet diam eu
               commodo nisl pretium. Dictumst justo accumsan.
             </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur. Laoreet aliquet diam eu
+              commodo nisl pretium. Dictumst justo accumsan.
+            </p>
           </div>
         </TableColumn>
         <TableColumn bgColor="#F5F6F6">

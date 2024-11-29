@@ -58,8 +58,9 @@ const TableColumn = ({ bgColor, children }: TableColumnProps) => {
 
         // Define dynamic CSS classes based on row and column conditions
         const columnClasses = cn(
-          'p-md max-md:flex max-md:flex-col max-md:justify-center max-md:items-center md:max-w-[300px]',
+          'p-md max-md:flex max-md:flex-col max-md:items-center md:max-w-[300px]',
           {
+            'max-md:justify-center': !isFirstColumn,
             'rounded-r-m sm:rounded-r-[0] border-r-2 border-x-transparent':
               bgColor && (isLastVisible || isLastRow),
             'border-x-transparent':
@@ -68,19 +69,19 @@ const TableColumn = ({ bgColor, children }: TableColumnProps) => {
               bgColor &&
               ((isFirstVisible && !isLastRow) || isBeforeCurrentPage),
             'max-md:items-start max-md:text-start': isFirstRow,
-            'md:rounded-t-lg border-l-2 md:border-l-[0] border-x-transparent border-y-2 md:border-t-2 md:border-b-[0] md:border-x-2 md:border-x-transparent border-y-transparent border-gradient':
+            'md:rounded-t-lg border-l-2 md:border-l-[0] border-x-transparent border-y-2 md:border-t-2 md:border-b-[0] md:border-x-2 md:border-x-transparent border-y-transparent gradient-border':
               bgColor && isFirstRow,
-            'md:rounded-b-lg border-y-2 md:border-b-2 md:border-t-[0] md:border-x-2 md:border-x-transparent border-y-transparent border-gradient':
+            'md:rounded-b-lg border-y-2 md:border-b-2 md:border-t-[0] md:border-x-2 md:border-x-transparent border-y-transparent gradient-border':
               bgColor && isLastRow,
             'max-md:border-b-2 border-b-chateau': shouldApplyBorder,
             'md:pl-0': isFirstColumn,
-            'border-y-2 border-y-transparent md:border-y-[0] border-r-transparent border-r-transparent md:border-x-2 border-x-transparent border-gradient':
+            'border-y-2 border-y-transparent md:border-y-[0] border-r-transparent border-r-transparent md:border-x-4 border-x-transparent gradient-border':
               bgColor && !isFirstRow && !isLastRow,
-            '!bg-white': bgColor,
+            '!bg-white shadow-sm': bgColor,
             'border-r-2 border-x-chateau':
               (isMobile && isEven && !isLastPage) ||
               (isMobile && isLastPage && isBeforeLastRow),
-            'border-l-2':
+            'border-l-2 border-l-transparent':
               (isMobile && bgColor && isEven && !isLastPage) ||
               (isMobile && bgColor && isLastPage && isBeforeLastRow),
             'border-r-2':
