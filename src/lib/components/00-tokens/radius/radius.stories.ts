@@ -4,6 +4,7 @@ import RadiusDisplay from './radius';
 const radiusVariants = {
   'rounded-s': '5',
   'rounded-m': '10',
+  'rounded-md': '20',
   'rounded-lg': '30',
 };
 

@@ -16,6 +16,7 @@ module.exports = {
     borderRadius: {
       s: '5px',
       m: '10px',
+      md: '20px',
       lg: '30px',
     },
     borderWidth: {
