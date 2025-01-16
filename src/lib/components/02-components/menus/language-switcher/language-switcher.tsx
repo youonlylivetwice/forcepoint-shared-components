@@ -1,3 +1,4 @@
+import { ElementType } from 'react';
 import SecondaryMenu, {
   SecondaryMenuItemProps,
 } from '../secondary-menu/secondary-menu';
@@ -19,6 +20,7 @@ export type LanguageSwitcherProps = {
   url: string;
   excludedLangcode?: string;
   textColor: 'black' | 'white';
+  linkComponent?: ElementType;
 };
 
 export default function LanguageSwitcher({
@@ -29,6 +31,7 @@ export default function LanguageSwitcher({
   url,
   excludedLangcode,
   textColor = 'black',
+  linkComponent,
 }: LanguageSwitcherProps) {
   // Move active locale to the beginning of the array
   const activeIndex = locales.findIndex((locale) => locale.active);
@@ -69,6 +72,7 @@ export default function LanguageSwitcher({
       menuClass="language-switcher"
       handlerCloseMenu={handlerCloseMenu}
       textColor={textColor}
+      linkComponent={linkComponent}
     />
   );
 }
