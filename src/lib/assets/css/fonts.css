@@ -1,18 +1,18 @@
 /* Typography */
 @font-face {
   font-family: 'Hoves';
-  font-weight: 800;
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
-  src: url('../fonts/hoves/Hoves_DemiBold.woff') format('woff');
+  src: url('../fonts/hoves/Hoves_Bold.woff') format('woff');
 }
 
 @font-face {
   font-family: 'Hoves';
   font-weight: 700;
-  font-style: normal;
+  font-style: italic;
   font-display: swap;
-  src: url('../fonts/hoves/Hoves_DemiBold.woff') format('woff');
+  src: url('../fonts/hoves/Hoves_Bold_Italic.woff') format('woff');
 }
 
 @font-face {
@@ -25,10 +25,26 @@
 
 @font-face {
   font-family: 'Hoves';
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+  src: url('../fonts/hoves/Hoves_DemiBold_Italic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Hoves';
   font-weight: 500;
   font-style: normal;
   font-display: swap;
   src: url('../fonts/hoves/Hoves_Medium.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Hoves';
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+  src: url('../fonts/hoves/Hoves_Medium_Italic.woff') format('woff');
 }
 
 @font-face {
@@ -69,4 +85,12 @@
   font-style: normal;
   font-display: swap;
   src: url('../fonts/hoves/Hoves_ExtraLight.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Hoves';
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+  src: url('../fonts/hoves/Hoves_ExtraLight_Italic.woff') format('woff');
 }
