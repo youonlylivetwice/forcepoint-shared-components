@@ -132,7 +132,7 @@
 
 .hubspot-form-wrapper .hs-fieldtype-booleancheckbox .input label,
 .hubspot-form-wrapper .hs-fieldtype-checkbox .input label {
-  @apply flex items-center gap-[5px];
+  @apply flex items-center gap-[5px] text-white;
 }
 
 .hubspot-form-wrapper
