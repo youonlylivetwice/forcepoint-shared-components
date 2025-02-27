@@ -214,7 +214,7 @@ export default function SecondaryMenu({
             hidden: active !== index,
             'h-auto max-lg:static lg:bottom-[100%] lg:top-auto':
               onFooter && isLanguageSwitcher,
-            'lg:w-[380px]': isLanguageSwitcher,
+            'lg:w-[355px] right-[-95px]': isLanguageSwitcher,
           },
         )}
         onBlur={handleBlur}
@@ -261,7 +261,7 @@ export default function SecondaryMenu({
           className={cn(
             'flex flex-1 flex-col bg-white py-sm lg:gap-md lg:rounded-m lg:p-md lg:shadow-md',
             { 'max-lg:bg-transparent': onFooter && isLanguageSwitcher , 
-              'sm:grid sm:grid-cols-2': isLanguageSwitcher },
+              'lg:grid lg:grid-cols-2': isLanguageSwitcher },
           )}
         >
           {item.below?.map(renderSubitem)}
