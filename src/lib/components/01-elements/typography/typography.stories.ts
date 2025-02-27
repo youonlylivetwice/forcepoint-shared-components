@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import TypographySwatches from './typography-swatches';
 import { TypographyVariant } from './typography';
+import TypographySwatches from './typography-swatches';
 
 const headlines: TypographyVariant[] = [
   'colossus',
@@ -22,6 +22,25 @@ const paragraphs: TypographyVariant[] = [
   'body-3',
   'body-4',
   'body-5',
+];
+
+const fontWeights: TypographyVariant[] = [
+  'font-thin',
+  'font-extralight',
+  'font-light',
+  'font-normal',
+  'font-medium',
+  'font-semibold',
+  'font-bold',
+  'font-extrabold',
+  'font-thin italic',
+  'font-extralight italic',
+  'font-light italic',
+  'font-normal italic',
+  'font-medium italic',
+  'font-semibold italic',
+  'font-bold italic',
+  'font-extrabold italic',
 ];
 
 const meta = {
@@ -55,6 +74,15 @@ export const Headlines: Story = {
 export const Paragraphs: Story = {
   args: {
     items: paragraphs,
+    heading: 'Paragraphs',
+    content:
+      'Extensive APIs exchange information with external systems such as identity and access management, physical security, SIEMs, and HR apps to provide behavioral context and send data out to third-party tools and policy enforcement points.',
+  },
+};
+
+export const FontWeights: Story = {
+  args: {
+    items: fontWeights,
     heading: 'Paragraphs',
     content:
       'Extensive APIs exchange information with external systems such as identity and access management, physical security, SIEMs, and HR apps to provide behavioral context and send data out to third-party tools and policy enforcement points.',

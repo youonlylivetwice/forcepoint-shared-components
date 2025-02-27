@@ -17,7 +17,23 @@ export type TypographyVariant =
   | 'body-2'
   | 'body-3'
   | 'body-4'
-  | 'body-5';
+  | 'body-5'
+  | 'font-thin'
+  | 'font-extralight'
+  | 'font-light'
+  | 'font-normal'
+  | 'font-medium'
+  | 'font-semibold'
+  | 'font-bold'
+  | 'font-extrabold'
+  | 'font-thin italic'
+  | 'font-extralight italic'
+  | 'font-light italic'
+  | 'font-normal italic'
+  | 'font-medium italic'
+  | 'font-semibold italic'
+  | 'font-bold italic'
+  | 'font-extrabold italic';
 
 export type TypographyProps = {
   children: ReactNode;
@@ -50,6 +66,22 @@ const variantTypographySchema: { [key in TypographyVariant]: string } = {
   'body-3': 'text-body-3',
   'body-4': 'text-body-4',
   'body-5': 'text-body-5',
+  'font-thin': 'font-thin',
+  'font-extralight': 'font-extralight',
+  'font-light': 'font-light',
+  'font-normal': 'font-normal',
+  'font-medium': 'font-medium',
+  'font-semibold': 'font-semibold',
+  'font-bold': 'font-bold',
+  'font-extrabold': 'font-extrabold',
+  'font-thin italic': 'font-thin italic',
+  'font-extralight italic': 'font-extralight italic',
+  'font-light italic': 'font-light italic',
+  'font-normal italic': 'font-normal italic',
+  'font-medium italic': 'font-medium italic',
+  'font-semibold italic': 'font-semibold italic',
+  'font-bold italic': 'font-bold italic',
+  'font-extrabold italic': 'font-extrabold italic',
 };
 
 export default function Typography({
