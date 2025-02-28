@@ -212,3 +212,7 @@
 label.hs-error-msg {
   @apply absolute right-0 z-10 mt-0 rounded-m bg-crimson px-5 py-[10px] text-white;
 }
+
+.hs-fieldtype-textarea.hs-input {
+  @apply w-full rounded-m p-sm;
+}
