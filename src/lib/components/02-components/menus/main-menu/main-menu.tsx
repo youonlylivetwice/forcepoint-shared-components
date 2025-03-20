@@ -70,6 +70,8 @@ export type MainMenuProps = {
   linkComponent?: ElementType;
   menuLabel?: string;
   color?: 'black' | 'white';
+  useShinyEffect?: boolean;
+  runCustomButtonAction?: () => void;
 };
 
 export type TokensType = Record<
@@ -80,7 +82,7 @@ export type TokensType = Record<
   }
 >;
 
-type color = 'black' | 'white'; 
+type color = 'black' | 'white';
 
 const heighlightColorSchema: { [key in color]: string } = {
   black: 'bg-blue',
@@ -132,6 +134,8 @@ export default function MainMenu({
   linkComponent: LinkComponent = 'a',
   menuLabel = 'Main menu',
   color = 'black',
+  useShinyEffect = false,
+  runCustomButtonAction,
 }: MainMenuProps) {
   const [active, setActive] = useState<number>(-1);
 
@@ -283,15 +287,17 @@ export default function MainMenu({
             href={item.url}
             component={item.component ?? LinkComponent}
             modalId={item.modalId}
-            className={
-              cn(
-                'relative flex w-full justify-center overflow-hidden text-center before:absolute before:-top-10 before:right-[150%] before:h-[300%] before:w-7 before:rotate-45 lg:w-fit',
-                {
-                  'bg-[radial-gradient(circle,#0360d5_0,#023e8a_100%)] hover:bg-[radial-gradient(circle,#0249a3_0,#023e8a_100%)] before:bg-white before:animate-[shiny_30s_ease_infinite] before:opacity-30': color !== 'white',
-                  'bg-white': color === 'white',
-                }
-              )}
-            onClick={onCloseMainMenu}
+            className={cn(
+              'relative flex w-full justify-center overflow-hidden text-center before:absolute before:-top-10 before:right-[150%] before:h-[300%] before:w-7 before:rotate-45 lg:w-fit',
+              {
+                'bg-[radial-gradient(circle,#0360d5_0,#023e8a_100%)] before:animate-[shiny_30s_ease_infinite] before:bg-white before:opacity-30 hover:bg-[radial-gradient(circle,#0249a3_0,#023e8a_100%)]':
+                  color !== 'white' && !useShinyEffect,
+                'bg-white': color === 'white',
+                'shiny-cta bg-transparent text-[15px] text-black':
+                  useShinyEffect,
+              },
+            )}
+            onClick={(e) => handleButtonClick(e)}
             endIcon={<ArrowRightIcon />}
             color={color === 'black' ? 'blue' : color}>
             {item.title}
@@ -347,6 +353,14 @@ export default function MainMenu({
 
   const onCloseMainMenu = () => {
     if (handlerCloseMenu) handlerCloseMenu();
+  };
+
+  const handleButtonClick = (
+    e: MouseEvent<HTMLAnchorElement, globalThis.MouseEvent>,
+  ) => {
+    e.preventDefault();
+    onCloseMainMenu();
+    runCustomButtonAction && runCustomButtonAction();
   };
 
   const renderSubMenuContainer = (
@@ -459,7 +473,10 @@ export default function MainMenu({
         )}
       </ul>
       <span
-        className={cn('nav-highlight transition-left transition-height height-0 pointer-events-none absolute bottom-[-2px] z-10 duration-300', heighlightColorSchema[color])}
+        className={cn(
+          'nav-highlight transition-left transition-height height-0 pointer-events-none absolute bottom-[-2px] z-10 duration-300',
+          heighlightColorSchema[color],
+        )}
         aria-hidden></span>
     </nav>
   );
