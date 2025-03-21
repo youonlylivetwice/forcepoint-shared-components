@@ -71,7 +71,7 @@ export type MainMenuProps = {
   menuLabel?: string;
   color?: 'black' | 'white';
   useShinyEffect?: boolean;
-  runCustomButtonAction?: () => void;
+  runCustomButtonAction?: (url: string) => void;
 };
 
 export type TokensType = Record<
@@ -297,7 +297,7 @@ export default function MainMenu({
                   useShinyEffect,
               },
             )}
-            onClick={(e) => handleButtonClick(e)}
+            onClick={(e) => handleButtonClick(e, item.url || '')}
             endIcon={<ArrowRightIcon />}
             color={color === 'black' ? 'blue' : color}>
             {item.title}
@@ -357,10 +357,11 @@ export default function MainMenu({
 
   const handleButtonClick = (
     e: MouseEvent<HTMLAnchorElement, globalThis.MouseEvent>,
+    url: string,
   ) => {
     e.preventDefault();
     onCloseMainMenu();
-    runCustomButtonAction && runCustomButtonAction();
+    runCustomButtonAction && runCustomButtonAction(url);
   };
 
   const renderSubMenuContainer = (
