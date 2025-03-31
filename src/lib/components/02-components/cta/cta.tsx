@@ -2,7 +2,7 @@ import { CSSProperties, ComponentPropsWithoutRef, ElementType } from 'react';
 import { cn } from '../../../utils/tailwind-merge';
 import { ArrowRightIcon } from '../../00-tokens/icons';
 import Button, { ButtonColorVariant } from '../../01-elements/button/button';
-import Link from '../../01-elements/link/link';
+import Link, { LinkColorProps } from '../../01-elements/link/link';
 import Typography from '../../01-elements/typography/typography';
 
 // Background images.
@@ -117,7 +117,7 @@ export default function CTA({
               <Link
                 animated
                 href={link.url}
-                color={colorSchema[theme].button}
+                color={colorSchema[theme].button as LinkColorProps}
                 className="mt-md w-full justify-center md:w-fit"
                 underline="always">
                 {link.title}

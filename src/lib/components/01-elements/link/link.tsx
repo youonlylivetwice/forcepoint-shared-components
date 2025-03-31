@@ -1,17 +1,19 @@
 import { AnchorHTMLAttributes, ElementType, ReactNode } from 'react';
 import { cn } from '../../../utils/tailwind-merge';
 
+export type LinkColorProps =
+  | 'black'
+  | 'navy'
+  | 'blue'
+  | 'sandwisp'
+  | 'viola'
+  | 'white'
+  | 'inherit'
+  | 'grey';
+
 export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   animated?: boolean;
-  color?:
-    | 'black'
-    | 'blue'
-    | 'grey'
-    | 'navy'
-    | 'sandwisp'
-    | 'viola'
-    | 'inherit'
-    | 'white';
+  color?: LinkColorProps;
   component?: ElementType;
   disabled?: boolean;
   endIcon?: ReactNode;
@@ -20,7 +22,7 @@ export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   underline?: 'none' | 'hover' | 'always';
 };
 
-const colorLinkSchema = {
+const colorLinkSchema: { [key in LinkColorProps]: string } = {
   black: 'text-black hover:text-blue',
   blue: 'text-blue hover:text-navy',
   grey: 'text-grey hover:text-teal',
