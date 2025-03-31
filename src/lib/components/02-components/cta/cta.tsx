@@ -27,7 +27,7 @@ export interface CtaProps extends ComponentPropsWithoutRef<'div'> {
 export type CtaTheme = 'azure' | 'black' | 'glow' | 'gray' | 'navy' | 'warp';
 
 export type CtaColorSchema = {
-  button: ButtonColorVariant;
+  button: Omit<ButtonColorVariant, 'shiny'>;
   header: string;
   wrapper?: string;
 };
@@ -117,7 +117,18 @@ export default function CTA({
               <Link
                 animated
                 href={link.url}
-                color={colorSchema[theme].button}
+                color={
+                  colorSchema[theme].button as
+                    | 'black'
+                    | 'navy'
+                    | 'blue'
+                    | 'sandwisp'
+                    | 'viola'
+                    | 'white'
+                    | 'inherit'
+                    | 'grey'
+                    | undefined
+                }
                 className="mt-md w-full justify-center md:w-fit"
                 underline="always">
                 {link.title}
@@ -129,7 +140,7 @@ export default function CTA({
                 href={link.url}
                 component={LinkElement}
                 endIcon={<ArrowRightIcon />}
-                color={colorSchema[theme].button}
+                color={colorSchema[theme].button as ButtonColorVariant}
                 className="mt-md w-full justify-center md:w-fit"
                 as="link">
                 {link?.title}
