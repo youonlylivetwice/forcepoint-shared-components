@@ -24,7 +24,8 @@ export type ButtonColorVariant =
   | 'navy'
   | 'sandwisp'
   | 'viola'
-  | 'white';
+  | 'white'
+  | 'shiny';
 
 export type ButtonProps = DefaultProps &
   (
@@ -62,6 +63,12 @@ const colorButtonSchema = {
   white: {
     solid: 'bg-white text-blue hover:text-black hover:bg-sandwisp',
     outline: 'border-white border-2 text-white hover:border-sandwisp',
+  },
+  shiny: {
+    solid:
+      'shiny-cta bg-transparent relative overflow-hidden border-1 border-transparent',
+    outline:
+      'shiny-cta bg-transparent relative overflow-hidden border-1 border-transparent',
   },
 };
 
