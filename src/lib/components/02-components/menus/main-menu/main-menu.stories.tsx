@@ -792,7 +792,9 @@ const meta = {
 const branding = {
   data: {
     info: {
-      logo: 'https://live-forcepoint.pantheonsite.io/sites/all/themes/custom/fp/assets/img/logos/forcepoint.svg',
+      logoBlack:
+        'https://live-forcepoint.pantheonsite.io/sites/all/themes/custom/fp/assets/img/logos/forcepoint.svg',
+      logoWhite: 'https://www.forcepoint.com/images/fp-logo-white.svg',
     },
   },
 };
@@ -800,7 +802,7 @@ const branding = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = ({ items }: MainMenuProps) => {
+export const Default: Story = ({ items, color }: MainMenuProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
 
   const toggleMenu = () => {
@@ -811,25 +813,41 @@ export const Default: Story = ({ items }: MainMenuProps) => {
   };
 
   const mainMenuRendered = () => (
-    <MainMenu items={items} handlerCloseMenu={() => setIsMenuOpen(false)} />
+    <MainMenu
+      items={items}
+      handlerCloseMenu={() => setIsMenuOpen(false)}
+      color={color}
+    />
   );
 
   const secondaryMenuRendered = () => (
-    <div className="flex flex-1 bg-azure py-md lg:justify-end">
-      <span className="text-h6 font-semibold uppercase text-grey">
+    <div
+      className={cn(
+        'flex flex-1  py-md lg:justify-end',
+        color === 'black' ? 'bg-azure text-grey' : 'bg-grey-dark text-white',
+      )}>
+      <span className="text-h6 font-semibold uppercase ">
         Secondary menu content
       </span>
     </div>
   );
 
   return (
-    <header className="site-header sticky top-0 z-20 bg-white lg:top-[-60px]">
+    <header
+      className={cn(
+        'site-header sticky top-0 z-20 lg:top-[-60px]',
+        color === 'black' ? 'bg-white' : 'bg-black',
+      )}>
       {/* Desktop */}
       <div className="hidden lg:relative lg:mx-auto lg:flex lg:max-w-screen-xl lg:flex-col lg:gap-xs lg:pt-md">
         <div className="lg:mx-lg lg:flex lg:flex-1 lg:gap-lg">
           <Branding
             className="lg:inline-flex lg:w-[180px]"
-            src={branding.data.info.logo}
+            src={
+              color === 'black'
+                ? branding.data.info.logoBlack
+                : branding.data.info.logoWhite
+            }
             alt="Site Logo"
           />
           <div className="lg:flex lg:flex-1 lg:justify-end lg:gap-md">
@@ -844,14 +862,17 @@ export const Default: Story = ({ items }: MainMenuProps) => {
       <div
         className={cn('flex w-screen flex-col lg:hidden', {
           'h-screen': isMenuOpen,
-        })}
-      >
+        })}>
         {/* Menu heading */}
         <div className="flex w-full flex-row items-center justify-center border-b border-b-mercury bg-white">
           <div className="flex-1 pl-md rtl:pl-0 rtl:pr-md">
             <Branding
               className="inline-flex w-[84px]"
-              src={branding.data.info.logo}
+              src={
+                color === 'black'
+                  ? branding.data.info.logoBlack
+                  : branding.data.info.logoWhite
+              }
               alt="Site Logo"
             />
           </div>
@@ -859,8 +880,116 @@ export const Default: Story = ({ items }: MainMenuProps) => {
             className="block p-md text-center"
             aria-expanded={isMenuOpen}
             aria-label={'Main menu'}
-            onClick={toggleMenu}
-          >
+            onClick={toggleMenu}>
+            {isMenuOpen ? (
+              <CloseIcon className="text-grey" />
+            ) : (
+              <MenuIcon className="text-grey" />
+            )}
+          </button>
+        </div>
+        {/* Menu content */}
+        {isMenuOpen && (
+          <>
+            <div className="border-b border-chateau bg-white p-md">
+              {mainMenuRendered()}
+            </div>
+            <div className="flex-1 divide-y divide-brumosa bg-azure px-md">
+              {secondaryMenuRendered()}
+            </div>
+          </>
+        )}
+      </div>
+    </header>
+  );
+};
+
+export const ShinyButton: Story = ({
+  items,
+  color,
+  useShinyEffect,
+  runCustomButtonAction,
+}: MainMenuProps) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
+
+  const toggleMenu = () => {
+    const isOpen = !isMenuOpen;
+    setIsMenuOpen(isOpen);
+    // Toggle a class on the body element to prevent scrolling
+    document.body.classList.toggle('max-lg:overflow-hidden', isOpen);
+  };
+
+  const mainMenuRendered = () => (
+    <MainMenu
+      items={items}
+      handlerCloseMenu={() => setIsMenuOpen(false)}
+      color={color}
+      useShinyEffect={useShinyEffect}
+      runCustomButtonAction={runCustomButtonAction}
+    />
+  );
+
+  const secondaryMenuRendered = () => (
+    <div
+      className={cn(
+        'flex flex-1  py-md lg:justify-end',
+        color === 'black' ? 'bg-azure text-grey' : 'bg-grey-dark text-white',
+      )}>
+      <span className="text-h6 font-semibold uppercase ">
+        Secondary menu content
+      </span>
+    </div>
+  );
+
+  return (
+    <header
+      className={cn(
+        'site-header sticky top-0 z-20 lg:top-[-60px]',
+        color === 'black' ? 'bg-white' : 'bg-black',
+      )}>
+      {/* Desktop */}
+      <div className="hidden lg:relative lg:mx-auto lg:flex lg:max-w-screen-xl lg:flex-col lg:gap-xs lg:pt-md">
+        <div className="lg:mx-lg lg:flex lg:flex-1 lg:gap-lg">
+          <Branding
+            className="lg:inline-flex lg:w-[180px]"
+            src={
+              color === 'black'
+                ? branding.data.info.logoBlack
+                : branding.data.info.logoWhite
+            }
+            alt="Site Logo"
+          />
+          <div className="lg:flex lg:flex-1 lg:justify-end lg:gap-md">
+            {secondaryMenuRendered()}
+          </div>
+        </div>
+        <div className="flex lg:w-full">
+          <div className="flex-1">{mainMenuRendered()}</div>
+        </div>
+      </div>
+      {/* Mobile */}
+      <div
+        className={cn('flex w-screen flex-col lg:hidden', {
+          'h-screen': isMenuOpen,
+        })}>
+        {/* Menu heading */}
+        <div className="flex w-full flex-row items-center justify-center border-b border-b-mercury bg-white">
+          <div className="flex-1 pl-md rtl:pl-0 rtl:pr-md">
+            <Branding
+              className="inline-flex w-[84px]"
+              src={
+                color === 'black'
+                  ? branding.data.info.logoBlack
+                  : branding.data.info.logoWhite
+              }
+              alt="Site Logo"
+            />
+          </div>
+          <button
+            className="block p-md text-center"
+            aria-expanded={isMenuOpen}
+            aria-label={'Main menu'}
+            onClick={toggleMenu}>
             {isMenuOpen ? (
               <CloseIcon className="text-grey" />
             ) : (
@@ -889,4 +1018,17 @@ Default.args = {
     console.log('handlerCloseMenu');
   },
   items: menuItems,
+  color: 'black',
+};
+
+ShinyButton.args = {
+  handlerCloseMenu() {
+    console.log('handlerCloseMenu');
+  },
+  items: menuItems,
+  color: 'black',
+  useShinyEffect: true,
+  runCustomButtonAction() {
+    console.log('runCustomButtonAction');
+  },
 };
