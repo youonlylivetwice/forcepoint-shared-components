@@ -53,9 +53,10 @@ export default function ContentSlider({
         <Typography
           variant="h2"
           component="h2"
-          className={cn('mb-4 w-full font-bold', {
-            'text-azure': theme === 'dark',
-          })}>
+          className={cn(
+            'mb-4 w-full font-bold',
+            theme === 'dark' ? 'text-azure' : 'text-navy',
+          )}>
           {sliderTitle}
         </Typography>
       )}
@@ -63,9 +64,10 @@ export default function ContentSlider({
       {sliderSubTitle && (
         <Typography
           variant="h3"
-          className={cn('mb-4 w-full font-bold', {
-            'text-azure': theme === 'dark',
-          })}>
+          className={cn(
+            'mb-4 w-full font-bold',
+            theme === 'dark' ? 'text-azure' : 'text-navy',
+          )}>
           {sliderSubTitle}
         </Typography>
       )}
