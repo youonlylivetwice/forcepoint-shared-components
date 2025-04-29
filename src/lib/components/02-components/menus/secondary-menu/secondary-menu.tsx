@@ -26,7 +26,6 @@ export type SecondaryMenuProps = {
   menuLabel?: string;
   onFooter?: boolean;
   textColor?: 'black' | 'white';
-  useLocaleCode?: boolean;
 };
 
 export default function SecondaryMenu({
@@ -38,7 +37,6 @@ export default function SecondaryMenu({
   menuLabel = 'Secondary Menu',
   onFooter = false,
   textColor = 'black',
-  useLocaleCode = false,
 }: SecondaryMenuProps) {
   const [active, setActive] = useState<number | undefined>();
 
@@ -285,15 +283,6 @@ export default function SecondaryMenu({
 
   const renderItem = (item: SecondaryMenuItemProps, index: number) => {
     const isActive = active === index;
-    let renderedTitle = item.title;
-    if (isLanguageSwitcher && useLocaleCode) {
-      const localeCode = item.below
-        ? item.below[index].linkProps?.locale
-        : item.title;
-      if (localeCode) {
-        renderedTitle = localeCode;
-      }
-    }
 
     const itemLabel = (
       <Typography
@@ -306,7 +295,7 @@ export default function SecondaryMenu({
             'lg:text-[13px]': onFooter && isLanguageSwitcher,
           },
         )}>
-        {renderedTitle}
+        {item.title}
       </Typography>
     );
     return (

@@ -57,8 +57,9 @@ export default function LanguageSwitcher({
     };
   });
 
-  const activeLocaleName =
-    locales.find((locale) => locale.active)?.localeName || '';
+  const activeLocaleName = useLocaleCode
+    ? locales.find((locale) => locale.active)?.localeCode || ''
+    : locales.find((locale) => locale.active)?.localeName || '';
 
   const menuItems: SecondaryMenuItemProps = {
     title: activeLocaleName,
@@ -75,7 +76,6 @@ export default function LanguageSwitcher({
       handlerCloseMenu={handlerCloseMenu}
       textColor={textColor}
       linkComponent={linkComponent}
-      useLocaleCode={useLocaleCode}
     />
   );
 }
