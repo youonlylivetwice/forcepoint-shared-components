@@ -220,7 +220,7 @@ export default function SecondaryMenu({
             hidden: active !== index,
             'h-auto max-lg:static lg:bottom-[100%] lg:top-auto':
               onFooter && isLanguageSwitcher,
-            'lg:right-[-95px] lg:w-[355px]': isLanguageSwitcher,
+            'lg:right-[-145px] lg:w-[355px]': isLanguageSwitcher,
           },
         )}
         onBlur={handleBlur}>
