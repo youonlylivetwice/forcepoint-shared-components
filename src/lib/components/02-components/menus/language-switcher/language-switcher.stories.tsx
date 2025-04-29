@@ -89,3 +89,17 @@ export const Default = () => {
     </div>
   );
 };
+
+export const LocaleCode = () => {
+  return (
+    <div className="md:mx-3xl">
+      <LanguageSwitcher
+        locales={locales}
+        url={url}
+        excludedLangcode="en"
+        textColor="black"
+        useLocaleCode
+      />
+    </div>
+  );
+};

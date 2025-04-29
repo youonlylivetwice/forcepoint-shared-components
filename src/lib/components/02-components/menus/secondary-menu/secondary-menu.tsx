@@ -26,6 +26,7 @@ export type SecondaryMenuProps = {
   menuLabel?: string;
   onFooter?: boolean;
   textColor?: 'black' | 'white';
+  useLocaleCode?: boolean;
 };
 
 export default function SecondaryMenu({
@@ -37,8 +38,9 @@ export default function SecondaryMenu({
   menuLabel = 'Secondary Menu',
   onFooter = false,
   textColor = 'black',
+  useLocaleCode = false,
 }: SecondaryMenuProps) {
-  const [active, setActive] = useState<number | undefined>(); 
+  const [active, setActive] = useState<number | undefined>();
 
   useEffect(() => {
     const handleClick = (event: MouseEvent) => {
@@ -155,16 +157,22 @@ export default function SecondaryMenu({
     }
   };
 
-  const textColorSchema: { [key in SecondaryMenuColor]: { default: string; active: string; hover: string } } = {
+  const textColorSchema: {
+    [key in SecondaryMenuColor]: {
+      default: string;
+      active: string;
+      hover: string;
+    };
+  } = {
     black: {
       default: 'text-grey',
       active: 'text-blue',
-      hover: 'hover:text-blue'
+      hover: 'hover:text-blue',
     },
     white: {
       default: 'text-white',
       active: 'text-sandwisp-bright',
-      hover: 'hover:text-sandwisp-bright'
+      hover: 'hover:text-sandwisp-bright',
     },
   };
 
@@ -214,42 +222,46 @@ export default function SecondaryMenu({
             hidden: active !== index,
             'h-auto max-lg:static lg:bottom-[100%] lg:top-auto':
               onFooter && isLanguageSwitcher,
-            'lg:w-[355px] lg:right-[-95px]': isLanguageSwitcher,
+            'lg:right-[-95px] lg:w-[355px]': isLanguageSwitcher,
           },
         )}
-        onBlur={handleBlur}
-      >
+        onBlur={handleBlur}>
         {/* Mobile Heading */}
         <div
           className={cn(
             'mx-auto flex w-full flex-row items-center justify-center border-b border-b-mercury bg-white lg:hidden',
             { hidden: onFooter && isLanguageSwitcher },
-          )}
-        >
+          )}>
           <button
             aria-label="Go back"
             className="back-button p-md"
-            onClick={() => handlerOpenSubmenu(-1)}
-          >
-            <BackIcon className={cn('rotate-0 lg:rotate-[90deg]', textColorSchema[textColor].default)} />
+            onClick={() => handlerOpenSubmenu(-1)}>
+            <BackIcon
+              className={cn(
+                'rotate-0 lg:rotate-[90deg]',
+                textColorSchema[textColor].default,
+              )}
+            />
           </button>
-          <span className={cn('block flex-1 text-start text-body-2 rtl:text-right', textColorSchema[textColor].default)}>
+          <span
+            className={cn(
+              'block flex-1 text-start text-body-2 rtl:text-right',
+              textColorSchema[textColor].default,
+            )}>
             {item.title}
           </span>
           <button
             className="block p-md text-center"
             onClick={onCloseMainMenu}
-            aria-label="Close menu"
-          >
-            <CloseIcon className={cn('',textColorSchema[textColor].default)} />
+            aria-label="Close menu">
+            <CloseIcon className={cn('', textColorSchema[textColor].default)} />
           </button>
         </div>
         {/* Desktop Heading */}
         <div
           className={cn('flex w-full justify-center', {
             'order-2': onFooter && isLanguageSwitcher,
-          })}
-        >
+          })}>
           <BackIcon
             className={cn('hidden rotate-[90deg] text-brumosa lg:block', {
               'rotate-[270deg]': onFooter && isLanguageSwitcher,
@@ -260,10 +272,11 @@ export default function SecondaryMenu({
         <ul
           className={cn(
             'flex flex-1 flex-col bg-white py-sm lg:gap-md lg:rounded-m lg:p-md lg:shadow-md',
-            { 'max-lg:bg-transparent': onFooter && isLanguageSwitcher , 
-              'lg:grid lg:grid-cols-2': isLanguageSwitcher },
-          )}
-        >
+            {
+              'max-lg:bg-transparent': onFooter && isLanguageSwitcher,
+              'lg:grid lg:grid-cols-2': isLanguageSwitcher,
+            },
+          )}>
           {item.below?.map(renderSubitem)}
         </ul>
       </div>
@@ -272,6 +285,15 @@ export default function SecondaryMenu({
 
   const renderItem = (item: SecondaryMenuItemProps, index: number) => {
     const isActive = active === index;
+    let renderedTitle = item.title;
+    if (isLanguageSwitcher && useLocaleCode) {
+      const localeCode = item.below
+        ? item.below[index].linkProps?.locale
+        : item.title;
+      if (localeCode) {
+        renderedTitle = localeCode;
+      }
+    }
 
     const itemLabel = (
       <Typography
@@ -283,9 +305,8 @@ export default function SecondaryMenu({
               isLanguageSwitcher,
             'lg:text-[13px]': onFooter && isLanguageSwitcher,
           },
-        )}
-      >
-        {item.title}
+        )}>
+        {renderedTitle}
       </Typography>
     );
     return (
@@ -361,8 +382,7 @@ export default function SecondaryMenu({
     <nav aria-label={menuLabel}>
       <ul
         className={`${menuClass} flex flex-col gap-x-md divide-y divide-brumosa lg:flex-row lg:divide-y-0`}
-        onKeyDown={handleKeyDown}
-      >
+        onKeyDown={handleKeyDown}>
         {items.map(renderItem)}
       </ul>
     </nav>
