@@ -21,6 +21,7 @@ export type LanguageSwitcherProps = {
   excludedLangcode?: string;
   textColor: 'black' | 'white';
   linkComponent?: ElementType;
+  useLocaleCode?: boolean;
 };
 
 export default function LanguageSwitcher({
@@ -32,6 +33,7 @@ export default function LanguageSwitcher({
   excludedLangcode,
   textColor = 'black',
   linkComponent,
+  useLocaleCode = false,
 }: LanguageSwitcherProps) {
   // Move active locale to the beginning of the array
   const activeIndex = locales.findIndex((locale) => locale.active);
@@ -55,8 +57,9 @@ export default function LanguageSwitcher({
     };
   });
 
-  const activeLocaleName =
-    locales.find((locale) => locale.active)?.localeName || '';
+  const activeLocaleName = useLocaleCode
+    ? locales.find((locale) => locale.active)?.localeCode || ''
+    : locales.find((locale) => locale.active)?.localeName || '';
 
   const menuItems: SecondaryMenuItemProps = {
     title: activeLocaleName,
