@@ -59,8 +59,7 @@ export default function MastheadBanner({
       color={backgroundColor === 'azure' ? 'navy' : 'white'}
       className="align-baseline text-body-2 font-normal underline-offset-auto"
       endIcon={<ArrowRightIcon />}
-      animated
-    >
+      animated>
       {linkDetails.title}
     </Link>
   );
@@ -68,9 +67,8 @@ export default function MastheadBanner({
   const renderedCloseButton = isCloseable && (
     <button
       aria-label="Close"
-      className="absolute right-0 top-0 inline-block h-6 cursor-pointer lg:right-lg"
-      onClick={(e) => handleClose(e)}
-    >
+      className="h-6 cursor-pointer"
+      onClick={(e) => handleClose(e)}>
       <CloseIcon className="h-4" />
     </button>
   );
@@ -82,11 +80,12 @@ export default function MastheadBanner({
       className={cn(
         'px-5 py-6 text-body-2',
         MastheadBannerStyles[backgroundColor],
-      )}
-    >
-      <div className="relative mx-auto my-0 lg:max-w-screen-xl lg:px-lg">
-        {renderedTitle}
-        {renderedLink}
+      )}>
+      <div className="relative mx-auto my-0 flex justify-between gap-sm lg:max-w-screen-xl lg:px-lg">
+        <div>
+          {renderedTitle}
+          {renderedLink}
+        </div>
         {renderedCloseButton}
       </div>
     </div>
