@@ -106,6 +106,16 @@
   @apply focus:text-blue;
 }
 
+.hubspot-form-wrapper .hs_name,
+.hubspot-form-wrapper .hs_email,
+.hubspot-form-wrapper .hs_custom_email,
+.hubspot-form-wrapper .hs_company,
+.hubspot-form-wrapper .hs_phone,
+.hubspot-form-wrapper .hs_jobtitle,
+.hubspot-form-wrapper .hs_firstname .hubspot-form-wrapper .hs_lastname,
+.hubspot-form-wrapper .hs-fieldtype-select {
+  @apply flex flex-col;
+}
 .hubspot-form-wrapper .hs_name .input,
 .hubspot-form-wrapper .hs_email .input,
 .hubspot-form-wrapper .hs_custom_email .input,
