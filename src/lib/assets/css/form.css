@@ -10,7 +10,7 @@
 
 .hubspot-form-wrapper .hs_name .input input,
 .hubspot-form-wrapper .hs_email .input input,
-.hubspot-form-wrapper .hs_name .input input,
+.hubspot-form-wrapper .hs_custom_email .input input,
 .hubspot-form-wrapper .hs_company .input input,
 .hubspot-form-wrapper .hs_phone .input input,
 .hubspot-form-wrapper .hs_jobtitle .input input,
@@ -106,20 +106,9 @@
   @apply focus:text-blue;
 }
 
-.hubspot-form-wrapper .hs_name,
-.hubspot-form-wrapper .hs_email,
-.hubspot-form-wrapper .hs_name,
-.hubspot-form-wrapper .hs_company,
-.hubspot-form-wrapper .hs_phone,
-.hubspot-form-wrapper .hs_jobtitle,
-.hubspot-form-wrapper .hs_firstname .hubspot-form-wrapper .hs_lastname,
-.hubspot-form-wrapper .hs-fieldtype-select {
-  @apply flex flex-col;
-}
-
 .hubspot-form-wrapper .hs_name .input,
 .hubspot-form-wrapper .hs_email .input,
-.hubspot-form-wrapper .hs_name .input,
+.hubspot-form-wrapper .hs_custom_email .input,
 .hubspot-form-wrapper .hs_company .input,
 .hubspot-form-wrapper .hs_phone .input,
 .hubspot-form-wrapper .hs_jobtitle .input,
@@ -192,7 +181,7 @@
 /* Error messages */
 .hs_name ul[role='alert'] li,
 .hs_email ul[role='alert'] li,
-.hs_name ul[role='alert'] li,
+.hs_custom_email ul[role='alert'] li,
 .hs_company ul[role='alert'] li,
 .hs_phone ul[role='alert'] li,
 .hs_jobtitle ul[role='alert'] li,
@@ -204,7 +193,7 @@
 
 .hs_name .input input.invalid.error,
 .hs_email .input input.invalid.error,
-.hs_name .input input.invalid.error,
+.hs_custom_email .input input.invalid.error,
 .hs_company .input input.invalid.error,
 .hs_phone .input input.invalid.error,
 .hs_jobtitle .input input.invalid.error,
