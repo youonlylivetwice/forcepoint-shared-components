@@ -42,6 +42,7 @@ export default defineConfig({
         ...Object.keys(dependencies),
       ],
       output: {
+        banner: "'use client';",
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
