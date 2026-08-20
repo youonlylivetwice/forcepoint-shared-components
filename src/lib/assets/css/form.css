@@ -116,16 +116,16 @@
 .hubspot-form-wrapper .hs-fieldtype-select {
   @apply flex flex-col;
 }
-.hubspot-form-wrapper .hs_name .input,
-.hubspot-form-wrapper .hs_email .input,
-.hubspot-form-wrapper .hs_custom_email .input,
-.hubspot-form-wrapper .hs_company .input,
-.hubspot-form-wrapper .hs_phone .input,
-.hubspot-form-wrapper .hs_jobtitle .input,
-.hubspot-form-wrapper .hs_firstname .input,
-.hubspot-form-wrapper .hs_lastname .input,
-.hubspot-form-wrapper .hs-fieldtype-text .input,
-.hubspot-form-wrapper .hs-fieldtype-select .input {
+.hubspot-form-wrapper .hs_name .input:has(:required),
+.hubspot-form-wrapper .hs_email .input:has(:required),
+.hubspot-form-wrapper .hs_custom_email .input:has(:required),
+.hubspot-form-wrapper .hs_company .input:has(:required),
+.hubspot-form-wrapper .hs_phone .input:has(:required),
+.hubspot-form-wrapper .hs_jobtitle .input:has(:required),
+.hubspot-form-wrapper .hs_firstname .input:has(:required),
+.hubspot-form-wrapper .hs_lastname .input:has(:required),
+.hubspot-form-wrapper .hs-fieldtype-text .input:has(:required),
+.hubspot-form-wrapper .hs-fieldtype-select .input:has(:required) {
   @apply relative before:absolute before:left-sm before:top-[12px] before:block before:text-teal before:content-["*"];
 }
 
