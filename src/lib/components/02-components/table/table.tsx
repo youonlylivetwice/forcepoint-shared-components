@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useRef } from 'react';
+import { ReactNode, useEffect, useRef } from 'react';
 import Typography from '../../01-elements/typography/typography';
 import { useDataTable } from './data-table-provider';
 import TablePager from './table-pager';
