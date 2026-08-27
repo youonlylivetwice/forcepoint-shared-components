@@ -3,6 +3,7 @@ import Typography from '../../01-elements/typography/typography';
 import { useDataTable } from './data-table-provider';
 import TablePager from './table-pager';
 import { TableRowProps } from './table-row';
+import { cn } from '../../../utils/tailwind-merge';
 
 export interface TableProps {
   children: ReactNode;
@@ -11,15 +12,17 @@ export interface TableProps {
   heading?: string;
   subheading?: string;
   containterId?: string;
+  usePadding?: boolean;
 }
 
-const Table: React.FC<TableProps> = ({
+export default function Table({
   children,
   description,
   heading,
   subheading,
-  containterId
-}) => {
+  containterId,
+  usePadding = true,
+}: TableProps) {
   const table = useRef<HTMLTableElement>(null);
   const { setTotalItems } = useDataTable();
 
@@ -115,14 +118,19 @@ const Table: React.FC<TableProps> = ({
     </div>
   );
 
-  const renderDescription = (
+  const renderDescription = description && (
     <Typography variant="body-5" className="font-normal text-grey max-md:mt-md">
       {description}
     </Typography>
   );
 
   return (
-    <div className="py-lg md:mx-auto md:max-w-screen-lg md:py-xl scroll-mt-[30px]" id={containterId}>
+    <div
+      className={cn(
+        'scroll-mt-[30px] md:mx-auto md:max-w-screen-lg',
+        usePadding && 'py-lg md:py-xl',
+      )}
+      id={containterId}>
       {renderHeading}
       {renderSubheading}
       {renderTable}
@@ -130,6 +138,4 @@ const Table: React.FC<TableProps> = ({
       {renderDescription}
     </div>
   );
-};
-
-export default Table;
+}
