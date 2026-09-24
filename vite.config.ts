@@ -8,6 +8,11 @@ import { dependencies, name, peerDependencies } from './package.json';
 
 const formattedName = name.match(/[^/]+$/)?.[0] ?? name;
 
+const externalPackages = [
+  ...Object.keys(peerDependencies),
+  ...Object.keys(dependencies),
+];
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -37,14 +42,21 @@ export default defineConfig({
       fileName: (format) => `${formattedName}.${format}.js`,
     },
     rollupOptions: {
-      external: [
-        ...Object.keys(peerDependencies),
-        ...Object.keys(dependencies),
-      ],
+      // Subpaths have to be matched too, not just the bare package names. Most
+      // components compile through the automatic JSX runtime, so they import
+      // `react/jsx-runtime`; an exact-name list misses it and rollup inlines
+      // React's own copy into the bundle. That copy stamps elements with
+      // `Symbol.for('react.element')` and reads `ReactCurrentOwner` off
+      // `__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED` — both changed in
+      // React 19, so a bundled runtime throws as soon as a consumer is on 19.
+      external: (id) =>
+        externalPackages.some((pkg) => id === pkg || id.startsWith(`${pkg}/`)),
       output: {
         banner: "'use client';",
         globals: {
           react: 'React',
+          'react/jsx-runtime': 'React',
+          'react/jsx-dev-runtime': 'React',
           'react-dom': 'ReactDOM',
           clsx: 'clsx',
           'tailwind-merge': 'tailwindMerge',
