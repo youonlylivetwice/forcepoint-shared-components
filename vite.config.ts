@@ -8,6 +8,11 @@ import { dependencies, name, peerDependencies } from './package.json';
 
 const formattedName = name.match(/[^/]+$/)?.[0] ?? name;
 
+const externalPackages = [
+  ...Object.keys(peerDependencies),
+  ...Object.keys(dependencies),
+];
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -37,14 +42,14 @@ export default defineConfig({
       fileName: (format) => `${formattedName}.${format}.js`,
     },
     rollupOptions: {
-      external: [
-        ...Object.keys(peerDependencies),
-        ...Object.keys(dependencies),
-      ],
+      external: (id) =>
+        externalPackages.some((pkg) => id === pkg || id.startsWith(`${pkg}/`)),
       output: {
         banner: "'use client';",
         globals: {
           react: 'React',
+          'react/jsx-runtime': 'React',
+          'react/jsx-dev-runtime': 'React',
           'react-dom': 'ReactDOM',
           clsx: 'clsx',
           'tailwind-merge': 'tailwindMerge',
